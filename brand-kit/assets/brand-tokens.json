@@ -1,0 +1,38 @@
+{
+  "brand": "آهنگ‌بان",
+  "latinName": "Ahangban",
+  "version": "1.0-concept",
+  "domain": "ahangban.ir",
+  "colors": {
+    "ink": "#111111",
+    "white": "#FFFFFF",
+    "dark": "#222222",
+    "textMuted": "#666666",
+    "surface": "#F4F4F4",
+    "line": "#E5E5E5",
+    "decorativeGray": "#BDBDBD"
+  },
+  "logoColors": ["#111111", "#FFFFFF"],
+  "colorRoles": {
+    "text": "#111111",
+    "background": "#FFFFFF",
+    "primaryAction": "#111111",
+    "primaryActionText": "#FFFFFF",
+    "lightSurface": "#F4F4F4",
+    "darkSurface": "#222222"
+  },
+  "typography": {
+    "fa": "Vazirmatn, Tahoma, Arial, sans-serif",
+    "latin": "Inter, Arial, sans-serif",
+    "bodySize": "16px",
+    "bodyLineHeight": 1.8
+  },
+  "spacingPx": [4, 8, 12, 16, 24, 32, 48, 64],
+  "radiiPx": {
+    "control": 8,
+    "card": 16,
+    "panel": 24,
+    "pill": 999
+  },
+  "status": "Conceptual identity. Trademark status, content rights, font licensing, DNS and product readiness require separate review."
+}
