@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
-  <title id="title">نشان تک‌رنگ آهنگ‌بان</title>
-  <desc id="desc">نسخهٔ تک‌رنگ نشان آهنگ‌بان برای چاپ و کاربرد کوچک</desc>
-  <g fill="#111111"><rect x="14" y="60" width="12" height="38" rx="6"/>
+  <title id="title">نشان رنگی آهنگ‌بان</title>
+  <desc id="desc">نسخهٔ آبی سازمانی نشان آهنگ‌بان؛ بدون گرادینت</desc>
+  <g fill="#185ADB"><rect x="14" y="60" width="12" height="38" rx="6"/>
     <rect x="36" y="40" width="12" height="58" rx="6"/>
     <rect x="58" y="20" width="12" height="78" rx="6"/>
     <rect x="80" y="44" width="12" height="54" rx="6"/>

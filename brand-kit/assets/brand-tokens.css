@@ -1,10 +1,15 @@
-/* Ahangban identity tokens — monochrome concept 1.0
-   Local asset; no CDN, remote font, gradients, or color accents. */
+/* Ahangban identity tokens — v1.1, monochrome plus one corporate blue.
+   Local asset; no gradients, remote fonts, or decorative color noise. */
+@import url("brand-fonts.css");
+
 :root {
   color-scheme: light;
   --hb-ink: #111111;
   --hb-white: #FFFFFF;
   --hb-dark: #222222;
+  --hb-blue: #185ADB;
+  --hb-blue-dark: #1248B2;
+  --hb-blue-pale: #EAF1FF;
   --hb-text-muted: #666666;
   --hb-surface: #F4F4F4;
   --hb-line: #E5E5E5;
@@ -13,12 +18,12 @@
   --hb-color-text: var(--hb-ink);
   --hb-color-background: var(--hb-white);
   --hb-color-surface: var(--hb-surface);
-  --hb-color-primary: var(--hb-ink);
+  --hb-color-primary: var(--hb-blue);
   --hb-color-primary-text: var(--hb-white);
   --hb-color-border: var(--hb-line);
 
-  --hb-font-fa: "Vazirmatn", Tahoma, Arial, sans-serif;
-  --hb-font-latin: "Inter", Arial, sans-serif;
+  --hb-font-fa: "Ahangban Vazirmatn", Tahoma, Arial, sans-serif;
+  --hb-font-latin: "Ahangban Vazirmatn", Arial, sans-serif;
   --hb-text-xs: 0.8125rem;
   --hb-text-sm: 0.875rem;
   --hb-text-md: 1rem;
@@ -45,24 +50,26 @@
 }
 
 .hb-text-muted { color: var(--hb-text-muted); }
+.hb-brand-blue { color: var(--hb-blue); }
 .hb-surface { background: var(--hb-surface); color: var(--hb-ink); }
 .hb-dark-surface { background: var(--hb-dark); color: var(--hb-white); }
 .hb-button-primary {
   min-height: 48px;
   padding: 12px 20px;
-  border: 2px solid var(--hb-ink);
+  border: 2px solid var(--hb-blue);
   border-radius: var(--hb-radius-pill);
-  background: var(--hb-ink);
+  background: var(--hb-blue);
   color: var(--hb-white);
   font: 700 1rem/1.4 var(--hb-font-fa);
   cursor: pointer;
 }
+.hb-button-primary:hover { background: var(--hb-blue-dark); border-color: var(--hb-blue-dark); }
 .hb-button-primary:focus-visible,
 .hb-link:focus-visible {
-  outline: var(--hb-focus-width) solid var(--hb-text-muted);
+  outline: var(--hb-focus-width) solid var(--hb-blue);
   outline-offset: 3px;
 }
-.hb-link { color: var(--hb-ink); text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+.hb-link { color: var(--hb-blue-dark); text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     scroll-behavior: auto !important;

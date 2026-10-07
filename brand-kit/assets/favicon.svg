@@ -1,11 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title id="title">آیکن آهنگ‌بان</title>
-  <rect width="64" height="64" rx="14" fill="#111111"/>
-  <g transform="translate(15 15) scale(.29)" fill="#FFFFFF">
-    <rect x="14" y="60" width="12" height="38" rx="6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">آیکن آهنگ‌بان</title><desc id="desc">نشان سفید آهنگ‌بان روی آبی سازمانی</desc>
+  <rect width="64" height="64" rx="14" fill="#185ADB"/>
+  <g transform="translate(15 15) scale(.29)" fill="#FFFFFF"><rect x="14" y="60" width="12" height="38" rx="6"/>
     <rect x="36" y="40" width="12" height="58" rx="6"/>
     <rect x="58" y="20" width="12" height="78" rx="6"/>
     <rect x="80" y="44" width="12" height="54" rx="6"/>
-    <rect x="102" y="56" width="12" height="42" rx="6"/>
-  </g>
+    <rect x="102" y="56" width="12" height="42" rx="6"/></g>
 </svg>

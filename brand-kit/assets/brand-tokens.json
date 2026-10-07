@@ -1,31 +1,47 @@
 {
   "brand": "آهنگ‌بان",
   "latinName": "Ahangban",
-  "version": "1.0-concept",
+  "version": "1.1-system",
   "domain": "ahangban.ir",
+  "corporateColor": {
+    "nameFa": "آبی آهنگ‌بان",
+    "nameEn": "Ahangban Blue",
+    "hex": "#185ADB",
+    "dark": "#1248B2",
+    "pale": "#EAF1FF",
+    "usage": "Primary actions, links, active states and the color lockup mark; never as a gradient."
+  },
   "colors": {
     "ink": "#111111",
     "white": "#FFFFFF",
     "dark": "#222222",
+    "blue": "#185ADB",
+    "blueDark": "#1248B2",
+    "bluePale": "#EAF1FF",
     "textMuted": "#666666",
     "surface": "#F4F4F4",
     "line": "#E5E5E5",
     "decorativeGray": "#BDBDBD"
   },
-  "logoColors": ["#111111", "#FFFFFF"],
+  "logoColors": ["#111111", "#FFFFFF", "#185ADB"],
   "colorRoles": {
     "text": "#111111",
     "background": "#FFFFFF",
-    "primaryAction": "#111111",
+    "primaryAction": "#185ADB",
     "primaryActionText": "#FFFFFF",
+    "link": "#1248B2",
+    "activeSurface": "#EAF1FF",
     "lightSurface": "#F4F4F4",
     "darkSurface": "#222222"
   },
   "typography": {
-    "fa": "Vazirmatn, Tahoma, Arial, sans-serif",
-    "latin": "Inter, Arial, sans-serif",
+    "primary": "Ahangban Vazirmatn",
+    "fa": "Ahangban Vazirmatn, Tahoma, Arial, sans-serif",
+    "latin": "Ahangban Vazirmatn, Arial, sans-serif",
     "bodySize": "16px",
-    "bodyLineHeight": 1.8
+    "bodyLineHeight": 1.8,
+    "weights": [400, 500, 600, 700, 800, 900],
+    "license": "SIL Open Font License 1.1; see assets/fonts/OFL.txt"
   },
   "spacingPx": [4, 8, 12, 16, 24, 32, 48, 64],
   "radiiPx": {
@@ -34,5 +50,5 @@
     "panel": 24,
     "pill": 999
   },
-  "status": "Conceptual identity. Trademark status, content rights, font licensing, DNS and product readiness require separate review."
+  "status": "System concept. Trademark status, content rights, DNS and product readiness require separate review."
 }

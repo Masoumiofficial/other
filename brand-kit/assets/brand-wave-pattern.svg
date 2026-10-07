@@ -1,24 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-labelledby="title desc">
-  <title id="title">بافت خطی آهنگ‌بان</title>
-  <desc id="desc">مجموعه‌ای خنثی از میله‌های ریتمی برای پس‌زمینهٔ تزئینی</desc>
-  <rect width="480" height="240" fill="#FFFFFF"/>
-  <g fill="#111111" opacity=".12">
-    <rect x="28" y="102" width="10" height="36" rx="5"/>
-    <rect x="54" y="82" width="10" height="76" rx="5"/>
-    <rect x="80" y="55" width="10" height="130" rx="5"/>
-    <rect x="106" y="76" width="10" height="88" rx="5"/>
-    <rect x="132" y="96" width="10" height="48" rx="5"/>
-    <rect x="158" y="65" width="10" height="110" rx="5"/>
-    <rect x="184" y="45" width="10" height="150" rx="5"/>
-    <rect x="210" y="81" width="10" height="78" rx="5"/>
-    <rect x="236" y="103" width="10" height="34" rx="5"/>
-    <rect x="262" y="72" width="10" height="96" rx="5"/>
-    <rect x="288" y="51" width="10" height="138" rx="5"/>
-    <rect x="314" y="87" width="10" height="66" rx="5"/>
-    <rect x="340" y="60" width="10" height="120" rx="5"/>
-    <rect x="366" y="91" width="10" height="58" rx="5"/>
-    <rect x="392" y="71" width="10" height="98" rx="5"/>
-    <rect x="418" y="104" width="10" height="32" rx="5"/>
+  <title id="title">بافت خطی آهنگ‌بان</title><desc id="desc">بافت تزئینی میله‌های ریتمی با آبی سازمانی و بدون گرادینت</desc>
+  <rect width="480" height="240" fill="#EAF1FF"/>
+  <g fill="#185ADB" opacity=".16">
+    <rect x="28" y="102" width="10" height="36" rx="5"/><rect x="54" y="82" width="10" height="76" rx="5"/>
+    <rect x="80" y="55" width="10" height="130" rx="5"/><rect x="106" y="76" width="10" height="88" rx="5"/>
+    <rect x="132" y="96" width="10" height="48" rx="5"/><rect x="158" y="65" width="10" height="110" rx="5"/>
+    <rect x="184" y="45" width="10" height="150" rx="5"/><rect x="210" y="81" width="10" height="78" rx="5"/>
+    <rect x="236" y="103" width="10" height="34" rx="5"/><rect x="262" y="72" width="10" height="96" rx="5"/>
+    <rect x="288" y="51" width="10" height="138" rx="5"/><rect x="314" y="87" width="10" height="66" rx="5"/>
+    <rect x="340" y="60" width="10" height="120" rx="5"/><rect x="366" y="91" width="10" height="58" rx="5"/>
+    <rect x="392" y="71" width="10" height="98" rx="5"/><rect x="418" y="104" width="10" height="32" rx="5"/>
     <rect x="444" y="83" width="10" height="74" rx="5"/>
   </g>
 </svg>
