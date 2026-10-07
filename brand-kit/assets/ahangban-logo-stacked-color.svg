@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 390" role="img" aria-labelledby="title desc">
+  <title id="title">آهنگ‌بان — لوگوی عمودی — نسخهٔ رنگی</title>
+  <desc id="desc">چیدمان عمودی لوگوی آهنگ‌بان با نشان ریتمی و نوشتار فارسی</desc>
+  <style><![CDATA[
+@font-face {
+  font-family: "AhangbanVazirmatn";
+  src: url("fonts/vazirmatn-arabic-800.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+]]></style>
+  <g transform="translate(150 28)" fill="#185ADB"><rect x="14" y="60" width="12" height="38" rx="6"/>
+    <rect x="36" y="40" width="12" height="58" rx="6"/>
+    <rect x="58" y="20" width="12" height="78" rx="6"/>
+    <rect x="80" y="44" width="12" height="54" rx="6"/>
+    <rect x="102" y="56" width="12" height="42" rx="6"/></g>
+  <text x="210" y="284" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="66" font-weight="800" fill="#111111">آهنگ‌بان</text>
+</svg>

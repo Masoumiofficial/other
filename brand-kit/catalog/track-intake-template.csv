@@ -1,0 +1,2 @@
+record_id,title_fa,title_latin,slug,primary_artist_id,featured_artist_ids,album_id,version,content_type,genre_ids,language,region,release_date,duration_seconds,isrc,composer,lyricist,producer,label_or_publisher,master_rights_holder,publishing_rights_holder,territories,rights_start,rights_end,streaming_allowed,download_allowed,video_rights_status,explicit_flag,master_file_uri,artwork_uri,source_reference,metadata_status,moderation_status,notes
+,,,,,,,,single,,,,,,,,,,,,,,,,,,,,,,,draft,needs_review,
