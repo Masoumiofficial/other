@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">نشان آهنگ‌بان</title>
+  <desc id="desc">پنج میلهٔ با ارتفاع متفاوت، اشاره‌ای مینیمال به ریتم و صدا</desc>
+  <g fill="#111111"><rect x="14" y="60" width="12" height="38" rx="6"/>
+    <rect x="36" y="40" width="12" height="58" rx="6"/>
+    <rect x="58" y="20" width="12" height="78" rx="6"/>
+    <rect x="80" y="44" width="12" height="54" rx="6"/>
+    <rect x="102" y="56" width="12" height="42" rx="6"/></g>
+</svg>

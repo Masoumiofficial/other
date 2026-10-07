@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1600" role="img" aria-labelledby="title desc">
+  <title id="title">قالب کاور پادکست آهنگ‌بان</title>
+  <desc id="desc">قالب مربعی مینیمال برای نمایش عنوان پادکست و نام میزبان</desc>
+  <style><![CDATA[
+    @font-face { font-family: "AhangbanVazirmatn"; src: url("fonts/vazirmatn-arabic-400.woff2") format("woff2"); font-weight: 400 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: "AhangbanVazirmatn"; src: url("fonts/vazirmatn-arabic-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: "AhangbanVazirmatn"; src: url("fonts/vazirmatn-arabic-800.woff2") format("woff2"); font-weight: 800 900; font-style: normal; font-display: swap; }
+  ]]></style>
+  <rect width="1600" height="1600" fill="#FFFFFF"/>
+  <rect x="64" y="64" width="1472" height="1472" rx="56" fill="none" stroke="#185ADB" stroke-width="3"/>
+  <circle cx="800" cy="540" r="300" fill="#EAF1FF" stroke="#185ADB" stroke-width="3"/>
+  <circle cx="800" cy="540" r="220" fill="none" stroke="#185ADB" stroke-width="3"/>
+  <circle cx="800" cy="540" r="138" fill="none" stroke="#185ADB" stroke-width="3"/>
+  <g fill="#185ADB">
+    <rect x="682" y="505" width="22" height="70" rx="11"/><rect x="728" y="460" width="22" height="160" rx="11"/>
+    <rect x="774" y="425" width="22" height="230" rx="11"/><rect x="820" y="475" width="22" height="130" rx="11"/>
+    <rect x="866" y="495" width="22" height="90" rx="11"/>
+  </g>
+  <text x="800" y="1030" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="82" font-weight="800" fill="#111111">[نام پادکست]</text>
+  <text x="800" y="1135" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="38" font-weight="500" fill="#666666">با [نام میزبان]</text>
+  <text x="800" y="1400" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="32" font-weight="700" fill="#185ADB">آهنگ‌بان · پادکست</text>
+</svg>

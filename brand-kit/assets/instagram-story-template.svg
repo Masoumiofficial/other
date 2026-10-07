@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">قالب استوری آهنگ‌بان</title>
+  <desc id="desc">قالب عمودی سیاه و سفید برای معرفی آهنگ‌بان و دعوت به دنبال‌کردن خبرها</desc>
+  <style><![CDATA[
+    @font-face { font-family: "AhangbanVazirmatn"; src: url("fonts/vazirmatn-arabic-400.woff2") format("woff2"); font-weight: 400 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: "AhangbanVazirmatn"; src: url("fonts/vazirmatn-arabic-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: "AhangbanVazirmatn"; src: url("fonts/vazirmatn-arabic-800.woff2") format("woff2"); font-weight: 800 900; font-style: normal; font-display: swap; }
+  ]]></style>
+  <rect width="1080" height="1920" fill="#FFFFFF"/>
+  <rect width="1080" height="690" fill="#111111"/>
+  <g transform="translate(462 102) scale(.85)" fill="#FFFFFF">
+    <rect x="14" y="60" width="12" height="38" rx="6"/><rect x="36" y="40" width="12" height="58" rx="6"/>
+    <rect x="58" y="20" width="12" height="78" rx="6"/><rect x="80" y="44" width="12" height="54" rx="6"/>
+    <rect x="102" y="56" width="12" height="42" rx="6"/>
+  </g>
+  <text x="540" y="470" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="100" font-weight="800" fill="#FFFFFF">آهنگ‌بان</text>
+  <text x="540" y="905" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="66" font-weight="800" fill="#111111">از پیدا کردن</text>
+  <text x="540" y="1000" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="66" font-weight="800" fill="#111111">تا شنیدن.</text>
+  <line x1="190" y1="1090" x2="890" y2="1090" stroke="#185ADB" stroke-width="3"/>
+  <text x="540" y="1190" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="34" font-weight="500" fill="#666666">[متن کوتاه و تأییدشده]</text>
+  <rect x="325" y="1350" width="430" height="96" rx="48" fill="#185ADB"/>
+  <text x="540" y="1411" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="32" font-weight="700" fill="#FFFFFF">[دعوت به اقدام]</text>
+  <text x="540" y="1715" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="28" font-weight="700" fill="#185ADB">ahangban.ir</text>
+  <text x="540" y="1780" text-anchor="middle" direction="rtl" unicode-bidi="plaintext" font-family="AhangbanVazirmatn, Tahoma, Arial, sans-serif" font-size="20" font-weight="400" fill="#666666">قالب نمونه · وضعیت دامنه و پیوند را پیش از انتشار بررسی کنید</text>
+</svg>
