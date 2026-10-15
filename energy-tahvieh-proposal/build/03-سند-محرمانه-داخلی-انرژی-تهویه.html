@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>سند محرمانه تحلیل، برنامه اجرایی و استراتژی رشد دیجیتال انرژی تهویه</title>
+<style>
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+
+@page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+@media print {
+  .no-print { display: none !important; }
+  h1, h2, h3 { break-after: avoid; }
+  table, pre, blockquote { break-inside: avoid; }
+  tr { break-inside: avoid; }
+  a { color: inherit !important; text-decoration: none !important; }
+}
+:root{
+  --accent:#0f5c8c; --h2:#143d59; --h3:#1f5c82; --muted:#5a5a5a;
+  --alert:#a82222; --line:#dbe4ec; --soft:#f6f9fb; --code:#f5f5f5;
+}
+*{box-sizing:border-box}
+html{ -webkit-text-size-adjust:100% }
+body{
+  font-family:'Vazirmatn','B Nazanin','IRANSans','Tahoma',sans-serif;
+  direction:rtl; text-align:right; line-height:1.85;
+  color:#1b1b1b; background:#eef1f4; margin:0; padding:0;
+  font-size:14px; font-feature-settings:"ss01";
+}
+.sheet{
+  background:#fff; max-width:210mm; margin:24px auto; padding:20mm 16mm;
+  box-shadow:0 2px 18px rgba(0,0,0,.14);
+}
+@media print{ body{background:#fff} .sheet{box-shadow:none;margin:0;padding:0;max-width:none} }
+
+.toolbar{
+  position:sticky; top:0; z-index:50; background:#0f5c8c; color:#fff;
+  padding:10px 18px; display:flex; gap:14px; align-items:center;
+  justify-content:center; flex-wrap:wrap; font-size:13px;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.toolbar button{
+  background:#fff; color:#0f5c8c; border:0; padding:8px 18px; border-radius:6px;
+  font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
+}
+.toolbar button:hover{ background:#dbe9f2 }
+
+h1,h2,h3,h4{ line-height:1.5; font-weight:800; }
+h1{
+  font-size:23px; color:var(--accent); margin:1.9em 0 .7em;
+  padding-bottom:.35em; border-bottom:3px solid var(--accent);
+  break-before:page;
+}
+h1:first-of-type{ break-before:auto; margin-top:.2em }
+h2{
+  font-size:18px; color:var(--h2); margin:1.7em 0 .6em;
+  padding-bottom:.3em; border-bottom:1px solid var(--line);
+}
+h3{ font-size:15.5px; color:var(--h3); margin:1.4em 0 .5em }
+h4{ font-size:14px; color:var(--h3); margin:1.2em 0 .4em }
+p{ margin:.75em 0; text-align:justify; }
+ul,ol{ margin:.7em 0; padding-right:1.5em; padding-left:0 }
+li{ margin:.32em 0 }
+li::marker{ color:var(--accent); font-weight:700 }
+strong{ font-weight:800; color:#0d3f5f }
+em{ font-style:italic; color:#33475b }
+code{
+  font-family:'Consolas','Courier New',monospace; direction:ltr; unicode-bidi:embed;
+  background:#fdf1f1; color:#a8222a; padding:.12em .4em; border-radius:4px;
+  font-size:.86em; display:inline-block;
+}
+pre{
+  background:var(--code); border:1px solid #e2e2e2; border-radius:8px;
+  padding:12px 14px; overflow-x:auto; direction:ltr; text-align:left;
+  font-size:11.5px; line-height:1.55; margin:1em 0;
+}
+pre code{ background:none; color:#2b2b2b; padding:0; display:block; direction:ltr }
+blockquote{
+  margin:1em 0; padding:.85em 1.1em; background:#f4f7fa;
+  border-right:5px solid var(--accent); border-radius:0 8px 8px 0;
+  color:#223a4a;
+}
+blockquote p{ margin:.35em 0 }
+hr{ border:0; border-top:1px solid #d8dee4; margin:2em 0 }
+a{ color:var(--accent); text-decoration:none; border-bottom:1px dotted rgba(15,92,140,.4) }
+a:hover{ border-bottom-style:solid }
+
+table{
+  width:100%; border-collapse:collapse; margin:1.1em 0; font-size:12.5px;
+  direction:rtl;
+}
+th{
+  background:var(--accent); color:#fff; font-weight:700; text-align:right;
+  padding:8px 10px; border:1px solid #0d4f78; vertical-align:top;
+}
+td{ padding:7px 10px; border:1px solid var(--line); vertical-align:top }
+tbody tr:nth-child(even) td{ background:var(--soft) }
+thead{ display:table-header-group }
+
+.cover{ text-align:center; padding:2.2em 0 1.4em; border-bottom:3px solid var(--accent); margin-bottom:1.6em }
+.cover .kicker{ font-size:13px; letter-spacing:.02em; color:var(--muted); font-weight:700 }
+.cover .title{ font-size:29px; font-weight:900; color:var(--accent); line-height:1.45; margin:.55em 0 .3em; white-space:pre-line }
+.cover .subtitle{ font-size:16px; font-weight:700; color:var(--h3); margin:.35em 0 }
+.cover .badge{
+  display:inline-block; margin-top:1.1em; padding:.5em 1.2em; border-radius:8px;
+  background:#fdecec; color:var(--alert); font-weight:800; font-size:14px;
+  border:1px solid #f2c4c4;
+}
+.cover table{ margin:1.8em auto 0; max-width:92%; font-size:13px; text-align:right }
+.cover table td:first-child{ background:#eaf1f6; font-weight:700; width:34% }
+
+ul.task{ list-style:none; padding-right:.4em }
+ul.task li{ padding-right:1.6em; position:relative }
+ul.task li::before{
+  content:"☐"; position:absolute; right:0; top:0; color:var(--accent);
+  font-weight:700; font-size:1.05em;
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <span>برای ساخت PDF: دکمه زیر یا <b>Ctrl/Cmd + P</b> → «Save as PDF» → حاشیه: Default → «Background graphics» فعال</span>
+  <button onclick="window.print()">🖨️ چاپ / ذخیره PDF</button>
+</div>
+
+<div class="sheet">
+<div class="cover">
+<div class="kicker">🔒 محرمانه — نسخه شخصی</div>
+<div class="title">سند محرمانه تحلیل، برنامه اجرایی
+و استراتژی رشد دیجیتال انرژی تهویه</div>
+<div class="subtitle">نسخه داخلی سجاد معصومی</div>
+<div class="badge">⛔ این سند برای ارائه به کارفرما نیست</div>
+<table><tbody>
+<tr><td>مالک سند</td><td>سجاد معصومی</td></tr>
+<tr><td>تاریخ</td><td>۲۳ مهر ۱۴۰۵ / ۱۵ اکتبر ۲۰۲۶</td></tr>
+<tr><td>نسخه</td><td>1.0</td></tr>
+<tr><td>طبقه‌بندی</td><td>محرمانه — شخصی</td></tr>
+<tr><td>بخش‌ها</td><td>۱۴ بخش + پیوست</td></tr>
+<tr><td>اقدامات بک‌لاگ</td><td>۲۸ اقدام با قالب ۱۶ فیلدی</td></tr>
+</tbody></table>
+</div>
+<h2>نسخه داخلی سجاد معصومی</h2>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>طبقه‌بندی</strong></td><td>🔒 محرمانه — شخصی. <strong>این سند برای ارائه به کارفرما نیست.</strong></td></tr><tr><td><strong>نسخه</strong></td><td>1.0</td></tr><tr><td><strong>تاریخ</strong></td><td>۲۳ مهر ۱۴۰۵ / ۱۵ اکتبر ۲۰۲۶</td></tr><tr><td><strong>مالک سند</strong></td><td>سجاد معصومی</td></tr><tr><td><strong>سند مکمل</strong></td><td><code>evidence/00-evidence-log.md</code> (منبع شواهد)، <code>02-پروپوزال-کارفرما.md</code> (نسخه بیرونی)</td></tr><tr><td><strong>هدف</strong></td><td>تبدیل تحلیل به برنامه کاری قابل اجرا از روز اول؛ همچنین پایانه مذاکره و مدیریت ریسک شخصی</td></tr></tbody></table>
+<blockquote><p><strong>هشدار استفاده:</strong> این سند شامل استراتژی مذاکره، ارزیابی شخصی از ریسک‌های نقش، و تحلیل صریح آسیب‌پذیری‌های پیشنهاد مالی است. افشای آن به کارفرما، جایگاه مذاکره‌ای را تضعیف می‌کند. نسخه بیرونی در سند ۰۲ است.</p></blockquote>
+<hr/>
+<h1>بخش اول — پایه شواهد و روش</h1>
+<h2>۱.۱ مرز میان یافته و فرضیه</h2>
+<table><thead><tr><th>دسته</th><th>تعداد</th><th>منبع</th></tr></thead><tbody><tr><td>یافته تأییدشده (V-xx)</td><td>۵۵</td><td>مشاهده مستقیم HTML عمومی + sitemap/robots</td></tr><tr><td>استنتاج فنی (I-xx)</td><td>۱۲</td><td>استنتاج از الگوهای عمومی؛ نیازمند تأیید</td></tr><tr><td>مورد نیازمند دسترسی</td><td>۲۰</td><td>فهرست صریح در سند ۰۵</td></tr></tbody></table>
+<p><strong>قاعده شخصی سخت‌گیرانه:</strong> در هیچ گفت‌وگویی با کارفرما، یک استنتاج را به‌عنوان یافته قطعی بیان نکن. جمله درست: «روی صفحات عمومی سایت این را دیده‌ام؛ برای تأیید علت فنی‌اش به دسترسی پیشخوان نیاز دارم.» این هم اعتبار حرفه‌ای می‌سازد و هم از تعهد به نتیجه‌ای که هنوز سنجیده نشده جلوگیری می‌کند.</p>
+<h2>۱.۲ سه خطای رایجی که باید از آن‌ها پرهیز کرد</h2>
+<ol>
+<li><strong>ادعای عدد عملکردی بدون تست.</strong> هیچ‌جا نگویید «سایت کند است» یا «LCP بالاست» — تا وقتی اندازه نگرفته‌اید. جمله جایگزین: «قالب مارکت‌پلیس + Elementor + چند افزونه تودرتو معمولاً بار صفحه را سنگین می‌کند؛ این فرضیه در هفته اول اندازه‌گیری می‌شود.»</li>
+<li><strong>وعده رتبه یا ترافیک.</strong> در بازار HVAC ایران، رتبه‌گیری روی کوئری‌های تجاری مانند «خرید پکیج دیواری» در برابر داماتجهیز با ۱۰٬۰۰۰+ محصول و ۲۰ سال سابقه، یک پروژه چندساله است نه چندماهه. وعده‌ای ندهید که نتوانید تحویل دهید.</li>
+<li><strong>ارائه رایگان جزئیات اجرایی پیش از توافق.</strong> مرز دقیق در بخش ۱.۴.</li>
+</ol>
+<h2>۱.۳ ارزیابی صادقانه موقعیت رقابتی</h2>
+<p><strong>واقعیت سخت:</strong> در مقایسه با داماتجهیز، انرژی تهویه در همه ابعاد محتوایی و کاتالوگی عقب است (۱۹۱ محصول در برابر شناسه محصول ۱۰٬۰۰۰+؛ صفر محتوای راهنما در برابر راهنمای ۹ نکته‌ای + جدول قیمت ۱۰ برند). رقابت سر‌به‌سر با آن‌ها روی کوئری‌های عمومی ملی، در افق ۱۲ ماهه واقع‌بینانه نیست.</p>
+<p><strong>جایی که واقعاً می‌توان برنده شد — سه سنگر:</strong></p>
+<table><thead><tr><th>سنگر</th><th>منطق</th><th>چرا قابل دفاع است</th></tr></thead><tbody><tr><td><strong>۱. جغرافیا: شیراز و فارس</strong></td><td>کوئری‌های دارای قصد محلی («پکیج دیواری شیراز»، «نمایندگی ایران رادیاتور شیراز»، «خرید کولر آبی شیراز»، «نصب پکیج شیراز»)</td><td>رقابت در این‌ها بسیار سبک‌تر است. رقبای ملی، انبار/نصب/خدمات محلی ندارند. انرژی تهویه فروشگاه فیزیکی و تیم نصب محلی دارد. <strong>این تنها سنگری است که در آن انرژی تهویه یک مزیت ساختاری دارد نه یک مزیت محتوایی.</strong> در حال حاضر در یکی از فهرست‌های محلی، رتبه ۲۰ از ۲۵ را دارد — یعنی حتی محلی هم جایگاهش ضعیف است و جای رشد زیادی هست</td></tr><tr><td><strong>۲. برند: نمایندگی‌های اختصاصی</strong></td><td>صفحات برند‌محور عمیق برای برندهایی که نمایندگی/عاملیت دارد: انرژی، نیرو تهویه البرز، مشهد ظهور، آذر تهویه</td><td>داماتجهیز روی برندهای بزرگ ملی تمرکز دارد. در برندهای منطقه‌ای/تخصصی، عمق محتوا قابل دستیابی است. همچنین سایت <code>iranradiator.co</code> الگوی خوبی از «صفحه برند محور» دارد</td></tr><tr><td><strong>۳. دسته تخصصی: هیتر صنعتی و گرمایش کارگاهی</strong></td><td>«هیتر و بخاری کارگاهی»، «کوره هوای گرم»، «هیتر صنعتی گازی» — دسته‌هایی که هم‌اکنون محصولات واقعی دارند (آذر تهویه F920، مشهد ظهور A-2400، انرژی GH0845)</td><td>این دسته B2B‌تر است، تصمیم‌گیرنده فنی‌تر است، و محتوای محاسباتی (بار گرمایی، حجم فضا) ارزش بیشتری دارد. عمق فنی انرژی تهویه اینجا بهترین بازده را می‌دهد</td></tr></tbody></table>
+<p><strong>نتیجه برای استراتژی:</strong> هر برنامه محتوایی که با کوئری‌های عمومی ملی شروع شود، شکست می‌خورد. برنامه باید با <strong>محلی + برند + دسته تخصصی</strong> شروع شود. این یک تصمیم راهبردی است که در پروپوزال کارفرما به‌صورت کلی گفته شده ولی جزئیاتش اینجا می‌ماند.</p>
+<h2>۱.۴ مرز محرمانگی و دامنه (IP)</h2>
+<p><strong>ارائه رایگان در پروپوزال (انجام شد):</strong></p>
+<ul>
+<li>فهرست یافته‌های سطح مدیریتی با شاهد</li>
+<li>سه نتیجه‌گیری راهبردی</li>
+<li>چارچوب فازها در سطح کلان</li>
+<li>منطق مالی مبتنی بر داده بازار</li>
+</ul>
+<p><strong>ارائه نمی‌شود مگر پس از توافق:</strong></p>
+<ul>
+<li>بک‌لاگ کامل با شناسه اقدام (بخش ۴ این سند)</li>
+<li>نقشه موضوعی و خوشه‌های محتوایی (بخش ۵)</li>
+<li>معماری داده محصول و الگوی ویژگی‌ها (بخش ۳.۳)</li>
+<li>معماری دستیار هوش مصنوعی و سناریوهای مکالمه (بخش ۶)</li>
+<li>نقشه رویدادهای تحلیلی و داشبوردها (بخش ۷)</li>
+<li>برنامه هفته‌به‌هفته ۹۰ روزه (بخش ۴.۳)</li>
+<li>روش‌های تست و چک‌لیست‌های ممیزی (بخش ۲)</li>
+</ul>
+<p><strong>استدلال این مرز (برای استفاده در مذاکره):</strong> «یافته‌ها را در پروپوزال آورده‌ام تا بتوانید تصمیم بگیرید. اما روش تشخیص، معماری راه‌حل و برنامه اجرایی ریزدانه، خروجی کار است نه ورودی تصمیم. اگر این‌ها را پیش از توافق ارائه دهم، عملاً ممیزی را رایگان انجام داده‌ام و نقش بعدی‌ام به مجری یک برنامه از پیش نوشته‌شده تقلیل پیدا می‌کند.»</p>
+<p><strong>نکته اخلاقی صریح:</strong> این مرز حرفه‌ای است، نه ابزاری برای اخلال. هیچ‌یک از یافته‌ها پنهان نشده‌اند — کارفرما دقیقاً می‌داند چه مشکلاتی وجود دارد و می‌تواند خودش یا با پیمانکار دیگری رفعشان کند. آنچه محافظت می‌شود، ارزش روش‌شناسی و برنامه است، نه اطلاعات.</p>
+<hr/>
+<h1>بخش دوم — چک‌لیست‌های ممیزی (ابزار کار روز اول)</h1>
+<h2>۲.۱ چک‌لیست ممیزی فنی وردپرس و ووکامرس</h2>
+<h3>الف) شناسایی پشته و نسخه‌ها</h3>
+<ul class="task">
+<li>نسخه WordPress (<code>/wp-includes/version.php</code> یا فوتر پیشخوان)</li>
+<li>نسخه WooCommerce (Woo → Status)</li>
+<li>نسخه PHP (Tools → Site Health) — <strong>هدف: ۸.۲ یا بالاتر</strong></li>
+<li>نسخه MySQL/MariaDB</li>
+<li>نوع وب‌سرور (Apache / LiteSpeed / Nginx) — از سرآشد پاسخ</li>
+<li>نام و نسخه قالب فعال + قالب فرزند (وجود دارد؟)</li>
+<li>صفحه‌ساز: Elementor — نسخه + تعداد قالب‌های ساخته‌شده</li>
+<li>فهرست کامل افزونه‌های فعال با نسخه و تاریخ آخرین به‌روزرسانی</li>
+<li>افزونه‌های غیرفعال ولی نصب‌شده (ریسک امنیتی)</li>
+<li>مقایسه نسخه‌ها با آخرین نسخه پایدار → فهرست آسیب‌پذیری‌های شناخته‌شده (CVE/Changelog)</li>
+<li>تأیید افزونه سئو (Yoast/Rank Math) و وضعیت پیکربندی آن</li>
+<li>تأیید افزونه‌های مشاهده‌شده از بیرون: Filter Everything، YITH Request a Quote، DW Question&amp;Answer</li>
+<li><strong>بررسی اینکه آیا YITH Request a Quote فعال است یا غیرفعال</strong> ← علت احتمالی V-10 (شورت‌کد رندر‌نشده)</li>
+</ul class=task>
+<h3>ب) سلامت پایگاه داده</h3>
+<ul class="task">
+<li>WooCommerce → Status → گزارش وضعیت (خطاهای DB، محدودیت‌های PHP)</li>
+<li>اندازه جداول: <code>wp_options</code>، <code>wp_postmeta</code>، <code>wp_options</code> autoloaded size (<strong>بحرانی — autoload بزرگ = کندی کل سایت</strong>)</li>
+<li>تعداد <code>postmeta</code> یتیم (meta برای post حذف‌شده)</li>
+<li>حجم <code>transients</code> منقضی‌شده</li>
+<li>تعداد revisionها در <code>wp_posts</code></li>
+<li>بررسی جدول <code>wp_actionscheduler</code> (صف کارهای پس‌زمینه ووکامرس) — تعداد کارهای معوق/شکست‌خورده</li>
+<li>بررسی <code>wc_sessions</code> و اندازه آن</li>
+<li>ایندکس‌های مفقود روی جداول بزرگ</li>
+<li>تعداد محصولات در هر وضعیت (publish / draft / outofstock / hidden)</li>
+<li>شناسایی صفحات <code>-2</code> و بقایای «ایران کالا» در <code>wp_posts</code> (→ V-29 تا V-32)</li>
+</ul class=task>
+<h3>پ) پیکربندی ووکامرس</h3>
+<ul class="task">
+<li><strong>بررسی صفحه‌های تعیین‌شده در WooCommerce → Settings → Advanced</strong>: کدام آدرس به‌عنوان Cart/Checkout/My-Account تنظیم شده؟ (<code>/cart/</code> یا <code>/cart-2/</code>؟) ← کلید حل V-29</li>
+<li>بررسی اینکه آیا <code>/cart-2/</code>، <code>/checkout-2/</code>، <code>/my-account-2/</code> ایندکس می‌شوند یا خیر</li>
+<li>وضعیت موجودی (Inventory) — فعال است؟ مدیریت در سطح محصول یا تنوع؟</li>
+<li>علت نمایش «فروخته شده» — موجودی صفر واقعی است یا وضعیت stock status؟</li>
+<li>درگاه‌های پرداخت فعال + وضعیت سندباکس/پروداکشن</li>
+<li>روش‌های ارسال پیکربندی‌شده</li>
+<li>وضعیت مالیات</li>
+<li>تنظیمات «Add to cart behaviour» (Ajax؟ redirect؟)</li>
+<li>بررسی علت V-20 (برچسب «هیتر گازی انرژی مدل GH0845 عدد») — احتمالاً یک <strong>Variation</strong> یا <strong>Add-on</strong> یا <strong>Product Add-On</strong> با نام اشتباه روی M28FF</li>
+<li>بررسی علت V-18/V-19/V-22 — <strong>ویژگی‌های سراسری (Global Attributes)</strong> در برابر ویژگی‌های محلی محصول. احتمالاً یک attribute عمومی با مقادیر اشتباه به چند محصول اختصاص یافته</li>
+<li>وضعیت مالیات</li>
+</ul class=task>
+<h3>ت) سلامت فهرست‌پذیری</h3>
+<ul class="task">
+<li>بازتولید <code>sitemap_index.xml</code> پس از پاک‌سازی</li>
+<li>بررسی نبود <code>post-sitemap.xml</code> واقعی ← <strong>علت احتمالی: صفر بودن تعداد نوشته‌های منتشرشده</strong> (→ V-09، V-28)</li>
+<li>بررسی <code>noindex</code> روی صفحات کلیدی</li>
+<li>قوانین canonical — به‌ویژه روی <code>/shop/</code> و صفحات دسته‌بندی با پارامتر <code>per_page</code> و <code>shop_view</code></li>
+<li>پارامترهای ایجاد URL تکراری: <code>?per_page=</code>، <code>?shop_view=</code>، <code>?product_view=</code>، <code>?orderby=</code> ← <strong>این‌ها در robots.txt مسدود نشده‌اند!</strong> فقط <code>_category</code>، <code>min_price</code> و… مسدودند. این یک شکاف تأییدشده است</li>
+<li>وضعیت صفحه‌بندی (<code>/shop/page/2/</code>) و canonical آن</li>
+<li>بررسی <code>portfolio-sitemap.xml</code> با lastmod ۲۰۱۷ ← آیا post type «portfolio» فعال است؟</li>
+<li>نقشه سایت تصویری</li>
+<li>بررسی HTTPS، زنجیره گواهی، و redirect از www/non-www و http</li>
+<li>بررسی hreflang (ندارد — و فعلاً لازم نیست)</li>
+</ul class=task>
+<h3>ث) داده ساختاریافته</h3>
+<ul class="task">
+<li>آیا schema محصول خروجی داده می‌شود؟ (در استخراج متنی دیده نشد — <strong>نیازمند بررسی با ابزار Rich Results Test</strong>)</li>
+<li>اگر دارد: آیا <code>price</code>، <code>availability</code>، <code>brand</code>، <code>sku</code> کامل است؟</li>
+<li>آیا <code>FAQPage</code> برای بخش سؤالات متداول محصول خروجی داده می‌شود؟ (بخش FAQ در <code>/product/m28ff/</code> وجود دارد — فرصت از دست رفته اگر schema نداشته باشد)</li>
+<li>schema سازمان/فروشگاه محلی (<code>LocalBusiness</code> با آدرس شیراز، تلفن، ساعت کاری) ← <strong>فرصت بزرگ برای سنگر محلی (بخش ۱.۳)</strong></li>
+<li>schema مقاله (فعلاً بی‌معنا — مقاله‌ای وجود ندارد)</li>
+<li>BreadcrumbList</li>
+</ul class=task>
+<h2>۲.۲ چک‌لیست عملکرد</h2>
+<ul class="task">
+<li>PageSpeed Insights — موبایل و دسکتاپ — برای ۶ صفحه: خانه، <code>/shop/</code>، یک دسته، یک محصول، <code>/cart/</code>، <code>/checkout/</code></li>
+<li>ثبت <strong>LCP</strong>، <strong>INP</strong>، <strong>CLS</strong>، <strong>TTFB</strong>، <strong>FCP</strong> برای هر ۶ صفحه</li>
+<li>CrUX / Chrome UX Report — داده میدانی ۲۸ روزه (اگر حجم نمونه کافی باشد)</li>
+<li>WebPageTest — فیلم بارگذاری، waterfalls، تعداد درخواست‌ها، حجم کل</li>
+<li>تفکیک حجم: HTML / CSS / JS / تصویر / فونت</li>
+<li>شمارش درخواست‌های ثالث (اسکریپت‌های ردیابی، چت، فونت CDN)</li>
+<li>بررسی بارگذاری فونت فارسی — <strong>فونت وب فارسی سنگین است</strong>؛ آیا subset شده؟ <code>font-display</code> چیست؟ آیا <code>unicode-range</code> دارد؟</li>
+<li>بررسی تصاویر: ابعاد سروشده در برابر ابعاد نمایشی (→ V-43: <code>cooler-150x150.jpg</code> در کاشی بزرگ)</li>
+<li>درصد تصاویر WebP در برابر JPG/PNG (→ V-44)</li>
+<li>lazy loading تصاویر — فعال است؟ آیا روی تصویر LCP هم فعال شده (اشتباه رایج)؟</li>
+<li>ابعاد صریح width/height روی <code>&lt;img&gt;</code> (برای کنترل CLS)</li>
+<li>کش صفحه: افزونه کش فعال است؟ (WP Rocket / LiteSpeed Cache / W3TC)</li>
+<li>کش آبجکت: Redis/Memcached فعال است؟ ← <strong>برای ووکامرس با فیلترهای زیاد، تقریباً الزامی است</strong></li>
+<li>CDN: وجود دارد؟ (→ I-11) — رقیب از S3 آسیاتک استفاده می‌کند</li>
+<li>فشرده‌سازی Brotli/Gzip</li>
+<li>HTTP/2 یا HTTP/3</li>
+<li>بررسی اجرای cron وردپرس (wp-cron) و تأثیر آن</li>
+<li>بار Action Scheduler ووکامرس</li>
+<li>بررسی کوئری‌های سنگین در صفحه دسته‌بندی (Filter Everything + WooCommerce = کوئری‌های زیاد)</li>
+<li><strong>TTFB در ساعات اوج</strong> — یک اندازه‌گیری تک‌نقطه‌ای کافی نیست؛ ۲۴ ساعت نمونه‌برداری</li>
+</ul class=task>
+<h2>۲.۳ چک‌لیست امنیت</h2>
+<ul class="task">
+<li>احراز هویت دومرحله‌ای روی همه حساب‌های مدیر</li>
+<li>تغییر آدرس پیش‌فرض ورود (<code>/wp-admin</code>، <code>/wp-login.php</code>)</li>
+<li>محدودسازی نرخ تلاش ورود</li>
+<li>WAF فعال است؟ (سطح سرور یا افزونه)</li>
+<li>فهرست نقش‌های کاربری و حساب‌های موجود — <strong>حساب‌های یتیم پیمانکاران قبلی؟</strong></li>
+<li>کلیدهای API ووکامرس — تعداد، دسترسی، تاریخ ساخت</li>
+<li>وضعیت <code>WP_DEBUG</code> و <code>WP_DEBUG_LOG</code> — آیا در پروداکشن فعال است؟ (ریسک افشا)</li>
+<li><code>DISALLOW_FILE_EDIT</code> در <code>wp-config.php</code></li>
+<li>افشای نسخه (<code>generator</code> meta، <code>readme.html</code>)</li>
+<li>وضعیت فهرست‌گیری پوشه‌ها (directory listing)</li>
+<li>دسترسی SSH/SFTP — کلید در برابر رمز</li>
+<li>دسترسی phpMyAdmin</li>
+<li>نسخه TLS و پیکربندی cipher</li>
+<li>سرآشد‌های امنیتی: HSTS، CSP، X-Content-Type-Options، X-Frame-Options</li>
+<li>اسکن بدافزار (Wordfence / Sucuri / WPScan)</li>
+<li>بررسی تغییرات غیرمجاز فایل‌ها</li>
+<li><strong>بررسی اینکه آیا سایت پیش‌تر هک شده</strong> — بقایای «ایران کالا» + <code>/test/</code> می‌تواند نشانه نصب‌های قدیمی باشد نه هک، ولی باید بررسی شود</li>
+<li>وضعیت به‌روزرسانی خودکار</li>
+<li><strong>نماد اعتماد الکترونیکی (اینماد)</strong> — وجود، اعتبار، و انطباق اطلاعات نمایشی با اطلاعات ثبتی ← → I-12؛ ریسک حقوقی جدی</li>
+</ul class=task>
+<h2>۲.۴ چک‌لیست پشتیبان‌گیری و بازیابی</h2>
+<ul class="task">
+<li>مکانیزم بکاپ فعلی (افزونه؟ پنل هاست؟ دستی؟)</li>
+<li>دوره بکاپ (روزانه/هفتگی)</li>
+<li>محل ذخیره‌سازی — <strong>آیا خارج از همان سرور است؟</strong></li>
+<li>محتوای بکاپ — فقط DB یا فایل‌ها هم؟</li>
+<li>تعداد نسخه نگه‌داشته‌شده</li>
+<li>رمزنگاری بکاپ</li>
+<li><strong>آخرین تاریخ آزمایش بازیابی موفق</strong> ← حیاتی‌ترین پرسش. بکاپ آزمایش‌نشده = بکاپ نیست</li>
+<li>زمان لازم برای بازیابی کامل (RTO)</li>
+<li>حداکثر داده قابل از دست رفتن (RPO)</li>
+<li>فرایند مستند بازیابی در فاجعه</li>
+<li>فرایند به‌روزرسانی امن (staging → production)</li>
+<li>وجود محیط staging</li>
+</ul class=task>
+<h2>۲.۵ برنامه بررسی و بهبود Core Web Vitals</h2>
+<p><strong>اصل روش‌شناختی:</strong> سه مرحله اجباری و به همین ترتیب. پرش از مرحله ۱ شایع‌ترین اشتباه است.</p>
+<p><strong>مرحله ۱ — اندازه‌گیری (هفته ۱)</strong> ۶ صفحه نمونه × (موبایل + دسکتاپ) × ۳ اجرای مستقل = ۳۶ نقطه داده. ثبت در یک کاربرگ ثابت. <strong>بدون این، هر «بهینه‌سازی» کور است.</strong></p>
+<p><strong>مرحله ۲ — تشخیص گلوگاه غالب (هفته ۲)</strong> برای هر صفحه، تعیین اینکه کدام معیار از آستانه بیرون است و <strong>علت غالب</strong> آن چیست:</p>
+<table><thead><tr><th>اگر LCP بالاست</th><th>علل محتمل به ترتیب احتمال در این سایت</th></tr></thead><tbody><tr><td></td><td>۱. بنر اسلایدر ۱۲۰۰×۴۰۰ بدون بهینه‌سازی (→ <code>/wp-content/uploads/2026/10/banner-heater-1-1200x401.png</code>)</td></tr><tr><td></td><td>۲. تعدد اسلاید اسلایدر (۳+ بنر، همه پیش‌بارگذاری)</td></tr><tr><td></td><td>۳. فونت وب فارسی بدون subset</td></tr><tr><td></td><td>۴. CSS/JS مسدودکننده رندر از Elementor و قالب مارکت‌پلیس</td></tr><tr><td></td><td>۵. TTFB بالا (هاست اشتراکی/منبع محدود)</td></tr><tr><td></td><td>۶. نبود lazy load روی تصاویر زیر خط</td></tr></tbody></table>
+<table><thead><tr><th>اگر CLS بالاست</th><th>علل محتمل</th></tr></thead><tbody><tr><td></td><td>۱. <strong>اسلایدر</strong> — جابه‌جایی بعد از رندر</td></tr><tr><td></td><td>۲. تصاویر بدون ابعاد صریح (→ V-43: <code>150x150</code> در ظرف بزرگ‌تر)</td></tr><tr><td></td><td>۳. تزریق دیرهنگام ویجت‌ها (چت، شمارنده)</td></tr><tr><td></td><td>۴. فونت بدون <code>font-display: optional</code></td></tr><tr><td></td><td>۵. بنر هدر («بنر هدر بسته شود» در HTML دیده شد)</td></tr></tbody></table>
+<table><thead><tr><th>اگر INP/TBT بالاست</th><th>علل محتمل</th></tr></thead><tbody><tr><td></td><td>۱. حجم بالای JS از Elementor + قالب مارکت‌پلیس</td></tr><tr><td></td><td>۲. <strong>Filter Everything</strong> — فیلتر کردن ۱۹۱ محصول با کوئری‌های مکرر</td></tr><tr><td></td><td>۳. اسکریپت‌های مقایسه/علاقه‌مندی/نمایش سریع</td></tr><tr><td></td><td>۴. اسلایدر و کاروسل‌های متعدد در صفحه اصلی</td></tr><tr><td></td><td>۵. نبود کش آبجکت → کوئری‌های تکراری</td></tr></tbody></table>
+<p><strong>مرحله ۳ — اصلاح به ترتیب بازده (نه به ترتیب سهولت)</strong></p>
+<ol>
+<li>حذف/سبک‌سازی اسلایدر صفحه اصلی (هم LCP هم CLS)</li>
+<li>ابعاد صریح + <code>width</code>/<code>height</code> روی همه تصاویر (CLS)</li>
+<li>subset کردن فونت فارسی + <code>font-display: swap</code> (LCP)</li>
+<li>WebP + فشرده‌سازی برای همه تصاویر قدیمی ۲۰۲۱–۲۰۲۲ (LCP + حجم)</li>
+<li>حذف JS/CSS افزونه‌های غیرضروری (→ DW Question&amp;Answer اگر استفاده نمی‌شود، اسکریپت مارکت‌پلیس قالب)</li>
+<li>فعال‌سازی کش صفحه + کش آبجکت</li>
+<li>CDN برای رسانه</li>
+<li>حذف بخش‌های بی‌ربط صفحه اصلی (→ V-06: سه بخش تکراری با ۶ محصول یکسان = HTML اضافه قابل‌توجه)</li>
+</ol>
+<p><strong>نکته مهم:</strong> موارد ۱، ۲ و ۸ هم‌زمان با رفع یافته‌های UX انجام می‌شوند — یعنی <strong>یک کار، دو اثر</strong>. این کارآمدترین نقطه شروع است.</p>
+<hr/>
+<h1>بخش سوم — معماری اطلاعات و داده محصول</h1>
+<h2>۳.۱ معماری پیشنهادی دسته‌بندی‌ها</h2>
+<h3>وضعیت موجود (استخراج‌شده از صفحه اصلی)</h3>
+<p>۱۲ کاشی: پکیج دیواری و زمینی / هیتر و بخاری کارگاهی / کولر گازی و اسپلیت / کولر آبی و سلولزی / رادیاتور پنلی و برقی / حوله خشک کن / مشعل / رادیاتور آلومینیومی / کوره هوای گرم / پنکه / تصفیه آب / سخت‌گیر و رسوب‌زا</p>
+<h3>مشکلات ساختاری</h3>
+<ol>
+<li><strong>سطح یکسان همه دسته‌ها.</strong> «پنکه» و «تصفیه آب» (کالای مصرفی، سبد کوچک) هم‌سطح «پکیج دیواری و زمینی» (سبد ۷۰–۱۳۰ میلیون) قرار دارند. این کار معماری را تخت و بی‌اولویت می‌کند.</li>
+<li><strong>نبود دسته‌های اعلام‌شده در فوتر.</strong> چیلر، مینی‌چیلر، برج خنک‌کننده، فن‌کویل، داکت اسپلیت، هواساز، ایرواشر، یونیت هیتر، تجهیزات استخر/سونا/جکوزی — هیچ‌کدام در ناوبری نیستند.</li>
+<li><strong>نبود محور «کاربرد».</strong> مشتری اغلب با نیاز می‌آید نه با نام کالا («گرمایش کارگاه ۲۰۰ متری»، «سرمایش آپارتمان ۸۰ متری»).</li>
+<li><strong>نبود محور «برند» در ناوبری اصلی.</strong> با ۸ برند همکار، صفحه برند یک دارایی سئویی و اعتمادی است که استفاده نشده. الگوی <code>iranradiator.co</code> و ساختار <code>/brands/{slug}</code> داماتجهیز هر دو این را دارند.</li>
+<li><strong>اسم دسته‌های نادرست/محاوره‌ای:</strong> «سخت گیر و رسوب زا» (غلط املایی: «رسوب‌زا»)، «کولر گازی و اسپیلت» در منو در برابر «اسپلیت» در کاشی.</li>
+<li><strong>slug دسته‌ها بی‌معنا:</strong> <code>/product-category/alminiom/</code> (غلط املایی «aluminum») برای رادیاتور پنلی <strong>و</strong> رادیاتور آلومینیومی؛ <code>/product-category/installing-towel-warmer/</code> برای حوله خشک‌کن <strong>و</strong> مشعل.</li>
+</ol>
+<h3>معماری پیشنهادی</h3>
+<p><strong>سطح ۱ — چهار خوشه تجاری (به‌جای ۱۲ کاشی تخت)</strong></p>
+<pre><code>۱. گرمایش  →  پکیج دیواری و زمینی | رادیاتور (پنلی/آلومینیومی/برقی)
+                | حوله خشک‌کن | مشعل | بخاری و هیتر خانگی
+۲. سرمایش  →  کولر گازی و اسپلیت | کولر آبی و سلولزی | پنکه
+۳. تأسیسات و صنعتی  →  هیتر و بخاری کارگاهی | کوره هوای گرم | یونیت هیتر
+                        | فن‌کویل | داکت اسپلیت | چیلر و مینی‌چیلر
+                        | برج خنک‌کننده | هواساز | ایرواشر | دیگ و منبع
+۴. آب و تصفیه  →  دستگاه تصفیه آب | سخت‌گیر و رسوب‌گیر | تجهیزات استخر و سونا</code></pre>
+<p><strong>سطح ۲ — دو محور عرضی مستقل</strong></p>
+<ul>
+<li><strong>برندها</strong> (۸ صفحه برند اختصاصی): بوتان، ایران رادیاتور، انرژی، نیرو تهویه البرز، لورچ، آذر تهویه، تراست، آریستون، گرماسان، مشهد ظهور</li>
+<li><strong>کاربردها</strong> (صفحات نیاز‌محور): گرمایش آپارتمان | گرمایش کارگاه و سالن | سرمایش منزل | سرمایش اداری | تأسیسات موتورخانه | تجهیزات استخر</li>
+</ul>
+<p><strong>سطح ۳ — صفحه برند × دسته</strong> مثال: «پکیج دیواری ایران رادیاتور»، «کولر آبی انرژی»، «هیتر صنعتی آذر تهویه» ← <strong>این‌ها صفحات هدف اصلی سئو در سنگر برند (بخش ۱.۳) هستند.</strong></p>
+<h3>الگوی URL پیشنهادی</h3>
+<pre><code>/product-category/{cluster}/{subcategory}/        ← خوشه و زیردسته
+/product-category/brand/{brand-slug}/             ← برند
+/brand/{brand-slug}/                              ← صفحه برند (لندینگ)
+/guide/{topic-slug}/                              ← راهنمای خرید (محتوا)
+/blog/{post-slug}/                                ← مقاله آموزشی
+/product/{brand}-{model}-{capacity}/              ← محصول (الگوی یکنواخت لاتین)</code></pre>
+<p><strong>تصمیم درباره slug فارسی در برابر لاتین:</strong> الگوی فعلی ناهمگون است (→ V-40). پیشنهاد: <strong>لاتین یکدست</strong> برای محصولات (<code>iran-radiator-m28ff</code>)، و <strong>فارسی</strong> برای صفحات محتوایی و راهنماها (چون کوئری هدف فارسی است و CTR را بهبود می‌دهد). هر تغییر slug باید با redirect 301 و ثبت در یک جدول مهاجرت همراه باشد.</p>
+<p><strong>هشدار اجرایی:</strong> تغییر slug محصولات پرریسک است. فقط برای محصولاتی که ترافیک ارگانیک معنادار ندارند (که با دسترسی به سرچ کنسول تعیین می‌شود) انجام شود. برای محصولات دارای رتبه، slug حفظ و فقط محتوا اصلاح شود.</p>
+<h2>۳.۲ مهاجرت و پاک‌سازی — جدول تصمیم</h2>
+<table><thead><tr><th>صفحه موجود</th><th>تصمیم</th><th>اقدام فنی</th></tr></thead><tbody><tr><td><code>/cart-2/</code>, <code>/checkout-2/</code>, <code>/my-account-2/</code></td><td><strong>حذف</strong></td><td>پیش از حذف، تأیید اینکه WooCommerce به نسخه بدون <code>-2</code> اشاره می‌کند. سپس draft + ۴۱۰</td></tr><tr><td><code>/blog-2/</code>, <code>/blog-3/</code>, <code>/posts/</code></td><td><strong>حذف</strong>، نگه‌داشتن <code>/blog/</code></td><td>پس از انتشار نخستین مطالب</td></tr><tr><td><code>/compare-2/</code>, <code>/wishlist-2/</code>, <code>/products-compare/</code>, <code>/مقایسه-محصولات/</code>, <code>/مقایسه-کالا/</code></td><td><strong>ادغام به یکی</strong></td><td>تعیین صفحه فعال از پیکربندی قالب؛ بقیه ۴۱۰</td></tr><tr><td><code>/test/</code></td><td><strong>حذف فوری</strong></td><td>۴۱۰</td></tr><tr><td><code>/emeryville-store/</code>, <code>/home-mega-electronics/</code>, <code>/outlet/</code>, <code>/stores/</code>, <code>/promotions/</code></td><td><strong>حذف فوری</strong></td><td>۴۱۰ — دموهای قالب</td></tr><tr><td><code>/portfolio/</code>, <code>portfolio-sitemap.xml</code></td><td><strong>حذف</strong></td><td>غیرفعال‌سازی post type یا noindex</td></tr><tr><td><code>/تماس-با-ایران-کالا/</code>, <code>/فروش-در-ایران-کالا/</code>, <code>/اتاق-خبر-ایران-کالا/</code>, <code>/ایران-کالای-من/</code>, <code>/فروشنده-شوید/</code>, <code>/فرصتهای-شغلی/</code></td><td><strong>حذف فوری</strong></td><td>۴۱۰ — بقایای کسب‌وکار قبلی</td></tr><tr><td><code>/dwqa-questions/</code>, <code>/dwqa-ask-question/</code>, <code>/dwqa-user-profile/</code></td><td><strong>تصمیم راهبردی</strong></td><td>یا فعال‌سازی واقعی به‌عنوان «پرسش‌های فنی» (ارزش سئو دارد) یا حذف افزونه. <strong>وضعیت فعلی — نصب ولی خالی — بدترین حالت است</strong></td></tr><tr><td><code>/شرایط-وام/</code></td><td><strong>بازنویسی</strong></td><td>اولویت ۱</td></tr><tr><td><code>/خرید-عمده-کالا/</code></td><td><strong>بازنویسی</strong></td><td>اولویت ۱</td></tr><tr><td><code>/request-quote/</code></td><td><strong>تعمیر یا جایگزینی</strong></td><td>اولویت ۱</td></tr><tr><td><code>/refund_returns/</code>, <code>/terms/</code>, <code>/حریم-خصوصی/</code>, <code>/سیاست-حفظ-حریم-خصوصی/</code>, <code>/رویه-ارسال-سفارش/</code>, <code>/رویه‌های-بازگرداندن-کالا/</code>, <code>/پاسخ-به-پرسش‌های-متداول/</code>, <code>/شیوه‌های-پرداخت/</code>, <code>/نحوه-ثبت-سفارش/</code>, <code>/گزارش-باگ/</code>, <code>/رضایت-مشتریان/</code>, <code>/پی-فاکتور/</code></td><td><strong>بازبینی و ادغام</strong></td><td><strong>توجه: دو صفحه حریم خصوصی و دو صفحه بازگشت کالا وجود دارد → تداخل حقوقی</strong></td></tr><tr><td><code>/about-us/</code></td><td><strong>بازنویسی کامل</strong></td><td>اولویت ۱</td></tr><tr><td><code>/contact-us/</code></td><td><strong>توسعه</strong></td><td>افزودن فرم، ایمیل، ساعت کاری، نقشه، schema LocalBusiness</td></tr></tbody></table>
+<p><strong>قاعده ۴۱۰ در برابر ۴۰۴:</strong> برای صفحات حذف‌شده قطعی، <code>410 Gone</code> سریع‌تر از فهرست خارج می‌شود. برای صفحاتی که جانشین دارند، <code>301</code> به جانشین.</p>
+<p><strong>هشدار:</strong> پیش از هر حذف، بکاپ کامل DB + فایل‌ها و تأیید اینکه هیچ پیوند داخلی/تبلیغاتی به آن صفحه نیست.</p>
+<h2>۳.۳ الگوی کامل مشخصات و ویژگی‌های محصول</h2>
+<h3>اصل حاکم</h3>
+<p><strong>هیچ داده فنی بدون منبع معتبر ثبت نمی‌شود.</strong> منابع مجاز: کاتالوگ رسمی برند، دیتاشیت سازنده، برچسب انرژی، یا تأیید کتبی کارشناس فنی شرکت. <strong>نه حدس، نه تولید با هوش مصنوعی، نه کپی از سایت رقیب.</strong></p>
+<h3>ساختار سه‌لایه</h3>
+<p><strong>لایه ۱ — ویژگی‌های سراسری (Global Attributes) → قابل فیلتر و مقایسه</strong></p>
+<p>این لایه باید به‌صورت <strong>ویژگی سراسری ووکامرس</strong> تعریف شود تا هم فیلتر و هم مقایسه کار کند. (وضعیت فعلی: فقط <code>product_brand</code> و قیمت فیلتر می‌شوند → V-35)</p>
+<table><thead><tr><th>ویژگی</th><th>نوع</th><th>مقادیر</th><th>قابل فیلتر</th><th>در مقایسه</th></tr></thead><tbody><tr><td><code>product_brand</code> (برند)</td><td>فهرستی</td><td>بوتان، ایران رادیاتور، انرژی، لورچ، آذر تهویه، تراست، آریستون، گرماسان، نیرو تهویه البرز، مشهد ظهور</td><td>✅</td><td>✅</td></tr><tr><td><code>capacity</code> (ظرفیت)</td><td>عددی + واحد</td><td>به تفکیک نوع کالا (پایین)</td><td>✅</td><td>✅</td></tr><tr><td><code>application</code> (کاربرد)</td><td>فهرستی</td><td>مسکونی، اداری، تجاری، صنعتی، کارگاهی، گلخانه‌ای</td><td>✅</td><td>✅</td></tr><tr><td><code>install_type</code> (موقعیت نصب)</td><td>فهرستی</td><td>دیواری، زمینی، پنجره‌ای، پرتابل، ایستاده، سقفی، کانالی</td><td>✅</td><td>✅</td></tr><tr><td><code>fuel_type</code> (نوع سوخت)</td><td>فهرستی</td><td>گاز طبیعی، گازوئیل، دوگانه‌سوز، برق تک‌فاز، برق سه‌فاز</td><td>✅</td><td>✅</td></tr><tr><td><code>warranty_months</code> (گارانتی)</td><td>عددی</td><td>ماه</td><td>✅</td><td>✅</td></tr><tr><td><code>energy_grade</code> (رده مصرف)</td><td>فهرستی</td><td>A++، A+، A، B، C</td><td>✅</td><td>✅</td></tr><tr><td><code>area_coverage</code> (متراژ تحت پوشش)</td><td>بازه عددی</td><td>مترمربع</td><td>✅</td><td>✅</td></tr><tr><td><code>stock_status</code></td><td>فهرستی</td><td>موجود، ناموجود، سفارشی</td><td>✅</td><td>—</td></tr></tbody></table>
+<p><strong>⚠️ اقدام اصلاحی فوری (→ V-18…V-22):</strong> مقادیر فعلی <code>capacity</code>/<code>weight</code>/<code>coverage</code> در محصولات موجود باید <strong>بازبینی کامل</strong> شوند. الگوی خطای مشاهده‌شده نشان می‌دهد یک مجموعه ویژگی سراسری با مقادیر نامرتبط به چند محصول اختصاص یافته است. روش تأیید: پیشخوان → محصولات → ویرایش گروهی → ستون ویژگی‌ها؛ و <code>wp_postmeta</code> برای <code>pa_*</code>.</p>
+<p><strong>لایه ۲ — ویژگی‌های اختصاصی به تفکیک نوع کالا</strong></p>
+<h4>الگوی A: پکیج دیواری و زمینی</h4>
+<table><thead><tr><th>فیلد</th><th>واحد</th><th>اجباری</th><th>منبع</th></tr></thead><tbody><tr><td>ظرفیت حرارتی خروجی</td><td>کیلوکالری بر ساعت <strong>و</strong> کیلووات</td><td>✅</td><td>دیتاشیت</td></tr><tr><td>راندمان حرارتی</td><td>درصد</td><td>✅</td><td>دیتاشیت</td></tr><tr><td>تعداد مبدل حرارتی</td><td>عدد (۱ یا ۲)</td><td>✅</td><td>دیتاشیت</td></tr><tr><td>نوع محفظه احتراق</td><td>فن‌دار (FF) / بدون فن (CF)</td><td>✅</td><td>دیتاشیت</td></tr><tr><td>حداکثر متراژ پیشنهادی</td><td>مترمربع</td><td>✅</td><td>محاسبه + دیتاشیت</td></tr><tr><td>حداقل فشار آب کاری</td><td>بار</td><td>⭕</td><td>دفترچه راهنما</td></tr><tr><td>وزن خالص</td><td>کیلوگرم (عدد!)</td><td>✅</td><td>دیتاشیت</td></tr><tr><td>ابعاد (ارتفاع×عرض×عمق)</td><td>میلی‌متر</td><td>✅</td><td>دیتاشیت</td></tr><tr><td>نوع سوخت</td><td>—</td><td>✅</td><td>—</td></tr><tr><td>برق مصرفی</td><td>ولت / فاز</td><td>✅</td><td>دیتاشیت</td></tr><tr><td>توان الکتریکی</td><td>وات</td><td>✅</td><td>دیتاشیت</td></tr><tr><td>سیستم‌های ایمنی</td><td>فهرست</td><td>⭕</td><td>دفترچه</td></tr><tr><td>گارانتی</td><td>ماه + نام شرکت گارانتی‌کننده</td><td>✅</td><td><strong>تأیید شرکت</strong></td></tr><tr><td>شرایط نصب</td><td>رایگان/هزینه‌دار + شرط</td><td>✅</td><td>سیاست شرکت</td></tr><tr><td>کد رهگیری/مدل دقیق</td><td>—</td><td>✅</td><td>—</td></tr></tbody></table>
+<h4>الگوی B: کولر گازی و اسپلیت</h4>
+<table><thead><tr><th>فیلد</th><th>واحد</th><th>اجباری</th></tr></thead><tbody><tr><td>ظرفیت سرمایشی</td><td>BTU/hr</td><td>✅</td></tr><tr><td>ظرفیت گرمایشی</td><td>BTU/hr</td><td>✅ (اگر دوکاره)</td></tr><tr><td>نوع کمپرسور</td><td>روتاری / پیستونی / اسکرال</td><td>✅</td></tr><tr><td>شرایط کارکرد محیطی</td><td>T1 / T2 / T3</td><td>✅</td></tr><tr><td>اینورتر</td><td>دارد / ندارد</td><td>✅</td></tr><tr><td>گاز مبرد</td><td>R410a / R32 / R22</td><td>✅</td></tr><tr><td>رده مصرف انرژی</td><td>A++ …</td><td>✅</td></tr><tr><td>EER (سرمایش)</td><td>عدد</td><td>✅</td></tr><tr><td>COP (گرمایش)</td><td>عدد</td><td>✅</td></tr><tr><td>شدت جریان</td><td>آمپر</td><td>⭕</td></tr><tr><td>برق مصرفی</td><td>تک‌فاز ۲۲۰ / سه‌فاز</td><td>✅</td></tr><tr><td>سطح صدا (داخلی/خارجی)</td><td>دسی‌بل</td><td>⭕</td></tr><tr><td>ابعاد یونیت داخلی</td><td>میلی‌متر</td><td>✅</td></tr><tr><td>ابعاد یونیت خارجی</td><td>میلی‌متر</td><td>✅</td></tr><tr><td>متراژ تحت پوشش</td><td>مترمربع (با تفکیک طبقه زیر سقف/سایر)</td><td>✅</td></tr><tr><td>لوله مسی همراه</td><td>رایگان/ندارد + متراژ</td><td>✅</td></tr><tr><td>نصب</td><td>رایگان/هزینه‌دار + شرط</td><td>✅</td></tr><tr><td>گارانتی کمپرسور / قطعات</td><td>ماه (جدا)</td><td>✅</td></tr></tbody></table>
+<h4>الگوی C: کولر آبی و سلولزی</h4>
+<p>ظرفیت (CFM یا BTU)، نوع (پوشالی/سلولزی/پلیمری/BLDC)، موقعیت نصب (بالا‌زن/پایین‌زن/پشت‌پنجره‌ای/پرتابل)، ابعاد، توان موتور، دور موتور، متراژ تحت پوشش، جنس بدنه، ریموت، گارانتی.</p>
+<h4>الگوی D: هیتر و بخاری کارگاهی / صنعتی</h4>
+<p>ظرفیت حرارتی (کیلوکالری)، نوع (فایر‌تیوب/برقی/گازی/گازوئیلی)، <strong>حجم فضای تحت پوشش (مترمکعب)</strong> ← این‌جا مترمکعب درست است، برعکس پکیج، جریان هوا (CFM)، توان الکتریکی، فاز برق، نوع سوخت، بازدهی، ابعاد، وزن، کاربری (کارگاه/گلخانه/سالن مرغداری/انبار)، گارانتی.</p>
+<blockquote><p><strong>توضیح V-22:</strong> خطای «پوشش: ۱۶۵ متر مکعب» روی پکیج دیواری احتمالاً از <strong>کپی‌شدن الگوی D روی الگوی A</strong> ناشی شده. این دقیقاً نشان می‌دهد چرا تفکیک الگو به تفکیک نوع کالا ضروری است، نه یک مجموعه ویژگی مشترک برای همه.</p></blockquote>
+<h4>الگوی E: رادیاتور (پنلی/آلومینیومی/برقی) و حوله خشک‌کن</h4>
+<p>تعداد پره/پنل، ظرفیت حرارتی در ΔT50، فاصله مرکز تا مرکز، فشار کاری، جنس، ابعاد، رنگ، نوع اتصال، گارانتی.</p>
+<h4>الگوی F: مشعل</h4>
+<p>ظرفیت (کیلوکالری)، نوع سوخت، تک‌مرحله/دومرحله/مدولار، توان موتور، ابعاد، وزن، سازگاری با دیگ، گارانتی.</p>
+<h4>الگوی G: دستگاه تصفیه آب و سخت‌گیر</h4>
+<p>تعداد مراحل، نوع فیلترها، ظرفیت تولید (لیتر/روز)، TDS ورودی مجاز، پمپ، مخزن، ابعاد، عمر فیلتر، گارانتی.</p>
+<p><strong>لایه ۳ — محتوای توصیفی ساختاریافته (الگوی اجباری هر صفحه محصول)</strong></p>
+<p>بر اساس الگوی موفق <code>/product/m28ff/</code> (→ V-49) که باید استاندارد و مقیاس شود:</p>
+<ol>
+<li><strong>بولت‌های کلیدی</strong> (۴–۶ مورد، مزیت‌محور نه ویژگی‌محور)</li>
+<li><strong>مقدمه با پرسش</strong> — «چرا این مدل انتخاب هوشمندانه‌ای است؟»</li>
+<li><strong>راهنمای متراژ/کاربرد</strong> — «برای چه متراژهایی مناسب است؟» + ذکر عوامل مؤثر (عایق‌بندی، اقلیم، تعداد پنجره)</li>
+<li><strong>جدول مشخصات فنی</strong> (لایه ۱ و ۲ به‌صورت جدول)</li>
+<li><strong>جدول مقایسه درون‌خانواده</strong> — مقایسه مدل با خواهران/برادران همان سری (الگو از داماتجهیز)</li>
+<li><strong>شرایط گارانتی و نکات نصب</strong> — صریح و بدون ابهام</li>
+<li><strong>سؤالات متداول</strong> (۳–۵ پرسش واقعی خریدار) + <strong>schema <code>FAQPage</code></strong></li>
+<li><strong>فراخوان مشاوره</strong> — شماره مستقیم کارشناس</li>
+<li><strong>محصولات مکمل/پیشنهادی</strong> — رسوب‌گیر، لوله مسی، ترموستات (افزایش میانگین سبد)</li>
+<li><strong>پیوند داخلی</strong> به صفحه برند، صفحه دسته، و راهنمای مرتبط</li>
+</ol>
+<p><strong>الگوی نام‌گذاری فایل تصویر:</strong> <code>{brand}-{model}-{view}-{seq}.webp</code> — مثال: <code>iran-radiator-m28ff-front-01.webp</code>. (وضعیت فعلی: <code>34302.jpg</code>, <code>43698.jpg</code>, <code>۱۱۱۱۱۱.png</code>, <code>2222222.png</code> → V-14؛ غیرقابل نگهداری و بدون اطلاعات برای alt خودکار)</p>
+<p><strong>الگوی alt تصویر:</strong> <code>{نام کامل محصول} - {زاویه/جزئیات} | انرژی تهویه</code></p>
+<hr/>
+<h1>بخش چهارم — بک‌لاگ اجرایی</h1>
+<h2>۴.۱ قالب ثبت اقدام</h2>
+<p>هر اقدام با ۱۶ فیلد ثبت می‌شود: شناسه · حوزه · شرح مسئله · شواهد · روش تأیید · راهکار · اولویت · پیچیدگی · زمان تخمینی · وابستگی‌ها · هزینه احتمالی · مسئول اجرا · معیار پذیرش · KPI · ریسک · وضعیت</p>
+<p><strong>مقیاس اولویت:</strong> P0 = فوری/بحرانی · P1 = ۳۰ روز · P2 = ۶۰ روز · P3 = ۹۰ روز · P4 = فرصت <strong>مقیاس پیچیدگی:</strong> S = زیر یک روز · M = ۱–۳ روز · L = ۱–۲ هفته · XL = بیش از ۲ هفته</p>
+<h2>۴.۲ بک‌لاگ</h2>
+<h3>گروه A — اعتبار و حقوقی</h3>
+<hr/>
+<p><strong>A-01</strong> · حوزه: اعتماد/اعتبار · اولویت: <strong>P0</strong> · پیچیدگی: <strong>M</strong> · زمان: ۲–۳ روز</p>
+<ul>
+<li><strong>مسئله:</strong> صفحه درباره ما تماماً Lorem Ipsum است با شمارنده‌های صفر.</li>
+<li><strong>شواهد:</strong> V-01، V-02، V-03، V-04 — <code>/about-us/</code></li>
+<li><strong>روش تأیید:</strong> مشاهده مستقیم ✅ (انجام شد)</li>
+<li><strong>راهکار:</strong> بازنویسی کامل با ساختار: تاریخچه (از ۱۳۹۰) → حوزه تخصصی → فروشگاه فیزیکی با آدرس و نقشه → برندهای همکار با لوگوی واقعی و نام‌دار → توان مشاوره مهندسی → خدمات نصب و پس از فروش → تیم → گواهینامه‌ها/نمادها. شمارنده‌ها یا با عدد <strong>واقعی</strong> پر شوند یا حذف. حذف کامل بخش‌های مارکت‌پلیس («با فروشگاه ما بفروشید»، «از همه جا بفروشید»).</li>
+<li><strong>وابستگی:</strong> تأیید محتوا و اعداد توسط مدیریت؛ دارایی‌های بصری واقعی</li>
+<li><strong>هزینه:</strong> تولید محتوا (داخلی)؛ عکاسی از فروشگاه (اختیاری)</li>
+<li><strong>مسئول اجرا:</strong> من (ساختار و متن) + کارفرما (تأیید اعداد و دارایی‌ها)</li>
+<li><strong>معیار پذیرش:</strong> صفر Lorem Ipsum؛ صفر شمارنده صفر؛ صفر بخش مارکت‌پلیس؛ تأیید مدیریت</li>
+<li><strong>KPI:</strong> نرخ پرش صفحه، زمان روی صفحه، نرخ کلیک به تماس/فروشگاه</li>
+<li><strong>ریسک:</strong> درج اعداد اعتباری تأییدنشده → ادعای گمراه‌کننده. <strong>کنترل: فقط اعدادی که مدیریت کتباً تأیید کند.</strong></li>
+<li><strong>وضعیت:</strong> ⬜ آغاز‌نشده</li>
+</ul>
+<hr/>
+<p><strong>A-02</strong> · حوزه: حقوقی/انطباق · اولویت: <strong>P0</strong> · پیچیدگی: <strong>S</strong> · زمان: ۱–۲ روز</p>
+<ul>
+<li><strong>مسئله:</strong> سیاست بازگشت کالا نمونه پیش‌فرض انگلیسی ووکامرس است؛ تضاد ۷ روز در برابر ۳۰ روز؛ دو صفحه حریم خصوصی و دو صفحه بازگشت کالا.</li>
+<li><strong>شواهد:</strong> V-05، V-15، V-41</li>
+<li><strong>روش تأیید:</strong> مشاهده مستقیم ✅</li>
+<li><strong>راهکار:</strong> بازنویسی کامل فارسی و بومی شامل: بازه واقعی بازگشت (تصمیم مدیریت)، شرایط پذیرش، استثنائات واقعی این صنف (تجهیزات نصب‌شده، کالای دارای نصب، لوله و اتصالات بریده‌شده)، فرایند گام‌به‌گام، مسئولیت هزینه ارسال، نحوه استرداد، اطلاعات تماس <strong>واقعی</strong> (بدون <code>{email}</code>). ادغام صفحات تکراری. <strong>بازبینی توسط مشاور حقوقی</strong> پیش از انتشار.</li>
+<li><strong>وابستگی:</strong> تصمیم مدیریت درباره شرایط واقعی؛ مشاور حقوقی</li>
+<li><strong>هزینه:</strong> مشاوره حقوقی (اختیاری ولی توصیه‌شده)</li>
+<li><strong>مسئول اجرا:</strong> من (پیش‌نویس) + مدیریت (تصمیم) + حقوقی (بازبینی)</li>
+<li><strong>معیار پذیرش:</strong> صفر متن نمونه؛ صفر تضاد میان صفحه محصول و سیاست؛ یک صفحه واحد برای هر سیاست</li>
+<li><strong>KPI:</strong> کاهش اختلاف مشتری؛ نرخ مرجوعی</li>
+<li><strong>ریسک:</strong> 🔴 <strong>حقوقی.</strong> تنظیم نادرست شرایط تعهدآور است. <strong>کنترل: بازبینی حقوقی اجباری + تأیید کتبی مدیریت.</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>A-03</strong> · حوزه: انطباق/اعتماد · اولویت: <strong>P0</strong> · پیچیدگی: <strong>S</strong> · زمان: ۱ روز (+ زمان اداری خارج از کنترل)</p>
+<ul>
+<li><strong>مسئله:</strong> وضعیت نماد اعتماد الکترونیکی (اینماد) تأیید نشده است.</li>
+<li><strong>شواهد:</strong> I-12 — در HTML متنی دیده نشد</li>
+<li><strong>روش تأیید:</strong> ⚠️ <strong>نیازمند بررسی</strong>: (۱) جست‌وجوی <code>enamad</code> در کد صفحه، (۲) استعلام در <code>enamad.ir</code> با دامنه، (۳) پرسش مستقیم از کارفرما</li>
+<li><strong>راهکار:</strong> در صورت نبود → اقدام فوری برای اخذ. در صورت وجود ولی نامعتبر/منقضی → تمدید. در صورت وجود → نمایش برجسته در فوتر، صفحه درباره ما، و صفحه تسویه حساب.</li>
+<li><strong>وابستگی:</strong> مدارک حقوقی شرکت؛ تأییدیه‌های صنفی</li>
+<li><strong>مسئول اجرا:</strong> مدیریت (اقدام اداری) + من (نمایش و پیگیری)</li>
+<li><strong>معیار پذیرش:</strong> نماد معتبر و قابل استعلام + نمایش در سه نقطه کلیدی</li>
+<li><strong>KPI:</strong> نرخ تکمیل تسویه حساب</li>
+<li><strong>ریسک:</strong> 🔴 <strong>بدون اینماد، فعالیت فروشگاه اینترنتی در ایران با ریسک حقوقی جدی همراه است و اعتماد مشتری در لحظه پرداخت از بین می‌رود.</strong></li>
+<li><strong>وضعیت:</strong> ⬜ <strong>نیازمند بررسی فوری</strong></li>
+</ul>
+<h3>گروه B — مسیرهای درآمدی قطع‌شده</h3>
+<hr/>
+<p><strong>B-01</strong> · حوزه: تبدیل/B2C · اولویت: <strong>P0</strong> · پیچیدگی: <strong>M</strong> · زمان: ۱–۲ روز (محتوا) + وابسته به فرایند واقعی</p>
+<ul>
+<li><strong>مسئله:</strong> «خرید اقساطی» در چهار نقطه سایت تبلیغ می‌شود ولی صفحه شرایط وام خالی است.</li>
+<li><strong>شواهد:</strong> V-07 + بلوک ثابت فوتر در همه صفحات</li>
+<li><strong>روش تأیید:</strong> مشاهده مستقیم ✅ / <strong>وضعیت واقعی اقساط: نیازمند پرسش از کارفرما</strong></li>
+<li><strong>راهکار:</strong> دو شاخه —</li>
+</ul>
+<p><strong>شاخه ۱ (اگر اقساط واقعاً ارائه می‌شود):</strong> صفحه کامل شامل: شرایط احراز (شغل، سابقه، ضمانت)، مدارک لازم، سقف مبلغ، تعداد اقساط و نرخ، فرایند گام‌به‌گام، زمان‌بندی (الگو از داماتجهیز: «۱۰ الی ۱۵ روز»)، فرم درخواست، سؤالات متداول. لینک از بلوک فوتر، صفحه محصول (برای سبدهای بالای یک آستانه)، و سبد خرید. <strong>شاخه ۲ (اگر ارائه نمی‌شود):</strong> <strong>حذف فوری برچسب «خرید اقساطی» از بلوک ثابت فوتر.</strong> تبلیغ خدمتی که وجود ندارد، آسیب اعتباری مستقیم است.</p>
+<ul>
+<li><strong>وابستگی:</strong> 🔑 <strong>تصمیم و اطلاعات کارفرما — این یک پرسش روز اول است</strong></li>
+<li><strong>مسئول اجرا:</strong> من + مدیریت (تأمین شرایط واقعی)</li>
+<li><strong>معیار پذیرش:</strong> انطباق کامل میان آنچه تبلیغ می‌شود و آنچه ارائه می‌شود</li>
+<li><strong>KPI:</strong> تعداد درخواست اقساط؛ نرخ تبدیل سبدهای بالای آستانه</li>
+<li><strong>ریسک:</strong> درج شرایط تأییدنشده → تعهد حقوقی (مشابه A-02)</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>B-02</strong> · حوزه: سرنخ/B2B · اولویت: <strong>P0</strong> · پیچیدگی: <strong>M</strong> · زمان: ۱–۳ روز</p>
+<ul>
+<li><strong>مسئله:</strong> شورت‌کد <code>[yith_ywraq_request_quote]</code> رندر نشده؛ عنوان صفحه انگلیسی است.</li>
+<li><strong>شواهد:</strong> V-10</li>
+<li><strong>روش تأیید:</strong> مشاهده مستقیم ✅ / <strong>علت فنی: نیازمند بررسی</strong> — سه فرضیه: (۱) افزونه YITH Request a Quote غیرفعال است، (۲) نسخه افزونه ناسازگار/خطا دارد، (۳) شورت‌کد در صفحه‌ساز به‌درستی درج نشده</li>
+<li><strong>راهکار:</strong> تشخیص علت → یا تعمیر افزونه، یا <strong>جایگزینی با فرم ساده و کارآمد</strong> (Gravity Forms / WPForms / CF7) با فیلدهای: نام شرکت، نام مسئول، تلفن، ایمیل، شرح نیاز، فایل پیوست (لیست خرید)، متراژ/کاربری، شهر، زمان مورد نیاز. عنوان صفحه فارسی: «درخواست پیش‌فاکتور».</li>
+<li><strong>وابستگی:</strong> تصمیم درباره نگه‌داشتن یا جایگزینی افزونه</li>
+<li><strong>هزینه:</strong> احتمالا لایسنس افزونه فرم</li>
+<li><strong>مسئول اجرا:</strong> من (+ رابط فنی برای نصب/پیکربندی)</li>
+<li><strong>معیار پذیرش:</strong> فرم ارسال می‌شود؛ ایمیل/اعلان به فروش می‌رسد؛ عنوان فارسی؛ صفر شورت‌کد خام در کل سایت</li>
+<li><strong>KPI:</strong> تعداد پیش‌فاکتور درخواستی ماهانه؛ زمان پاسخ</li>
+<li><strong>ریسک:</strong> اگر افزونه YITH لایسنس نامعتبر دارد، تعمیر پایدار نیست → <strong>جایگزینی ترجیح دارد</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>B-03</strong> · حوزه: سرنخ/B2B · اولویت: <strong>P1</strong> · پیچیدگی: <strong>M</strong> · زمان: ۲–۳ روز</p>
+<ul>
+<li><strong>مسئله:</strong> صفحه «خرید عمده کالا» خالی است.</li>
+<li><strong>شواهد:</strong> V-08</li>
+<li><strong>راهکار:</strong> صفحه کامل با: تعریف خرید عمده (حداقل تعداد/مبلغ)، مزیت‌ها (قیمت پلکانی، ارسال، شرایط پرداخت)، دسته‌های پرمصرف عمده، فرآیند، فرم درخواست، شماره مستقیم کارشناس عمده‌فروشی، مطالعه موردی (در صورت وجود).</li>
+<li><strong>وابستگی:</strong> 🔑 سیاست قیمت‌گذاری عمده — تصمیم مدیریت</li>
+<li><strong>معیار پذیرش:</strong> صفحه کامل + فرم فعال + مسیر پیگیری سرنخ</li>
+<li><strong>KPI:</strong> سرنخ عمده ماهانه؛ ارزش سبد عمده</li>
+<li><strong>ریسک:</strong> انتشار شرایط قیمتی که با سیاست فروش حضوری تضاد دارد → <strong>کنترل: تأیید کتبی مدیریت</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<h3>گروه C — یکپارچگی داده محصول</h3>
+<hr/>
+<p><strong>C-01</strong> · حوزه: داده محصول · اولویت: <strong>P0</strong> · پیچیدگی: <strong>L</strong> · زمان: ۳–۵ روز (۲۰ محصول اول)</p>
+<ul>
+<li><strong>مسئله:</strong> ویژگی‌های فنی نادرست: ظرفیت ۶۴۰۰ BTU برای پکیج ۲۸۰۰۰ کیلوکالری؛ وزن = «به کیلوگرم»؛ پوشش = «متر مکعب»؛ برچسب انتخابگر = نام محصول دیگر.</li>
+<li><strong>شواهد:</strong> V-18، V-19، V-20، V-21، V-22</li>
+<li><strong>روش تأیید:</strong> مشاهده مستقیم ✅ / <strong>دامنه شیوع: نیازمند بررسی</strong> — باید مشخص شود چند محصول از ۱۹۱ آلوده‌اند</li>
+<li><strong>راهکار:</strong> (۱) استخراج کامل همه <code>pa_*</code> attributeها برای همه محصولات → کاربرگ؛ (۲) مقایسه با دیتاشیت رسمی برند؛ (۳) اصلاح گروهی برای خطاهای سیستماتیک؛ (۴) اصلاح دستی برای استثنائات؛ (۵) <strong>تعریف الگوی تفکیکی بخش ۳.۳ لایه ۲</strong> تا خطا تکرار نشود؛ (۶) افزودن اعتبارسنجی (validation) پیش از انتشار.</li>
+<li><strong>وابستگی:</strong> 🔑 دسترسی به کاتالوگ/دیتاشیت رسمی برندها — <strong>پیش‌نیاز مطلق</strong></li>
+<li><strong>مسئول اجرا:</strong> من (روش و کنترل کیفیت) + کارشناس فنی شرکت (تأیید داده)</li>
+<li><strong>معیار پذیرش:</strong> ۱۰۰٪ انطباق ۲۰ محصول اول با دیتاشیت رسمی؛ صفر فیلد «واحد به‌جای مقدار»</li>
+<li><strong>KPI:</strong> نرخ مرجوعی ناشی از اطلاعات نادرست؛ نرخ استفاده از مقایسه</li>
+<li><strong>ریسک:</strong> 🔴 <strong>بالاترین ریسک تجاری در کل بک‌لاگ.</strong> داده نادرست → خرید اشتباه → مرجوعی + آسیب اعتبار نمایندگی. همچنین <strong>هر اتوماسیون/هوش مصنوعی آینده روی این داده بی‌اعتبار می‌شود.</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>C-02</strong> · حوزه: داده محصول · اولویت: <strong>P1</strong> · پیچیدگی: <strong>M</strong> · زمان: ۲ روز</p>
+<ul>
+<li><strong>مسئله:</strong> توضیحات برخی محصولات به مدل دیگری ارجاع می‌دهد (M28FF → L24FF).</li>
+<li><strong>شواهد:</strong> V-21</li>
+<li><strong>روش تأیید:</strong> جست‌وجوی الگویی در همه توضیحات: استخراج متن همه ۱۹۱ محصول و جست‌وجوی «نام مدل در توضیحات ≠ نام مدل در عنوان» → <strong>قابل خودکارسازی با اسکریپت</strong></li>
+<li><strong>راهکار:</strong> اجرای اسکریپت تشخیص → فهرست موارد → اصلاح دستی</li>
+<li><strong>معیار پذیرش:</strong> صفر ناسازگاری مدل میان عنوان و توضیحات</li>
+<li><strong>ریسک:</strong> اگر این خطا سیستماتیک باشد، نشانه فرایند تولید محتوای کپی‌شده است → نیاز به بازنگری کل فرایند</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>C-03</strong> · حوزه: داده محصول/UX · اولویت: <strong>P1</strong> · پیچیدگی: <strong>M</strong> · زمان: ۲–۳ روز</p>
+<ul>
+<li><strong>مسئله:</strong> فیلتر برند فقط ۳ مقدار از ۸+ برند همکار؛ در دسته کولر گازی فقط «ایران رادیاتور» با وجود محصولات هایسنس و تراست.</li>
+<li><strong>شواهد:</strong> V-35</li>
+<li><strong>روش تأیید:</strong> پیشخوان → محصولات → ویژگی‌ها → <code>pa_product_brand</code> → شمارش محصولات هر مقدار؛ مقایسه با برندهای واقعی در عناوین محصولات</li>
+<li><strong>راهکار:</strong> (۱) استخراج برند از عنوان محصولات؛ (۲) تعریف مقادیر کامل attribute برند؛ (۳) تخصیص گروهی؛ (۴) افزودن <code>capacity</code>، <code>install_type</code>، <code>application</code> به‌عنوان فیلتر؛ (۵) پیکربندی Filter Everything برای نمایش فیلترهای مرتبط با هر دسته</li>
+<li><strong>وابستگی:</strong> C-01 (داده تمیز)</li>
+<li><strong>مسئول اجرا:</strong> من + رابط فنی</li>
+<li><strong>معیار پذیرش:</strong> همه برندهای دارای محصول فیلترپذیر باشند؛ حداقل ۳ فیلتر معنادار در دسته‌های اصلی</li>
+<li><strong>KPI:</strong> نرخ استفاده از فیلتر؛ نرخ تبدیل جلسات دارای فیلتر</li>
+<li><strong>ریسک:</strong> افزایش کوئری‌ها → کندی دسته‌بندی. <strong>کنترل: کش آبجکت + اندازه‌گیری INP پیش و پس</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>C-04</strong> · حوزه: داده محصول/UX · اولویت: <strong>P2</strong> · پیچیدگی: <strong>S</strong> · زمان: ۱ روز</p>
+<ul>
+<li><strong>مسئله:</strong> محصولات «فروخته شده» در بخش ویژه صفحه اصلی و در فهرست دسته‌بندی بدون قیمت.</li>
+<li><strong>شواهد:</strong> V-23، V-24</li>
+<li><strong>روش تأیید:</strong> بررسی علت — موجودی صفر واقعی یا stock status نادرست؟ (پیشخوان → موجودی)</li>
+<li><strong>راهکار:</strong> (۱) تنظیم بخش‌های ویژه صفحه اصلی برای حذف خودکار محصولات ناموجود؛ (۲) تصمیم راهبردی درباره ناموجودها: پنهان از فهرست، یا نگه‌داشتن با «اطلاع‌رسانی هنگام موجودی» (که خودش یک ابزار جذب سرنخ است)؛ (۳) اگر «فروخته شده» در واقع «تمام‌شده ولی قابل تأمین» است → تغییر به «سفارشی / تماس بگیرید»</li>
+<li><strong>وابستگی:</strong> 🔑 سیاست موجودی و تأمین — تصمیم مدیریت</li>
+<li><strong>معیار پذیرش:</strong> صفر محصول ناموجود در بخش‌های ویژه؛ وضعیت ناموجود در فهرست‌ها مطابق سیاست توافق‌شده</li>
+<li><strong>KPI:</strong> نرخ کلیک بخش ویژه؛ تعداد ثبت «اطلاع‌رسانی موجودی»</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>C-05</strong> · حوزه: داده محصول · اولویت: <strong>P2</strong> · پیچیدگی: <strong>S</strong> · زمان: نصف روز</p>
+<ul>
+<li><strong>مسئله:</strong> بازه فیلتر قیمت غیرواقعی (۰ تا ۷۱۳٬۴۰۷٬۰۰۰ تومان).</li>
+<li><strong>شواهد:</strong> V-46</li>
+<li><strong>روش تأیید:</strong> بررسی گران‌ترین محصول — آیا ۷۱۳ میلیون واقعی است یا یک محصول با قیمت اشتباه/آزمایشی؟</li>
+<li><strong>راهکار:</strong> اگر قیمت اشتباه است → اصلاح. اگر واقعی است → بازه‌بندی دستی فیلتر قیمت به بازه‌های معنادار (زیر ۵۰ م / ۵۰–۱۰۰ م / ۱۰۰–۲۰۰ م / بالای ۲۰۰ م)</li>
+<li><strong>معیار پذیرش:</strong> فیلتر قیمت با بازه‌های معنادار و قابل استفاده</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>C-06</strong> · حوزه: داده محصول · اولویت: <strong>P2</strong> · پیچیدگی: <strong>S</strong> · زمان: ۱ روز</p>
+<ul>
+<li><strong>مسئله:</strong> محصولات تکراری با پسوند <code>-2</code>.</li>
+<li><strong>شواهد:</strong> V-39 — <code>کولر-سلولزی-پلیمری-بالا-زن</code> و <code>...-بالا-زن-2</code>؛ <code>...-روبروزن</code> و <code>...-روبروزن-2</code></li>
+<li><strong>روش تأیید:</strong> مقایسه محتوای جفت‌ها — آیا واقعاً دو محصول متفاوت‌اند یا کپی؟</li>
+<li><strong>راهکار:</strong> اگر کپی → حذف یکی + 301. اگر متفاوت → اصلاح slug برای بازتاب تفاوت واقعی (مثلاً ظرفیت متفاوت)</li>
+<li><strong>معیار پذیرش:</strong> صفر محصول با slug مبهم <code>-2</code></li>
+<li><strong>ریسک:</strong> حذف محصولی که سفارش‌های تاریخی به آن متصل است → <strong>کنترل: هرگز حذف سخت؛ فقط draft + redirect</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<h3>گروه D — معماری و مسیریابی</h3>
+<hr/>
+<p><strong>D-01</strong> · حوزه: UX/مسیریابی · اولویت: <strong>P0</strong> · پیچیدگی: <strong>S</strong> · زمان: ۱ روز</p>
+<ul>
+<li><strong>مسئله:</strong> سه بنر اسلایدر به یک مقصد؛ کاشی مشعل به حوله خشک‌کن؛ چهار کاشی بدون پیوند.</li>
+<li><strong>شواهد:</strong> V-11، V-12، V-13</li>
+<li><strong>راهکار:</strong> اصلاح مقصد هر بنر به دسته متناسب (کولر آبی → <code>/water-cooler/</code>؛ کولر گازی → <code>/air-conditioner/</code>؛ هیتر → <code>/heaters/</code>)؛ اصلاح کاشی مشعل؛ ایجاد یا لینک‌دادن دسته‌های «کوره هوای گرم»، «پنکه»، «تصفیه آب»، «سخت‌گیر و رسوب‌گیر»</li>
+<li><strong>وابستگی:</strong> وجود دسته واقعی برای هر چهار مورد (اگر نیست، باید ایجاد شود یا کاشی حذف شود)</li>
+<li><strong>معیار پذیرش:</strong> هر عنصر قابل کلیک در صفحه اصلی به مقصد معنادار و درست برود؛ صفر عنصر بی‌پیوند</li>
+<li><strong>KPI:</strong> CTR هر بنر/کاشی</li>
+<li><strong>ریسک:</strong> کم. <strong>این بالاترین نسبت اثر به تلاش در کل بک‌لاگ است.</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>D-02</strong> · حوزه: UX/صفحه اصلی · اولویت: <strong>P0</strong> · پیچیدگی: <strong>M</strong> · زمان: ۱ روز</p>
+<ul>
+<li><strong>مسئله:</strong> سه بخش بی‌ربط با عنوان‌های «اسباب بازی و سرگرمی»، «لباس و پوشاک»، «کتاب و مجلات» که هر سه شش محصول یکسان را تکرار می‌کنند.</li>
+<li><strong>شواهد:</strong> V-06</li>
+<li><strong>راهکار:</strong> حذف دو بخش از سه بخش. جایگزینی با بخش‌های واقعی:</li>
+<li><strong>بخش فصلی</strong> (در مهر–اسفند: گرمایش؛ در اسفند–شهریور: سرمایش) — ← <strong>هم‌اکنون مهر است و بنرها گرمایشی‌اند ولی بخش تخفیفات پر از دستگاه تصفیه آب و کولر سلولزی است → ناهمخوانی فصلی تأییدشده</strong></li>
+<li><strong>پرفروش‌ترین‌ها</strong> (بر اساس داده واقعی فروش — نیازمند دسترسی)</li>
+<li><strong>تازه‌های کاتالوگ</strong> (بر اساس تاریخ افزودن)</li>
+<li><strong>وابستگی:</strong> داده فروش برای «پرفروش‌ترین» واقعی؛ تصمیم مدیریت درباره تقویم فصلی</li>
+<li><strong>معیار پذیرش:</strong> صفر عنوان بی‌ربط؛ صفر بخش با محتوای تکراری؛ هم‌خوانی محتوای صفحه اصلی با فصل</li>
+<li><strong>KPI:</strong> نرخ کلیک از صفحه اصلی به دسته/محصول؛ عمق پیمایش</li>
+<li><strong>ریسک:</strong> «پرفروش‌ترین» بدون داده واقعی = حدس. <strong>کنترل: تا زمان دسترسی به داده، از «تازه‌ها» استفاده شود.</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>D-03</strong> · حوزه: سئو/معماری · اولویت: <strong>P1</strong> · پیچیدگی: <strong>M</strong> · زمان: ۲–۳ روز</p>
+<ul>
+<li><strong>مسئله:</strong> صفحات تکراری هسته‌ای، دموهای قالب، و بقایای «ایران کالا» زنده و در sitemap هستند.</li>
+<li><strong>شواهد:</strong> V-29…V-33، V-42</li>
+<li><strong>راهکار:</strong> اجرای جدول تصمیم بخش ۳.۲ — شامل تأیید پیکربندی WooCommerce پیش از حذف <code>-2</code>ها</li>
+<li><strong>وابستگی:</strong> 🔑 <strong>بکاپ کامل پیش از هر حذف</strong> + تأیید پیکربندی</li>
+<li><strong>مسئول اجرا:</strong> من + رابط فنی</li>
+<li><strong>معیار پذیرش:</strong> sitemap فقط شامل صفحات واقعی و فعال؛ صفر صفحه دمو؛ صفر بقایای کسب‌وکار قبلی</li>
+<li><strong>KPI:</strong> تعداد صفحات ایندکس‌شده؛ نسبت صفحات با ارزش به کل</li>
+<li><strong>ریسک:</strong> 🔴 حذف صفحه‌ای که WooCommerce به آن وابسته است → <strong>خرابی کامل فرایند خرید.</strong> <strong>کنترل اجباری: (۱) بکاپ کامل، (۲) بررسی تنظیمات WooCommerce → Advanced، (۳) اجرا روی staging، (۴) تست کامل خرید پس از اجرا.</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>D-04</strong> · حوزه: سئو · اولویت: <strong>P1</strong> · پیچیدگی: <strong>S</strong> · زمان: ۱ روز</p>
+<ul>
+<li><strong>مسئله:</strong> عنوان همه صفحات با خط تیره انتهایی و بدون نام برند؛ عنوان <code>Request a Quote -</code> انگلیسی.</li>
+<li><strong>شواهد:</strong> V-34، V-10</li>
+<li><strong>روش تأیید:</strong> بررسی قالب عنوان در افزونه سئو (Yoast/Rank Math) → احتمالاً الگو <code>%%title%% %%sep%%</code> بدون <code>%%sitename%%</code></li>
+<li><strong>راهکار:</strong> تنظیم الگوی عنوان: <code>%%title%% %%sep%% %%sitename%%</code> برای همه انواع محتوا؛ الگوهای اختصاصی:</li>
+<li>محصول: <code>خرید {نام محصول} | قیمت {برند} — انرژی تهویه</code></li>
+<li>دسته: <code>{نام دسته} — خرید و قیمت | انرژی تهویه شیراز</code></li>
+<li>راهنما: <code>{عنوان} — راهنمای تخصصی انرژی تهویه</code></li>
+<li>همچنین تنظیم <code>%%excerpt%%</code>/<code>%%sitename%%</code> برای توضیحات</li>
+<li><strong>وابستگی:</strong> تأیید افزونه سئو (I-06)</li>
+<li><strong>معیار پذیرش:</strong> صفر عنوان با خط تیره انتهایی؛ صفر عنوان انگلیسی؛ الگوی منسجم در همه انواع</li>
+<li><strong>KPI:</strong> CTR در نتایج جست‌وجو (پس از دسترسی به سرچ کنسول)</li>
+<li><strong>ریسک:</strong> کم</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>D-05</strong> · حوزه: سئو/بودجه خزش · اولویت: <strong>P1</strong> · پیچیدگی: <strong>S</strong> · زمان: نصف روز</p>
+<ul>
+<li><strong>مسئله:</strong> پارامترهای <code>?per_page=</code>، <code>?shop_view=</code>، <code>?orderby=</code> URLهای تکراری می‌سازند ولی در <code>robots.txt</code> مسدود نشده‌اند (برخلاف پارامترهای فیلتر که مسدودند).</li>
+<li><strong>شواهد:</strong> مشاهده مستقیم در <code>/shop/</code> و <code>/robots.txt</code> → <strong>این یک یافته جدید است که در پروپوزال کارفرما نیامده</strong></li>
+<li><strong>روش تأیید:</strong> شمارش ترکیب‌های ممکن: ۴ مقدار <code>per_page</code> × ۴ مقدار <code>shop_view</code> × ۶ مقدار <code>orderby</code> = تا ۹۶ URL مشتق برای هر صفحه فهرست</li>
+<li><strong>راهکار:</strong> (۱) افزودن این پارامترها به <code>robots.txt</code>؛ <strong>یا بهتر</strong> (۲) <code>rel="canonical"</code> صحیح به URL پایه + <code>noindex,follow</code> روی URLهای پارامتردار؛ (۳) ارزیابی اینکه آیا این کنترل‌ها اصلاً برای کاربر لازم‌اند — اگر نه، حذف از رابط</li>
+<li><strong>معیار پذیرش:</strong> صفر URL پارامتردار ایندکس‌شده</li>
+<li><strong>KPI:</strong> بودجه خزش؛ تعداد صفحات ایندکس‌شده بی‌ارزش</li>
+<li><strong>ریسک:</strong> مسدودسازی اشتباه می‌تواند canonical را مخدوش کند → <strong>کنترل: ترجیح canonical/noindex بر robots.txt</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>D-06</strong> · حوزه: UX · اولویت: <strong>P1</strong> · پیچیدگی: <strong>S</strong> · زمان: نصف روز</p>
+<ul>
+<li><strong>مسئله:</strong> همه پیوندهای اشتراک اجتماعی در صفحه محصول مرده‌اند (<code>#</code>).</li>
+<li><strong>شواهد:</strong> V-16</li>
+<li><strong>راهکار:</strong> یا فعال‌سازی اشتراک واقعی (با URL صحیح محصول)، یا <strong>حذف کامل بلوک</strong>. وضعیت فعلی بدترین حالت است. <strong>توصیه: حذف</strong> — اشتراک اجتماعی در این صنف ارزش افزوده اندکی دارد و بلوک فقط وزن صفحه و نویز بصری اضافه می‌کند.</li>
+<li><strong>معیار پذیرش:</strong> صفر پیوند <code>#</code> در صفحات محصول</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>D-07</strong> · حوزه: اعتماد/UX · اولویت: <strong>P1</strong> · پیچیدگی: <strong>S</strong> · زمان: نصف روز</p>
+<ul>
+<li><strong>مسئله:</strong> ویجت «آخرین دیدگاه‌ها» محتوای دمو با پیوند خروجی به <code>abzarwp.net</code> نمایش می‌دهد.</li>
+<li><strong>شواهد:</strong> V-17</li>
+<li><strong>راهکار:</strong> حذف ویجت از <code>/shop/</code> و همه صفحات فهرست. <strong>پیوند خروجی به سایت ثالث از صفحه فروشگاه، سیگنال منفی و غیرحرفه‌ای است.</strong></li>
+<li><strong>معیار پذیرش:</strong> صفر پیوند خروجی غیرعمدی به دامنه ثالث</li>
+<li><strong>ریسک:</strong> کم</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>D-08</strong> · حوزه: UX/اعتماد · اولویت: <strong>P1</strong> · پیچیدگی: <strong>M</strong> · زمان: ۱–۲ روز</p>
+<ul>
+<li><strong>مسئله:</strong> صفحه تماس بدون فرم، ایمیل، ساعت کاری و نقشه؛ چهار شماره تلفن ناسازگار در منابع مختلف.</li>
+<li><strong>شواهد:</strong> V-45</li>
+<li><strong>راهکار:</strong> افزودن فرم تماس (با محافظت در برابر اسپم)، ایمیل رسمی، ساعت کاری دقیق، نقشه embed، شماره‌های یکدست، و <strong>schema <code>LocalBusiness</code></strong> با آدرس/تلفن/ساعات/مختصات.</li>
+<li><strong>وابستگی:</strong> 🔑 تصمیم مدیریت درباره شماره رسمی و ساعت کاری</li>
+<li><strong>معیار پذیرش:</strong> همه اجزای یک صفحه تماس حرفه‌ای حاضر؛ schema معتبر</li>
+<li><strong>KPI:</strong> ارسال فرم تماس؛ کلیک روی نقشه؛ تماس از صفحه</li>
+<li><strong>ریسک:</strong> کم</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>D-09</strong> · حوزه: UX · اولویت: <strong>P2</strong> · پیچیدگی: <strong>S</strong> · زمان: ۱ روز</p>
+<ul>
+<li><strong>مسئله:</strong> تضاد روایت اعتماد: برچسب‌های «محصول اصل / بازگشت ۷ روزه / ارسال سریع / گارانتی معتبر» بدون هیچ صفحه پشتیبان.</li>
+<li><strong>شواهد:</strong> V-55 + V-05 + V-15</li>
+<li><strong>راهکار:</strong> هر برچسب باید به یک صفحه واقعی پیوند شود: «محصول اصل» → صفحه ضمانت اصالت؛ «بازگشت ۷ روزه» → سیاست بازگشت (پس از A-02)؛ «ارسال سریع» → <code>/رویه-ارسال-سفارش/</code>؛ «گارانتی معتبر» → صفحه گارانتی با تفکیک برند.</li>
+<li><strong>وابستگی:</strong> A-02</li>
+<li><strong>معیار پذیرش:</strong> صفر برچسب اعتماد بدون صفحه پشتیبان</li>
+<li><strong>KPI:</strong> نرخ کلیک برچسب‌ها؛ نرخ تبدیل صفحه محصول</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<h3>گروه E — محتوا و سئو</h3>
+<hr/>
+<p><strong>E-01</strong> · حوزه: سئو/محتوا · اولویت: <strong>P0</strong> · پیچیدگی: <strong>L</strong> · زمان: ۲–۳ هفته (اولین دسته)</p>
+<ul>
+<li><strong>مسئله:</strong> صفحات دسته‌بندی هیچ محتوای متنی ندارند.</li>
+<li><strong>شواهد:</strong> V-37 / الگوی رقیب: داماتجهیز راهنمای ۹ نکته‌ای + جدول قیمت ۱۰ برند + جدول ظرفیت‌یابی دارد</li>
+<li><strong>راهکار:</strong> الگوی اجباری صفحه دسته (پایین‌تر از گرید محصول، برای حفظ UX):</li>
+</ul>
+<ol>
+<li>H1 توصیفی با قصد تجاری + شهر (برای سنگر محلی)</li>
+<li>«راهنمای انتخاب» — N نکته کلیدی به تفکیک نوع کالا</li>
+<li><strong>جدول قیمت به‌روز به تفکیک برند و ظرفیت</strong> ← الگو مستقیماً از داماتجهیز؛ این بخش بالاترین ارزش را دارد</li>
+<li><strong>جدول ظرفیت‌یابی</strong> (متراژ → ظرفیت پیشنهادی)</li>
+<li>نکات نصب و گارانتی</li>
+<li>سؤالات متداول + <code>FAQPage</code> schema</li>
+<li>پیوند به راهنماهای مرتبط و صفحات برند</li>
+</ol>
+<ul>
+<li><strong>وابستگی:</strong> 🔑 داده قیمت واقعی و به‌روز (کارفرما)؛ تأیید فنی جداول ظرفیت (کارشناس)</li>
+<li><strong>مسئول اجرا:</strong> من (ساختار، سئو، کنترل کیفیت) + نویسنده تخصصی (تولید)</li>
+<li><strong>معیار پذیرش:</strong> هر صفحه دسته اولویت‌دار دارای ≥۸۰۰ کلمه محتوای اختصاصی، غیرتکراری و تأییدشده فنی</li>
+<li><strong>KPI:</strong> impressions و کوئری‌های صفحه دسته در سرچ کنسول؛ نرخ تبدیل دسته</li>
+<li><strong>ریسک:</strong> محتوای حجیم بالای گرید محصول → افزایش LCP و آسیب UX. <strong>کنترل: محتوا پایین گرید + tab/accordion برای بخش‌های فرعی.</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>E-02</strong> · حوزه: محتوا · اولویت: <strong>P0</strong> · پیچیدگی: <strong>XL</strong> · زمان: فرایند مستمر</p>
+<ul>
+<li><strong>مسئله:</strong> وبلاگ خالی است؛ <code>post-sitemap.xml</code> فقط یک URL با lastmod ۱۴۰۰ دارد.</li>
+<li><strong>شواهد:</strong> V-09، V-28، V-27</li>
+<li><strong>راهکار:</strong> راه‌اندازی از صفر —</li>
+</ul>
+<p><strong>گام ۱:</strong> تعیین استراتژی (بخش ۵ سند) <strong>گام ۲:</strong> تولید ۱۰ مطلب پایه در سه سنگر (محلی/برند/دسته تخصصی) <strong>گام ۳:</strong> تعیین تقویم انتشار واقع‌بینانه (پیشنهاد: ۲ مطلب در هفته، نه بیشتر) <strong>گام ۴:</strong> بازتولید sitemap و تأیید ایندکس <strong>گام ۵:</strong> اتصال هر مطلب به حداقل یک صفحه تجاری (پیوند داخلی دوطرفه)</p>
+<ul>
+<li><strong>وابستگی:</strong> ظرفیت تولید محتوا — 🔑 <strong>پیش‌نیاز منابع (بخش ۱۰ پروپوزال)</strong></li>
+<li><strong>معیار پذیرش:</strong> ≥۱۰ مطلب منتشرشده در ۶۰ روز؛ حضور در sitemap؛ ایندکس شدن</li>
+<li><strong>KPI:</strong> تعداد مطالب؛ impressions ارگانیک؛ ترافیک ارگانیک غیربرندی</li>
+<li><strong>ریسک:</strong> 🔴 <strong>انتشار پراکنده و بدون تأمین منبع تولید محتوا.</strong> تعهد به تولید انبوه بدون نویسنده تخصصی = محتوای بی‌کیفیت = آسیب به دامنه. <strong>کنترل: تقویم کوچک و قابل تحویل؛ کیفیت بر کمیت.</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>E-03</strong> · حوزه: سئو/فهرست‌پذیری · اولویت: <strong>P1</strong> · پیچیدگی: <strong>S</strong> · زمان: ۱ روز</p>
+<ul>
+<li><strong>مسئله:</strong> <code>portfolio-sitemap.xml</code> با lastmod ۲۰۱۷ در نمایه sitemap است.</li>
+<li><strong>شواهد:</strong> V-27</li>
+<li><strong>راهکار:</strong> غیرفعال‌سازی post type «portfolio» یا حذف از sitemap</li>
+<li><strong>معیار پذیرش:</strong> sitemap index فقط شامل انواع محتوای فعال</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>E-04</strong> · حوزه: سئو/تصویر · اولویت: <strong>P2</strong> · پیچیدگی: <strong>M</strong> · زمان: ۳–۵ روز</p>
+<ul>
+<li><strong>مسئله:</strong> بهینه‌سازی ناهمگون تصویر؛ بندانگشتی ۱۵۰×۱۵۰ در ظرف بزرگ؛ نام فایل بی‌معنا.</li>
+<li><strong>شواهد:</strong> V-43، V-44، V-14</li>
+<li><strong>راهکار:</strong> (۱) تبدیل دسته‌جمعی به WebP با فشرده‌سازی؛ (۲) تولید ابعاد متناسب با ظرف نمایش؛ (۳) بازنویسی alt برای همه تصاویر محصول بر اساس الگوی بخش ۳.۳؛ (۴) استاندارد نام‌گذاری برای آپلودهای جدید</li>
+<li><strong>هزینه:</strong> افزونه بهینه‌سازی تصویر (لایسنس)</li>
+<li><strong>معیار پذیرش:</strong> ≥۹۰٪ تصاویر محصول WebP؛ صفر تصویر با ابعاد ناسازگار؛ alt کامل برای همه تصاویر محصول</li>
+<li><strong>KPI:</strong> حجم صفحه؛ LCP</li>
+<li><strong>ریسک:</strong> تبدیل دسته‌جمعی می‌تواند کیفیت را کاهش دهد یا پیوندهای قدیمی را بشکند → <strong>کنترل: بکاپ + اجرا روی staging + حفظ فایل اصلی</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>E-05</strong> · حوزه: اثبات اجتماعی · اولویت: <strong>P2</strong> · پیچیدگی: <strong>L</strong> · زمان: فرایند ۳ ماهه</p>
+<ul>
+<li><strong>مسئله:</strong> عملاً صفر نظر مشتری در کل سایت (یک استثنا).</li>
+<li><strong>شواهد:</strong> V-25</li>
+<li><strong>راهکار:</strong> (۱) ایمیل/پیامک خودکار درخواست نظر N روز پس از تحویل؛ (۲) ساده‌سازی فرم نظر؛ (۳) تشویق (بدون خرید نظر — <strong>غیراخلاقی و غیرقانونی</strong>)؛ (۴) نمایش نظرات در کارت محصول و دسته؛ (۵) افزودن <code>AggregateRating</code> به schema هنگام موجودشدن نظر واقعی</li>
+<li><strong>وابستگی:</strong> داده سفارش‌های تحویل‌شده؛ ابزار پیامک/ایمیل</li>
+<li><strong>معیار پذیرش:</strong> فرایند خودکار فعال؛ رشد پایدار تعداد نظرات</li>
+<li><strong>KPI:</strong> تعداد نظر در ماه؛ درصد محصولات دارای ≥۱ نظر</li>
+<li><strong>ریسک:</strong> 🔴 <strong>هرگز نظرسازی مصنوعی نکنید.</strong> هم غیراخلاقی است و هم در صورت کشف، اعتماد را برای همیشه از بین می‌برد.</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<h3>گروه F — عملکرد و زیرساخت</h3>
+<hr/>
+<p><strong>F-01</strong> · حوزه: عملکرد · اولویت: <strong>P0</strong> · پیچیدگی: <strong>M</strong> · زمان: ۲–۳ روز</p>
+<ul>
+<li><strong>مسئله:</strong> وضعیت Core Web Vitals نامعلوم.</li>
+<li><strong>شواهد:</strong> بخش ۴.۳ سند ۰۱ — <strong>صریحاً اندازه‌گیری نشد</strong></li>
+<li><strong>روش تأیید:</strong> اجرای برنامه بخش ۲.۲ و ۲.۵ (۳۶ نقطه داده)</li>
+<li><strong>راهکار:</strong> اندازه‌گیری → تشخیص گلوگاه → اصلاح به ترتیب بازده (بخش ۲.۵ مرحله ۳)</li>
+<li><strong>معیار پذیرش:</strong> خط مبنا ثبت‌شده؛ پس از اصلاح، هر سه معیار در «خوب» برای ≥۷۵٪ بازدیدها</li>
+<li><strong>KPI:</strong> LCP، INP، CLS، TTFB</li>
+<li><strong>ریسک:</strong> 🔴 <strong>خطر اصلی: شروع «بهینه‌سازی» پیش از اندازه‌گیری.</strong> نتیجه آن صرف زمان روی موارد کم‌اثر است. <strong>کنترل: اجبار مرحله ۱.</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>F-02</strong> · حوزه: زیرساخت · اولویت: <strong>P1</strong> · پیچیدگی: <strong>M</strong> · زمان: ۲–۳ روز</p>
+<ul>
+<li><strong>مسئله:</strong> وضعیت کش، CDN و کش آبجکت نامعلوم؛ احتمالاً کش آبجکت وجود ندارد.</li>
+<li><strong>شواهد:</strong> I-11</li>
+<li><strong>راهکار:</strong> فعال‌سازی کش صفحه + <strong>کش آبجکت (Redis)</strong> ← برای ووکامرس با Filter Everything تقریباً الزامی است؛ ارزیابی CDN برای رسانه (الگوی رقیب: S3 آسیاتک)</li>
+<li><strong>هزینه:</strong> 🔑 <strong>بودجه مستقل</strong> — Redis/CDN/هاست بهتر</li>
+<li><strong>معیار پذیرش:</strong> TTFB بهبودیافته؛ کاهش بار DB</li>
+<li><strong>KPI:</strong> TTFB، زمان پاسخ سرور، هزینه زیرساخت</li>
+<li><strong>ریسک:</strong> کش نادرست → نمایش داده کهنه (موجودی/قیمت) → <strong>مشکل تجاری جدی.</strong> <strong>کنترل: exclusion برای سبد/تسویه/حساب کاربری + TTL کوتاه برای قیمت و موجودی.</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>F-03</strong> · حوزه: امنیت · اولویت: <strong>P0</strong> · پیچیدگی: <strong>M</strong> · زمان: ۲–۳ روز</p>
+<ul>
+<li><strong>مسئله:</strong> وضعیت نسخه‌ها، به‌روز بودن، امنیت و دسترسی‌ها نامعلوم.</li>
+<li><strong>شواهد:</strong> I-09</li>
+<li><strong>راهکار:</strong> اجرای چک‌لیست بخش ۲.۳</li>
+<li><strong>معیار پذیرش:</strong> صفر افزونه با آسیب‌پذیری شناخته‌شده بدون وصله؛ 2FA روی همه حساب‌های مدیر؛ WAF فعال</li>
+<li><strong>ریسک:</strong> 🔴 <strong>به‌روزرسانی هسته/قالب/افزونه بدون staging و بکاپ می‌تواند سایت را از کار بیندازد.</strong> <strong>کنترل اجباری: staging → تست → بکاپ → تولید.</strong></li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>F-04</strong> · حوزه: پشتیبان‌گیری · اولویت: <strong>P0</strong> · پیچیدگی: <strong>S</strong> · زمان: ۱ روز</p>
+<ul>
+<li><strong>مسئله:</strong> وضعیت بکاپ و آخرین آزمایش بازیابی نامعلوم.</li>
+<li><strong>شواهد:</strong> بخش ۲.۴</li>
+<li><strong>راهکار:</strong> اجرای چک‌لیست + <strong>انجام یک آزمایش بازیابی کامل واقعی</strong></li>
+<li><strong>معیار پذیرش:</strong> بکاپ خودکار روزانه خارج از سرور + <strong>یک بازیابی موفق مستند</strong></li>
+<li><strong>ریسک:</strong> 🔴 <strong>هر اقدام اصلاحی در این بک‌لاگ بدون بکاپ تأییدشده، غیرقابل بازگشت است.</strong> این <strong>پیش‌نیاز مطلق همه اقدامات فنی دیگر است.</strong></li>
+<li><strong>وضعیت:</strong> ⬜ ← <strong>اولین اقدام فنی</strong></li>
+</ul>
+<h3>گروه G — سنجش و تحلیل</h3>
+<hr/>
+<p><strong>G-01</strong> · حوزه: تحلیل · اولویت: <strong>P0</strong> · پیچیدگی: <strong>M</strong> · زمان: ۳–۵ روز</p>
+<ul>
+<li><strong>مسئله:</strong> نبود خط مبنا و سازوکار سنجش.</li>
+<li><strong>راهکار:</strong> اجرای بخش ۷ (نقشه رویدادها و داشبوردها)</li>
+<li><strong>وابستگی:</strong> 🔑 دسترسی به Analytics/سرچ کنسول یا نصب ابزار</li>
+<li><strong>معیار پذیرش:</strong> داشبورد فعال با خط مبنا برای همه شاخص‌های بخش ۹ پروپوزال</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<hr/>
+<p><strong>G-02</strong> · حوزه: تحلیل/فروش · اولویت: <strong>P0</strong> · پیچیدگی: <strong>S</strong> · زمان: ۲ روز</p>
+<ul>
+<li><strong>مسئله:</strong> هیچ داده فروش/تبدیلی در دسترس نیست.</li>
+<li><strong>راهکار:</strong> دریافت گزارش ۳ تا ۶ ماه اخیر: تعداد سفارش، GMV، میانگین سبد، تفکیک دسته، تفکیک کانال، نرخ مرجوعی، نرخ موفقیت پرداخت</li>
+<li><strong>معیار پذیرش:</strong> خط مبنا مکتوب و تأییدشده</li>
+<li><strong>ریسک:</strong> اگر داده وجود نداشته باشد (یعنی فروش آنلاین واقعاً ناچیز است)، <strong>کل توجیه اقتصادی نقش باید بازتعریف شود</strong> → به بخش ۸.۳ مراجعه کنید</li>
+<li><strong>وضعیت:</strong> ⬜</li>
+</ul>
+<h2>۴.۳ برنامه هفته‌به‌هفته ۹۰ روز</h2>
+<blockquote><p><strong>فرض:</strong> شروع هفته ۱ = روز نخست کاری. هر هفته یک خروجی قابل تحویل دارد.</p></blockquote>
+<table><thead><tr><th>هفته</th><th>تمرکز</th><th>اقدام‌ها</th><th>خروجی قابل تحویل</th><th>معیار پذیرش هفته</th></tr></thead><tbody><tr><td><strong>۱</strong></td><td>دسترسی و خط مبنا</td><td>F-04 (بکاپ) · F-03 (امنیت) · دریافت همه دسترسی‌ها · G-02 (داده فروش)</td><td>گزارش وضعیت دسترسی + بکاپ تأییدشده</td><td>دسترسی کامل؛ بکاپ بازیابی‌شده</td></tr><tr><td><strong>۲</strong></td><td>اندازه‌گیری</td><td>F-01 (CWV) · استخراج کامل داده محصول · C-01 مرحله تشخیص</td><td><strong>گزارش خط مبنا</strong> (۳۶ نقطه عملکرد + وضعیت داده)</td><td>خط مبنا مکتوب و امضاشده</td></tr><tr><td><strong>۳</strong></td><td>ممیزی کامل و اولویت‌بندی</td><td>تکمیل ممیزی سئو/محتوا/UX · A-03 (اینماد) · بازنگری بک‌لاگ با داده واقعی</td><td><strong>گزارش ممیزی نهایی + بک‌لاگ اولویت‌بندی‌شده + اهداف کمی ۶ ماهه</strong></td><td>تأیید/رد همه ۵۵ یافته؛ توافق بر اهداف</td></tr><tr><td><strong>۴</strong></td><td>اعتبار — بحران</td><td>A-01 (درباره ما) · A-02 (سیاست بازگشت) · D-08 (تماس)</td><td>صفحات اعتماد بازنویسی‌شده</td><td>صفر Lorem Ipsum؛ صفر متن نمونه</td></tr><tr><td><strong>۵</strong></td><td>مسیرهای درآمدی</td><td>B-01 (اقساط) · B-02 (پیش‌فاکتور) · B-03 (عمده)</td><td>سه مسیر درآمدی فعال</td><td>صفر مسیر قطع‌شده</td></tr><tr><td><strong>۶</strong></td><td>مسیریابی و صفحه اصلی</td><td>D-01 · D-02 · D-06 · D-07</td><td>صفحه اصلی اصلاح‌شده</td><td>صفر پیوند بی‌ربط/مرده</td></tr><tr><td><strong>۷</strong></td><td>پاک‌سازی ساختاری</td><td>D-03 (حذف صفحات تکراری/دمو) · D-04 (عناوین) · D-05 (پارامترها) · E-03</td><td>sitemap پاک + عناوین اصلاح‌شده</td><td>صفر صفحه دمو در sitemap</td></tr><tr><td><strong>۸</strong></td><td>داده محصول</td><td>C-01 (اجرا) · C-02 · C-05 · C-06</td><td>۲۰ محصول اول با داده تأییدشده</td><td>۱۰۰٪ انطباق با دیتاشیت</td></tr><tr><td><strong>۹</strong></td><td><strong>نقطه بازبینی ۱</strong> + فیلترها</td><td>گزارش پیشرفت ۸ هفته · C-03 (فیلتر برند و ظرفیت)</td><td>گزارش مدیریتی + فیلترهای جدید</td><td>تصمیم ادامه/تعدیل با داده</td></tr><tr><td><strong>۱۰</strong></td><td>محتوای دسته (۱)</td><td>E-01 برای دسته اولویت‌دار شماره ۱</td><td>راهنمای خرید + جدول قیمت + جدول ظرفیت</td><td>≥۸۰۰ کلمه تأییدشده فنی</td></tr><tr><td><strong>۱۱</strong></td><td>محتوای دسته (۲)</td><td>E-01 برای دسته شماره ۲</td><td>همان</td><td>همان</td></tr><tr><td><strong>۱۲</strong></td><td>وبلاگ و خوشه محتوایی</td><td>E-02 گام ۱–۳ · انتشار ۴ مطلب نخست</td><td>تقویم محتوا + ۴ مطلب</td><td>مطالب ایندکس‌شده</td></tr><tr><td><strong>۱۳</strong></td><td>سنجش و بستن ۹۰ روز</td><td>G-01 (داشبورد) · E-04 · D-09 · <strong>گزارش پایان ۹۰ روز</strong></td><td><strong>داشبورد مدیریتی + گزارش ۹۰ روز + برنامه ۶ ماهه بازنگری‌شده</strong></td><td>همه KPIها دارای خط مبنا و مقدار فعلی</td></tr></tbody></table>
+<p><strong>سه قاعده اجرایی این برنامه:</strong></p>
+<ol>
+<li><strong>هیچ هفته‌ای بیش از یک تمرکز اصلی ندارد.</strong> تعهد موازی = شکست موازی.</li>
+<li><strong>هفته ۹ و ۱۳ نقاط بازبینی رسمی‌اند</strong> — با داده، نه با برداشت. اگر داده نشان دهد مسیری کار نمی‌کند، متوقف می‌شود.</li>
+<li><strong>F-04 (بکاپ) در هفته ۱ و پیش از هر چیز دیگری است.</strong> هیچ اقدام فنی دیگری بدون آن مجاز نیست.</li>
+</ol>
+<p><strong>موارد عمداً خارج از ۹۰ روز:</strong> بازطراحی قالب، مهاجرت پلتفرم، هوش مصنوعی (فاز سه)، افزودن دسته‌های جدید، چندزبانه‌سازی، محتوای همه ۱۹۱ محصول.</p>
+<hr/>
+<h1>بخش پنجم — استراتژی سئو و محتوا</h1>
+<h2>۵.۱ استراتژی سئو تکنیکال</h2>
+<p><strong>ترتیب اجباری (پرش از هر مرحله = اتلاف):</strong></p>
+<ol>
+<li><strong>سلامت فهرست</strong> — پاک‌سازی صفحات تکراری/دمو/بقایا (D-03)، اصلاح sitemap، تنظیم canonical، مدیریت پارامترها (D-05)</li>
+<li><strong>سیگنال‌های پایه</strong> — عنوان‌ها (D-04)، توضیحات متا، H1، breadcrumb، schema</li>
+<li><strong>داده ساختاریافته</strong> — Product (کامل)، FAQPage، LocalBusiness، BreadcrumbList، Organization</li>
+<li><strong>عملکرد</strong> — CWV (F-01، F-02)</li>
+<li><strong>معماری</strong> — بازسازی دسته‌بندی (بخش ۳.۱) با redirect</li>
+<li><strong>محتوا</strong> — صفحات تجاری (E-01) و خوشه‌های محتوایی (E-02)</li>
+<li><strong>اعتبار</strong> — پیوندسازی داخلی، سپس لینک‌سازی بیرونی</li>
+</ol>
+<p><strong>نکته مهم درباره ترتیب ۵ و ۶:</strong> بازسازی معماری دسته‌بندی پیش از تولید محتوا انجام شود، وگرنه محتوا باید دوباره منتقل شود. اما پیش از هر دو، سلامت فهرست (۱) باید برقرار باشد.</p>
+<h2>۵.۲ نقشه موضوعی و خوشه‌های محتوایی</h2>
+<p><strong>ساختار کلی: سه خوشه اصلی بر اساس سه سنگر بخش ۱.۳</strong></p>
+<h3>خوشه ۱ — محلی: شیراز و فارس (اولویت اول، قابل دفاع‌ترین)</h3>
+<p><strong>صفحه ستون:</strong> «راهنمای خرید تجهیزات گرمایشی و سرمایشی در شیراز»</p>
+<table><thead><tr><th>موضوع مقاله</th><th>هدف</th><th>صفحه تجاری مقصد</th></tr></thead><tbody><tr><td>بهترین زمان خرید پکیج در شیراز (قیمت فصلی)</td><td>قصد محلی + فصلی</td><td>دسته پکیج</td></tr><tr><td>راهنمای انتخاب کولر آبی متناسب با اقلیم شیراز</td><td>اقلیم محلی</td><td>دسته کولر آبی</td></tr><tr><td>نمایندگی‌های معتبر پکیج در شیراز — چگونه تشخیص دهیم؟</td><td>اعتماد + محلی</td><td>درباره ما + دسته پکیج</td></tr><tr><td>هزینه نصب و سرویس پکیج در شیراز</td><td>پرسش عملی</td><td>صفحه خدمات</td></tr><tr><td>آب و هوای شیراز و انتخاب ظرفیت پکیج</td><td>فنی + محلی</td><td>راهنمای ظرفیت</td></tr><tr><td>سختی آب شیراز و تأثیر آن بر پکیج و رسوب‌گیر</td><td>فنی + فروش مکمل</td><td>رسوب‌گیر</td></tr><tr><td>گرمایش گلخانه‌ها و سالن‌های کشاورزی فارس</td><td>B2B منطقه‌ای</td><td>هیتر صنعتی</td></tr></tbody></table>
+<h3>خوشه ۲ — برند: صفحات برند محور (اولویت دوم)</h3>
+<p><strong>صفحه ستون:</strong> یک لندینگ برای هر برند همکار</p>
+<table><thead><tr><th>برند</th><th>زاویه محتوا</th></tr></thead><tbody><tr><td><strong>انرژی</strong> (نام شرکت!)</td><td>تخصصی‌ترین مزیت: «مرجع کامل کولرهای آبی و سلولزی انرژی» — جداول مقایسه مدل‌های EC/AC، راهنمای ظرفیت</td></tr><tr><td><strong>نیرو تهویه البرز</strong></td><td>مقایسه مدل‌های سلولزی پلیمری/BLDC، تفاوت بالا‌زن و پایین‌زن و پشت‌پنجره‌ای</td></tr><tr><td><strong>ایران رادیاتور</strong></td><td>سری‌های A/L/M/K/ECO — <strong>جدول مقایسه سری‌ها</strong> (بالاترین ارزش؛ پرسش پرتکرار خریداران)</td></tr><tr><td><strong>بوتان</strong></td><td>سری‌های Bita/Parma/Perla/Perla Pro — جدول مقایسه + تفاوت ظرفیت‌ها</td></tr><tr><td><strong>آذر تهویه</strong></td><td>هیترهای صنعتی و برقی — راهنمای انتخاب برای کارگاه</td></tr><tr><td><strong>مشهد ظهور</strong></td><td>هیتر صنعتی گازی و بخاری هیزمی</td></tr><tr><td><strong>تراست / لورچ / آریستون / گرماسان</strong></td><td>در صورت موجودی کافی</td></tr></tbody></table>
+<p><strong>نکته راهبردی:</strong> برند «انرژی» هم‌نام با شرکت است. این یک فرصت برندینگ دوگانه است که هم‌اکنون استفاده نشده — جست‌وجوی «کولر آبی انرژی» هم به برند کالا و هم به فروشگاه مربوط است.</p>
+<h3>خوشه ۳ — دسته تخصصی: هیتر صنعتی و گرمایش کارگاهی (اولویت سوم، B2B)</h3>
+<p><strong>صفحه ستون:</strong> «راهنمای کامل گرمایش فضاهای کارگاهی و صنعتی»</p>
+<table><thead><tr><th>موضوع</th><th>ارزش</th></tr></thead><tbody><tr><td>محاسبه بار گرمایی سالن و کارگاه (با فرمول و مثال عددی)</td><td>🔴 بالاترین ارزش — تصمیم‌گیرنده فنی</td></tr><tr><td>مقایسه هیتر فایر‌تیوب، هیتر برقی و بخاری گازی برای کارگاه</td><td>مقایسه‌ای — پرسش اصلی خریدار</td></tr><tr><td>انتخاب هیتر بر اساس حجم فضا، عایق‌بندی و اقلیم</td><td>ابزار تصمیم</td></tr><tr><td>ایمنی هیترهای گازی در فضاهای بسته — الزامات تهویه</td><td>اعتماد + مسئولیت</td></tr><tr><td>گرمایش گلخانه: انتخاب ظرفیت و نوع هیتر</td><td>بخش کشاورزی</td></tr><tr><td>هزینه انرژی هیتر برقی در برابر گازی</td><td>اقتصادی</td></tr><tr><td>تعمیر و نگهداری فصلی هیتر صنعتی</td><td>خدمات پس از فروش</td></tr></tbody></table>
+<h3>خوشه ۴ (پشتیبان) — راهنمای انتخاب مصرف‌کننده</h3>
+<table><thead><tr><th>موضوع</th></tr></thead><tbody><tr><td>محاسبه ظرفیت پکیج بر اساس متراژ (با جدول)</td></tr><tr><td>تفاوت پکیج تک‌مبدل و دومبدل</td></tr><tr><td>پکیج فن‌دار یا بدون فن؟ کدام برای آپارتمان من؟</td></tr><tr><td>محاسبه ظرفیت کولر گازی بر اساس متراژ (الگو از جدول داماتجهیز)</td></tr><tr><td>تفاوت کولر آبی پوشالی و سلولزی</td></tr><tr><td>رادیاتور آلومینیومی یا پنلی؟</td></tr><tr><td>کدهای خطای پکیج و معنی آن‌ها</td></tr><tr><td>رسوب‌گیر و سختی آب — چرا لازم است؟</td></tr><tr><td>زمان سرویس سالانه پکیج</td></tr></tbody></table>
+<h2>۵.۳ برنامه بازبینی محتوای موجود</h2>
+<table><thead><tr><th>گروه</th><th>تعداد تقریبی</th><th>تصمیم</th></tr></thead><tbody><tr><td>محصولات با توضیحات باکیفیت (الگوی M28FF)</td><td>نیازمند شمارش</td><td><strong>حفظ + افزودن جدول مقایسه + FAQ schema</strong></td></tr><tr><td>محصولات با توضیحات کپی/ناسازگار (ارجاع به مدل دیگر)</td><td>نیازمند شمارش با اسکریپت C-02</td><td><strong>بازنویسی</strong></td></tr><tr><td>محصولات بدون توضیح یا با توضیح یک‌خطی</td><td>نیازمند شمارش</td><td><strong>تولید از صفر با الگوی بخش ۳.۳ لایه ۳</strong></td></tr><tr><td>محصولات ناموجود/فروخته‌شده</td><td>نیازمند شمارش</td><td><strong>تصمیم: حفظ با «اطلاع‌رسانی موجودی» یا حذف</strong></td></tr><tr><td>محصولات با تصویر قدیمی ۲۰۲۱–۲۰۲۲</td><td>قابل شمارش از sitemap</td><td><strong>به‌روزرسانی تصویر (E-04)</strong></td></tr></tbody></table>
+<p><strong>روش شمارش:</strong> اسکریپت استخراج از REST API ووکامرس (<code>/wp-json/wc/v3/products</code>) → کاربرگ با ستون‌های: تعداد کلمه توضیح، وجود جدول، وجود FAQ، تعداد تصویر، فرمت تصویر، تعداد attribute پرشده، وضعیت موجودی، آخرین ویرایش.</p>
+<p><strong>اولویت بازبینی:</strong> ۲۰ محصول پرفروش (بر اساس داده فروش) → ۲۰ محصول پربازدید (بر اساس سرچ کنسول) → بقیه به ترتیب دسته.</p>
+<h2>۵.۴ الگوی بریف تولید محتوای تخصصی</h2>
+<pre><code>شناسه بریف:            BR-{خوشه}-{ترتیب}
+نوع محتوا:             [ ] صفحه دسته  [ ] راهنمای خرید  [ ] مقاله آموزشی  [ ] صفحه برند
+عنوان کاری:
+عنوان سئو (≤۶۰ نویسه):
+توضیح متا (≤۱۵۵ نویسه):
+URL پیشنهادی:
+کوئری هدف اصلی:
+کوئری‌های فرعی (۳–۵):
+قصد کاربر:             [ ] اطلاعاتی  [ ] تجاری  [ ] تراکنشی  [ ] محلی
+سنگر:                  [ ] محلی  [ ] برند  [ ] دسته تخصصی  [ ] عمومی
+مخاطب:                 [ ] مصرف‌کننده  [ ] کارشناس تأسیسات  [ ] خریدار سازمانی  [ ] پیمانکار
+سطح دانش مخاطب:        [ ] مبتدی  [ ] متوسط  [ ] تخصصی
+مسئله‌ای که حل می‌کند:  (یک جمله — اگر نمی‌توانید بنویسید، این محتوا لازم نیست)
+صفحه تجاری مقصد:       (پیوند داخلی اجباری)
+محصولات مرتبط:         (حداقل ۳ محصول با شناسه)
+ساختار هدینگ‌ها:        H2/H3 پیشنهادی
+حداقل کلمه:
+منابع داده مجاز:       ← 🔴 اجباری: کاتالوگ رسمی / دیتاشیت / تأیید کارشناس
+                       ❌ ممنوع: سایت رقیب / تولید AI بدون بازبینی / حدس
+جداول مورد نیاز:       [ ] مشخصات  [ ] مقایسه  [ ] قیمت  [ ] ظرفیت‌یابی
+schema مورد نیاز:      [ ] FAQPage  [ ] HowTo  [ ] Product  [ ] Article
+تصاویر/دارایی:
+نویسنده:
+بازبین فنی:            ← 🔴 اجباری: نام کارشناس تأییدکننده داده فنی
+بازبین سئو:            من
+تاریخ تحویل:
+تاریخ انتشار:
+تاریخ بازبینی بعدی:    (پیش‌فرض: ۶ ماه)
+شاخص پذیرش:            چه چیزی باید پس از انتشار درست باشد؟</code></pre>
+<p><strong>قاعده سخت:</strong> هیچ محتوایی بدون «بازبین فنی» امضاشده منتشر نمی‌شود. در صنفی که اشتباه در ظرفیت‌سنجی به خرید اشتباه و خطر ایمنی منجر می‌شود، این یک الزام اخلاقی است نه بوروکراسی.</p>
+<hr/>
+<h1>بخش ششم — معماری دستیار هوش مصنوعی</h1>
+<blockquote><p><strong>پیش‌شرط مطلق:</strong> این بخش تنها پس از تکمیل C-01 (داده تمیز) و E-01 (محتوای تجاری) قابل اجراست. اجرای زودهنگام = تولید پاسخ غلط با اعتبار نمایندگی.</p></blockquote>
+<h2>۶.۱ ارزیابی صادقانه کاربردها</h2>
+<table><thead><tr><th>کاربرد</th><th>مسئله‌ای که حل می‌کند</th><th>ارزش</th><th>پیچیدگی</th><th>ریسک پاسخ غلط</th><th>تصمیم</th></tr></thead><tbody><tr><td>پاسخ به پرسش‌های متداول (گارانتی، ارسال، نصب، اقساط)</td><td>تکرار بالای پرسش‌های ساده؛ پاسخ خارج از ساعت کاری</td><td><strong>بالا</strong></td><td>پایین</td><td><strong>پایین</strong> (پاسخ از متن ثابت تأییدشده)</td><td>✅ <strong>اولویت ۱</strong></td></tr><tr><td>راهنمای انتخاب/ظرفیت‌یابی</td><td>کاربر نمی‌داند چه ظرفیتی لازم دارد؛ امروز باید زنگ بزند</td><td><strong>بسیار بالا</strong></td><td>متوسط</td><td><strong>متوسط</strong> (قابل کنترل با فرمول قطعی)</td><td>✅ <strong>اولویت ۲</strong></td></tr><tr><td>یافتن محصول با زبان طبیعی</td><td>فیلترهای فعلی ضعیف‌اند (V-35)</td><td>بالا</td><td>متوسط</td><td>متوسط</td><td>✅ <strong>اولویت ۳</strong></td></tr><tr><td>جمع‌آوری و دسته‌بندی سرنخ + خلاصه‌سازی برای تیم فروش</td><td>سرنخ‌ها پراکنده و بدون زمینه به فروش می‌رسند</td><td>بالا</td><td>پایین</td><td><strong>پایین</strong></td><td>✅ <strong>اولویت ۴</strong></td></tr><tr><td>کمک به تولید/بازبینی محتوا</td><td>کمبود ظرفیت تولید</td><td>متوسط</td><td>پایین</td><td><strong>بالا اگر بدون بازبین فنی</strong></td><td>⚠️ فقط با بازبینی انسانی اجباری</td></tr><tr><td>اتصال به CRM</td><td>نبود CRM تأییدشده</td><td>—</td><td>بالا</td><td>—</td><td>⏸ <strong>معلق</strong> — ابتدا باید مشخص شود CRM وجود دارد یا خیر</td></tr><tr><td>چت‌بات عمومی «هر سؤالی بپرسید»</td><td>—</td><td>پایین</td><td>بالا</td><td><strong>بسیار بالا</strong></td><td>❌ <strong>رد می‌شود</strong> — دامنه باز = پاسخ غلط تضمینی</td></tr></tbody></table>
+<p><strong>اصل حاکم:</strong> دامنه دستیار باید <strong>بسته و تعریف‌شده</strong> باشد. یک دستیار که «به هر سؤالی پاسخ می‌دهد» در صنف تجهیزات فنی، یک ماشین تولید پاسخ نادرست است.</p>
+<h2>۶.۲ معماری پیشنهادی</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│  کاربر (وب / واتساپ)                                          │
+└───────────────────────┬─────────────────────────────────────┘
+                        │
+        ┌───────────────▼───────────────┐
+        │  لایه ورودی و روتینگ قصد       │
+        │  ─ تشخیص موضوع از فهرست مجاز  │
+        │  ─ اگر خارج از دامنه → ارجاع   │
+        └───────────────┬───────────────┘
+                        │
+     ┌──────────────────┼──────────────────┐
+     │                  │                  │
+┌────▼─────┐    ┌───────▼──────┐   ┌──────▼───────┐
+│ پایگاه   │    │ کاتالوگ      │   │ موتور        │
+│ دانش     │    │ ساختاریافته │   │ ظرفیت‌یابی   │
+│ تأییدشده │    │ (WooCommerce │   │ (فرمول قطعی، │
+│ (FAQ،    │    │  REST API +  │   │  نه LLM)     │
+│ سیاست‌ها)│    │  attributeها)│   │              │
+└────┬─────┘    └───────┬──────┘   └──────┬───────┘
+     │                  │                  │
+     └──────────────────┼──────────────────┘
+                        │
+        ┌───────────────▼───────────────┐
+        │  بازیابی (RAG) + تولید پاسخ    │
+        │  ─ فقط از منابع بازیابی‌شده     │
+        │  ─ بدون دانش داخلی مدل          │
+        └───────────────┬───────────────┘
+                        │
+        ┌───────────────▼───────────────┐
+        │  لایه کنترل کیفیت و ایمنی      │
+        │  ─ آستانه اطمینان               │
+        │  ─ ممنوعیت ادعای قیمت/موجودی    │
+        │  ─ ممنوعیت توصیه ایمنی          │
+        │  ─ ارجاع اجباری به کارشناس      │
+        └───────────────┬───────────────┘
+                        │
+     ┌──────────────────┼──────────────────┐
+     │                  │                  │
+┌────▼────┐     ┌───────▼───────┐  ┌──────▼──────┐
+│ پاسخ    │     │ ثبت سرنخ با   │  │ لاگ کامل    │
+│ به کاربر│     │ زمینه مکالمه  │  │ برای بازبینی│
+└─────────┘     └───────────────┘  └─────────────┘</code></pre>
+<p><strong>تصمیم معماری کلیدی:</strong> ظرفیت‌یابی <strong>نباید</strong> با LLM انجام شود. باید یک <strong>محاسبه قطعی</strong> باشد (فرمول + جدول) که LLM فقط ورودی‌هایش را از کاربر می‌گیرد و خروجی را توضیح می‌دهد. این تنها راه تضمین صحت عددی است.</p>
+<h2>۶.۳ منبع دانش (Knowledge Base)</h2>
+<table><thead><tr><th>منبع</th><th>محتوا</th><th>نحوه نگهداری</th></tr></thead><tbody><tr><td><strong>سیاست‌ها</strong></td><td>بازگشت کالا، گارانتی به تفکیک برند، ارسال، اقساط، نصب</td><td>سند ساختاریافته؛ به‌روزرسانی با هر تغییر سیاست؛ نسخه‌بندی</td></tr><tr><td><strong>FAQ</strong></td><td>۳۰–۵۰ پرسش پرتکرار واقعی از تیم فروش</td><td><strong>گردآوری از تیم فروش — نه حدس</strong></td></tr><tr><td><strong>کاتالوگ</strong></td><td>ویژگی‌های لایه ۱ و ۲ بخش ۳.۳</td><td>همگام‌سازی خودکار از WooCommerce REST API</td></tr><tr><td><strong>راهنماهای انتخاب</strong></td><td>خروجی E-01 و خوشه‌های محتوایی</td><td>همگام‌سازی از محتوا</td></tr><tr><td><strong>جدول ظرفیت‌یابی</strong></td><td>منطق محاسبه به تفکیک نوع کالا</td><td>تأییدشده توسط کارشناس فنی؛ <strong>منبع واحد حقیقت</strong></td></tr></tbody></table>
+<p><strong>قاعده:</strong> هر فکتی که دستیار بیان می‌کند باید به یک رکورد در این منابع قابل ردیابی باشد. اگر در منبع نیست، دستیار <strong>نمی‌گوید «نمی‌دانم» — بلکه ارجاع می‌دهد به کارشناس.</strong></p>
+<h2>۶.۴ سناریوهای مکالمه</h2>
+<h3>سناریوی ۱ — ظرفیت‌یابی پکیج (بالاترین ارزش)</h3>
+<pre><code>کاربر:  پکیج می‌خوام، خونمون ۱۲۰ متره
+دستیار: برای پیشنهاد دقیق، سه پرسش کوتاه دارم:
+        ۱) واحد در طبقه چندم است و آیا سقف آن پشت‌بام است؟
+        ۲) شهر/منطقه؟
+        ۳) عایق‌بندی پنجره‌ها دوجداره است یا معمولی؟
+کاربر:  طبقه ۳، زیر سقف نیست، شیراز، دوجداره
+دستیار: [محاسبه قطعی از جدول ظرفیت‌یابی]
+        برای ۱۲۰ مترمربع در شیراز، طبقه میانی با پنجره دوجداره،
+        ظرفیت پیشنهادی ۲۸٬۰۰۰ کیلوکالری بر ساعت است.
+        سه مدل موجود در این ظرفیت:
+        • ایران رادیاتور L28FF — [لینک]
+        • ایران رادیاتور M28FF — [لینک]
+        • بوتان پرلا پرو ۳۲۰۰۰ — [لینک]
+        تفاوت اصلی آن‌ها در [مقایسه ساختاریافته از کاتالوگ] است.
+        ⚠️ قیمت و موجودی لحظه‌ای را در صفحه محصول ببینید.
+        برای مشاوره تخصصی و هماهنگی نصب: ۰۹۳۶۱۱۲۹۵۲</code></pre>
+<h3>سناریوی ۲ — پرسش سیاستی</h3>
+<pre><code>کاربر:  گارانتی پکیج ایران رادیاتور چند ماهه؟
+دستیار: [بازیابی از منبع سیاست‌ها]
+        پکیج‌های ایران رادیاتور ۲۴ ماه گارانتی شرکتی دارند.
+        شرط اعتبار گارانتی: نصب توسط تکنسین مجاز شرکت ایران رادیاتور.
+        هزینه ایاب‌ذهاب و اتصالات نصب بر عهده مشتری است.
+        منبع: صفحه سیاست گارانتی [لینک]</code></pre>
+<h3>سناریوی ۳ — خارج از دامنه (بحرانی‌ترین سناریو)</h3>
+<pre><code>کاربر:  پکیج من ارور E01 میده، چکار کنم؟
+دستیار: ⛔ [قاعده ایمنی — توصیه فنی/ایمنی ممنوع]
+        تشخیص کد خطا نیازمند بررسی توسط تکنسین مجاز است و
+        از راه دور قابل تعیین نیست.
+        برای هماهنگی بازدید با پشتیبانی تماس بگیرید: ۰۷۱۳۲۳۴۱۷۸۹
+        📋 اطلاعاتی که به تکنسین بدهید: مدل دستگاه، کد خطا،
+        و زمان بروز.
+        [ثبت خودکار به‌عنوان سرنخ خدمات با زمینه مکالمه]</code></pre>
+<h3>سناریوی ۴ — سرنخ سازمانی</h3>
+<pre><code>کاربر:  برای یک سالن ۸۰۰ متری کارگاه، ۱۰ تا هیتر لازم دارم
+دستیار: این یک سفارش سازمانی است و نیازمند پیش‌فاکتور رسمی و
+        بررسی بار گرمایی سالن توسط کارشناس است.
+        برای صدور پیش‌فاکتور، این فرم را تکمیل کنید: [لینک B-02]
+        اطلاعات مورد نیاز: ابعاد سالن، ارتفاع سقف، نوع عایق‌بندی،
+        کاربری سالن، و شهر.
+        📋 [ثبت سرنخ B2B با اولویت بالا + اعلان فوری به تیم فروش]</code></pre>
+<h2>۶.۵ قواعد ارجاع به کارشناس (اجباری)</h2>
+<p>دستیار <strong>باید</strong> در این موارد ارجاع دهد و <strong>نباید</strong> خودش پاسخ دهد:</p>
+<table><thead><tr><th>#</th><th>قاعده</th><th>منطق</th></tr></thead><tbody><tr><td>۱</td><td>هر پرسش درباره <strong>عیب‌یابی، تعمیر، کد خطا، نصب عملی</strong></td><td>🔴 ایمنی + مسئولیت</td></tr><tr><td>۲</td><td>هر درخواست <strong>قیمت قطعی، تخفیف، مذاکره قیمت</strong></td><td>قیمت در نوسان است؛ تخفیف اختیار فروش است</td></tr><tr><td>۳</td><td>هر پرسش درباره <strong>موجودی لحظه‌ای</strong></td><td>داده انبار؛ خطر تضاد با واقعیت</td></tr><tr><td>۴</td><td>هر <strong>سفارش سازمانی/عمده/پروژه‌ای</strong></td><td>ارزش بالا + نیازمند پیش‌فاکتور</td></tr><tr><td>۵</td><td>هر <strong>شکایت، مرجوعی، یا اختلاف</strong></td><td>نیازمند رسیدگی انسانی</td></tr><tr><td>۶</td><td>هر پرسش <strong>خارج از چهار خوشه موضوعی</strong></td><td>دامنه بسته</td></tr><tr><td>۷</td><td>هر موردی که <strong>اطمینان بازیابی زیر آستانه</strong> باشد</td><td>«نمی‌دانم» بهتر از «اشتباه می‌دانم» است</td></tr><tr><td>۸</td><td>هر پرسش درباره <strong>ایمنی گاز، تهویه احتراق، دودکش</strong></td><td>🔴 خطر جانی</td></tr><tr><td>۹</td><td>پس از <strong>۳ دور</strong> مکالمه بدون رسیدن به نتیجه</td><td>جلوگیری از سرگردانی کاربر</td></tr></tbody></table>
+<p><strong>الگوی ارجاع:</strong> همیشه شامل (۱) دلیل ارجاع به زبان کاربر، (۲) شماره تماس، (۳) اطلاعاتی که کاربر باید آماده داشته باشد، (۴) ثبت خودکار سرنخ با زمینه کامل مکالمه.</p>
+<h2>۶.۶ الزامات حریم خصوصی، امنیت و مدیریت هزینه</h2>
+<h3>حریم خصوصی و انطباق</h3>
+<ul class="task">
+<li><strong>هیچ داده شخصی در prompt به سرویس خارجی ارسال نشود</strong> — نام، تلفن، آدرس، شماره سفارش باید پیش از ارسال mask شوند</li>
+<li>اگر از سرویس خارجی (OpenAI/…) استفاده می‌شود: بررسی <strong>دسترسی‌پذیری قانونی و فنی از ایران</strong> ← 🔴 <strong>ریسک جدی: تحریم و قطع دسترسی</strong></li>
+<li>گزینه جایگزین: مدل خودمیزبان (self-hosted) روی زیرساخت داخلی → هزینه زیرساخت بالاتر، ریسک دسترسی صفر</li>
+<li>انطباق با قانون حفاظت از داده‌های شخصی ایران</li>
+<li>اعلام شفاف به کاربر که با دستیار صحبت می‌کند (<strong>الزام اخلاقی</strong>)</li>
+<li>امکان درخواست حذف داده مکالمه توسط کاربر</li>
+<li>دوره نگه‌داری لاگ مکالمات مشخص و محدود</li>
+<li>لاگ‌ها حاوی داده شخصی نباشند یا رمزنگاری شوند</li>
+</ul class=task>
+<h3>امنیت</h3>
+<ul class="task">
+<li>محافظت در برابر prompt injection (محتوای کاربر نباید قواعد سیستم را بازنویسی کند)</li>
+<li>محدودسازی دامنه پاسخ در سطح سیستم (نه فقط در prompt)</li>
+<li>Rate limiting برای جلوگیری از سوءاستفاده و هزینه انفجاری</li>
+<li>محافظت در برابر ربات/اسکریپر</li>
+<li>کلیدهای API در سمت سرور، هرگز در کد سمت کلاینت</li>
+<li>بازبینی انسانی دوره‌ای نمونه‌ای از مکالمات</li>
+</ul class=task>
+<h3>مدیریت هزینه</h3>
+<ul class="task">
+<li><strong>سقف مصرف ماهانه با قطع خودکار</strong> ← 🔴 بدون این، یک حمله یا یک حلقه می‌تواند هزینه انفجاری بسازد</li>
+<li>کش پاسخ برای پرسش‌های پرتکرار (FAQ) — <strong>بخش بزرگی از ترافیک نیازی به فراخوانی مدل ندارد</strong></li>
+<li>استفاده از مدل کوچک‌تر برای روتینگ قصد، مدل بزرگ‌تر فقط برای تولید پاسخ</li>
+<li>محدودسازی طول زمینه (context) با بازیابی دقیق به‌جای ارسال کل کاتالوگ</li>
+<li>ردیابی هزینه به تفکیک سناریو → شناسایی پرمصرف‌ها</li>
+<li><strong>هزینه زیرساخت AI جدا از حقوق، در بودجه مستقل</strong> (بخش ۱۱ پروپوزال)</li>
+</ul class=task>
+<h2>۶.۷ معیارهای ارزیابی دستیار</h2>
+<table><thead><tr><th>معیار</th><th>تعریف</th><th>آستانه پیشنهادی پیش از انتشار عمومی</th></tr></thead><tbody><tr><td><strong>دقت فکتی</strong></td><td>درصد پاسخ‌های قابل ردیابی به منبع معتبر، در بازبینی انسانی نمونه</td><td>≥ ۹۵٪</td></tr><tr><td><strong>نرخ ارجاع صحیح</strong></td><td>درصد مواردی که باید ارجاع می‌شدند و ارجاع شدند</td><td><strong>۱۰۰٪</strong> برای قواعد ایمنی (۱ و ۸)</td></tr><tr><td><strong>نرخ پاسخ غلط خطرناک</strong></td><td>پاسخ فنی/ایمنی نادرست</td><td><strong>صفر — تحمل‌ناپذیر</strong></td></tr><tr><td><strong>نرخ حل در مکالمه</strong></td><td>درصد مکالماتی که بدون ارجاع به نتیجه رسیدند</td><td>≥ ۴۰٪</td></tr><tr><td><strong>نرخ تبدیل به سرنخ</strong></td><td>درصد مکالماتی که به سرنخ ثبت‌شده تبدیل شدند</td><td>اندازه‌گیری و مقایسه با خط مبنا تلفنی</td></tr><tr><td><strong>هزینه به ازای هر مکالمه</strong></td><td>—</td><td>زیر آستانه اقتصادی توافق‌شده</td></tr><tr><td><strong>رضایت کاربر</strong></td><td>امتیاز پایان مکالمه</td><td>≥ ۴ از ۵</td></tr></tbody></table>
+<p><strong>روش ارزیابی:</strong> ساخت یک مجموعه آزمون ۱۰۰ پرسشی (۶۰ پرسش درون‌دامنه، ۲۵ پرسش بیرون‌دامنه، ۱۵ پرسش تهاجمی/injection) و اجرای آن <strong>پیش از هر انتشار</strong>. تکرار پس از هر تغییر در منبع دانش.</p>
+<hr/>
+<h1>بخش هفتم — نقشه رویدادهای تحلیلی و داشبوردها</h1>
+<h2>۷.۱ رویدادهای پایه</h2>
+<table><thead><tr><th>رویداد</th><th>نقاط اجرا</th><th>پارامترها</th></tr></thead><tbody><tr><td><code>page_view</code></td><td>همه صفحات</td><td><code>page_type</code> (home/category/product/cart/checkout/content/policy), <code>category_id</code>, <code>product_id</code></td></tr><tr><td><code>view_item_list</code></td><td>دسته، فروشگاه، نتایج جست‌وجو</td><td><code>list_name</code>, <code>items[]</code>, <code>filter_used</code>, <code>sort_used</code></td></tr><tr><td><code>view_item</code></td><td>صفحه محصول</td><td><code>item_id</code>, <code>item_name</code>, <code>item_brand</code>, <code>item_category</code>, <code>price</code>, <code>availability</code></td></tr><tr><td><code>select_item</code></td><td>کلیک روی کارت محصول</td><td><code>item_id</code>, <code>list_name</code>, <code>position</code></td></tr><tr><td><code>search</code></td><td>جست‌وجوی سایت</td><td><code>search_term</code>, <code>results_count</code> ← 🔴 <strong><code>results_count = 0</code> یک KPI حیاتی است</strong></td></tr><tr><td><code>add_to_cart</code></td><td>افزودن به سبد</td><td><code>item_id</code>, <code>price</code>, <code>quantity</code>, <code>source_page</code></td></tr><tr><td><code>remove_from_cart</code></td><td>حذف از سبد</td><td><code>item_id</code>, <code>source_page</code></td></tr><tr><td><code>view_cart</code></td><td>نمایش سبد</td><td><code>value</code>, <code>items_count</code></td></tr><tr><td><code>begin_checkout</code></td><td>شروع تسویه</td><td><code>value</code>, <code>items_count</code></td></tr><tr><td><code>checkout_step</code></td><td>هر گام تسویه</td><td><code>step_number</code>, <code>step_name</code></td></tr><tr><td><code>add_payment_info</code></td><td>انتخاب روش پرداخت</td><td><code>payment_method</code></td></tr><tr><td><code>purchase</code></td><td>تکمیل سفارش</td><td><code>transaction_id</code>, <code>value</code>, <code>items[]</code>, <code>payment_method</code>, <code>shipping_method</code> ← <strong>اجباری با Enhanced Ecommerce</strong></td></tr><tr><td><code>refund</code></td><td>مرجوعی</td><td><code>transaction_id</code>, <code>value</code>, <code>reason</code></td></tr></tbody></table>
+<h2>۷.۲ رویدادهای اختصاصی این پروژه</h2>
+<table><thead><tr><th>رویداد</th><th>چرا</th><th>پارامترها</th></tr></thead><tbody><tr><td><code>filter_applied</code></td><td>سنجش ارزش فیلترها (C-03)</td><td><code>filter_name</code>, <code>filter_value</code>, <code>results_count</code></td></tr><tr><td><code>compare_add</code> / <code>compare_view</code></td><td>سنجش استفاده از مقایسه</td><td><code>item_ids[]</code></td></tr><tr><td><code>wishlist_add</code></td><td>سنجش علاقه بدون خرید</td><td><code>item_id</code></td></tr><tr><td><code>quick_view</code></td><td>سنجش الگوی بررسی سریع</td><td><code>item_id</code></td></tr><tr><td><code>click_call</code></td><td>🔴 <strong>حیاتی‌ترین رویداد این سایت</strong> — هر <code>tel:</code></td><td><code>phone_number</code>, <code>page_type</code>, <code>product_id</code></td></tr><tr><td><code>click_whatsapp</code></td><td>مسیر اصلی ارتباط</td><td><code>page_type</code>, <code>product_id</code></td></tr><tr><td><code>lead_form_submit</code></td><td>فرم‌های تماس/مشاوره</td><td><code>form_type</code>, <code>page_type</code></td></tr><tr><td><code>quote_request_submit</code></td><td>B-02</td><td><code>company</code>, <code>value_estimate</code>, <code>category</code></td></tr><tr><td><code>wholesale_request_submit</code></td><td>B-03</td><td><code>category</code>, <code>volume</code></td></tr><tr><td><code>installment_page_view</code></td><td>B-01</td><td><code>source</code></td></tr><tr><td><code>guide_table_interaction</code></td><td>سنجش ارزش جداول راهنما (E-01)</td><td><code>table_type</code> (price/capacity/specs), <code>page_type</code></td></tr><tr><td><code>faq_expand</code></td><td>سنجش کدام پرسش‌ها مهم‌اند</td><td><code>question_id</code>, <code>product_id</code></td></tr><tr><td><code>chat_start</code> / <code>chat_handoff</code> / <code>chat_resolved</code></td><td>فاز سه</td><td><code>intent</code>, <code>turns</code>, <code>escalated</code></td></tr><tr><td><code>trust_badge_click</code></td><td>D-09</td><td><code>badge_name</code></td></tr><tr><td><code>error_js</code></td><td>سلامت فنی</td><td><code>message</code>, <code>page</code>, <code>stack</code></td></tr><tr><td><code>out_of_stock_view</code></td><td>اندازه‌گیری اثر V-23/V-24</td><td><code>item_id</code></td></tr><tr><td><code>stock_alert_signup</code></td><td>C-04</td><td><code>item_id</code></td></tr></tbody></table>
+<h2>۷.۳ ابعاد سفارشی مورد نیاز</h2>
+<p><code>user_type</code> (مصرف‌کننده/سرنخ B2B/بازگشتی) · <code>city</code> (از IP، با احترام به حریم خصوصی) · <code>device</code> · <code>season_bucket</code> (گرمایش/سرمایش) · <code>brand_affinity</code> · <code>lead_status</code></p>
+<h2>۷.۴ داشبوردها</h2>
+<h3>داشبورد ۱ — مدیریتی (هفتگی، یک صفحه، برای مدیرعامل)</h3>
+<table><thead><tr><th>بخش</th><th>محتوا</th></tr></thead><tbody><tr><td>فروش</td><td>GMV هفته + مقایسه با هفته قبل و هفته مشابه سال قبل؛ تعداد سفارش؛ میانگین سبد</td></tr><tr><td>کانال</td><td>تفکیک ترافیک: ارگانیک / مستقیم / ارجاعی / اجتماعی / تبلیغاتی</td></tr><tr><td>قیف</td><td>جلسات → مشاهده محصول → افزودن به سبد → شروع تسویه → خرید (با نرخ هر گام)</td></tr><tr><td>سرنخ</td><td>تعداد سرنخ دیجیتال + تماس + واتساپ + پیش‌فاکتور</td></tr><tr><td>محتوا</td><td>مطالب منتشرشده؛ impressions ارگانیک؛ کوئری‌های جدید</td></tr><tr><td>سلامت</td><td>CWV؛ خطاهای JS؛ زمان پاسخ سرور</td></tr><tr><td>🔴 پرچم‌ها</td><td>هر شاخصی که از آستانه خارج شده</td></tr></tbody></table>
+<h3>داشبورد ۲ — تبدیل (هفتگی، برای من)</h3>
+<p>نرخ تبدیل به تفکیک: دستگاه، دسته، برند، منبع ترافیک، کاربر جدید/بازگشتی · نرخ افزودن به سبد به تفکیک محصول · نرخ رهاشدن سبد به تفکیک گام · محصولات با بیشترین مشاهده بدون خرید · <strong>جست‌وجوهای بدون نتیجه</strong> · محصولات ناموجود پربازدید</p>
+<h3>داشبورد ۳ — سئو و محتوا (ماهانه)</h3>
+<p>پوشش ایندکس · کوئری‌ها به تفکیک خوشه (محلی/برند/دسته تخصصی) · صفحات برتر · صفحات با impressions بالا و CTR پایین (فرصت عنوان) · صفحات با رتبه ۵–۱۵ (فرصت هل دادن) · وضعیت CWV در سرچ کنسول · پیوندهای داخلی یتیم</p>
+<h3>داشبورد ۴ — کیفیت داده (ماهانه)</h3>
+<p>درصد محصولات با داده کامل به تفکیک الگو · تعداد attribute پرشده · تعداد محصولات بدون تصویر کافی · تعداد محصولات با توضیح زیر آستانه · <strong>تعداد ناسازگاری مدل/ویژگی</strong> (خروجی اسکریپت C-02)</p>
+<h3>داشبورد ۵ — سرنخ و فروش (هفتگی، مشترک با تیم فروش)</h3>
+<p>سرنخ به تفکیک منبع و نوع · زمان پاسخ · نرخ تبدیل سرنخ به سفارش · ارزش سرنخ‌های B2B · <strong>بازخورد تیم فروش درباره کیفیت سرنخ</strong> ← حلقه بسته</p>
+<hr/>
+<h1>بخش هشتم — مدل مالی و سنجش بازده</h1>
+<h2>۸.۱ قاعده بنیادی</h2>
+<blockquote><p><strong>بدون داده پایه، هیچ عدد رشدی وعده داده نمی‌شود.</strong></p></blockquote>
+<p>تا زمانی که G-02 (داده فروش) تکمیل نشده، <strong>هیچ مدل مالی کمی قابل ارائه نیست.</strong> هر عددی که امروز نوشته شود، اختراع است. آنچه در ادامه می‌آید <strong>ساختار مدل</strong> است با پارامترهای ورودی خالی — نه پیش‌بینی.</p>
+<h2>۸.۲ ساختار مدل (پس از پرشدن با داده واقعی)</h2>
+<p><strong>ورودی‌های مورد نیاز از کارفرما:</strong></p>
+<table><thead><tr><th>پارامتر</th><th>نماد</th><th>وضعیت</th></tr></thead><tbody><tr><td>بازدید ماهانه سایت</td><td>V</td><td>❓ نامعلوم</td></tr><tr><td>نرخ تبدیل فعلی</td><td>CR₀</td><td>❓ نامعلوم</td></tr><tr><td>میانگین ارزش سبد</td><td>AOV</td><td>🟡 قابل برآورد از قیمت‌های مشاهده‌شده (بازه ۲۰ تا ۲۷۰ م.ت)</td></tr><tr><td>درآمد ماهانه فعلی از کانال آنلاین</td><td>R₀</td><td>❓ نامعلوم</td></tr><tr><td>حاشیه سود ناخالص</td><td>GM</td><td>❓ نامعلوم</td></tr><tr><td>تعداد سرنخ ماهانه فعلی</td><td>L₀</td><td>❓ نامعلوم</td></tr><tr><td>نرخ تبدیل سرنخ به سفارش</td><td>LCR</td><td>❓ نامعلوم</td></tr><tr><td>تعداد تماس/واتساپ ماهانه</td><td>C₀</td><td>❓ نامعلوم</td></tr></tbody></table>
+<p><strong>ساختار محاسبه:</strong></p>
+<pre><code>R₀ = V × CR₀ × AOV
+بهبود تبدیل:   ΔR_cr = V × (CR₁ − CR₀) × AOV
+بهبود ترافیک:  ΔR_tr = (V₁ − V) × CR₀ × AOV
+بهبود سبد:     ΔR_aov = V × CR₀ × (AOV₁ − AOV)
+سرنخ B2B:      ΔR_b2b = (L₁ − L₀) × LCR × AOV_b2b
+جمع:           R₁ = R₀ + ΔR_cr + ΔR_tr + ΔR_aov + ΔR_b2b
+بازده:         ROI = (R₁ − R₀) × GM ÷ هزینه کل برنامه</code></pre>
+<p><strong>هزینه کل برنامه (ماهانه):</strong></p>
+<pre><code>حقوق نقش                          = ۷۵ م.ت
+ابزارها (سنجش/سئو/تحلیل)          = ❓ بودجه مستقل
+زیرساخت (هاست/CDN/Redis)          = ❓ بودجه مستقل
+تولید محتوا (نویسنده تخصصی)       = ❓ بودجه مستقل
+توسعه/طراحی (پیمانکار)            = ❓ بودجه مستقل
+تبلیغات                           = ❓ بودجه مستقل
+هوش مصنوعی (فاز سه)               = ❓ بودجه مستقل، با سقف</code></pre>
+<h2>۸.۳ سه سناریو — <strong>فقط ساختار، بدون عدد</strong></h2>
+<table><thead><tr><th>سناریو</th><th>فرض‌ها</th><th>شرط تحقق</th></tr></thead><tbody><tr><td><strong>محافظه‌کارانه</strong></td><td>فقط اثر عملیاتی محقق شود: رفع مسیرهای قطع‌شده، کاهش خطای داده، کاهش زمان پاسخ. اثر ترافیک ارگانیک ≈ صفر در ۶ ماه</td><td>اگر داده پایه نشان دهد فروش آنلاین فعلی ناچیز است</td></tr><tr><td><strong>پایه</strong></td><td>اثر عملیاتی + بهبود تبدیل از رفع موانع اعتماد + رشد محدود ارگانیک در سنگر محلی</td><td>دسترسی کامل + منابع اجرایی تأمین شود</td></tr><tr><td><strong>خوش‌بینانه</strong></td><td>هر سه اثر + موفقیت سنگر برند/دسته تخصصی + فعال‌شدن مسیر B2B + موفقیت فاز سه</td><td>همه شرایط بخش ۱۲ پروپوزال + بودجه مستقل کافی + ۱۲ ماه</td></tr></tbody></table>
+<p><strong>قاعده شخصی:</strong> در مذاکره، <strong>فقط سناریوی محافظه‌کارانه را با عدد بیان کن</strong> (آن هم پس از دریافت داده)، و سناریوهای بالاتر را به‌عنوان «بالای بالقوه با شرط» معرفی کن. هرگز سناریوی خوش‌بینانه را به‌عنوان انتظار ارائه نده.</p>
+<h2>۸.۴ سه سطح اثر — تفکیک صریح</h2>
+<table><thead><tr><th>سطح</th><th>تعریف</th><th>نمونه در این پروژه</th><th>نحوه سنجش</th></tr></thead><tbody><tr><td><strong>۱. عملیاتی</strong></td><td>کاهش خطا، دوباره‌کاری و زمان انجام کار</td><td>رفع ۷ مسیر قطع‌شده؛ اصلاح داده ۲۰ محصول؛ حذف نیاز به پاسخ دستی به پرسش‌های تکراری؛ کاهش مرجوعی ناشی از داده نادرست</td><td>تعداد خطاهای باز؛ زمان انجام فرایند؛ نرخ مرجوعی</td></tr><tr><td><strong>۲. بازاریابی</strong></td><td>افزایش کیفیت ورودی، دیده‌شدن و سرنخ</td><td>رشد impressions در سنگر محلی/برند؛ رشد سرنخ دیجیتال؛ بهبود کیفیت سرنخ (زمینه‌دار بودن)</td><td>سرچ کنسول؛ تعداد و کیفیت سرنخ</td></tr><tr><td><strong>۳. تجاری</strong></td><td>بهبود تبدیل، فروش، حفظ مشتری، سودآوری</td><td>رشد نرخ تبدیل؛ رشد AOV از فروش مکمل؛ رشد سهم B2B؛ رشد تکرار خرید</td><td>GMV، CR، AOV، LTV</td></tr></tbody></table>
+<p><strong>هشدار مهم:</strong> سطح ۱ <strong>همیشه</strong> و <strong>سریع‌تر</strong> محقق می‌شود. سطح ۲ و ۳ به زمان، داده و منابع وابسته‌اند. اگر کارفرما فقط سطح ۳ را بپذیرد، تعهد به نتیجه‌ای داده‌ام که کاملاً در کنترلم نیست → <strong>در قرارداد، شاخص‌ها را از هر سه سطح ترکیب کن، با وزن بیشتر روی سطح ۱ و ۲ که در کنترل نقش‌اند.</strong></p>
+<h2>۸.۵ روش اندازه‌گیری بازده — اصول</h2>
+<ol>
+<li><strong>هر ابتکار یک شاخص اختصاصی دارد</strong> و پیش از اجرا ثبت می‌شود.</li>
+<li><strong>خط مبنا پیش از اجرا ثبت می‌شود</strong> — نه پس از آن.</li>
+<li><strong>مقایسه با دوره مشابه</strong>، نه فقط با دوره قبل (فصلی‌بودن HVAC شدید است: گرمایش در مهر–اسفند، سرمایش در اسفند–شهریور).</li>
+<li><strong>آزمون کنترل‌شده</strong> در موارد ممکن (A/B روی صفحه محصول، سبد، فراخوان‌ها).</li>
+<li><strong>تفکیک اثر</strong> — اگر هم‌زمان تبلیغات هم اجرا شده، اثر ارگانیک قابل تفکیک نیست.</li>
+<li><strong>توقف ابتکارهای ناموفق</strong> — معیار توقف از پیش تعریف می‌شود (بخش ۱۱).</li>
+</ol>
+<hr/>
+<h1>بخش نهم — ماتریس اولویت‌بندی</h1>
+<h2>۹.۱ ماتریس اثر × تلاش</h2>
+<pre><code>                     تلاش کم                          تلاش زیاد
+         ┌──────────────────────────────┬──────────────────────────────┐
+         │  🟢 انجام فوری               │  🔵 برنامه‌ریزی‌شده           │
+         │                              │                              │
+ اثر     │  D-01 مسیریابی بنر/کاشی      │  C-01 اصلاح داده محصول      │
+ بالا    │  D-02 بخش‌های بی‌ربط خانه    │  E-01 محتوای صفحه دسته       │
+         │  D-04 الگوی عنوان            │  E-02 راه‌اندازی وبلاگ        │
+         │  D-06 پیوندهای مرده          │  B-01 صفحه اقساط             │
+         │  D-07 ویجت دمو               │  B-02 پیش‌فاکتور              │
+         │  A-02 سیاست بازگشت           │  A-01 درباره ما              │
+         │  C-05 بازه قیمت              │  E-05 اثبات اجتماعی          │
+         │  C-06 محصولات تکراری         │  F-01 عملکرد                 │
+         │                              │  C-03 فیلترها                │
+         ├──────────────────────────────┼──────────────────────────────┤
+         │  🟡 انجام بده، ولی نه اول    │  🔴 بازنگری / رد             │
+         │                              │                              │
+ اثر     │  E-03 sitemap پرتفولیو       │  بازطراحی کامل قالب          │
+ متوسط  │  D-05 پارامترهای خزش         │  مهاجرت پلتفرم               │
+         │  D-09 برچسب‌های اعتماد       │  چندزبانه‌سازی               │
+         │  E-04 بهینه‌سازی تصویر       │  افزودن همه ۱۹۱ محصول به     │
+         │  F-04 بکاپ (پیش‌نیاز!)       │      استاندار کامل هم‌زمان    │
+         │  D-08 صفحه تماس              │  چت‌بات دامنه‌باز             │
+         │  G-01/G-02 سنجش              │  CRM بدون تأیید نیاز         │
+         └──────────────────────────────┴──────────────────────────────┘</code></pre>
+<blockquote><p><strong>استثنای مهم:</strong> F-04 (بکاپ) در مربع «اثر متوسط / تلاش کم» است ولی <strong>پیش‌نیاز مطلق همه اقدامات فنی دیگر</strong> است → عملاً اولین اقدام. ماتریس اثر/تجاهل، وابستگی را نشان نمی‌دهد.</p></blockquote>
+<h2>۹.۲ امتیازدهی چهاربعدی</h2>
+<table><thead><tr><th>اقدام</th><th>اثر (۱–۵)</th><th>هزینه (۱–۵ معکوس)</th><th>ریسک (۱–۵ معکوس)</th><th>سرعت (۱–۵)</th><th><strong>جمع</strong></th><th>رتبه</th></tr></thead><tbody><tr><td>F-04 بکاپ</td><td>۴</td><td>۵</td><td>۵</td><td>۵</td><td><strong>۱۹</strong></td><td>۱</td></tr><tr><td>D-01 مسیریابی</td><td>۵</td><td>۵</td><td>۵</td><td>۵</td><td><strong>۲۰</strong></td><td>۱</td></tr><tr><td>A-02 سیاست بازگشت</td><td>۵</td><td>۴</td><td>۴</td><td>۴</td><td><strong>۱۷</strong></td><td>۲</td></tr><tr><td>D-02 بخش‌های خانه</td><td>۵</td><td>۵</td><td>۵</td><td>۴</td><td><strong>۱۹</strong></td><td>۱</td></tr><tr><td>A-03 اینماد</td><td>۵</td><td>۳</td><td>۴</td><td>۳</td><td><strong>۱۵</strong></td><td>۳</td></tr><tr><td>D-04 عنوان‌ها</td><td>۴</td><td>۵</td><td>۵</td><td>۵</td><td><strong>۱۹</strong></td><td>۱</td></tr><tr><td>D-06/D-07</td><td>۳</td><td>۵</td><td>۵</td><td>۵</td><td><strong>۱۸</strong></td><td>۲</td></tr><tr><td>B-02 پیش‌فاکتور</td><td>۵</td><td>۴</td><td>۴</td><td>۳</td><td><strong>۱۶</strong></td><td>۳</td></tr><tr><td>B-01 اقساط</td><td>۵</td><td>۳</td><td>۳</td><td>۳</td><td><strong>۱۴</strong></td><td>۴</td></tr><tr><td>A-01 درباره ما</td><td>۵</td><td>۳</td><td>۴</td><td>۳</td><td><strong>۱۵</strong></td><td>۳</td></tr><tr><td>C-01 داده محصول</td><td>۵</td><td>۲</td><td>۲</td><td>۲</td><td><strong>۱۱</strong></td><td>۶</td></tr><tr><td>E-01 محتوای دسته</td><td>۵</td><td>۲</td><td>۳</td><td>۲</td><td><strong>۱۲</strong></td><td>۵</td></tr><tr><td>E-02 وبلاگ</td><td>۴</td><td>۲</td><td>۳</td><td>۱</td><td><strong>۱۰</strong></td><td>۷</td></tr><tr><td>D-03 پاک‌سازی</td><td>۴</td><td>۴</td><td>۲</td><td>۳</td><td><strong>۱۳</strong></td><td>۴</td></tr><tr><td>C-03 فیلترها</td><td>۴</td><td>۳</td><td>۳</td><td>۳</td><td><strong>۱۳</strong></td><td>۴</td></tr><tr><td>F-01 عملکرد</td><td>۴</td><td>۳</td><td>۳</td><td>۲</td><td><strong>۱۲</strong></td><td>۵</td></tr><tr><td>E-05 اثبات اجتماعی</td><td>۳</td><td>۳</td><td>۴</td><td>۱</td><td><strong>۱۱</strong></td><td>۶</td></tr><tr><td>دستیار هوش مصنوعی</td><td>۴</td><td>۱</td><td>۱</td><td>۱</td><td><strong>۷</strong></td><td>۹</td></tr><tr><td>بازطراحی کامل</td><td>۲</td><td>۱</td><td>۱</td><td>۱</td><td><strong>۵</strong></td><td>❌ رد</td></tr></tbody></table>
+<p><strong>تفسیر:</strong> ستون «هزینه/ریسک/سرعت» معکوس است (۵ = ارزان/کم‌ریسک/سریع). <strong>بالاترین رتبه‌ها همه از گروه «تعمیر» هستند، نه «ساخت».</strong> این تأیید کمیِ نتیجه‌گیری راهبردی بخش ۶ سند ۰۱ است.</p>
+<p><strong>هشدار درباره C-01:</strong> امتیاز پایین C-01 به دلیل هزینه/ریسک/زمان بالاست، <strong>نه به دلیل اثر کم</strong> — اثر آن ۵ است. این اقدام نمی‌تواند حذف شود چون پیش‌نیاز C-03، E-01 و دستیار هوش مصنوعی است. <strong>ماتریس امتیاز، وابستگی را نادیده می‌گیرد — همیشه گراف وابستگی را هم ببینید.</strong></p>
+<h2>۹.۳ گراف وابستگی‌های بحرانی</h2>
+<pre><code>F-04 بکاپ ──┬──&gt; همه اقدامات فنی
+            │
+A-03 اینماد ┴──&gt; (موازی، مستقل)
+
+C-01 داده تمیز ──┬──&gt; C-03 فیلترها
+                 ├──&gt; E-01 محتوای دسته (جداول مشخصات)
+                 ├──&gt; E-02 وبلاگ (پیوند به محصول دقیق)
+                 └──&gt; دستیار هوش مصنوعی (پیش‌شرط مطلق)
+
+A-02 سیاست بازگشت ──&gt; D-09 برچسب‌های اعتماد ──&gt; بهبود تبدیل صفحه محصول
+
+D-03 پاک‌سازی ──&gt; D-05 پارامترها ──&gt; E-03 sitemap ──&gt; رشد ایندکس
+
+G-02 داده فروش ──┬──&gt; تعیین اهداف کمی
+                 ├──&gt; اولویت‌بندی E-01 (کدام دسته؟)
+                 ├──&gt; D-02 (بخش «پرفروش‌ترین» واقعی)
+                 └──&gt; مدل مالی (بخش ۸)</code></pre>
+<p><strong>بحرانی‌ترین مسیر:</strong> <code>F-04 → G-02 → C-01 → E-01 → رشد ارگانیک</code></p>
+<hr/>
+<h1>بخش دهم — مدل همکاری و گزارش‌دهی</h1>
+<h2>۱۰.۱ مدل همکاری با تیم‌ها</h2>
+<table><thead><tr><th>تیم/نقش</th><th>آنچه من می‌دهم</th><th>آنچه انتظار دارم</th><th>نقطه اصطکاک احتمالی</th><th>راه‌حل</th></tr></thead><tbody><tr><td><strong>مدیریت عامل</strong></td><td>گزارش ماهانه یک‌صفحه‌ای؛ پرچم‌های ریسک؛ گزینه‌های تصمیم با هزینه/اثر</td><td>تصمیم‌های به‌موقع درباره سیاست‌ها، بودجه، و اولویت‌ها</td><td>کندی تصمیم‌گیری → توقف کار</td><td>توافق بر SLA تصمیم (مثلاً ۵ روز کاری)؛ در غیر این صورت، من مطابق پیشنهاد مستند خودم پیش می‌روم و ثبت می‌کنم</td></tr><tr><td><strong>تیم فروش</strong></td><td>سرنخ زمینه‌دار؛ ابزار ظرفیت‌یابی؛ بازخورد درباره کیفیت سرنخ</td><td>داده سرنخ فعلی؛ پرسش‌های پرتکرار مشتری؛ بازخورد درباره علت عدم خرید</td><td>«سرنخ‌های اینترنتی بی‌کیفیت‌اند» — مقاومت رایج</td><td>اندازه‌گیری و مقایسه کیفیت سرنخ دیجیتال در برابر تلفنی با داده، نه با بحث</td></tr><tr><td><strong>تیم فنی/پیمانکار</strong></td><td>بک‌لاگ با معیار پذیرش؛ اولویت‌بندی؛ کنترل کیفیت خروجی</td><td>اجرای به‌موقع؛ اطلاع از محدودیت‌های فنی</td><td>«این با قالب ممکن نیست» / تخمین‌های نامطمئن</td><td>درخواست PoC کوچک پیش از تعهد بزرگ؛ ثبت معیار پذیرش کتبی</td></tr><tr><td><strong>تیم محتوا/نویسنده</strong></td><td>بریف استاندارد (بخش ۵.۴)؛ بازبینی سئو؛ بازخورد ساختاریافته</td><td>تحویل به‌موقع؛ رعایت منابع داده مجاز</td><td>محتوای بی‌کیفیت یا کپی‌شده</td><td>بازبین فنی اجباری؛ رد محتوا معیار روشن دارد نه سلیقه</td></tr><tr><td><strong>انبار/تأمین</strong></td><td>درخواست داده موجودی و قیمت</td><td>داده به‌روز موجودی و قیمت</td><td>کهنه بودن داده → نمایش «فروخته شده» اشتباه (V-23/V-24)</td><td>تعریف دوره به‌روزرسانی + فرایند هشدار</td></tr><tr><td><strong>کارشناس فنی تأسیسات</strong></td><td>پرسش‌های مشخص؛ ساختار جداول ظرفیت‌یابی</td><td>تأیید داده فنی و فرمول‌های محاسبه</td><td>در دسترس نبودن</td><td>زمان‌بندی جلسات کوتاه هفتگی</td></tr></tbody></table>
+<h2>۱۰.۲ سازوکار گزارش‌دهی</h2>
+<table><thead><tr><th>گزارش</th><th>دوره</th><th>مخاطب</th><th>حجم</th><th>محتوا</th></tr></thead><tbody><tr><td>گزارش عملیاتی</td><td>هفتگی</td><td>تیم اجرایی</td><td>نیم صفحه</td><td>چه انجام شد؛ چه مسدود است؛ تصمیم مورد نیاز</td></tr><tr><td>گزارش شاخص</td><td>ماهانه</td><td>مدیریت عامل</td><td>۱–۲ صفحه</td><td>داشبورد ۱ + پرچم‌ها + سه تصمیم پیشنهادی</td></tr><tr><td>بازبینی عمیق</td><td>فصلی</td><td>مدیریت + ذی‌نفعان</td><td>۴–۶ صفحه</td><td>بازنگری اولویت‌ها با داده؛ ادامه/توقف/توسعه هر ابتکار</td></tr><tr><td>گزارش فوری</td><td>رویداد‌محور</td><td>مدیریت</td><td>—</td><td>🔴 ریسک حقوقی، امنیتی، یا خرابی مسیر فروش</td></tr></tbody></table>
+<p><strong>قاعده گزارش‌دهی:</strong> هر گزارش شامل سه چیز است: <strong>عدد، تفسیر، و تصمیم پیشنهادی.</strong> گزارشی که فقط عدد دارد، کار مدیریتی انجام نمی‌دهد.</p>
+<h2>۱۰.۳ برنامه کنترل کیفیت و جلوگیری از بازگشت خطاها</h2>
+<p><strong>چرا این بخش حیاتی است:</strong> الگوی خطاهای مشاهده‌شده (V-01 تا V-17) نشان می‌دهد مشکل <strong>موردی</strong> نیست — <strong>فرایندی</strong> است. بدون کنترل کیفیت، پس از اصلاح، خطاها برمی‌گردند.</p>
+<table><thead><tr><th>لایه کنترل</th><th>مکانیزم</th></tr></thead><tbody><tr><td><strong>۱. چک‌لیست انتشار</strong></td><td>هیچ صفحه/محصولی بدون عبور از چک‌لیست منتشر نشود (پایین)</td></tr><tr><td><strong>۲. بازبین فنی اجباری</strong></td><td>هر محتوای دارای داده فنی نیازمند امضای بازبین فنی</td></tr><tr><td><strong>۳. ممیزی دوره‌ای خودکار</strong></td><td>اسکریپت ماهانه: شمارش صفحات خالی، Lorem Ipsum، پیوند <code>#</code>، شورت‌کد رندر‌نشده، attribute خالی، محصول بدون تصویر، عنوان با خط تیره انتهایی</td></tr><tr><td><strong>۴. ممیزی نمونه‌ای دستی</strong></td><td>ماهانه ۱۰ محصول تصادفی + ۵ صفحه تصادفی، با چک‌لیست کامل</td></tr><tr><td><strong>۵. پایش خارجی</strong></td><td>هشدار خرابی (uptime)؛ هشدار CWV؛ هشدار خطای ۵xx</td></tr><tr><td><strong>۶. ثبت ریشه خطا</strong></td><td>هر خطای یافت‌شده → ثبت علت ریشه‌ای → اصلاح فرایند، نه فقط مورد</td></tr></tbody></table>
+<h3>چک‌لیست انتشار صفحه محصول</h3>
+<ul class="task">
+<li>عنوان شامل: نوع + برند + مدل + ظرفیت + مزیت</li>
+<li>توضیح متا نوشته شده (نه خودکار)</li>
+<li>همه ویژگی‌های لایه ۱ پر شده‌اند</li>
+<li>همه ویژگی‌های اجباری لایه ۲ (الگوی متناسب با نوع کالا) پر شده‌اند</li>
+<li><strong>هیچ فیلدی «واحد» به‌جای «مقدار» ندارد</strong> (→ V-19)</li>
+<li><strong>ظرفیت در پنل ویژگی با ظرفیت در جدول توضیحات یکسان است</strong> (→ V-18)</li>
+<li><strong>نام مدل در توضیحات با نام مدل در عنوان یکسان است</strong> (→ V-21)</li>
+<li>برچسب انتخابگر/تنوع درست است (→ V-20)</li>
+<li>حداقل ۳ تصویر با ابعاد مناسب و alt descriptive</li>
+<li>تصویر اصلی WebP است</li>
+<li>قیمت درست و به‌روز است</li>
+<li>وضعیت موجودی درست است</li>
+<li>شرایط گارانتی ذکر و با صفحه گارانتی سازگار است</li>
+<li>دسته‌بندی درست (نه دسته اشتباه → V-12)</li>
+<li>برند تخصیص یافته (برای فیلتر → C-03)</li>
+<li>حداقل ۳ پیوند داخلی (به دسته، برند، و یک راهنما)</li>
+<li>محصولات مرتبط/مکمل تنظیم شده</li>
+<li>منابع داده ذکر شده‌اند</li>
+<li><strong>بازبین فنی: امضا شده</strong></li>
+</ul class=task>
+<h3>چک‌لیست انتشار صفحه (غیر محصول)</h3>
+<ul class="task">
+<li>هدف صفحه در یک جمله قابل بیان است</li>
+<li>مخاطب مشخص است</li>
+<li>H1 یکتا و توصیفی</li>
+<li>عنوان سئو و توضیح متا دستی</li>
+<li>صفر متن پیش‌فرض/Lorem Ipsum</li>
+<li>صفر پیوند <code>#</code> یا مرده</li>
+<li>صفر شورت‌کد رندر‌نشده</li>
+<li>همه فراخوان‌ها به مقصد درست</li>
+<li>شماره تماس/اطلاعات رسمی درست و یکدست</li>
+<li>schema مناسب</li>
+<li>در sitemap هست و noindex نیست</li>
+<li>در منو/بردکرامب قابل دسترسی است</li>
+</ul class=task>
+<h3>چک‌لیست انتشار مطلب آموزشی</h3>
+<ul class="task">
+<li>بریف (بخش ۵.۴) کامل پر شده</li>
+<li>مسئله‌ای که حل می‌کند در یک جمله نوشته شده</li>
+<li>منابع داده معتبر استفاده شده‌اند (نه رقیب، نه AI بدون بازبینی)</li>
+<li><strong>بازبین فنی امضا کرده</strong></li>
+<li>حداقل ۳ پیوند داخلی به صفحات تجاری</li>
+<li>حداقل ۱ پیوند از یک صفحه تجاری به این مطلب (دوطرفه)</li>
+<li>جداول با داده تأییدشده</li>
+<li>schema FAQPage در صورت وجود پرسش</li>
+<li>تصاویر با alt و WebP</li>
+<li>تاریخ بازبینی بعدی تنظیم شده</li>
+</ul class=task>
+<hr/>
+<h1>بخش یازدهم — ابزارها، دسترسی‌ها و منابع</h1>
+<h2>۱۱.۱ ابزارهای مورد نیاز (همه با بودجه مستقل، نه از حقوق)</h2>
+<table><thead><tr><th>ابزار</th><th>ضرورت</th><th>جایگزین کم‌هزینه</th></tr></thead><tbody><tr><td>Google Search Console</td><td>🔴 اجباری</td><td>رایگان</td></tr><tr><td>Google Analytics 4 + Tag Manager</td><td>🔴 اجباری</td><td>رایگان</td></tr><tr><td>ابزار سئو (Ahrefs / Semrush)</td><td>🟠 خیلی مفید</td><td>نسخه سبک‌تر ایرانی یا فقط GSC + Rank Math Pro</td></tr><tr><td>ابزار CWV (PageSpeed API / CrUX)</td><td>🔴 اجباری</td><td>رایگان</td></tr><tr><td>ابزار رتبه‌بندی محلی (Google Business Profile)</td><td>🔴 اجباری برای سنگر محلی</td><td>رایگان</td></tr><tr><td>افزونه سئو پریمیوم (Yoast/Rank Math Pro)</td><td>🟠 مفید</td><td>نسخه رایگان</td></tr><tr><td>افزونه بهینه‌سازی تصویر</td><td>🟠 مفید</td><td>ابزار خط فرمان + اسکریپت</td></tr><tr><td>افزونه کش / Redis</td><td>🟠 مفید</td><td>کش سرور</td></tr><tr><td>CDN</td><td>🟡 اختیاری</td><td>—</td></tr><tr><td>ابزار فرم (Gravity/WPForms)</td><td>🟠 برای B-02</td><td>Contact Form 7 رایگان</td></tr><tr><td>ابزار پیامک/ایمیل خودکار</td><td>🟠 برای E-05</td><td>—</td></tr><tr><td>ابزار گرمای نقشه/ضبط جلسه</td><td>🟡 اختیاری</td><td>—</td></tr><tr><td>زیرساخت AI + بودجه مصرف</td><td>🟡 فقط فاز سه</td><td>—</td></tr><tr><td>Looker Studio</td><td>🟠 برای داشبوردها</td><td>رایگان</td></tr><tr><td>محیط staging</td><td>🔴 اجباری</td><td>زیردامنه روی همان هاست</td></tr></tbody></table>
+<h2>۱۱.۲ دسترسی‌های مورد نیاز</h2>
+<p>→ <strong>فهرست کامل و قابل ارسال به کارفرما در سند <code>05-چک‌لیست-دسترسی‌ها.md</code></strong></p>
+<h2>۱۱.۳ منابع انسانی مورد نیاز</h2>
+<table><thead><tr><th>نقش</th><th>میزان</th><th>چرا</th></tr></thead><tbody><tr><td>رابط فنی (داخلی یا پیمانکار)</td><td>~۲۰ ساعت در ماه</td><td>اجرای تغییرات کد، افزونه، سرور</td></tr><tr><td>نویسنده/تولیدکننده محتوای تخصصی</td><td>~۴۰ ساعت در ماه</td><td>۸ مطلب در ماه (۲ در هفته)</td></tr><tr><td>بازبین فنی (کارشناس تأسیسات)</td><td>~۸ ساعت در ماه</td><td>تأیید داده فنی — <strong>غیرقابل حذف</strong></td></tr><tr><td>طراح گرافیک</td><td>~۱۰ ساعت در ماه</td><td>بنرها، دارایی بصری، جداول</td></tr><tr><td>رابط تیم فروش</td><td>~۴ ساعت در ماه</td><td>داده سرنخ، پرسش‌های پرتکرار</td></tr></tbody></table>
+<p><strong>🔴 نکته مذاکره‌ای:</strong> این منابع <strong>خارج از حقوق ۷۵ م.ت</strong> هستند. اگر کارفرما انتظار داشته باشد من همه این نقش‌ها را هم ایفا کنم، آنگاه یا کیفیت سقوط می‌کند یا برنامه متوقف می‌شود. این باید در قرارداد صریح شود.</p>
+<hr/>
+<h1>بخش دوازدهم — استراتژی مذاکره (محرمانه)</h1>
+<h2>۱۲.۱ ارزیابی صادقانه موقعیت</h2>
+<p><strong>نقاط قوت من در این مذاکره:</strong></p>
+<ol>
+<li>یافته‌های مستند، قابل بازبینی و غیرقابل انکار — ۵۵ مورد با URL و نقل‌قول عینی</li>
+<li>مسئله واقعی و فوری است: سه مسیر درآمدی قطع‌شده + ریسک حقوقی سیاست‌ها + داده فنی نادرست</li>
+<li>پروپوزال صریحاً هیچ عدد ساختگی ندارد → اعتبار بالا</li>
+<li>داده بازار کار واقعی و قابل استناد در دست دارم</li>
+<li>مرز حرفه‌ای روشن میان پروپوزال و ممیزی اجرایی گذاشته‌ام</li>
+</ol>
+<p><strong>نقاط ضعف من:</strong></p>
+<ol>
+<li>🔴 <strong>جغرافیا:</strong> کارفرما در شیراز است و میانه حقوق «سایر شهرها» ۴۸ م.ت است — یعنی ۷۵ م.ت معادل <strong>صدک بسیار بالایی</strong> در بازار محلی است. این آسیب‌پذیرترین نقطه است.</li>
+<li>اندازه شرکت: یک فروشگاه با ۱۹۱ محصول و یک شعبه، احتمالاً ساختار حقوقی مدیریتی تهران را ندارد</li>
+<li>نبود داده فروش → نمی‌توانم ارزش اقتصادی را با عدد ثابت کنم</li>
+<li>احتمالاً پیش‌تر با پیمانکاران ارزان‌تر کار کرده‌اند → لنگر مقایسه‌ای پایین</li>
+</ol>
+<p><strong>نتیجه:</strong> عدد ۷۵ م.ت را <strong>نمی‌توان با استدلال بازار محلی دفاع کرد.</strong> باید با <strong>سه استدلال دیگر</strong> دفاع شود:</p>
+<ul>
+<li>(الف) دامنه نقش ترکیبی پنج‌محوری (در بازار تهران معادل دو تا سه نقش است)</li>
+<li>(ب) داده بازار تهران برای نقش‌های مشابه (۶۰–۸۰ م.ت برای «مدیر رشد و بازاریابی دیجیتال»)</li>
+<li>(پ) <strong>دورکاری/ارزش‌محوری</strong>: اگر نقش دورکاری یا ترکیبی باشد، لنگر مقایسه‌ای بازار تهران است نه شیراز</li>
+</ul>
+<h2>۱۲.۲ چهار اصل مذاکره</h2>
+<ol>
+<li><strong>هرگز از عدد دفاع نکن — نقش را بازتعریف کن.</strong> بحث درباره «۷۵ زیاد است» را به «این نقش چه دامنه‌ای دارد» منتقل کن.</li>
+<li><strong>هرگز بدون داده، ارزش وعده نده.</strong> اگر کارفرما پرسید «چقدر فروش را بالا می‌بری»، پاسخ درست: «بدون دسترسی به داده فروش، هر عددی بدهم اختراع است. در هفته سوم، با داده واقعی، هدف کمی می‌نویسم و امضا می‌کنم.» این پاسخ، اعتماد می‌سازد.</li>
+<li><strong>دامنه و مبلغ همیشه با هم حرکت کنند.</strong> اگر مبلغ کم شد، دامنه هم صریحاً کم شود — و مکتوب.</li>
+<li><strong>هیچ توافق شفاهی را نپذیر.</strong> به‌ویژه «بعداً افزایش می‌دهیم».</li>
+</ol>
+<h2>۱۲.۳ پاسخ به سه پرسش سخت احتمالی</h2>
+<p><strong>پرسش: «چرا ۷۵؟ سایت ما که این‌قدرها هم بزرگ نیست.»</strong></p>
+<blockquote><p>«دقیقاً به همین دلیل. مسئله سایت شما کمبود کار نیست — نبود نظام است. ۱۹۱ محصول دارید ولی سه مسیر فروشتان قطع است و صفحه درباره‌مایتان متن ساختگی دارد. این نوع مسئله با یک نقش اجرایی حل نمی‌شود، چون اختیار اولویت‌بندی و یکپارچه‌سازی ندارد. آنچه شما می‌خرید ساعت کار نیست؛ مالکیت یک برنامه است.»</p></blockquote>
+<p><strong>پرسش: «در شیراز این حقوق خیلی بالاست.»</strong></p>
+<blockquote><p>«اگر نقش را «کارشناس سایت در شیراز» تعریف کنیم، بله بالاست و من هم آن را نمی‌پذیرم. اما این نقش پنج محور را با مالکیت یکپارچه پوشش می‌دهد. داده بازار تهران برای «مدیر رشد و بازاریابی دیجیتال» ۶۰ تا ۸۰ میلیون تومان است. اگر مدل همکاری ترکیبی یا دورکاری باشد، مقایسه درست با بازار ملی است نه محلی. اگر اصرار دارید نقش محلی و حضوری کامل باشد، آنگاه باید دامنه را متناسب کنیم و مبلغ هم متناسب پایین بیاید.» ⚠️ <strong>این پاسخ، راه فرار را هم باز می‌کند و هم می‌بندد:</strong> صریح می‌گوید که کاهش مبلغ = کاهش دامنه.</p></blockquote>
+<p><strong>پرسش: «چه تضمینی می‌دهید فروش X درصد بالا برود؟»</strong></p>
+<blockquote><p>«هیچ تضمینی نمی‌دهم، و اگر کسی داد به او اعتماد نکنید. امروز نه من به داده فروش شما دسترسی دارم نه شما خط مبنا دارید. تضمین بدون خط مبنا، وعده‌سازی است. آنچه تعهد می‌دهم این است: در پایان هفته سوم، خط مبنا مکتوب و امضاشده تحویل می‌دهم و اهداف کمی را با شما توافق می‌کنم. از آن نقطه، مسئول آن اهداف هستم. همچنین بخشی از دریافتی‌ام را حاضر هستم به همان شاخص‌ها گره بزنم — به شرطی که داده‌اش در دسترس من باشد.»</p></blockquote>
+<h2>۱۲.۴ خط قرمزهای شخصی (غیرقابل مذاکره)</h2>
+<table><thead><tr><th>#</th><th>خط قرمز</th><th>چرا</th></tr></thead><tbody><tr><td>۱</td><td><strong>پذیرش دامنه کامل با مبلغ کمتر بدون بازنگری مکتوب</strong></td><td>منجر به فرسودگی و شکست تعهدات می‌شود</td></tr><tr><td>۲</td><td><strong>تعهد به عدد فروش/ترافیک بدون خط مبنا</strong></td><td>غیرقابل دفاع و تخریب‌کننده اعتبار</td></tr><tr><td>۳</td><td><strong>تولید داده فنی بدون منبع معتبر</strong></td><td>خطر ایمنی و مرجوعی</td></tr><tr><td>۴</td><td><strong>انتشار محتوای دارای ادعای حقوقی بدون بازبینی</strong></td><td>ریسک حقوقی برای کارفرما و من</td></tr><tr><td>۵</td><td><strong>کار روی محیط تولید بدون بکاپ تأییدشده و staging</strong></td><td>خطر خرابی غیرقابل بازگشت</td></tr><tr><td>۶</td><td><strong>نظرسازی مصنوعی یا دستکاری داده</strong></td><td>غیراخلاقی و در صورت کشف، پایان اعتبار</td></tr><tr><td>۷</td><td><strong>پذیرش «بعداً افزایش می‌دهیم» بدون ذکر در قرارداد</strong></td><td>تجربه نشان می‌دهد محقق نمی‌شود</td></tr><tr><td>۸</td><td><strong>مسئولیت نتیجه‌ای که داده‌اش در دسترس من نیست</strong></td><td>اگر KPI به داده فروش گره خورد، باید دسترسی به آن داده را داشته باشم</td></tr><tr><td>۹</td><td><strong>پرداخت هزینه ابزار/تبلیغات/پیمانکار از حقوق شخصی</strong></td><td>مرز حرفه‌ای و مالی</td></tr><tr><td>۱۰</td><td><strong>امضای قرارداد با شرح وظایف «سایر امور محوله»</strong></td><td>دامنه نامحدود = سوءاستفاده ساختاری</td></tr></tbody></table>
+<h2>۱۲.۵ سناریوی توافق جایگزین — جزئیات اجرایی</h2>
+<h3>گزینه ب۳ (ترجیح دوم من) — ساختار دقیق</h3>
+<pre><code>ماه ۱ تا ۳  = فاز صفر + فاز یک
+              حقوق: [X] م.ت  (X &lt; ۷۵)
+              دامنه: کامل (پنج محور)
+              شاخص‌های پذیرش: مکتوب و امضاشده در پایان هفته ۳
+
+ماه ۴ به بعد = افزایش خودکار به ۷۵ م.ت
+              شرط: تحقق ≥۸۰٪ شاخص‌های پذیرش فاز یک
+              در صورت عدم تحقق: جلسه بازنگری + تصمیم مشترک</code></pre>
+<p><strong>چهار شرط اجباری که باید در قرارداد بیاید:</strong></p>
+<ol>
+<li><strong>تاریخ دقیق افزایش</strong> (مثلاً «از ابتدای ماه چهارم = ۱۴۰۵/XX/XX»)</li>
+<li><strong>شاخص‌های دقیق و قابل اندازه‌گیری</strong> (نه «عملکرد خوب»)</li>
+<li><strong>منبع داده و مسئول تأمین آن</strong> (اگر داده در دسترس من نباشد، شرط قابل سنجش نیست)</li>
+<li><strong>ماهیت «خودکار» بودن</strong> (نه «منوط به تصویب مجدد»)</li>
+</ol>
+<p>⚠️ اگر کارفرما حتی یکی از این چهار شرط را نپذیرد، گزینه ب۳ عملاً «بعداً افزایش می‌دهیم» است → <strong>رد کن.</strong></p>
+<h3>گزینه ب۱ — ماتریس کاهش دامنه</h3>
+<table><thead><tr><th>دامنه</th><th>محورهای درون نقش</th><th>حقوق پیشنهادی</th></tr></thead><tbody><tr><td>کامل</td><td>هر ۵ محور</td><td>۷۵ م.ت</td></tr><tr><td>کاهش‌یافته سطح ۱</td><td>محور ۱، ۲، ۳، ۵ (حذف اتوماسیون و سرنخ)</td><td>۶۰–۶۵ م.ت</td></tr><tr><td>کاهش‌یافته سطح ۲</td><td>محور ۳، ۵ (محتوا، سئو، سنجش)</td><td>۴۵–۵۵ م.ت</td></tr><tr><td>اجرایی محدود</td><td>فقط محور ۳ (محتوا و سئو)</td><td>۳۵–۴۵ م.ت</td></tr></tbody></table>
+<p><strong>قاعده اجباری:</strong> محورهای حذف‌شده <strong>در قرارداد فهرست شوند</strong> تا بعداً به‌عنوان «انتظار ضمنی» مطرح نشوند. جمله قراردادی پیشنهادی: «مسئولیت‌های زیر صریحاً خارج از دامنه این قرارداد هستند: … و در صورت درخواست، نیازمند الحاقیه و تعدیل مبلغ خواهند بود.»</p>
+<h3>گزینه پ — بودجه مستقل</h3>
+<p>اگر مقاومت اصلی درباره <strong>مجموع هزینه</strong> است نه حقوق، راه‌حل این است:</p>
+<pre><code>حقوق نقش:                        ۷۵ م.ت   (ثابت)
+بودجه ابزار و زیرساخت:           [A] م.ت  (ماهانه، مستقل)
+بودجه تولید محتوا:               [B] م.ت  (ماهانه، مستقل)
+بودجه توسعه/طراحی پیمانکاری:     [C] م.ت  (ماهانه، مستقل)
+بودجه تبلیغات:                   [D] م.ت  (ماهانه، مستقل)</code></pre>
+<p><strong>استدلال:</strong> «حقوق من هزینه یک نفر است. بودجه اجرایی، هزینه برنامه است. اگر بودجه اجرایی نباشد، من با حقوق کامل هم نمی‌توانم نتیجه بدهم — چون مجری، ابزار و محتوایی در کار نیست. کاهش حقوق، برنامه را جلو نمی‌برد؛ فقط انگیزه و کیفیت را کم می‌کند.»</p>
+<h2>۱۲.۶ ساختار جزء متغیر (اگر پیشنهاد شد)</h2>
+<p><strong>شرط پذیرش:</strong> شاخص‌ها باید (۱) قابل اندازه‌گیری، (۲) در کنترل نقش، و (۳) دارای داده در دسترس باشند.</p>
+<table><thead><tr><th>شاخص</th><th>وزن</th><th>چرا قابل قبول است</th></tr></thead><tbody><tr><td>تحقق خروجی‌های فاز (تحویل‌محور)</td><td>۴۰٪</td><td>✅ کاملاً در کنترل من</td></tr><tr><td>سلامت فنی و کیفیت (صفر صفحه خالی، صفر داده نادرست)</td><td>۲۵٪</td><td>✅ در کنترل من</td></tr><tr><td>رشد سرنخ دیجیتال</td><td>۲۰٪</td><td>🟡 نیمه‌در کنترل (به تیم فروش وابسته)</td></tr><tr><td>رشد ترافیک ارگانیک</td><td>۱۵٪</td><td>⚠️ <strong>کم‌در کنترل</strong> (به زمان و رقابت وابسته)</td></tr></tbody></table>
+<p>⚠️ <strong>هرگز وزن بالا روی «درآمد» یا «فروش» نپذیر</strong> — فروش به قیمت‌گذاری، موجودی، توان تأمین، و تیم فروش وابسته است که هیچ‌کدام در کنترل این نقش نیستند. اگر کارفرما اصرار کرد، وزن را پایین نگه دار و <strong>دسترسی به داده و اختیار تأثیرگذار بر قیمت/موجودی</strong> را در قرارداد بخواه.</p>
+<hr/>
+<h1>بخش سیزدهم — ریسک‌ها و برنامه جایگزین</h1>
+<h2>۱۳.۱ ریسک‌های پروژه</h2>
+<table><thead><tr><th>#</th><th>ریسک</th><th>احتمال</th><th>اثر</th><th>راهکار کاهش</th></tr></thead><tbody><tr><td>R-01</td><td>دسترسی‌ها به‌موقع داده نشود → فاز صفر متوقف</td><td>بالا</td><td>🔴 بحرانی</td><td>شرط شروع: دسترسی در هفته ۱. در غیر این صورت، شروع دوره به تعویق و زمان‌بندی بازنویسی می‌شود — <strong>کتباً</strong></td></tr><tr><td>R-02</td><td>بودجه ابزار/پیمانکار/محتوا تأمین نشود</td><td><strong>بسیار بالا</strong></td><td>🔴 بحرانی</td><td>تفکیک صریح در قرارداد (بخش ۱۱ پروپوزال). اگر تأمین نشد، دامنه به آنچه بدون بودجه ممکن است تقلیل یابد — مکتوب</td></tr><tr><td>R-03</td><td>کارفرما انتظار اجرای همه نقش‌ها از یک نفر داشته باشد</td><td><strong>بسیار بالا</strong></td><td>🔴 بحرانی</td><td>مرز صریح بخش ۶ پروپوزال + بخش ۱۱.۳ این سند، در قرارداد ذکر شود</td></tr><tr><td>R-04</td><td>داده فروش وجود نداشته باشد (فروش آنلاین ناچیز)</td><td>متوسط</td><td>🟠 بالا</td><td>→ بخش ۱۳.۲ (برنامه جایگزین الف)</td></tr><tr><td>R-05</td><td>مقاومت تیم فروش در برابر سرنخ دیجیتال</td><td>متوسط</td><td>🟠 بالا</td><td>درگیرکردن از روز اول؛ اندازه‌سازی کیفیت با داده؛ گزارش مشترک (داشبورد ۵)</td></tr><tr><td>R-06</td><td>پیمانکار فنی پاسخ‌گو نباشد</td><td>متوسط</td><td>🟠 بالا</td><td>SLA کتبی؛ حق انتخاب پیمانکار جایگزین؛ نگهداری مستندات</td></tr><tr><td>R-07</td><td>اینماد نباشد یا اخذش طول بکشد</td><td>متوسط</td><td>🔴 بحرانی (حقوقی)</td><td>اقدام فوری در هفته ۳ (A-03)؛ اطلاع‌رسانی کتبی ریسک به مدیریت</td></tr><tr><td>R-08</td><td>کاتالوگ رسمی برندها در دسترس نباشد → اصلاح داده ناممکن</td><td>متوسط</td><td>🔴 بحرانی</td><td>پیش‌نیاز C-01. اگر نباشد، از کانال رسمی برند درخواست شود؛ در غیر این صورت آن محصول از فیلتر/مقایسه خارج بماند</td></tr><tr><td>R-09</td><td>حین پاک‌سازی، صفحه‌ای حیاتی حذف شود</td><td>پایین</td><td>🔴 بحرانی</td><td>F-04 بکاپ + staging + تست خرید کامل (اجباری)</td></tr><tr><td>R-10</td><td>فصلی‌بودن شدید HVAC، سنجش اثر را مخدوش کند</td><td><strong>بسیار بالا</strong></td><td>🟠 بالا</td><td>مقایسه با دوره مشابه سال قبل؛ تفکیک فصلی در همه گزارش‌ها؛ تنظیم تقویم محتوا با فصل</td></tr><tr><td>R-11</td><td>انتظارات غیرواقعی از سئو در کوتاه‌مدت</td><td>بالا</td><td>🟠 بالا</td><td>آموزش صریح در جلسه پروپوزال: رشد ارگانیک ۳–۶ ماهه است؛ سنگر محلی زودتر از ملی جواب می‌دهد</td></tr><tr><td>R-12</td><td>تغییر مدیریت یا تغییر اولویت شرکت</td><td>پایین</td><td>🔴 بحرانی</td><td>مستندسازی کامل؛ قرارداد با دوره مشخص؛ گزارش‌دهی منظم برای حفظ حمایت</td></tr><tr><td>R-13</td><td>هزینه/دسترسی سرویس‌های AI از ایران</td><td>متوسط</td><td>🟠 بالا</td><td>ارزیابی گزینه خودمیزبان در فاز سه؛ پیش‌شرط‌بودن داده تمیز (که زمان می‌خرد)</td></tr><tr><td>R-14</td><td>دامنه سابقه منفی داشته باشد (اسپم/جریمه)</td><td>پایین</td><td>🔴 بحرانی</td><td>بررسی در فاز صفر؛ اگر جریمه فعال بود، استراتژی بازنگری می‌شود</td></tr></tbody></table>
+<h2>۱۳.۲ برنامه جایگزین در صورت محدودیت بودجه یا منابع</h2>
+<h3>الف) اگر فروش آنلاین فعلی ناچیز است (R-04)</h3>
+<p><strong>تشخیص:</strong> داده G-02 نشان دهد GMV آنلاین نزدیک صفر است و فروش اصلی حضوری/تلفنی است. <strong>بازتعریف نقش:</strong> از «بهینه‌سازی فروشگاه» به <strong>«دیجیتالی‌کردن کسب‌وکار حضوری»</strong>:</p>
+<ul>
+<li>اولویت ۱: سرنخ‌گیری دیجیتال برای فروش حضوری/تلفنی (نه فروش آنلاین)</li>
+<li>اولویت ۲: Google Business Profile و سئوی محلی (سنگر ۱ بخش ۱.۳) ← <strong>کم‌هزینه‌ترین و سریع‌ترین بازده در این سناریو</strong></li>
+<li>اولویت ۳: ابزار ظرفیت‌یابی برای پشتیبانی از مشاوره تلفنی</li>
+<li>اولویت ۴: کاتالوگ به‌عنوان مرجع (نه لزوماً فروشگاه)</li>
+</ul>
+<p><strong>تغییر KPI:</strong> از «نرخ تبدیل آنلاین» به «تعداد سرنخ واجد شرایط» و «درآمد سرنشینی‌شده از کانال دیجیتال» <strong>تغییر حقوق:</strong> احتمالاً کاهش، <strong>به شرط کاهش متناسب دامنه و مکتوب‌شدن آن</strong></p>
+<h3>ب) اگر بودجه ابزار و پیمانکار نباشد (R-02)</h3>
+<p><strong>حالت «تک‌نفره با بودجه صفر»:</strong></p>
+<table><thead><tr><th>حفظ می‌شود</th><th>حذف/تعویق می‌شود</th></tr></thead><tbody><tr><td>A-01 درباره ما · A-02 سیاست‌ها · D-01 مسیریابی · D-02 صفحه اصلی · D-04 عنوان‌ها · D-06/D-07 · C-05/C-06 · E-03 · D-05</td><td>F-02 کش/CDN (نیازمند هزینه) · E-04 تصاویر (نیازمند ابزار) · E-05 پیامک (نیازمند هزینه) · فاز سه کامل</td></tr><tr><td>C-01 با سرعت کمتر (دستی)</td><td>C-03 فیلتر پیشرفته (نیازمند توسعه)</td></tr><tr><td>E-01/E-02 با ظرفیت تولید پایین‌تر</td><td>هر آنچه نیازمند پیمانکار است</td></tr><tr><td>G-01 با ابزارهای رایگان (GSC + GA4 + Looker Studio)</td><td>—</td></tr></tbody></table>
+<p><strong>نتیجه صریح برای کارفرما:</strong> «با بودجه صفر ابزار و پیمانکار، می‌توانم حدود ۶۰٪ از بک‌لاگ را پیش ببرم — همه موارد محتوایی و پیکربندی. اما بهبود عملکرد، فیلترهای پیشرفته، بهینه‌سازی تصویر در مقیاس، و کل فاز اتوماسیون بدون بودجه ممکن نیست. این یک محدودیت فیزیکی است نه یک انتخاب.»</p>
+<h3>پ) اگر ظرفیت تولید محتوا نباشد (R-03)</h3>
+<ul>
+<li>کاهش تقویم از ۸ مطلب در ماه به ۲ مطلب در ماه</li>
+<li>تمرکز صرف بر صفحات دسته (E-01) که بالاترین بازده تجاری را دارند و حذف موقت وبلاگ (E-02)</li>
+<li>استفاده از هوش مصنوعی <strong>فقط برای پیش‌نویس اولیه</strong>، با بازبینی فنی اجباری انسانی</li>
+<li><strong>نتیجه صریح:</strong> رشد ارگانیک به‌شدت کند می‌شود؛ سنگر محلی (Google Business Profile) جای آن را می‌گیرد چون کم‌محتواتر است</li>
+</ul>
+<h3>ت) اگر اختیار تصمیم‌گیری داده نشود</h3>
+<p>🔴 <strong>این بدترین سناریو است — بدتر از نبود بودجه.</strong> اگر نقش مسئول باشد ولی اختیار نداشته باشد، نتیجه آن است که همه شکست‌ها به من نسبت داده می‌شود بدون اینکه امکان اصلاح داشته باشم. <strong>اقدام:</strong> پیش از پذیرش، یا اختیار خواسته شود، یا دامنه به «مشاوره و پیشنهاد» (بدون مسئولیت نتیجه) تقلیل یابد و مبلغ متناسب کاهش یابد. <strong>مسئولیت بدون اختیار، پذیرفتنی نیست.</strong></p>
+<h2>۱۳.۳ معیارهای تصمیم‌گیری برای ادامه، توقف یا توسعه هر ابتکار</h2>
+<table><thead><tr><th>ابتکار</th><th>معیار ادامه</th><th>معیار توقف</th><th>معیار توسعه</th></tr></thead><tbody><tr><td><strong>محتوای صفحه دسته (E-01)</strong></td><td>رشد impressions دسته پس از ۹۰ روز</td><td>بدون رشد پس از ۶ ماه با محتوای کامل و فنی تأییدشده</td><td>رشد پایدار → گسترش به همه دسته‌ها</td></tr><tr><td><strong>وبلاگ (E-02)</strong></td><td>≥۳۰٪ مطالب impressions معنادار بگیرند</td><td>پس از ۲۰ مطلب، صفر ترافیک ارگانیک</td><td>رشد پایدار → افزایش تقویم</td></tr><tr><td><strong>سنگر محلی</strong></td><td>رشد تماس/سرنخ از جست‌وجوی محلی</td><td>بدون اثر پس از ۶ ماه</td><td>اثر مثبت → سرمایه‌گذاری بیشتر</td></tr><tr><td><strong>سنگر برند</strong></td><td>رتبه‌گیری روی «{برند} + {شهر}»</td><td>بدون اثر پس از ۴ ماه</td><td>اثر مثبت → افزودن برندهای بیشتر</td></tr><tr><td><strong>فیلترها (C-03)</strong></td><td>استفاده کاربر + رشد نرخ تبدیل دسته</td><td>بدون استفاده پس از ۶۰ روز</td><td>استفاده بالا → افزودن ابعاد بیشتر</td></tr><tr><td><strong>مقایسه محصول</strong></td><td>استفاده معنادار</td><td>بدون استفاده پس از ۹۰ روز</td><td>—</td></tr><tr><td><strong>اثبات اجتماعی (E-05)</strong></td><td>رشد پایدار نظرات واقعی</td><td>نرخ پاسخ زیر ۱٪ پس از ۳ ماه</td><td>رشد خوب → گسترش</td></tr><tr><td><strong>دستیار AI (فاز ۳)</strong></td><td>دستیابی به آستانه بخش ۶.۷ در آزمون</td><td>شکست در آزمون ایمنی (قاعده ۱ یا ۸) پس از ۲ تکرار</td><td>موفقیت → گسترش دامنه</td></tr><tr><td><strong>تجربه‌های A/B</strong></td><td>بهبود آماری معنادار</td><td>بدون اثر پس از ۳ تکرار</td><td>برنده → استقرار دائم</td></tr><tr><td><strong>افزودن دسته‌های جدید (چیلر و…)</strong></td><td>تأمین و موجودی واقعی توسط شرکت</td><td>نبود توان تأمین</td><td>موفقیت → گسترش</td></tr></tbody></table>
+<p><strong>قاعده کلی:</strong> هر ابتکاری که در دوره ارزیابی خود به معیار ادامه نرسد، <strong>متوقف و مستند می‌شود</strong> — حتی اگر پیشنهاد خودم بوده باشد. این تعهد را در پروپوزال کارفرما هم داده‌ام و باید به آن پایبند باشم.</p>
+<hr/>
+<h1>بخش چهاردهم — برنامه روزهای نخست (پس از توافق)</h1>
+<h2>روز ۱ تا ۳</h2>
+<ul>
+<li>دریافت همه دسترسی‌ها (سند ۰۵)</li>
+<li><strong>F-04: بررسی و تأیید بکاپ + یک بازیابی آزمایشی</strong> ← پیش از هر کار دیگر</li>
+<li>بررسی وضعیت اینماد (A-03)</li>
+<li>درخواست داده فروش ۶ ماه اخیر (G-02)</li>
+<li>درخواست کاتالوگ/دیتاشیت رسمی برندها (پیش‌نیاز C-01)</li>
+<li>جلسه با تیم فروش: گردآوری ۵۰ پرسش پرتکرار مشتری</li>
+</ul>
+<h2>روز ۴ تا ۱۰</h2>
+<ul>
+<li>اجرای چک‌لیست بخش ۲.۱ (فنی)، ۲.۲ (عملکرد)، ۲.۳ (امنیت)</li>
+<li>F-01: اندازه‌گیری ۳۶ نقطه CWV</li>
+<li>اسکریپت استخراج کامل داده محصولات از REST API</li>
+<li>اسکریپت تشخیص ناسازگاری مدل/ویژگی (C-02)</li>
+<li>بررسی Search Console (پوشش ایندکس، کوئری‌ها)</li>
+</ul>
+<h2>روز ۱۱ تا ۲۱</h2>
+<ul>
+<li>تکمیل ممیزی محتوا و UX</li>
+<li><strong>تحویل: گزارش ممیزی کامل + گزارش خط مبنا + بک‌لاگ اولویت‌بندی‌شده + پیشنهاد اهداف کمی</strong></li>
+<li>جلسه بازنگری با مدیریت و امضای اهداف</li>
+<li>شروع اجرای گروه P0 (D-01، D-02، D-04، D-06، D-07)</li>
+</ul>
+<hr/>
+<h1>پیوست — فهرست ۲۰ پرسش روز اول از کارفرما</h1>
+<ol>
+<li>آیا «خرید اقساطی» واقعاً ارائه می‌شود؟ با چه شرایطی و از چه مسیری؟</li>
+<li>وضعیت نماد اعتماد الکترونیکی؟</li>
+<li>چند درصد فروش از کانال آنلاین است در برابر حضوری/تلفنی؟</li>
+<li>میانگین ارزش سبد آنلاین چقدر است؟</li>
+<li>کدام دسته‌ها بیشترین فروش را دارند؟</li>
+<li>تیم فعلی چند نفر است و چه کسی سایت را نگه‌داری می‌کند؟</li>
+<li>آیا پیمانکار قبلی داشته‌اید؟ چه تحویل داد و چرا ارتباط قطع شد؟</li>
+<li>آیا دسترسی به پیشخوان، هاست، سرچ کنسول و Analytics موجود است؟ در اختیار چه کسی؟</li>
+<li>آیا کاتالوگ رسمی/دیتاشیت برندها در دسترس است؟</li>
+<li>چه کسی در شرکت می‌تواند داده فنی محصولات را تأیید کند؟</li>
+<li>سیاست واقعی بازگشت کالا چیست؟ (۷ روز یا ۳۰ روز یا چیز دیگر؟)</li>
+<li>ساعات کاری واقعی و شماره رسمی پشتیبانی کدام است؟ (چهار شماره متفاوت دیده شد)</li>
+<li>آیا Google Business Profile دارید؟ وضعیتش چیست؟</li>
+<li>بودجه ماهانه موجود برای ابزار، زیرساخت، محتوا و تبلیغات چقدر است؟</li>
+<li>آیا بودجه‌ای برای پیمانکار فنی و نویسنده تخصصی وجود دارد؟</li>
+<li>ساختار گزارش‌دهی: به چه کسی و با چه دوره‌ای؟</li>
+<li>سطح اختیار: آیا می‌توانم بدون تأیید موردی محتوای عمومی را تغییر دهم؟</li>
+<li>آیا هدف اصلی فروش آنلاین است یا سرنخ‌گیری برای فروش حضوری؟ ← 🔴 <strong>این پاسخ، کل استراتژی را تعیین می‌کند</strong></li>
+<li>برنامه‌ای برای افزودن دسته‌های اعلام‌شده در فوتر (چیلر، فن‌کویل، داکت اسپلیت) وجود دارد؟ توان تأمین هست؟</li>
+<li>انتظارات شما از سه ماه نخست دقیقاً چیست؟ (به‌زبان خودتان، نه به‌زبان من)</li>
+</ol>
+<hr/>
+<p><strong>پایان سند محرمانه — نسخه ۱.۰</strong> <strong>🔒 این سند برای ارائه به کارفرما نیست.</strong></p>
+</div>
+</body>
+</html>

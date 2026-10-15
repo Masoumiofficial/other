@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>چک‌لیست اطلاعات و دسترسی‌های مورد نیاز در شروع همکاری</title>
+<style>
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+
+@page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+@media print {
+  .no-print { display: none !important; }
+  h1, h2, h3 { break-after: avoid; }
+  table, pre, blockquote { break-inside: avoid; }
+  tr { break-inside: avoid; }
+  a { color: inherit !important; text-decoration: none !important; }
+}
+:root{
+  --accent:#0f5c8c; --h2:#143d59; --h3:#1f5c82; --muted:#5a5a5a;
+  --alert:#a82222; --line:#dbe4ec; --soft:#f6f9fb; --code:#f5f5f5;
+}
+*{box-sizing:border-box}
+html{ -webkit-text-size-adjust:100% }
+body{
+  font-family:'Vazirmatn','B Nazanin','IRANSans','Tahoma',sans-serif;
+  direction:rtl; text-align:right; line-height:1.85;
+  color:#1b1b1b; background:#eef1f4; margin:0; padding:0;
+  font-size:14px; font-feature-settings:"ss01";
+}
+.sheet{
+  background:#fff; max-width:210mm; margin:24px auto; padding:20mm 16mm;
+  box-shadow:0 2px 18px rgba(0,0,0,.14);
+}
+@media print{ body{background:#fff} .sheet{box-shadow:none;margin:0;padding:0;max-width:none} }
+
+.toolbar{
+  position:sticky; top:0; z-index:50; background:#0f5c8c; color:#fff;
+  padding:10px 18px; display:flex; gap:14px; align-items:center;
+  justify-content:center; flex-wrap:wrap; font-size:13px;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.toolbar button{
+  background:#fff; color:#0f5c8c; border:0; padding:8px 18px; border-radius:6px;
+  font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
+}
+.toolbar button:hover{ background:#dbe9f2 }
+
+h1,h2,h3,h4{ line-height:1.5; font-weight:800; }
+h1{
+  font-size:23px; color:var(--accent); margin:1.9em 0 .7em;
+  padding-bottom:.35em; border-bottom:3px solid var(--accent);
+  break-before:page;
+}
+h1:first-of-type{ break-before:auto; margin-top:.2em }
+h2{
+  font-size:18px; color:var(--h2); margin:1.7em 0 .6em;
+  padding-bottom:.3em; border-bottom:1px solid var(--line);
+}
+h3{ font-size:15.5px; color:var(--h3); margin:1.4em 0 .5em }
+h4{ font-size:14px; color:var(--h3); margin:1.2em 0 .4em }
+p{ margin:.75em 0; text-align:justify; }
+ul,ol{ margin:.7em 0; padding-right:1.5em; padding-left:0 }
+li{ margin:.32em 0 }
+li::marker{ color:var(--accent); font-weight:700 }
+strong{ font-weight:800; color:#0d3f5f }
+em{ font-style:italic; color:#33475b }
+code{
+  font-family:'Consolas','Courier New',monospace; direction:ltr; unicode-bidi:embed;
+  background:#fdf1f1; color:#a8222a; padding:.12em .4em; border-radius:4px;
+  font-size:.86em; display:inline-block;
+}
+pre{
+  background:var(--code); border:1px solid #e2e2e2; border-radius:8px;
+  padding:12px 14px; overflow-x:auto; direction:ltr; text-align:left;
+  font-size:11.5px; line-height:1.55; margin:1em 0;
+}
+pre code{ background:none; color:#2b2b2b; padding:0; display:block; direction:ltr }
+blockquote{
+  margin:1em 0; padding:.85em 1.1em; background:#f4f7fa;
+  border-right:5px solid var(--accent); border-radius:0 8px 8px 0;
+  color:#223a4a;
+}
+blockquote p{ margin:.35em 0 }
+hr{ border:0; border-top:1px solid #d8dee4; margin:2em 0 }
+a{ color:var(--accent); text-decoration:none; border-bottom:1px dotted rgba(15,92,140,.4) }
+a:hover{ border-bottom-style:solid }
+
+table{
+  width:100%; border-collapse:collapse; margin:1.1em 0; font-size:12.5px;
+  direction:rtl;
+}
+th{
+  background:var(--accent); color:#fff; font-weight:700; text-align:right;
+  padding:8px 10px; border:1px solid #0d4f78; vertical-align:top;
+}
+td{ padding:7px 10px; border:1px solid var(--line); vertical-align:top }
+tbody tr:nth-child(even) td{ background:var(--soft) }
+thead{ display:table-header-group }
+
+.cover{ text-align:center; padding:2.2em 0 1.4em; border-bottom:3px solid var(--accent); margin-bottom:1.6em }
+.cover .kicker{ font-size:13px; letter-spacing:.02em; color:var(--muted); font-weight:700 }
+.cover .title{ font-size:29px; font-weight:900; color:var(--accent); line-height:1.45; margin:.55em 0 .3em; white-space:pre-line }
+.cover .subtitle{ font-size:16px; font-weight:700; color:var(--h3); margin:.35em 0 }
+.cover .badge{
+  display:inline-block; margin-top:1.1em; padding:.5em 1.2em; border-radius:8px;
+  background:#fdecec; color:var(--alert); font-weight:800; font-size:14px;
+  border:1px solid #f2c4c4;
+}
+.cover table{ margin:1.8em auto 0; max-width:92%; font-size:13px; text-align:right }
+.cover table td:first-child{ background:#eaf1f6; font-weight:700; width:34% }
+
+ul.task{ list-style:none; padding-right:.4em }
+ul.task li{ padding-right:1.6em; position:relative }
+ul.task li::before{
+  content:"☐"; position:absolute; right:0; top:0; color:var(--accent);
+  font-weight:700; font-size:1.05em;
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <span>برای ساخت PDF: دکمه زیر یا <b>Ctrl/Cmd + P</b> → «Save as PDF» → حاشیه: Default → «Background graphics» فعال</span>
+  <button onclick="window.print()">🖨️ چاپ / ذخیره PDF</button>
+</div>
+
+<div class="sheet">
+<div class="cover">
+<div class="kicker">پیوست عملیاتی — قابل ارسال به کارفرما</div>
+<div class="title">چک‌لیست اطلاعات و دسترسی‌های
+مورد نیاز در شروع همکاری</div>
+<div class="subtitle">پیش‌نیاز اجرای فاز صفر در سه هفته</div>
+<table><tbody>
+<tr><td>تهیه‌کننده</td><td>سجاد معصومی</td></tr>
+<tr><td>تاریخ</td><td>۲۳ مهر ۱۴۰۵ / ۱۵ اکتبر ۲۰۲۶</td></tr>
+<tr><td>نسخه</td><td>1.0</td></tr>
+<tr><td>سطوح اولویت</td><td>۴ سطح (حیاتی / ضروری / مهم / تسهیل‌کننده)</td></tr>
+<tr><td>موارد</td><td>بیش از ۷۰ قلم دسترسی و اطلاعات</td></tr>
+</tbody></table>
+</div>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>سند</strong></td><td>چک‌لیست دسترسی‌ها و اطلاعات ورودی</td></tr><tr><td><strong>نسخه</strong></td><td>1.0</td></tr><tr><td><strong>تاریخ</strong></td><td>۲۳ مهر ۱۴۰۵ / ۱۵ اکتبر ۲۰۲۶</td></tr><tr><td><strong>تهیه‌کننده</strong></td><td>سجاد معصومی</td></tr><tr><td><strong>قابل ارسال به کارفرما</strong></td><td>✅ بله — این سند برای ارسال مستقیم طراحی شده است</td></tr><tr><td><strong>هدف</strong></td><td>فراهم‌شدن همه ورودی‌های لازم برای اجرای فاز صفر در سه هفته</td></tr></tbody></table>
+<hr/>
+<h2>نحوه استفاده از این سند</h2>
+<p>این فهرست به چهار سطح اولویت تقسیم شده است:</p>
+<table><thead><tr><th>سطح</th><th>معنا</th><th>چه می‌شود اگر تأمین نشود</th></tr></thead><tbody><tr><td>🔴 <strong>حیاتی — هفته ۱</strong></td><td>بدون آن، فاز صفر آغاز نمی‌شود</td><td>توقف کامل برنامه؛ زمان‌بندی بازنویسی می‌شود</td></tr><tr><td>🟠 <strong>ضروری — هفته ۲</strong></td><td>برای تکمیل ممیزی لازم است</td><td>ممیزی ناقص می‌ماند و اولویت‌بندی قابل اتکا نیست</td></tr><tr><td>🟡 <strong>مهم — هفته ۳</strong></td><td>برای تعیین اهداف کمی لازم است</td><td>اهداف کمی به تعویق می‌افتد</td></tr><tr><td>🟢 <strong>تسهیل‌کننده</strong></td><td>برای فازهای بعد لازم است</td><td>فاز دو و سه کند می‌شود</td></tr></tbody></table>
+<p><strong>پیشنهاد اجرایی:</strong> این فهرست را به‌عنوان پیوست قرارداد یا به‌عنوان صورت‌جلسه جلسه آغازین امضا کنید و برای هر مورد، <strong>نام مسئول تأمین</strong> و <strong>تاریخ تحویل</strong> مشخص شود.</p>
+<hr/>
+<h2>سطح 🔴 حیاتی — هفته ۱</h2>
+<h3>۱. دسترسی به سایت و زیرساخت</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>جزئیات</th><th>مسئول</th><th>تاریخ</th></tr></thead><tbody><tr><td>1.1</td><td>دسترسی مدیر پیشخوان وردپرس</td><td>حساب کاربری با نقش Administrator — <strong>نه نقش Editor</strong>، چون به تنظیمات ووکامرس، افزونه‌ها و قالب نیاز است</td><td></td><td></td></tr><tr><td>1.2</td><td>دسترسی به پنل میزبانی</td><td>cPanel / DirectAdmin / پنل اختصاصی — شامل File Manager، phpMyAdmin، ویرایش PHP، و لاگ‌ها</td><td></td><td></td></tr><tr><td>1.3</td><td>اطلاعات میزبانی</td><td>نام شرکت میزبان، نوع پلن، منابع اختصاص‌یافته (CPU/RAM/IO)، تاریخ انقضا</td><td></td><td></td></tr><tr><td>1.4</td><td>دسترسی SSH یا SFTP</td><td>در صورت وجود</td><td></td><td></td></tr><tr><td>1.5</td><td>دسترسی به DNS</td><td>پنل مدیریت دامنه — برای تأیید رکوردها و هر تغییر احتمالی</td><td></td><td></td></tr><tr><td>1.6</td><td>گواهی SSL</td><td>نوع، صادرکننده، تاریخ انقضا، وضعیت تمدید خودکار</td><td></td><td></td></tr><tr><td>1.7</td><td>دسترسی به ایمیل سازمانی</td><td>پنل مدیریت ایمیل‌های دامنه — برای تشخیص علت احتمالی <code>{email}</code> خالی در سیاست‌ها</td><td></td><td></td></tr></tbody></table>
+<h3>۲. دسترسی به ابزارهای سنجش</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>جزئیات</th><th>مسئول</th><th>تاریخ</th></tr></thead><tbody><tr><td>2.1</td><td><strong>Google Search Console</strong></td><td>دسترسی Owner یا Full به پراپرتی <code>energytahvieh.com</code> (و <code>www</code> در صورت وجود جدا)</td><td></td><td></td></tr><tr><td>2.2</td><td><strong>Google Analytics</strong></td><td>دسترسی Editor؛ در صورت نبود، نصب GA4</td><td></td><td></td></tr><tr><td>2.3</td><td><strong>Google Tag Manager</strong></td><td>دسترسی در صورت وجود</td><td></td><td></td></tr><tr><td>2.4</td><td><strong>Google Business Profile</strong></td><td>دسترسی Manager — 🔴 <strong>برای سنگر رشد محلی، حیاتی است</strong></td><td></td><td></td></tr><tr><td>2.5</td><td>Bing Webmaster Tools</td><td>در صورت وجود</td><td></td><td></td></tr><tr><td>2.6</td><td>ابزارهای سئوی فعلی</td><td>اگر اشتراک Ahrefs/Semrush/ابزار ایرانی وجود دارد</td><td></td><td></td></tr></tbody></table>
+<h3>۳. اطلاعات حقوقی و انطباق</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>جزئیات</th><th>مسئول</th><th>تاریخ</th></tr></thead><tbody><tr><td>3.1</td><td><strong>وضعیت نماد اعتماد الکترونیکی (اینماد)</strong></td><td>دارد/ندارد؛ در صورت وجود: کد رهگیری، تاریخ انقضا، سطح نماد</td><td></td><td></td></tr><tr><td>3.2</td><td><strong>مجوز ساماندهی رسانه‌های دیجیتال</strong></td><td>دارد/ندارد</td><td></td><td></td></tr><tr><td>3.3</td><td>عضویت صنفی</td><td>پروانه کسب / عضویت اتحادیه — نوع و اعتبار</td><td></td><td></td></tr><tr><td>3.4</td><td>اطلاعات حقوقی شرکت</td><td>نام ثبتی، شماره ثبت، شناسه ملی، کد اقتصادی</td><td></td><td></td></tr><tr><td>3.5</td><td><strong>سیاست واقعی بازگشت کالا</strong></td><td>🔴 تصمیم مدیریت: بازه واقعی چند روز است؟ شرایط و استثنائات چیست؟ (در حال حاضر سایت دو عدد متناقض ۷ و ۳۰ روز دارد)</td><td></td><td></td></tr><tr><td>3.6</td><td>شرایط واقعی گارانتی</td><td>به تفکیک هر برند — مدت، پوشش، شرط اعتبار</td><td></td><td></td></tr><tr><td>3.7</td><td>شرایط واقعی ارسال</td><td>روش‌ها، هزینه، زمان‌بندی، پوشش جغرافیایی، بیمه بار</td><td></td><td></td></tr></tbody></table>
+<h3>۴. تصمیم‌های راهبردی که فقط مدیریت می‌تواند بگیرد</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>چرا حیاتی است</th><th>مسئول</th><th>تاریخ</th></tr></thead><tbody><tr><td>4.1</td><td><strong>هدف اصلی از این استخدام چیست: فروش آنلاین یا سرنخ‌گیری برای فروش حضوری؟</strong></td><td>🔴 کل استراتژی را تعیین می‌کند. پاسخ‌های متفاوت، برنامه‌های کاملاً متفاوت می‌سازند</td><td></td><td></td></tr><tr><td>4.2</td><td><strong>آیا «خرید اقساطی» واقعاً ارائه می‌شود؟</strong></td><td>اگر بله → صفحه شرایط نوشته می‌شود. اگر نه → برچسب آن از کل سایت حذف می‌شود. وضعیت فعلی (تبلیغ بدون صفحه) بدترین حالت است</td><td></td><td></td></tr><tr><td>4.3</td><td><strong>آیا «خرید عمده» واقعاً ارائه می‌شود و با چه شرایطی؟</strong></td><td>تعیین می‌کند صفحه خرید عمده بازنویسی شود یا حذف</td><td></td><td></td></tr><tr><td>4.4</td><td><strong>شماره رسمی و واحد پشتیبانی کدام است؟</strong></td><td>چهار شماره متفاوت در منابع مختلف مشاهده شد (۰۷۱۳۲۳۴۱۷۸۹، ۰۹۳۶۱۱۲۹۵۲، ۰۹۳۵۶۲۷۹۱۱۸، ۰۹۱۷۴۹۲۹۵۲). ناسازگاری، اعتماد را کم می‌کند</td><td></td><td></td></tr><tr><td>4.5</td><td><strong>ساعات کاری واقعی</strong></td><td>برای صفحه تماس و schema</td><td></td><td></td></tr><tr><td>4.6</td><td><strong>سطح اختیار این نقش</strong></td><td>آیا تغییر محتوای عمومی بدون تأیید موردی مجاز است؟</td><td></td><td></td></tr><tr><td>4.7</td><td><strong>کانال گزارش‌دهی</strong></td><td>به چه کسی، با چه دوره‌ای</td><td></td><td></td></tr></tbody></table>
+<hr/>
+<h2>سطح 🟠 ضروری — هفته ۲</h2>
+<h3>۵. داده‌های فروش و مالی</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>جزئیات</th><th>مسئول</th><th>تاریخ</th></tr></thead><tbody><tr><td>5.1</td><td><strong>گزارش فروش ۶ ماه اخیر از ووکامرس</strong></td><td>تعداد سفارش، GMV، میانگین سبد، به تفکیک ماه</td><td></td><td></td></tr><tr><td>5.2</td><td>فروش به تفکیک دسته محصول</td><td>کدام دسته‌ها بیشترین سهم را دارند</td><td></td><td></td></tr><tr><td>5.3</td><td>فروش به تفکیک برند</td><td></td><td></td><td></td></tr><tr><td>5.4</td><td><strong>تفکیک کانال فروش</strong></td><td>آنلاین / تلفنی / حضوری / سازمانی — سهم هرکدام</td><td></td><td></td></tr><tr><td>5.5</td><td>نرخ مرجوعی و دلایل اصلی</td><td>🔴 برای سنجش اثر یافته‌های داده نادرست محصول</td><td></td><td></td></tr><tr><td>5.6</td><td>وضعیت درگاه‌های پرداخت</td><td>کدام فعال است، نرخ موفقیت تراکنش</td><td></td><td></td></tr><tr><td>5.7</td><td>حاشیه سود ناخالص</td><td>به تفکیک دسته (برای مدل مالی)</td><td></td><td></td></tr><tr><td>5.8</td><td><strong>میانگین ارزش سبد B2B/سازمانی</strong></td><td>در صورت وجود</td><td></td><td></td></tr><tr><td>5.9</td><td>نرخ تکرار خرید</td><td></td><td></td><td></td></tr></tbody></table>
+<h3>۶. داده محصول و تأمین</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>جزئیات</th><th>مسئول</th><th>تاریخ</th></tr></thead><tbody><tr><td>6.1</td><td><strong>کاتالوگ رسمی و دیتاشیت هر برند</strong></td><td>🔴 پیش‌نیاز مطلق اصلاح داده فنی. بوتان، ایران رادیاتور، انرژی، نیرو تهویه البرز، لورچ، آذر تهویه، تراست، آریستون، گرماسان، مشهد ظهور</td><td></td><td></td></tr><tr><td>6.2</td><td><strong>فهرست قیمت رسمی به‌روز</strong></td><td>به تفکیک برند و مدل — برای جداول قیمت صفحه دسته</td><td></td><td></td></tr><tr><td>6.3</td><td>وضعیت موجودی انبار</td><td>روش به‌روزرسانی، دوره، مسئول</td><td></td><td></td></tr><tr><td>6.4</td><td><strong>معرفی کارشناس فنی تأییدکننده داده</strong></td><td>🔴 نام و میزان در دسترس بودن. هیچ محتوای فنی بدون بازبین امضاشده منتشر نخواهد شد</td><td></td><td></td></tr><tr><td>6.5</td><td>قراردادهای نمایندگی/عاملیت</td><td>کدام برندها نمایندگی رسمی‌اند؟ (برای سنگر برند و ادعاهای اعتماد)</td><td></td><td></td></tr><tr><td>6.6</td><td>دارایی‌های بصری موجود</td><td>عکس محصول، لوگوی باکیفیت برندها، ویدیو، کاتالوگ PDF</td><td></td><td></td></tr><tr><td>6.7</td><td><strong>توان تأمین دسته‌های اعلام‌شده در فوتر</strong></td><td>چیلر، مینی‌چیلر، برج خنک‌کننده، فن‌کویل، داکت اسپلیت، هواساز، ایرواشر، یونیت هیتر، تجهیزات استخر/سونا — آیا واقعاً تأمین می‌شوند یا فقط ادعاست؟</td><td></td><td></td></tr></tbody></table>
+<h3>۷. سوابق و وضعیت فعلی فنی</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>جزئیات</th><th>مسئول</th><th>تاریخ</th></tr></thead><tbody><tr><td>7.1</td><td><strong>سوابق پیمانکاران/نیروهای قبلی</strong></td><td>چه کسی سایت را ساخته؟ چه تحویل داده؟ چرا ارتباط قطع شد؟</td><td></td><td></td></tr><tr><td>7.2</td><td>مستندات فنی موجود</td><td>اگر سند تحویل، راهنما یا یادداشت فنی وجود دارد</td><td></td><td></td></tr><tr><td>7.3</td><td>نام و نسخه قالب</td><td>+ وضعیت لایسنس</td><td></td><td></td></tr><tr><td>7.4</td><td><strong>فهرست کامل افزونه‌ها با وضعیت لایسنس</strong></td><td>🔴 به‌ویژه YITH Request a Quote — لایسنس معتبر دارد؟ (شورت‌کد رندر‌نشده می‌تواند نشانه افزونه غیرفعال یا لایسنس نامعتبر باشد)</td><td></td><td></td></tr><tr><td>7.5</td><td>وضعیت محیط staging</td><td>وجود دارد/ندارد</td><td></td><td></td></tr><tr><td>7.6</td><td><strong>وضعیت بکاپ‌گیری</strong></td><td>مکانیزم، دوره، محل ذخیره، آخرین بکاپ، <strong>آخرین آزمایش بازیابی موفق</strong></td><td></td><td></td></tr><tr><td>7.7</td><td>سوابق خرابی یا قطعی</td><td>در ۱۲ ماه اخیر</td><td></td><td></td></tr><tr><td>7.8</td><td>سوابق امنیتی</td><td>آیا سایت پیش‌تر هک شده؟</td><td></td><td></td></tr><tr><td>7.9</td><td>تغییرات اخیر</td><td>چه تغییراتی در ۳ ماه اخیر اعمال شده و توسط چه کسی؟</td><td></td><td></td></tr></tbody></table>
+<h3>۸. اطلاعات کسب‌وکار و اعتبار</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>جزئیات</th><th>مسئول</th><th>تاریخ</th></tr></thead><tbody><tr><td>8.1</td><td><strong>تاریخچه واقعی شرکت</strong></td><td>برای بازنویسی «درباره ما» — سال تأسیس، نقاط عطف، تیم فعلی</td><td></td><td></td></tr><tr><td>8.2</td><td><strong>اعداد واقعی برای شمارنده‌های اعتباری</strong></td><td>تعداد سفارش، تعداد مشتری، سال‌های فعالیت — 🔴 یا عدد واقعی تأییدشده، یا حذف شمارنده‌ها. عدد تأییدنشده درج نخواهد شد</td><td></td><td></td></tr><tr><td>8.3</td><td>عکس واقعی از فروشگاه و تیم</td><td>برای صفحه درباره ما و تماس</td><td></td><td></td></tr><tr><td>8.4</td><td>گواهینامه‌ها و تأییدیه‌ها</td><td>هر آنچه قابل نمایش است</td><td></td><td></td></tr><tr><td>8.5</td><td><strong>خدمات نصب و پس از فروش</strong></td><td>چه خدماتی، با چه هزینه‌ای، در چه محدوده جغرافیایی</td><td></td><td></td></tr><tr><td>8.6</td><td>شبکه تکنسین‌های مجاز</td><td>برای گارانتی برندها</td><td></td><td></td></tr></tbody></table>
+<hr/>
+<h2>سطح 🟡 مهم — هفته ۳</h2>
+<h3>۹. داده‌های تیم فروش و مشتری</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>جزئیات</th><th>مسئول</th><th>تاریخ</th></tr></thead><tbody><tr><td>9.1</td><td><strong>۵۰ پرسش پرتکرار مشتری</strong></td><td>گردآوری از تیم فروش — 🔴 منبع اصلی FAQ و پایگاه دانش هر دستیار آینده</td><td></td><td></td></tr><tr><td>9.2</td><td>دلایل اصلی عدم خرید</td><td>از زبان تیم فروش</td><td></td><td></td></tr><tr><td>9.3</td><td>فرایند فعلی پاسخ به سرنخ</td><td>از ورود تا بسته‌شدن؛ میانگین زمان پاسخ</td><td></td><td></td></tr><tr><td>9.4</td><td>تعداد تماس/پیام روزانه</td><td>برای سنجش ظرفیت و توجیه اتوماسیون</td><td></td><td></td></tr><tr><td>9.5</td><td><strong>معرفی رابط تیم فروش</strong></td><td>نام و میزان در دسترس بودن</td><td></td><td></td></tr><tr><td>9.6</td><td>وجود CRM یا ابزار مدیریت سرنخ</td><td>اگر هست، چه ابزاری و چه وضعیتی</td><td></td><td></td></tr><tr><td>9.7</td><td>سوابق سرنخ‌های سازمانی</td><td>تعداد، ارزش، نرخ تبدیل</td><td></td><td></td></tr></tbody></table>
+<h3>۱۰. بازاریابی و محتوا</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>جزئیات</th><th>مسئول</th><th>تاریخ</th></tr></thead><tbody><tr><td>10.1</td><td>حساب‌های شبکه اجتماعی</td><td>اینستاگرام، تلگرام، واتساپ — آدرس و وضعیت فعالیت</td><td></td><td></td></tr><tr><td>10.2</td><td>سوابق تبلیغات</td><td>چه کانال‌هایی، چه بودجه‌ای، چه نتیجه‌ای</td><td></td><td></td></tr><tr><td>10.3</td><td>محتوای موجود خارج از سایت</td><td>کاتالوگ PDF، ویدیو، بروشور، مقالات</td><td></td><td></td></tr><tr><td>10.4</td><td><strong>بودجه ماهانه بازاریابی</strong></td><td>تفکیک: ابزار / زیرساخت / محتوا / تبلیغات / پیمانکار</td><td></td><td></td></tr><tr><td>10.5</td><td>ظرفیت تولید محتوا</td><td>آیا نویسنده دارید یا باید تأمین شود؟</td><td></td><td></td></tr><tr><td>10.6</td><td>ظرفیت توسعه فنی</td><td>آیا توسعه‌دهنده دارید یا پیمانکار لازم است؟</td><td></td><td></td></tr></tbody></table>
+<hr/>
+<h2>سطح 🟢 تسهیل‌کننده — فازهای بعد</h2>
+<h3>۱۱. برای فاز دو و سه</h3>
+<table><thead><tr><th>#</th><th>مورد</th><th>کاربرد</th></tr></thead><tbody><tr><td>11.1</td><td>داده فروش به تفکیک فصل (۲ سال)</td><td>تنظیم تقویم محتوا با فصلی‌بودن شدید HVAC</td></tr><tr><td>11.2</td><td>داده مشتریان سازمانی/پیمانکاران</td><td>طراحی مسیر B2B</td></tr><tr><td>11.3</td><td>فرمول‌های محاسبه ظرفیت که شرکت استفاده می‌کند</td><td>🔴 پایه ابزار ظرفیت‌یاب و دستیار هوش مصنوعی</td></tr><tr><td>11.4</td><td>سوابق پروژه‌های انجام‌شده</td><td>محتوای اثبات توانمندی</td></tr><tr><td>11.5</td><td>برنامه توسعه کسب‌وکار</td><td>هم‌راستاسازی برنامه دیجیتال با برنامه کلان</td></tr><tr><td>11.6</td><td>بودجه و برنامه فاز اتوماسیون</td><td>پیش‌نیاز فاز سه</td></tr></tbody></table>
+<hr/>
+<h2>تعهدات متقابل من در برابر این دسترسی‌ها</h2>
+<table><thead><tr><th>تعهد</th><th>توضیح</th></tr></thead><tbody><tr><td><strong>محرمانگی</strong></td><td>امضای توافقنامه محرمانگی دوطرفه <strong>پیش از</strong> دریافت هر داده داخلی</td></tr><tr><td><strong>حداقل دسترسی</strong></td><td>فقط دسترسی‌هایی که برای کار لازم است؛ درخواست دسترسی اضافی نخواهم کرد</td></tr><tr><td><strong>عدم افشا</strong></td><td>هیچ داده داخلی در هیچ سند بیرونی، نمونه کار یا گفت‌وگویی استفاده نخواهد شد</td></tr><tr><td><strong>بازگشت دسترسی</strong></td><td>در پایان همکاری، همه دسترسی‌ها مستند و بازگردانده می‌شود</td></tr><tr><td><strong>حفاظت از داده شخصی</strong></td><td>رعایت اصول حفاظت از داده‌های شخصی مشتریان در هر ابزار و فرایند</td></tr><tr><td><strong>گزارش استفاده</strong></td><td>گزارش شفاف از اینکه هر داده برای چه تصمیمی استفاده شده</td></tr></tbody></table>
+<hr/>
+<h2>صورت‌جلسه پیشنهادی جلسه آغازین</h2>
+<pre><code>تاریخ جلسه:  ....................
+حاضران:     ....................
+
+۱. دسترسی‌های تحویل‌شده در جلسه:
+   ......................................................................
+
+۲. دسترسی‌های معوق با مسئول و تاریخ:
+   | مورد | مسئول | تاریخ تحویل |
+   |------|-------|-------------|
+   |      |       |             |
+
+۳. تصمیم‌های گرفته‌شده (بخش ۴ این سند):
+   ۴.۱ هدف اصلی: فروش آنلاین ☐  سرنخ حضوری ☐  ترکیبی ☐
+   ۴.۲ اقساط: ارائه می‌شود ☐  ارائه نمی‌شود ☐  در حال بررسی ☐
+   ۴.۳ عمده: ارائه می‌شود ☐  ارائه نمی‌شود ☐
+   ۴.۴ شماره رسمی: ....................
+   ۴.۵ ساعات کاری: ....................
+   ۴.۶ سطح اختیار: ....................
+   ۴.۷ کانال گزارش‌دهی: ....................
+
+۴. سیاست بازگشت کالا (تصمیم مدیریت):
+   بازه: ...... روز   شرایط: ....................
+
+۵. کارشناس تأییدکننده داده فنی:
+   نام: ....................   میزان در دسترس بودن: ....................
+
+۶. بودجه مستقل تصویب‌شده:
+   ابزار: ............   زیرساخت: ............
+   محتوا: ............   پیمانکار: ............   تبلیغات: ............
+
+۷. توافق‌شده که:
+   ☐ اگر دسترسی‌های سطح حیاتی تا پایان هفته ۱ تأمین نشود،
+     زمان‌بندی برنامه به همان میزان به تعویق می‌افتد و این
+     موضوع کتباً ثبت می‌شود.
+
+امضا — کارفرما: ....................   امضا — سجاد معصومی: ....................</code></pre>
+<hr/>
+<p><strong>پایان سند ۰۵ — نسخه ۱.۰</strong></p>
+</div>
+</body>
+</html>
