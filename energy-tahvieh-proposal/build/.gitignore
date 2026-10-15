@@ -2,5 +2,23 @@ __pycache__/
 *.pyc
 .venv/
 
-# رمز سند در این فایل است — هرگز commit نشود
+# ══════════════════════════════════════════════════════════════════════
+#  فایل‌های حاوی رمز — هرگز commit نشوند
+# ══════════════════════════════════════════════════════════════════════
+#  اگر اینها به یک ریپازیتوری عمومی بروند، رمزنگاری AES سند بی‌اثر
+#  می‌شود: هرکس راهنما را بخواند رمز را دارد و می‌تواند index.html را
+#  رمزگشایی کند. پس عمداً بیرون از git نگه داشته شده‌اند و فقط به‌صورت
+#  محلی تولید می‌شوند.
+#
+#  توجه: ZIPهای build/ (employer-package و full-package) رمز ندارند و
+#  عمداً commit می‌شوند — آنها لینک دانلود مستقیم کاربرند.
+deploy/UPLOAD-GUIDE.md
+deploy/subdomain-package/UPLOAD-GUIDE.md
+deploy/subdomain-package/.htpasswd
+deploy/sajadmasoumi-subdomain-deploy.zip
+
+#  رمز سند در نسخه تولیدشده DEPLOY-README هم هست
 protected-site/DEPLOY-README.md
+
+# اعتبارنامه رمز سروری — تصادفی تولید می‌شود
+deploy/server-auth-credentials.txt

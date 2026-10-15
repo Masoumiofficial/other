@@ -1,0 +1,7 @@
+# نسخه اضطراری — اگر .htaccess اصلی خطای ۵۰۰ داد، فقط این را بگذارید.
+# کمینه مطلق: فقط هدرها، آن هم داخل IfModule که اگر mod_headers نبود
+# بی‌صدا رد شود.
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive"
+  Header set Cache-Control "no-store"
+</IfModule>
