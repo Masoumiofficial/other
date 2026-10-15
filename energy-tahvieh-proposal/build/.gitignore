@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+
+# رمز سند در این فایل است — هرگز commit نشود
+protected-site/DEPLOY-README.md

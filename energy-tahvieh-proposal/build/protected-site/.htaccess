@@ -1,0 +1,35 @@
+# محافظت سروری — لایه دوم، پیش از رمزنگاری
+# اگر هاست شما Apache/LiteSpeed است (cPanel)، این فایل فعال می‌شود.
+# اگر استاتیک محض است (Cloudflare/Netlify/Vercel)، این فایل بی‌اثر است و
+# باید از تنظیمات همان سرویس برای کنترل دسترسی استفاده کنید.
+
+# --- ایندکس نشدن ---
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+  Header set Referrer-Policy "no-referrer"
+  Header set X-Content-Type-Options "nosniff"
+  Header set Cache-Control "no-store, no-cache, must-revalidate"
+</IfModule>
+
+# --- خاموش کردن فهرست پوشه ---
+Options -Indexes
+
+# --- رمز عبور سروری (لایه دوم) ---
+# برای فعال‌سازی:
+#   ۱) در cPanel به «Directory Privacy» بروید و روی همین پوشه رمز بگذارید،
+#      یا خودتان .htpasswd بسازید:  htpasswd -c .htpasswd energytahvieh
+#   ۲) سه خط زیر را از حالت توضیح خارج کنید و مسیر .htpasswd را درست کنید.
+# توجه: رمز HTTP Basic Auth با رمز رمزنگاری سند متفاوت است — دو لایه جدا.
+#
+# AuthType Basic
+# AuthName "Energy Tahvieh Proposal - Restricted"
+# AuthUserFile /home/USER/public_html/PATH/.htpasswd
+# Require valid-user
+
+# --- بستن دسترسی مستقیم به بارهای رمزنگاری‌شده از دامنه‌های دیگر ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^https?://([a-z0-9-]+\.)*sajadmasoumi\.com [NC]
+  RewriteRule \.(json|txt)$ - [F,L]
+</IfModule>
