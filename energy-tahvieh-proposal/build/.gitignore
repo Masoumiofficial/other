@@ -22,3 +22,6 @@ protected-site/DEPLOY-README.md
 
 # اعتبارنامه رمز سروری — تصادفی تولید می‌شود
 deploy/server-auth-credentials.txt
+
+# راهنمای صفحه کارفرما — رمز پروپوزال در آن است
+client-page/*/CLIENT-PAGE-GUIDE.md

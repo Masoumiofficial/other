@@ -1,0 +1,63 @@
+# ══════════════════════════════════════════════════════════════════════
+#  .htaccess — ساب‌دامین proposal.sajadmasoumi.com
+#  هاست اشتراکی وردپرسی (Apache یا LiteSpeed) · cPanel
+# ══════════════════════════════════════════════════════════════════════
+#
+#  این فایل عمداً ساده نگه داشته شده. در هاست اشتراکی، هر دستورِ خارج از
+#  AllowOverride باعث خطای ۵۰۰ می‌شود. برای همین از این‌ها عمداً استفاده
+#  نشده:
+#    ✖ Options -Indexes        <- در بعضی هاست‌ها ۵۰۰ می‌دهد
+#    ✖ RewriteRule             <- اینجا لازم نیست (فایل .json جدا نداریم)
+#    ✖ php_value / php_flag    <- در CGI/FPM باعث ۵۰۰ می‌شود
+#
+#  اگر بعد از آپلود سایت خطای ۵۰۰ داد، نسخه htaccess-fallback.txt را
+#  جایگزین کنید.
+# ══════════════════════════════════════════════════════════════════════
+
+# ────────── ایندکس نشدن در گوگل و آرشیو نشدن ──────────
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+  Header set Referrer-Policy "no-referrer"
+  Header set X-Content-Type-Options "nosniff"
+  Header set Cache-Control "no-store, no-cache, must-revalidate"
+  Header set Pragma "no-cache"
+</IfModule>
+
+# ────────── صفحه پیش‌فرض ──────────
+# index.html باید بر index.php اولویت داشته باشد. اگر وردپرس را اشتباهاً
+# روی همین پوشه نصب کرده باشید، بدون این خط ممکن است وردپرس بالا بیاید.
+<IfModule mod_dir.c>
+  DirectoryIndex index.html index.php index.htm
+</IfModule>
+
+# ══════════ لایه دوم: رمز عبور سروری (غیرفعال) ══════════
+# برای فعال‌سازی: چهار خط زیر را از حالت # خارج کنید و مسیر AuthUserFile را
+# با مسیر واقعی پوشه خودتان جایگزین کنید. ساده‌تر از این: در cPanel به
+# «Directory Privacy» بروید و روی همین پوشه رمز بگذارید — خودش این خطوط را
+# می‌نویسد و .htpasswd را هم می‌سازد.
+#
+# AuthType Basic
+# AuthName "Proposal - Restricted"
+# AuthUserFile /home/USER/proposal.sajadmasoumi.com/.htpasswd
+# Require valid-user
+
+# ────────── بستن دسترسی به فایل‌های حساس ──────────
+<FilesMatch "^\.(htaccess|htpasswd|gitignore)">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(log|md)$">
+  Require all denied
+</FilesMatch>
+
+# ────────── فشرده‌سازی ──────────
+# فایل index.html حدود ۱٫۴ مگابایت است (بیشترش فونت جاسازی‌شده).
+# با gzip به حدود ۱٫۱ مگابایت می‌رسد. اگر فعال نباشد هم سایت کار می‌کند.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript
+</IfModule>
+
+# ────────── UTF-8 ──────────
+<IfModule mod_mime.c>
+  AddDefaultCharset UTF-8
+</IfModule>
