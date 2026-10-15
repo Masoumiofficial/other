@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>فهرست محدودیت‌ها و موارد غیرقابل نتیجه‌گیری</title>
+<style>
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+
+@page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+@media print {
+  .no-print { display: none !important; }
+  h1, h2, h3 { break-after: avoid; }
+  table, pre, blockquote { break-inside: avoid; }
+  tr { break-inside: avoid; }
+  a { color: inherit !important; text-decoration: none !important; }
+}
+:root{
+  --accent:#0f5c8c; --h2:#143d59; --h3:#1f5c82; --muted:#5a5a5a;
+  --alert:#a82222; --line:#dbe4ec; --soft:#f6f9fb; --code:#f5f5f5;
+}
+*{box-sizing:border-box}
+html{ -webkit-text-size-adjust:100% }
+body{
+  font-family:'Vazirmatn','B Nazanin','IRANSans','Tahoma',sans-serif;
+  direction:rtl; text-align:right; line-height:1.85;
+  color:#1b1b1b; background:#eef1f4; margin:0; padding:0;
+  font-size:14px; font-feature-settings:"ss01";
+}
+.sheet{
+  background:#fff; max-width:210mm; margin:24px auto; padding:20mm 16mm;
+  box-shadow:0 2px 18px rgba(0,0,0,.14);
+}
+@media print{ body{background:#fff} .sheet{box-shadow:none;margin:0;padding:0;max-width:none} }
+
+.toolbar{
+  position:sticky; top:0; z-index:50; background:#0f5c8c; color:#fff;
+  padding:10px 18px; display:flex; gap:14px; align-items:center;
+  justify-content:center; flex-wrap:wrap; font-size:13px;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.toolbar button{
+  background:#fff; color:#0f5c8c; border:0; padding:8px 18px; border-radius:6px;
+  font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
+}
+.toolbar button:hover{ background:#dbe9f2 }
+
+h1,h2,h3,h4{ line-height:1.5; font-weight:800; }
+h1{
+  font-size:23px; color:var(--accent); margin:1.9em 0 .7em;
+  padding-bottom:.35em; border-bottom:3px solid var(--accent);
+  break-before:page;
+}
+h1:first-of-type{ break-before:auto; margin-top:.2em }
+h2{
+  font-size:18px; color:var(--h2); margin:1.7em 0 .6em;
+  padding-bottom:.3em; border-bottom:1px solid var(--line);
+}
+h3{ font-size:15.5px; color:var(--h3); margin:1.4em 0 .5em }
+h4{ font-size:14px; color:var(--h3); margin:1.2em 0 .4em }
+p{ margin:.75em 0; text-align:justify; }
+ul,ol{ margin:.7em 0; padding-right:1.5em; padding-left:0 }
+li{ margin:.32em 0 }
+li::marker{ color:var(--accent); font-weight:700 }
+strong{ font-weight:800; color:#0d3f5f }
+em{ font-style:italic; color:#33475b }
+code{
+  font-family:'Consolas','Courier New',monospace; direction:ltr; unicode-bidi:embed;
+  background:#fdf1f1; color:#a8222a; padding:.12em .4em; border-radius:4px;
+  font-size:.86em; display:inline-block;
+}
+pre{
+  background:var(--code); border:1px solid #e2e2e2; border-radius:8px;
+  padding:12px 14px; overflow-x:auto; direction:ltr; text-align:left;
+  font-size:11.5px; line-height:1.55; margin:1em 0;
+}
+pre code{ background:none; color:#2b2b2b; padding:0; display:block; direction:ltr }
+blockquote{
+  margin:1em 0; padding:.85em 1.1em; background:#f4f7fa;
+  border-right:5px solid var(--accent); border-radius:0 8px 8px 0;
+  color:#223a4a;
+}
+blockquote p{ margin:.35em 0 }
+hr{ border:0; border-top:1px solid #d8dee4; margin:2em 0 }
+a{ color:var(--accent); text-decoration:none; border-bottom:1px dotted rgba(15,92,140,.4) }
+a:hover{ border-bottom-style:solid }
+
+table{
+  width:100%; border-collapse:collapse; margin:1.1em 0; font-size:12.5px;
+  direction:rtl;
+}
+th{
+  background:var(--accent); color:#fff; font-weight:700; text-align:right;
+  padding:8px 10px; border:1px solid #0d4f78; vertical-align:top;
+}
+td{ padding:7px 10px; border:1px solid var(--line); vertical-align:top }
+tbody tr:nth-child(even) td{ background:var(--soft) }
+thead{ display:table-header-group }
+
+.cover{ text-align:center; padding:2.2em 0 1.4em; border-bottom:3px solid var(--accent); margin-bottom:1.6em }
+.cover .kicker{ font-size:13px; letter-spacing:.02em; color:var(--muted); font-weight:700 }
+.cover .title{ font-size:29px; font-weight:900; color:var(--accent); line-height:1.45; margin:.55em 0 .3em; white-space:pre-line }
+.cover .subtitle{ font-size:16px; font-weight:700; color:var(--h3); margin:.35em 0 }
+.cover .badge{
+  display:inline-block; margin-top:1.1em; padding:.5em 1.2em; border-radius:8px;
+  background:#fdecec; color:var(--alert); font-weight:800; font-size:14px;
+  border:1px solid #f2c4c4;
+}
+.cover table{ margin:1.8em auto 0; max-width:92%; font-size:13px; text-align:right }
+.cover table td:first-child{ background:#eaf1f6; font-weight:700; width:34% }
+
+ul.task{ list-style:none; padding-right:.4em }
+ul.task li{ padding-right:1.6em; position:relative }
+ul.task li::before{
+  content:"☐"; position:absolute; right:0; top:0; color:var(--accent);
+  font-weight:700; font-size:1.05em;
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <span>برای ساخت PDF: دکمه زیر یا <b>Ctrl/Cmd + P</b> → «Save as PDF» → حاشیه: Default → «Background graphics» فعال</span>
+  <button onclick="window.print()">🖨️ چاپ / ذخیره PDF</button>
+</div>
+
+<div class="sheet">
+<div class="cover">
+<div class="kicker">پیوست شفافیت</div>
+<div class="title">فهرست محدودیت‌ها و موارد
+غیرقابل نتیجه‌گیری</div>
+<div class="subtitle">آنچه این تحلیل نمی‌تواند بگوید</div>
+<table><tbody>
+<tr><td>تهیه‌کننده</td><td>سجاد معصومی</td></tr>
+<tr><td>تاریخ</td><td>۲۳ مهر ۱۴۰۵ / ۱۵ اکتبر ۲۰۲۶</td></tr>
+<tr><td>نسخه</td><td>1.0</td></tr>
+<tr><td>محدودیت روش</td><td>۸ مورد</td></tr>
+<tr><td>داده غایب</td><td>۲۵ مورد</td></tr>
+<tr><td>فرضیه تأییدنشده</td><td>۱۸ مورد</td></tr>
+</tbody></table>
+</div>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>سند</strong></td><td>محدودیت‌های بررسی و موارد معلق</td></tr><tr><td><strong>نسخه</strong></td><td>1.0</td></tr><tr><td><strong>تاریخ</strong></td><td>۲۳ مهر ۱۴۰۵ / ۱۵ اکتبر ۲۰۲۶</td></tr><tr><td><strong>تهیه‌کننده</strong></td><td>سجاد معصومی</td></tr><tr><td><strong>هدف</strong></td><td>صراحت کامل درباره آنچه این تحلیل <strong>نمی‌تواند</strong> بگوید</td></tr></tbody></table>
+<hr/>
+<h2>۰. چرا این سند وجود دارد</h2>
+<p>هر تحلیلی که مرزهایش را اعلام نکند، یا ناقص است یا فریبنده. این سند فهرست می‌کند که در بررسی انجام‌شده، چه چیزهایی <strong>مشاهده نشدند</strong>، چه چیزهایی <strong>فقط فرضیه‌اند</strong>، و چه نتیجه‌گیری‌هایی <strong>تا زمان دسترسی ممکن نیستند</strong>.</p>
+<p>این سند عمداً همراه پروپوزال کارفرما ارائه می‌شود — نه برای کاهش اثر آن، بلکه برای افزایش اعتبارش. تفاوت میان یک مشاور معتبر و یک فروشنده وعده، دقیقاً در همین است که اولی می‌گوید «این را نمی‌دانم».</p>
+<hr/>
+<h2>۱. محدودیت‌های ذاتی روش بررسی</h2>
+<table><thead><tr><th>#</th><th>محدودیت</th><th>توضیح</th><th>پیامد</th></tr></thead><tbody><tr><td>L-01</td><td><strong>فقط HTML سمت سرور بررسی شد</strong></td><td>ابزار بررسی، متن و ساختار رندرشده را استخراج می‌کند، نه رفتار JavaScript در مرورگر</td><td>هر رفتار وابسته به JS — از جمله اسلایدرها، فیلترهای پویا، نمایش سریع، مقایسه، و چت‌بات احتمالی — <strong>بررسی نشده است</strong>. ممکن است مشکلات یا قابلیت‌هایی وجود داشته باشد که در این تحلیل نیست</td></tr><tr><td>L-02</td><td><strong>هیچ تست عملکردی اجرا نشد</strong></td><td>Lighthouse، PageSpeed Insights، WebPageTest و CrUX اجرا نشدند</td><td>🔴 <strong>هیچ ادعایی درباره سرعت سایت، LCP، INP، CLS، TTFB یا حجم صفحه در هیچ سندی وجود ندارد.</strong> هر اشاره‌ای به «احتمال کندی» صرفاً فرضیه مبتنی بر الگوی پشته فنی است</td></tr><tr><td>L-03</td><td><strong>هیچ بررسی بصری انجام نشد</strong></td><td>نه در موبایل، نه در دسکتاپ</td><td>چیدمان بصری، خوانایی، تضاد رنگ، اندازه لمس‌پذیرها، و رفتار واکنش‌گرا <strong>ارزیابی نشده‌اند</strong>. ممکن است سایت از نظر بصری در وضعیت بهتری باشد آنچه از متن برداشت می‌شود، یا بدتر</td></tr><tr><td>L-04</td><td><strong>هیچ تست خرید واقعی انجام نشد</strong></td><td>از ثبت سفارش آزمایشی روی محیط تولید اجتناب شد</td><td>🔴 <strong>سلامت فرایند خرید تأیید نشده است.</strong> سبد خرید، تسویه حساب، درگاه پرداخت، ارسال ایمیل/پیامک سفارش، و صدور فاکتور — هیچ‌کدام آزمایش نشدند. ممکن است مشکل جدی یا هیچ مشکلی وجود داشته باشد</td></tr><tr><td>L-05</td><td><strong>بدون اجرای JavaScript، عناصر بارگذاری‌شده پویا دیده نشدند</strong></td><td>از جمله نماد اعتماد الکترونیکی (که معمولاً با JS بارگذاری می‌شود)</td><td>🔴 <strong>وضعیت اینماد تأیید نشده است.</strong> در HTML متنی دیده نشد، ولی این به معنی نبودش نیست. باید مستقیماً بررسی شود</td></tr><tr><td>L-06</td><td><strong>بررسی در یک نقطه زمانی و از یک موقعیت جغرافیایی</strong></td><td>۱۵ اکتبر ۲۰۲۶، خارج از ایران</td><td>ممکن است رفتار سایت برای کاربران داخل ایران متفاوت باشد — به‌ویژه اگر CDN جغرافیایی، فیلترینگ، یا محدودیت منطقه‌ای در کار باشد. همچنین <strong>سرعت دسترسی از داخل ایران اندازه‌گیری نشد</strong></td></tr><tr><td>L-07</td><td><strong>متن استخراج‌شده، نه کد کامل</strong></td><td>سرآشد‌های HTTP، اسکیمای JSON-LD، تگ‌های meta، و ساختار کامل <code>&lt;head&gt;</code> به‌طور کامل قابل مشاهده نبود</td><td>وضعیت schema، canonical، og tags، و hreflang <strong>تأیید نشده</strong> — فقط از شواهد غیرمستقیم (مانند ساختار sitemap) استنتاج شده</td></tr><tr><td>L-08</td><td><strong>نمونه‌گیری محدود محصولات</strong></td><td>از ۱۹۱ محصول، تعداد کمی به‌طور کامل بررسی شد</td><td>🔴 <strong>دامنه شیوع خطاهای داده محصول نامعلوم است.</strong> یافته‌های V-18 تا V-22 روی یک محصول تأیید شدند. ممکن است سیستماتیک باشند (که محتمل است) یا محدود به چند مورد. شمارش دقیق نیازمند استخراج کامل از API است</td></tr></tbody></table>
+<hr/>
+<h2>۲. داده‌هایی که هرگز در دسترس نبودند</h2>
+<h3>۲.۱ داده‌های تحلیلی و سئو</h3>
+<table><thead><tr><th>#</th><th>داده</th><th>چرا نتیجه‌گیری بدون آن ممکن نیست</th></tr></thead><tbody><tr><td>N-01</td><td>Google Search Console</td><td>بدون آن، <strong>هیچ ادعایی درباره رتبه، ترافیک ارگانیک، impressions، CTR، کوئری‌ها، یا پوشش ایندکس</strong> مطرح نشده و نمی‌تواند مطرح شود</td></tr><tr><td>N-02</td><td>Google Analytics / GTM</td><td>بدون آن، <strong>هیچ ادعایی درباره بازدید، نرخ تبدیل، رهاشدن سبد، منابع ترافیک، یا رفتار کاربر</strong> مطرح نشده</td></tr><tr><td>N-03</td><td>CrUX / داده میدانی CWV</td><td>بدون آن، وضعیت واقعی تجربه کاربری برای کاربران واقعی نامعلوم است</td></tr><tr><td>N-04</td><td>تاریخچه جریمه یا اقدام دستی گوگل</td><td>نمی‌توان تشخیص داد آیا دامنه سابقه منفی دارد</td></tr><tr><td>N-05</td><td>وضعیت بک‌لینک‌ها و اعتبار دامنه</td><td>بدون ابزار سئو، قابل ارزیابی نبود</td></tr></tbody></table>
+<h3>۲.۲ داده‌های تجاری</h3>
+<table><thead><tr><th>#</th><th>داده</th><th>پیامد</th></tr></thead><tbody><tr><td>N-06</td><td>درآمد، GMV، تعداد سفارش</td><td>🔴 <strong>بدون این، هیچ مدل مالی کمی قابل ارائه نبود.</strong> بخش ۸ سند ۰۳ عمداً فقط «ساختار مدل» با پارامترهای خالی است، نه پیش‌بینی</td></tr><tr><td>N-07</td><td>میانگین ارزش سبد واقعی</td><td>فقط از قیمت‌های مشاهده‌شده قابل برآورد بود، نه تأیید</td></tr><tr><td>N-08</td><td>تفکیک فروش به کانال (آنلاین/تلفنی/حضوری/سازمانی)</td><td>🔴 <strong>این مهم‌ترین داده غایب است.</strong> اگر فروش آنلاین ناچیز باشد، کل استراتژی باید بازتعریف شود (سناریو «الف» بخش ۱۳.۲ سند ۰۳)</td></tr><tr><td>N-09</td><td>حاشیه سود</td><td>بدون آن، بازده سرمایه‌گذاری قابل محاسبه نیست</td></tr><tr><td>N-10</td><td>نرخ مرجوعی و دلایل آن</td><td>بدون آن، اثر تجاری خطاهای داده محصول قابل کمی‌سازی نیست</td></tr><tr><td>N-11</td><td>نرخ موفقیت تراکنش درگاه</td><td>بدون آن، سلامت پرداخت نامعلوم است</td></tr><tr><td>N-12</td><td>نرخ تکرار خرید و ارزش طول عمر مشتری</td><td>بدون آن، مدل حفظ مشتری ممکن نیست</td></tr><tr><td>N-13</td><td>داده سرنخ‌های فعلی (تعداد، منبع، نرخ تبدیل)</td><td>بدون آن، ارزش مسیرهای B2B قابل برآورد نیست</td></tr></tbody></table>
+<h3>۲.۳ داده‌های فنی و سازمانی</h3>
+<table><thead><tr><th>#</th><th>داده</th><th>پیامد</th></tr></thead><tbody><tr><td>N-14</td><td>نسخه PHP/MySQL/WordPress/WooCommerce/قالب/افزونه‌ها</td><td>🔴 <strong>هیچ ادعایی درباره نسخه‌ها یا به‌روز بودن در هیچ سندی نشده</strong></td></tr><tr><td>N-15</td><td>فهرست کامل افزونه‌ها و لایسنس آن‌ها</td><td>علت دقیق شورت‌کد رندر‌نشده (V-10) <strong>تشخیص داده نشد</strong> — فقط سه فرضیه مطرح شد</td></tr><tr><td>N-16</td><td>وضعیت هاست و منابع</td><td>علت احتمالی کندی <strong>فرضیه است نه یافته</strong></td></tr><tr><td>N-17</td><td>وضعیت کش، CDN، کش آبجکت</td><td>فقط از نبود شواهد CDN استنتاج شد (I-11) با اطمینان پایین</td></tr><tr><td>N-18</td><td>وضعیت بکاپ و آخرین آزمایش بازیابی</td><td>🔴 ناشناخته — و پیش‌نیاز مطلق هر اقدام اصلاحی</td></tr><tr><td>N-19</td><td>وضعیت امنیت، دسترسی‌ها، 2FA، WAF</td><td>ناشناخته</td></tr><tr><td>N-20</td><td>خطاهای PHP/JS/سرور</td><td>ناشناخته — بدون لاگ قابل مشاهده نیست</td></tr><tr><td>N-21</td><td>ساختار و اندازه پایگاه داده</td><td>ناشناخته</td></tr><tr><td>N-22</td><td>ساختار سازمانی و تیم فعلی</td><td>ناشناخته — مدل همکاری بر اساس فرض‌های رایج نوشته شده</td></tr><tr><td>N-23</td><td>سوابق پیمانکاران قبلی</td><td>🔴 <strong>این یک شکاف تحلیلی مهم است.</strong> وضعیت فعلی سایت (محتوای پیش‌فرض نیمه‌کاره) علتی دارد که بدون این سابقه قابل تشخیص دقیق نیست</td></tr><tr><td>N-24</td><td>بودجه‌های موجود</td><td>بدون آن، سناریوهای مالی فقط ساختارند</td></tr><tr><td>N-25</td><td>کاتالوگ رسمی و دیتاشیت برندها</td><td>🔴 <strong>بدون این، اصلاح داده فنی (C-01) ممکن نیست</strong> — و C-01 پیش‌نیاز فیلترها، محتوای دسته، و هر اتوماسیون آینده است</td></tr></tbody></table>
+<hr/>
+<h2>۳. مواردی که فقط فرضیه‌اند و نباید به‌عنوان یافته نقل شوند</h2>
+<table><thead><tr><th>#</th><th>فرضیه</th><th>اطمینان</th><th>روش تأیید</th></tr></thead><tbody><tr><td>H-01</td><td>سایت مشکل عملکرد دارد</td><td>🟠 متوسط — مبتنی بر الگوی «قالب مارکت‌پلیس + Elementor + چند افزونه تودرتو» که معمولاً سنگین است</td><td>اجرای ۳۶ نقطه اندازه‌گیری (بخش ۲.۵ سند ۰۳)</td></tr><tr><td>H-02</td><td>ترافیک ارگانیک پایین است</td><td>🟠 متوسط — مبتنی بر صفر بودن محتوا و خالی بودن sitemap مقالات</td><td>دسترسی به Search Console</td></tr><tr><td>H-03</td><td>نرخ تبدیل پایین است</td><td>🟡 پایین–متوسط — مبتنی بر شکستن مسیر اعتماد</td><td>دسترسی به Analytics + تست خرید واقعی</td></tr><tr><td>H-04</td><td>افزونه سئو Yoast است</td><td>🟠 متوسط — مبتنی بر ساختار sitemap</td><td>مشاهده مستقیم پیشخوان</td></tr><tr><td>H-05</td><td>قالب از خانواده مارکت‌پلیس است</td><td>🟡 متوسط–بالا — مبتنی بر صفحات دمو مشاهده‌شده</td><td>مشاهده مستقیم پیشخوان</td></tr><tr><td>H-06</td><td>سایت روی نصب بازیافت‌شده از پروژه قبلی ساخته شده</td><td>🟡 متوسط–بالا — مبتنی بر هم‌زمانی سه لایه زمانی در sitemap</td><td>بررسی تاریخچه <code>wp_posts</code> و سابقه پیمانکاران</td></tr><tr><td>H-07</td><td>علت شورت‌کد رندر‌نشده، غیرفعال بودن یا ناسازگاری افزونه YITH است</td><td>🟠 متوسط</td><td>بررسی وضعیت افزونه در پیشخوان</td></tr><tr><td>H-08</td><td>علت V-18 تا V-22، تخصیص نادرست ویژگی‌های سراسری به محصولات است</td><td>🟡 متوسط–بالا</td><td>استخراج <code>pa_*</code> برای همه محصولات</td></tr><tr><td>H-09</td><td>علت V-20، وجود Variation یا Product Add-On با نام اشتباه است</td><td>🟠 متوسط</td><td>بررسی صفحه ویرایش محصول</td></tr><tr><td>H-10</td><td>علت V-22 («متر مکعب» برای پکیج)، کپی‌شدن الگوی هیتر صنعتی روی پکیج است</td><td>🟠 متوسط</td><td>مقایسه ویژگی‌های چند محصول</td></tr><tr><td>H-11</td><td>علت نبود <code>post-sitemap.xml</code> واقعی، صفر بودن نوشته‌های منتشرشده است</td><td>🟡 متوسط–بالا</td><td>بررسی پیشخوان → نوشته‌ها</td></tr><tr><td>H-12</td><td>علت V-29 (صفحات <code>-2</code>)، نصب مجدد ووکامرس یا واردکردن محتوا بدون پاک‌سازی است</td><td>🟠 متوسط</td><td>بررسی تنظیمات WooCommerce → Advanced</td></tr><tr><td>H-13</td><td>سایت احتمالاً CDN اختصاصی رسانه ندارد</td><td>🔴 پایین</td><td>بررسی سرآشد‌ها و مسیرهای رسانه</td></tr><tr><td>H-14</td><td>اینماد ممکن است وجود داشته باشد ولی با JS بارگذاری شود</td><td>⚪ نامعلوم — <strong>در هر دو جهت</strong></td><td>بررسی مستقیم کد + استعلام در <code>enamad.ir</code></td></tr><tr><td>H-15</td><td>«خرید اقساطی» ممکن است واقعاً ارائه شود و فقط صفحه‌اش خالی باشد</td><td>⚪ نامعلوم — <strong>در هر دو جهت</strong></td><td>پرسش مستقیم از کارفرما (پرسش ۴.۲ سند ۰۵)</td></tr><tr><td>H-16</td><td>محصولات «فروخته شده» ممکن است واقعاً ناموجود باشند یا فقط <code>stock status</code> نادرست داشته باشند</td><td>⚪ نامعلوم</td><td>بررسی موجودی در پیشخوان</td></tr><tr><td>H-17</td><td>دامنه ممکن است سابقه منفی داشته باشد (با توجه به بقایای «ایران کالا»)</td><td>🔴 پایین–متوسط</td><td>بررسی تاریخچه دامنه + Search Console</td></tr><tr><td>H-18</td><td>فروش آنلاین احتمالاً سهم کوچکی از کل فروش دارد</td><td>🟠 متوسط — مبتنی بر اندازه کاتالوگ و نبود اثبات اجتماعی</td><td>🔑 پرسش ۴.۱ و داده ۵.۴ سند ۰۵</td></tr></tbody></table>
+<blockquote><p><strong>قاعده استفاده:</strong> هیچ‌یک از H-01 تا H-18 در گفت‌وگو با کارفرما به‌عنوان «یافته» بیان نشود. جمله صحیح: «این فرضیه من است و در هفته [N] با [روش] تأیید یا رد می‌شود.»</p></blockquote>
+<hr/>
+<h2>۴. نتیجه‌گیری‌هایی که صریحاً ممکن نیستند</h2>
+<p>تا زمان رفع محدودیت‌های بالا، <strong>هیچ‌یک از جملات زیر قابل بیان نیستند</strong>:</p>
+<h3>درباره عملکرد</h3>
+<ul>
+<li>❌ «سایت کند است» / «سایت سریع است»</li>
+<li>❌ «LCP سایت X ثانیه است»</li>
+<li>❌ «موبایل سایت مشکل دارد»</li>
+<li>❌ «هاست ضعیف است»</li>
+<li>❌ «باید هاست عوض شود»</li>
+</ul>
+<h3>درباره سئو و ترافیک</h3>
+<ul>
+<li>❌ «رتبه سایت در گوگل X است»</li>
+<li>❌ «ترافیک ارگانیک سایت X است»</li>
+<li>❌ «سایت روی کلمه X رتبه دارد»</li>
+<li>❌ «سایت X صفحه ایندکس‌شده دارد» (sitemap شمرده شد ولی وضعیت واقعی ایندکس نامعلوم است)</li>
+<li>❌ «سایت جریمه شده است»</li>
+<li>❌ «رقیب X برابر ترافیک دارد»</li>
+</ul>
+<h3>درباره کسب‌وکار</h3>
+<ul>
+<li>❌ «فروش سایت X تومان در ماه است»</li>
+<li>❌ «نرخ تبدیل سایت X درصد است»</li>
+<li>❌ «با این اقدامات، فروش X درصد رشد می‌کند»</li>
+<li>❌ «این برنامه در X ماه بازگشت سرمایه دارد»</li>
+<li>❌ «سبد متوسط خرید X تومان است» (فقط بازه قیمتی محصولات مشاهده شد، نه سبد واقعی)</li>
+</ul>
+<h3>درباره فنی</h3>
+<ul>
+<li>❌ «نسخه وردپرس/PHP سایت X است»</li>
+<li>❌ «سایت آسیب‌پذیر است» / «سایت امن است»</li>
+<li>❌ «بکاپ وجود ندارد»</li>
+<li>❌ «اینماد ندارد» ← ⚠️ فقط می‌توان گفت «تأیید نشد؛ باید بررسی شود»</li>
+<li>❌ «افزونه X باعث این خطا شده»</li>
+</ul>
+<h3>درباره رقبا</h3>
+<ul>
+<li>❌ «داماتجهیز X بازدید روزانه دارد» ← ⚠️ این ادعای خود آن شرکت در منابع عمومی است، نه داده تأییدشده</li>
+<li>❌ «داماتجهیز X محصول دارد» ← فقط «شناسه محصول تا ۱۰٬۰۰۰+ مشاهده شد» قابل بیان است، نه تعداد دقیق</li>
+<li>❌ «سهم بازار X است»</li>
+</ul>
+<hr/>
+<h2>۵. آنچه <strong>می‌توان</strong> با اطمینان گفت</h2>
+<p>برای توازن، این فهرست هم لازم است. موارد زیر همه با شاهد مستقیم تأیید شده‌اند و در برابر چالش قابل دفاع‌اند:</p>
+<p>✅ سایت WordPress + WooCommerce است و فعالانه به‌روز می‌شود (lastmod نقشه محصول: ۲۰۲۶-۱۰-۱۳) ✅ کاتالوگ شامل <strong>۱۹۱ محصول</strong> است (شمارش مستقیم از صفحه فروشگاه) ✅ <strong>هفت صفحه عمومی</strong> خالی، نمونه پیش‌فرض، یا دارای محتوای بی‌ربط‌اند (درباره ما، سیاست بازگشت، شرایط وام، خرید عمده، وبلاگ، درخواست پیش‌فاکتور، و سه بخش دمو در صفحه اصلی) ✅ <strong>سه مسیر درآمدی اعلام‌شده</strong> کار نمی‌کنند (اقساط، عمده، پیش‌فاکتور) ✅ داده فنی حداقل یک محصول پرفروش به‌طور قابل تأیید نادرست است ✅ مسیریابی صفحه اصلی در حداقل هشت نقطه شکسته است ✅ صفحات هسته‌ای ووکامرس دوبار وجود دارند ✅ بقایای یک کسب‌وکار/پروژه قبلی با نام «ایران کالا» هنوز در نقشه سایت زنده است ✅ نقشه سایت مقالات فقط یک آدرس دارد ✅ عنوان همه صفحات با خط تیره انتهایی و بدون نام برند بسته می‌شود ✅ فیلتر برند فقط سه مقدار دارد در برابر هشت برند همکار اعلام‌شده ✅ کیفیت توضیحات محصولات جدید خوب است و الگوی قابل مقیاس‌سازی دارد ✅ قیمت‌گذاری شفاف و تومانی است — مزیت رقابتی نسبت به بخشی از بازار ✅ رقیب مرجع بازار (دماتجهیز) در محتوای صفحه دسته و عمق مشخصات فنی، فاصله قابل‌توجهی دارد ✅ بر اساس گزارش حقوق ۱۴۰۵ ایران‌تلنت، میانه حقوق مدیر دیجیتال مارکتینگ در تهران ۶۷ میلیون تومان و بازه متعارف ۵۱ تا ۹۲ میلیون تومان است ✅ یک آگهی زنده «مدیر رشد و بازاریابی دیجیتال» در تهران بازه ۶۰ تا ۸۰ میلیون تومان اعلام کرده است</p>
+<hr/>
+<h2>۶. مسیر رفع محدودیت‌ها</h2>
+<table><thead><tr><th>محدودیت</th><th>چه چیزی لازم است</th><th>در کدام فاز</th></tr></thead><tbody><tr><td>L-01، L-03</td><td>بررسی دستی در مرورگر (موبایل و دسکتاپ)</td><td>فاز صفر — هفته ۲</td></tr><tr><td>L-02</td><td>اجرای ۳۶ نقطه اندازه‌گیری عملکرد</td><td>فاز صفر — هفته ۲</td></tr><tr><td>L-04، N-11</td><td>تست خرید واقعی روی staging یا با هماهنگی</td><td>فاز صفر — هفته ۲</td></tr><tr><td>L-05، N-14…N-21</td><td>دسترسی پیشخوان و هاست</td><td>فاز صفر — هفته ۱</td></tr><tr><td>L-06</td><td>اندازه‌گیری از داخل ایران (با همکاری یک کاربر محلی یا ابزار داخلی)</td><td>فاز صفر — هفته ۲</td></tr><tr><td>L-07</td><td>بررسی مستقیم کد صفحه و ابزار Rich Results Test</td><td>فاز صفر — هفته ۲</td></tr><tr><td>L-08</td><td>اسکریپت استخراج کامل محصولات از REST API</td><td>فاز صفر — هفته ۲</td></tr><tr><td>N-01…N-05</td><td>دسترسی Search Console و Analytics</td><td>فاز صفر — هفته ۱</td></tr><tr><td>N-06…N-13</td><td>داده فروش و مالی از کارفرما</td><td>فاز صفر — هفته ۲</td></tr><tr><td>N-22…N-24</td><td>مصاحبه با مدیریت و تیم</td><td>فاز صفر — هفته ۳</td></tr><tr><td>N-25</td><td>دریافت کاتالوگ رسمی برندها</td><td>فاز صفر — هفته ۲</td></tr><tr><td>H-01…H-18</td><td>ترکیبی از موارد بالا</td><td>فاز صفر — هفته ۱ تا ۳</td></tr></tbody></table>
+<blockquote><p><strong>نتیجه:</strong> تقریباً همه محدودیت‌های این سند در <strong>سه هفته نخست همکاری</strong> قابل رفع‌اند — به شرط تأمین دسترسی‌های سطح 🔴 در سند ۰۵. به همین دلیل فاز صفر یک «گرم‌کردن» نیست؛ <strong>پیش‌نیاز اجباری هر تعهد کمی است.</strong></p></blockquote>
+<hr/>
+<h2>۷. تعهد نهایی</h2>
+<p>من متعهد می‌شوم که:</p>
+<ol>
+<li>هیچ‌یک از موارد بخش ۴ را — حتی در صورت فشار در جلسه مذاکره — بیان نکنم</li>
+<li>همه فرضیه‌های بخش ۳ را به‌صورت فرضیه معرفی کنم، نه یافته</li>
+<li>پس از رفع هر محدودیت، یافته‌های جدید را مستند و در صورت لزوم <strong>نتیجه‌گیری‌های پیشین را اصلاح کنم</strong> — حتی اگر به ضرر استدلال اولیه‌ام باشد</li>
+<li>اگر داده نشان دهد ابتکاری که خودم پیشنهاد داده‌ام کار نمی‌کند، آن را متوقف کنم</li>
+<li>اگر داده نشان دهد نقش با شرایط پیشنهادی قابل اجرا نیست، صریحاً اعلام کنم</li>
+</ol>
+<p><strong>این تعهدات، پایه اعتبار حرفه‌ای این پیشنهاد است.</strong></p>
+<hr/>
+<p><strong>پایان سند ۰۶ — نسخه ۱.۰</strong></p>
+</div>
+</body>
+</html>

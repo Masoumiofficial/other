@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>خلاصه تحلیل اولیه سایت انرژی تهویه</title>
+<style>
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+
+@page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+@media print {
+  .no-print { display: none !important; }
+  h1, h2, h3 { break-after: avoid; }
+  table, pre, blockquote { break-inside: avoid; }
+  tr { break-inside: avoid; }
+  a { color: inherit !important; text-decoration: none !important; }
+}
+:root{
+  --accent:#0f5c8c; --h2:#143d59; --h3:#1f5c82; --muted:#5a5a5a;
+  --alert:#a82222; --line:#dbe4ec; --soft:#f6f9fb; --code:#f5f5f5;
+}
+*{box-sizing:border-box}
+html{ -webkit-text-size-adjust:100% }
+body{
+  font-family:'Vazirmatn','B Nazanin','IRANSans','Tahoma',sans-serif;
+  direction:rtl; text-align:right; line-height:1.85;
+  color:#1b1b1b; background:#eef1f4; margin:0; padding:0;
+  font-size:14px; font-feature-settings:"ss01";
+}
+.sheet{
+  background:#fff; max-width:210mm; margin:24px auto; padding:20mm 16mm;
+  box-shadow:0 2px 18px rgba(0,0,0,.14);
+}
+@media print{ body{background:#fff} .sheet{box-shadow:none;margin:0;padding:0;max-width:none} }
+
+.toolbar{
+  position:sticky; top:0; z-index:50; background:#0f5c8c; color:#fff;
+  padding:10px 18px; display:flex; gap:14px; align-items:center;
+  justify-content:center; flex-wrap:wrap; font-size:13px;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.toolbar button{
+  background:#fff; color:#0f5c8c; border:0; padding:8px 18px; border-radius:6px;
+  font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
+}
+.toolbar button:hover{ background:#dbe9f2 }
+
+h1,h2,h3,h4{ line-height:1.5; font-weight:800; }
+h1{
+  font-size:23px; color:var(--accent); margin:1.9em 0 .7em;
+  padding-bottom:.35em; border-bottom:3px solid var(--accent);
+  break-before:page;
+}
+h1:first-of-type{ break-before:auto; margin-top:.2em }
+h2{
+  font-size:18px; color:var(--h2); margin:1.7em 0 .6em;
+  padding-bottom:.3em; border-bottom:1px solid var(--line);
+}
+h3{ font-size:15.5px; color:var(--h3); margin:1.4em 0 .5em }
+h4{ font-size:14px; color:var(--h3); margin:1.2em 0 .4em }
+p{ margin:.75em 0; text-align:justify; }
+ul,ol{ margin:.7em 0; padding-right:1.5em; padding-left:0 }
+li{ margin:.32em 0 }
+li::marker{ color:var(--accent); font-weight:700 }
+strong{ font-weight:800; color:#0d3f5f }
+em{ font-style:italic; color:#33475b }
+code{
+  font-family:'Consolas','Courier New',monospace; direction:ltr; unicode-bidi:embed;
+  background:#fdf1f1; color:#a8222a; padding:.12em .4em; border-radius:4px;
+  font-size:.86em; display:inline-block;
+}
+pre{
+  background:var(--code); border:1px solid #e2e2e2; border-radius:8px;
+  padding:12px 14px; overflow-x:auto; direction:ltr; text-align:left;
+  font-size:11.5px; line-height:1.55; margin:1em 0;
+}
+pre code{ background:none; color:#2b2b2b; padding:0; display:block; direction:ltr }
+blockquote{
+  margin:1em 0; padding:.85em 1.1em; background:#f4f7fa;
+  border-right:5px solid var(--accent); border-radius:0 8px 8px 0;
+  color:#223a4a;
+}
+blockquote p{ margin:.35em 0 }
+hr{ border:0; border-top:1px solid #d8dee4; margin:2em 0 }
+a{ color:var(--accent); text-decoration:none; border-bottom:1px dotted rgba(15,92,140,.4) }
+a:hover{ border-bottom-style:solid }
+
+table{
+  width:100%; border-collapse:collapse; margin:1.1em 0; font-size:12.5px;
+  direction:rtl;
+}
+th{
+  background:var(--accent); color:#fff; font-weight:700; text-align:right;
+  padding:8px 10px; border:1px solid #0d4f78; vertical-align:top;
+}
+td{ padding:7px 10px; border:1px solid var(--line); vertical-align:top }
+tbody tr:nth-child(even) td{ background:var(--soft) }
+thead{ display:table-header-group }
+
+.cover{ text-align:center; padding:2.2em 0 1.4em; border-bottom:3px solid var(--accent); margin-bottom:1.6em }
+.cover .kicker{ font-size:13px; letter-spacing:.02em; color:var(--muted); font-weight:700 }
+.cover .title{ font-size:29px; font-weight:900; color:var(--accent); line-height:1.45; margin:.55em 0 .3em; white-space:pre-line }
+.cover .subtitle{ font-size:16px; font-weight:700; color:var(--h3); margin:.35em 0 }
+.cover .badge{
+  display:inline-block; margin-top:1.1em; padding:.5em 1.2em; border-radius:8px;
+  background:#fdecec; color:var(--alert); font-weight:800; font-size:14px;
+  border:1px solid #f2c4c4;
+}
+.cover table{ margin:1.8em auto 0; max-width:92%; font-size:13px; text-align:right }
+.cover table td:first-child{ background:#eaf1f6; font-weight:700; width:34% }
+
+ul.task{ list-style:none; padding-right:.4em }
+ul.task li{ padding-right:1.6em; position:relative }
+ul.task li::before{
+  content:"☐"; position:absolute; right:0; top:0; color:var(--accent);
+  font-weight:700; font-size:1.05em;
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <span>برای ساخت PDF: دکمه زیر یا <b>Ctrl/Cmd + P</b> → «Save as PDF» → حاشیه: Default → «Background graphics» فعال</span>
+  <button onclick="window.print()">🖨️ چاپ / ذخیره PDF</button>
+</div>
+
+<div class="sheet">
+<div class="cover">
+<div class="kicker">سند تحلیلی — نسخه داخلی</div>
+<div class="title">خلاصه تحلیل اولیه سایت انرژی تهویه</div>
+<div class="subtitle">تفکیک یافته‌های تأییدشده از فرضیه‌ها</div>
+<table><tbody>
+<tr><td>تهیه‌کننده</td><td>سجاد معصومی</td></tr>
+<tr><td>تاریخ</td><td>۲۳ مهر ۱۴۰۵ / ۱۵ اکتبر ۲۰۲۶</td></tr>
+<tr><td>نسخه</td><td>1.0</td></tr>
+<tr><td>سایت هدف</td><td>https://energytahvieh.com/</td></tr>
+<tr><td>یافته تأییدشده</td><td>۵۵ مورد با شاهد مستقیم</td></tr>
+<tr><td>استنتاج فنی</td><td>۱۲ مورد (نیازمند تأیید)</td></tr>
+<tr><td>محدودیت</td><td>۸ مورد ذاتی روش + ۲۵ داده غایب</td></tr>
+</tbody></table>
+</div>
+<h2>تفکیک یافته‌های تأییدشده از فرضیه‌ها</h2>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>سند</strong></td><td>خلاصه تحلیل اولیه — انرژی تهویه</td></tr><tr><td><strong>نسخه</strong></td><td>1.0</td></tr><tr><td><strong>تاریخ</strong></td><td>۲۳ مهر ۱۴۰۵ / ۱۵ اکتبر ۲۰۲۶</td></tr><tr><td><strong>تهیه‌کننده</strong></td><td>سجاد معصومی</td></tr><tr><td><strong>هدف سند</strong></td><td>مستندسازی تفکیک‌شده «آنچه دیده‌ام» از «آنچه حدس می‌زنم» پیش از هرگونه اظهارنظر قطعی</td></tr><tr><td><strong>سند پشتیبان</strong></td><td><code>evidence/00-evidence-log.md</code> (۵۵ یافته تأییدشده + ۱۲ استنتاج + داده بازار کار)</td></tr><tr><td><strong>سطح محرمانگی</strong></td><td>داخلی</td></tr></tbody></table>
+<hr/>
+<h2>۰. روش بررسی و مرزهای آن</h2>
+<p><strong>انجام شد:</strong></p>
+<ul>
+<li>بازیابی و خواندن HTML سمت سرور صفحات عمومی: صفحه اصلی، فروشگاه، دو صفحه دسته‌بندی، یک صفحه محصول کامل، سبد خرید، تماس با ما، درباره ما، شرایط وام، خرید عمده کالا، وبلاگ، درخواست پیش‌فاکتور، سیاست بازگشت کالا، صفحه‌بندی فروشگاه</li>
+<li>خواندن <code>robots.txt</code>، <code>sitemap_index.xml</code>، <code>page-sitemap.xml</code>، <code>post-sitemap.xml</code>، <code>product-sitemap.xml</code></li>
+<li>بررسی سه رقیب/بازیگر قابل مقایسه به‌صورت مستقیم (damatajhiz.com، nabtahvieh.com) و بررسی مستند منابع عمومی دربارهٔ ۴ بازیگر دیگر</li>
+<li>استخراج داده حقوق و دستمزد ۱۴۰۵ از گزارش ایران‌تلنت و آگهی‌های زنده</li>
+</ul>
+<p><strong>انجام نشد (و لذا ادعایی درباره‌اش ندارم):</strong></p>
+<ul>
+<li>هیچ تست عملکردی (Lighthouse / PSI / WebPageTest) اجرا نشد</li>
+<li>هیچ تست خرید واقعی روی محیط تولید انجام نشد</li>
+<li>رندر بصری موبایل/دسکتاپ بررسی نشد (فقط HTML خام)</li>
+<li>هیچ داده‌ای از Search Console، Analytics، سرور یا فروش در دسترس نبود</li>
+</ul>
+<blockquote><p><strong>نتیجه:</strong> همه یافته‌های این سند از دو جنس‌اند: <strong>مشاهده مستقیم متن/ساختار HTML عمومی</strong> یا <strong>استناد به منبع عمومی</strong>. هیچ عدد عملکردی، رتبه‌ای یا درآمدی در این سند وجود ندارد، چون منبعی برای آن وجود نداشت.</p></blockquote>
+<hr/>
+<h2>۱. جمع‌بندی یک‌پاراگرافی برای تصمیم‌گیرنده</h2>
+<p>انرژی تهویه یک کسب‌وکار واقعی با بیش از یک دهه سابقه، فروشگاه فیزیکی فعال در شیراز، ۱۹۱ محصول قیمت‌گذاری‌شده و ۸ برند همکار است؛ اما <strong>وب‌سایت آن در وضعیت «نیمه‌استقرار‌یافته» قرار دارد</strong>. بخش قابل توجهی از سایت هنوز محتوای پیش‌فرض قالب و افزونه‌ها را حمل می‌کند: صفحه «درباره ما» تماماً Lorem Ipsum است با شمارنده‌هایی که روی صفر ایستاده‌اند، صفحه «سیاست بازگشت کالا» نمونه انگلیسی پیش‌فرض ووکامرس است، صفحه «شرایط وام» و «خرید عمده کالا» خالی‌اند، صفحه «وبلاگ» هیچ نتیجه‌ای برنمی‌گرداند، فرم «درخواست پیش‌فاکتور» به‌صورت شورت‌کد رندر‌نشده روی صفحه نشسته، و صفحه اصلی سه بخش با عنوان‌های «اسباب‌بازی و سرگرمی»، «لباس و پوشاک» و «کتاب و مجلات» دارد که هر سه شش محصول یکسان را تکرار می‌کنند.</p>
+<p>این وضعیت از دو جهت اهمیت دارد. نخست، <strong>مسیرهای درآمدی که خود کسب‌وکار اعلام کرده عملاً کار نمی‌کنند</strong>: «خرید اقساطی» در چهار نقطه سایت تبلیغ می‌شود اما صفحه شرایطش خالی است؛ «خرید عمده» و «درخواست پیش‌فاکتور» — دو مسیر اصلی B2B — هر دو از کار افتاده‌اند. دوم، <strong>اعتبار تخصصی که دارایی اصلی این کسب‌وکار است، در سایت بازتاب ندارد</strong>: همان مجموعه‌ای که در دنیای فیزیکی ۲۰ سال سابقه و مشاوره مهندسی ظرفیت‌سنجی ارائه می‌دهد، آنلاین هیچ راهنمای خرید، هیچ محتوای آموزشی و هیچ صفحه درباره‌مای واقعی ندارد — درحالی‌که رقیب مرجع بازار (دماتجهیز) صفحات دسته‌بندی‌اش را به راهنمای ۹ نکته‌ای خرید، جدول قیمت به‌روز ۱۰ برند و جدول ظرفیت‌یابی تبدیل کرده است.</p>
+<p>خبر مهم این است که <strong>مشکل اصلی «نبود توانایی» نیست</strong>. کیفیت توضیحات محصولات تازه‌افزوده‌شده (مانند <code>/product/m28ff/</code>) واقعاً خوب است: ساختار پرسش‌محور، جدول مشخصات، بخش سؤالات متداول، پیوند داخلی و فراخوان مشاوره. همچنین قیمت‌گذاری شفاف تومانی — در بازاری که رقیبی مانند ناب تهویه بخش بزرگی از محصولاتش را با قیمت «۰ ریال» فهرست می‌کند — یک مزیت رقابتی بالفعل است. مسئله اصلی <strong>نبود مالکیت، نبود یکپارچگی داده و نیمه‌کاره‌ماندن استقرار</strong> است. این دقیقاً همان شکافی است که با یک نقش اپراتوری پر نمی‌شود و نیاز به مالک برنامه دارد.</p>
+<hr/>
+<h2>۲. یافته‌های تأییدشده — رتبه‌بندی‌شده بر اساس شدت اثر تجاری</h2>
+<h3>🔴 سطح ۱ — مستقیماً مسیر درآمد یا اعتماد را قطع کرده‌اند</h3>
+<table><thead><tr><th>کد</th><th>یافته</th><th>شاهد عینی</th><th>چرا مهم است</th></tr></thead><tbody><tr><td><strong>V-07</strong></td><td>صفحه <strong>«شرایط وام» کاملاً خالی</strong> است، درحالی‌که «خرید اقساطی — راحت‌تر از همیشه» در بلوک ثابت تمام صفحات سایت تبلیغ می‌شود</td><td><code>/شرایط-وام/</code> → فقط <code># شرایط وام</code>؛ lastmod ۲۰۲۲-۰۳-۱۱</td><td>در بازاری که میانگین سبد ۷۰ تا ۱۳۰ میلیون تومان است، اقساط یک اهرم تبدیل اصلی است. رقیب این مسیر را با صفحه <code>/content/70-فروش-اقساط</code> و شرح فرایند ۱۰–۱۵ روزه پوشش داده</td></tr><tr><td><strong>V-10</strong></td><td><strong>شورت‌کد «درخواست پیش‌فاکتور» رندر نشده</strong> و به‌صورت متن خام <code>[yith_ywraq_request_quote]</code> روی صفحه است</td><td><code>/request-quote/</code></td><td>این تنها زیرساخت B2B/پروژه‌ای سایت است. خریدار سازمانی که پیش‌فاکتور می‌خواهد با یک رشته کد مواجه می‌شود</td></tr><tr><td><strong>V-08</strong></td><td>صفحه <strong>«خرید عمده کالا» خالی</strong> است</td><td><code>/خرید-عمده-کالا/</code>؛ lastmod ۲۰۲۱-۱۱-۱۵</td><td>دومین مسیر B2B نیز بی‌محتواست</td></tr><tr><td><strong>V-05</strong></td><td><strong>سیاست بازگشت کالا، نمونه پیش‌فرض انگلیسی ووکامرس است</strong></td><td><code>/refund_returns/</code> → «<strong>This is a sample page.</strong>» + «Gift cards» + «CD, DVD, VHS tape» + «vinyl record» + <code>{email address}</code> + <code>{physical address}</code></td><td>برای فروش تجهیزات ۱۰۰ میلیون‌تومانی، نبود سیاست بازگشت معتبر و بومی یک مانع تبدیل و یک <strong>ریسک حقوقی</strong> است (الزامات نماد اعتماد و قانون تجارت الکترونیکی)</td></tr><tr><td><strong>V-15</strong></td><td><strong>تضاد مستقیم در شرایط بازگشت:</strong> صفحه محصول «بازگشت ۷ روزه» می‌گوید، صفحه سیاست «۳۰ روز»</td><td><code>/product/m28ff/</code> → «#### بازگشت ۷ روزه» ⚔️ <code>/refund_returns/</code> → «lasts 30 days»</td><td>دو روایت متناقض از یک تعهد حقوقی. در صورت اختلاف، به ضرر فروشنده تفسیر می‌شود</td></tr><tr><td><strong>V-01</strong></td><td><strong>صفحه «درباره ما» تماماً Lorem Ipsum است</strong></td><td><code>/about-us/</code> → «لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ…» (دو بار)</td><td>نخستین صفحه‌ای که یک خریدار تردیدکننده یا یک کارفرمای B2B برای اعتبارسنجی باز می‌کند</td></tr><tr><td><strong>V-02</strong></td><td>تمام شمارنده‌های اعتباری «درباره ما» <strong>صفر</strong> هستند</td><td>«۰ سفارش موفق»، «۰ ارسال رایگان»، «۰ کیلومتر طی شده»، «۰ فروشنده فعال»</td><td>اثر معکوس: ابزاری که برای اثبات اعتبار طراحی شده، اکنون نبودِ اعتبار را «نمایش» می‌دهد</td></tr></tbody></table>
+<h3>🔴 سطح ۲ — داده محصول نادرست (ریسک تصمیم خرید اشتباه و مرجوعی)</h3>
+<table><thead><tr><th>کد</th><th>یافته</th><th>شاهد عینی</th></tr></thead><tbody><tr><td><strong>V-18</strong></td><td><strong>ویژگی‌های فنی با خود محصول هم‌خوانی ندارد.</strong> پکیج دیواری ۲۸۰۰۰ کیلوکالری با «قدرت حرارتی ۶۴۰۰ BTU» نمایش داده شده — یعنی حدود ۴٪ مقدار واقعی</td><td><code>/product/m28ff/</code> → «قدرت حرارتی: ۶۴۰۰ BTU» در برابر همان صفحه: «۲۸ kW» و «۲۴۰۸۰ کیلوکالری بر ساعت»</td></tr><tr><td><strong>V-19</strong></td><td>مقدار «وزن» در پنل ویژگی‌ها <strong>خودِ واحد است، نه عدد</strong></td><td>«#### وزن / به کیلوگرم» — درحالی‌که جدول همان صفحه «۳۴.۵ کیلوگرم» دارد</td></tr><tr><td><strong>V-20</strong></td><td><strong>برچسب انتخابگر تعداد، نام یک محصول کاملاً متفاوت است</strong></td><td>در صفحه پکیج M28FF: «هیتر گازی انرژی مدل GH0845 عدد» کنار دکمه «افزودن به سبد خرید»</td></tr><tr><td><strong>V-21</strong></td><td><strong>توضیحات محصول به مدل دیگری ارجاع می‌دهد</strong></td><td>در صفحه M28FF: «درباره پکیج ایران رادیاتور <strong>L24FF</strong> را بررسی می‌کنیم»</td></tr><tr><td><strong>V-22</strong></td><td>واحد سنجش ناسازگار با ماهیت محصول</td><td>«پوشش: ۱۶۵ <strong>متر مکعب</strong>» برای یک پکیج گرمایشی (که باید مترمربع زیربنا باشد)</td></tr></tbody></table>
+<blockquote><p><strong>چرا این گروه خطرناک‌تر از کمبود محتواست؟</strong> چون محتوای نادرست، <em>بدتر</em> از نبودِ محتواست. مشتری بر مبنای «۶۴۰۰ BTU» تصمیم می‌گیرد، دستگاه اشتباه می‌خرد، و نتیجه آن مرجوعی، هزینه لجستیک برگشت، و آسیب به اعتبار نمایندگی است. همچنین این داده‌ها خوراک هر دستیار هوش مصنوعی یا فیلتر ظرفیت‌یابی آینده خواهند بود — <strong>داده کثیف، اتوماسیون را غیرقابل‌استفاده می‌کند.</strong></p></blockquote>
+<h3>🔴 سطح ۳ — معماری اطلاعات و مسیریابی شکسته</h3>
+<table><thead><tr><th>کد</th><th>یافته</th><th>شاهد عینی</th></tr></thead><tbody><tr><td><strong>V-06</strong></td><td><strong>سه بخش بی‌ربط دمو در صفحه اصلی</strong> با عنوان‌های «اسباب بازی و سرگرمی»، «لباس و پوشاک»، «کتاب و مجلات» — هر سه همان ۶ محصول را تکرار می‌کنند</td><td><code>/</code></td></tr><tr><td><strong>V-11</strong></td><td><strong>هر سه بنر اسلایدر با موضوعات متفاوت به یک مقصد می‌روند</strong>: بنر کولر آبی، بنر هیتر گازی و بنر «خرید کولر گازی و اسپلیت» همگی → <code>/product-category/heaters/</code></td><td><code>/</code></td></tr><tr><td><strong>V-12</strong></td><td>کاشی «مشعل» به دسته <strong>حوله خشک‌کن</strong> لینک شده</td><td><code>/</code> → <code>/product-category/installing-towel-warmer/</code></td></tr><tr><td><strong>V-13</strong></td><td><strong>چهار کاشی دسته‌بندی هیچ پیوندی ندارند</strong>: کوره هوای گرم، پنکه، تصفیه آب، سخت‌گیر و رسوب‌زا</td><td><code>/</code></td></tr><tr><td><strong>V-35</strong></td><td><strong>فیلتر برند فقط ۳ مقدار دارد</strong> (آذر تهویه، انرژی، ایران رادیاتور) درحالی‌که ۸ لوگوی برند همکار در صفحه اصلی است؛ در دسته کولر گازی فقط «ایران رادیاتور» فیلتر می‌شود با وجود محصولات هایسنس و تراست در همان دسته</td><td><code>/shop/</code>، <code>/product-category/air-conditioner/</code></td></tr><tr><td><strong>V-16</strong></td><td>تمام پیوندهای اشتراک اجتماعی در صفحه محصول مرده‌اند (<code>#</code>)</td><td><code>/product/m28ff/</code></td></tr><tr><td><strong>V-17</strong></td><td>ویجت «آخرین دیدگاه‌ها» محتوای دمو با <strong>پیوند خروجی به سایت ثالث</strong> (<code>abzarwp.net</code>) نمایش می‌دهد</td><td><code>/shop/</code>، <code>/shop/page/2/</code></td></tr></tbody></table>
+<h3>🟠 سطح ۴ — سئو تکنیکال و فهرست‌پذیری</h3>
+<table><thead><tr><th>کد</th><th>یافته</th><th>شاهد عینی</th></tr></thead><tbody><tr><td><strong>V-28</strong></td><td><code>post-sitemap.xml</code> <strong>فقط یک URL دارد</strong> — خودِ صفحه وبلاگ، با lastmod سال ۲۰۲۱</td><td><code>/post-sitemap.xml</code></td></tr><tr><td><strong>V-27</strong></td><td>نمایه sitemap <strong>هیچ sitemap برای مقالات ندارد</strong> و یک <code>portfolio-sitemap.xml</code> با lastmod <strong>۲۰۱۷-۰۶-۲۲</strong> را شامل می‌شود</td><td><code>/sitemap_index.xml</code></td></tr><tr><td><strong>V-09</strong></td><td>صفحه وبلاگ عمومی «چیزی یافت نشد» برمی‌گرداند</td><td><code>/blog/</code></td></tr><tr><td><strong>V-29</strong></td><td><strong>صفحات هسته‌ای ووکامرس دوبار وجود دارند</strong>: <code>/cart/</code> و <code>/cart-2/</code>، <code>/checkout/</code> و <code>/checkout-2/</code>، <code>/my-account/</code> و <code>/my-account-2/</code></td><td><code>/page-sitemap.xml</code></td></tr><tr><td><strong>V-30</strong>/<strong>V-31</strong></td><td>صفحات مقایسه/علاقه‌مندی/وبلاگ چندباره با آدرس‌های متفاوت (<code>/compare/</code>, <code>/compare-2/</code>, <code>/products-compare/</code>, <code>/مقایسه-محصولات/</code>, <code>/مقایسه-کالا/</code>; <code>/blog/</code>, <code>/blog-2/</code>, <code>/blog-3/</code>, <code>/posts/</code>)</td><td><code>/page-sitemap.xml</code></td></tr><tr><td><strong>V-32</strong></td><td><strong>بقایای یک کسب‌وکار قبلی با نام «ایران کالا»</strong> هنوز در sitemap زنده است: <code>/تماس-با-ایران-کالا/</code>، <code>/فروش-در-ایران-کالا/</code>، <code>/اتاق-خبر-ایران-کالا/</code>، <code>/ایران-کالای-من/</code>، <code>/فروشنده-شوید/</code> (همه lastmod ۲۰۲۰-۰۴-۲۶)</td><td><code>/page-sitemap.xml</code></td></tr><tr><td><strong>V-33</strong></td><td>صفحات دمو/آزمون زنده و در sitemap: <code>/test/</code>، <code>/emeryville-store/</code>، <code>/home-mega-electronics/</code>، <code>/outlet/</code>، <code>/stores/</code>، <code>/promotions/</code>، <code>/portfolio/</code></td><td><code>/page-sitemap.xml</code></td></tr><tr><td><strong>V-34</strong></td><td><strong>عنوان تمام صفحات با خط تیره انتهایی و بدون نام برند بسته می‌شود</strong>: <code>انرژی تهویه -</code>، <code>فروشگاه -</code>، <code>پکیج دیواری و زمینی -</code>، <code>سبد خرید -</code>، <code>Request a Quote -</code></td><td>عنوان‌های <code>&lt;title&gt;</code> مشاهده‌شده</td></tr><tr><td><strong>V-37</strong></td><td>صفحات دسته‌بندی <strong>هیچ محتوای متنی ندارند</strong> — فقط فیلتر + گرید محصول، بدون H1 توصیفی</td><td><code>/product-category/garmayeshi-packages/</code>، <code>/product-category/air-conditioner/</code></td></tr><tr><td><strong>V-38</strong>/<strong>V-39</strong>/<strong>V-40</strong></td><td>slug فارسی بریده‌شده (<code>…-دور-ثابت-ایرا/</code>)، محصولات تکراری با پسوند <code>-2</code>، و الگوی ناهمگون slug (فارسی URL-encoded در برابر لاتین)</td><td><code>/product-sitemap.xml</code></td></tr><tr><td><strong>V-41</strong></td><td>صفحات سیاست‌ها از ۲۰۲۰/۲۰۲۱ به‌روز نشده‌اند</td><td><code>/terms/</code> ۲۰۲۱-۰۷-۰۳، <code>/حریم-خصوصی/</code> ۲۰۲۰-۰۴-۲۶</td></tr></tbody></table>
+<h3>🟡 سطح ۵ — تجربه کاربری و اثبات اجتماعی</h3>
+<table><thead><tr><th>کد</th><th>یافته</th><th>شاهد</th></tr></thead><tbody><tr><td><strong>V-25</strong></td><td>اثبات اجتماعی عملاً صفر است: «نظرات (۰)»؛ تنها استثنا یک محصول با ۱ نظر</td><td><code>/product/m28ff/</code></td></tr><tr><td><strong>V-23</strong>/<strong>V-24</strong></td><td>محصول «فروخته شده» در بخش «ویژه امروز» صفحه اصلی؛ چند محصول ناموجود بدون قیمت در فهرست دسته‌بندی</td><td><code>/</code> → Clas X 24FF؛ <code>/product-category/air-conditioner/</code></td></tr><tr><td><strong>V-45</strong></td><td>صفحه تماس فقط ۳ داده دارد: تلفن، واتساپ، آدرس. <strong>بدون فرم تماس، بدون ایمیل، بدون ساعت کاری، بدون نقشه</strong></td><td><code>/contact-us/</code></td></tr><tr><td><strong>V-46</strong></td><td>حداکثر بازه فیلتر قیمت غیرواقعی است: «۰ — <strong>۷۱۳٬۴۰۷٬۰۰۰</strong> تومان»</td><td><code>/product-category/garmayeshi-packages/</code></td></tr><tr><td><strong>V-43</strong></td><td>کاشی‌های دسته‌بندی با بندانگشتی ۱۵۰×۱۵۰ سرو می‌شوند (<code>cooler-150x150.jpg</code>)</td><td><code>/</code></td></tr><tr><td><strong>V-44</strong></td><td>بهینه‌سازی تصویر ناهمگون: WebP در آپلودهای ۲۰۲۵–۲۰۲۶ در برابر JPG/PNG در ۲۰۲۱–۲۰۲۲</td><td><code>/product-sitemap.xml</code></td></tr><tr><td><strong>V-14</strong></td><td>نام فایل تصاویر بنر، متن عنوان را لو می‌دهد: <code>۱۱۱۱۱۱.png</code>، <code>2222222.png</code>، <code>55555.png</code>، <code>888888.png</code></td><td><code>/</code></td></tr></tbody></table>
+<h3>📊 اندازه کاتالوگ (تأییدشده)</h3>
+<table><thead><tr><th>سطح</th><th>تعداد</th></tr></thead><tbody><tr><td>کل فروشگاه</td><td><strong>۱۹۱ محصول</strong> (<code>/shop/</code> → «نمایش ۱–۱۲ از ۱۹۱ نتیجه»)</td></tr><tr><td>پکیج دیواری و زمینی</td><td>۱۸</td></tr><tr><td>کولر گازی و اسپلیت</td><td>۱۷</td></tr><tr><td>دامنه فعالیت <strong>ادعاشده</strong> در فوتر</td><td>HVAC، موتورخانه، استخر/سونا/جکوزی، فن‌کویل، داکت اسپلیت، برج خنک‌کننده، مینی‌چیلر، چیلر، هواساز، ایرواشر، یونیت هیتر</td></tr></tbody></table>
+<blockquote><p><strong>شکاف ادعا/تحویل:</strong> دسته‌های باارزش تجاری که در فوتر وعده داده شده‌اند (چیلر، مینی‌چیلر، برج خنک‌کننده، فن‌کویل، داکت اسپلیت، هواساز، ایرواشر، تجهیزات استخر) در کاتالوگ و دسته‌بندی‌های صفحه اصلی <strong>حضور ندارند</strong>. این هم یک مسئله اعتبار است و هم — مهم‌تر — <strong>بزرگ‌ترین فرصت رشد درآمدی</strong>: این‌ها دقیقاً دسته‌هایی هستند که میانگین سبد چند صد میلیونی دارند و داماتجهیز روی آن‌ها ساخته شده است.</p></blockquote>
+<hr/>
+<h2>۳. نقاط قوت تأییدشده (که باید حفظ و مقیاس شوند)</h2>
+<table><thead><tr><th>کد</th><th>نقطه قوت</th><th>شاهد</th></tr></thead><tbody><tr><td><strong>V-49</strong></td><td><strong>کیفیت توضیحات محصولات جدید واقعاً خوب است</strong> — ساختار پرسش‌محور، جدول مشخصات، FAQ چهارپرسشی، پیوند داخلی، CTA مشاوره</td><td><code>/product/m28ff/</code></td></tr><tr><td><strong>V-50</strong></td><td>الگوی عنوان صفحه محصول درست است: «خرید پکیج دیواری M28FF ایران رادیاتور (مناسب تا ۱۶۰ متر)»</td><td><code>/product/m28ff/</code></td></tr><tr><td><strong>V-52</strong></td><td><strong>قیمت‌گذاری شفاف و تومانی</strong> — مزیت رقابتی بالفعل در برابر ناب تهویه که بسیاری محصولاتش «۰ ریال» است</td><td><code>/shop/</code>، <code>/</code></td></tr><tr><td><strong>V-47</strong></td><td><code>robots.txt</code> هوشمندانه پارامترهای فیلتر و <code>add-to-cart</code> را مسدود کرده — نشانه آگاهی از بودجه خزش</td><td><code>/robots.txt</code></td></tr><tr><td><strong>V-51</strong></td><td>سایت <strong>فعال و در حال به‌روزرسانی</strong> است: <code>product-sitemap.xml</code> lastmod = ۲۰۲۶-۱۰-۱۳؛ آپلود رسانه تا ۲۰۲۶/۱۰</td><td>sitemap</td></tr><tr><td><strong>V-53</strong>/<strong>V-54</strong></td><td>قابلیت‌های مقایسه، علاقه‌مندی، نمایش سریع و قیمت تخفیف‌دار در قالب موجودند</td><td>کارت‌های محصول</td></tr><tr><td>—</td><td><strong>دارایی‌های آفلاین قوی</strong>: ۲۰+ سال سابقه، فروشگاه فیزیکی، ۸ برند همکار، توان مشاوره مهندسی ظرفیت‌سنجی (که حتی رسانه‌های محلی شیراز به آن اشاره کرده‌اند)</td><td><code>/contact-us/</code>، shiraz.construction</td></tr></tbody></table>
+<hr/>
+<h2>۴. تفکیک صریح: یافته در برابر فرضیه</h2>
+<h3>۴.۱ آنچه می‌دانم (مشاهده مستقیم)</h3>
+<p>۵۵ مورد در <code>evidence/00-evidence-log.md</code> بخش ۲، همه با URL و نقل‌قول عینی.</p>
+<h3>۴.۲ آنچه استنتاج کرده‌ام (با مبنای شواهد، ولی نه تأیید مستقیم)</h3>
+<table><thead><tr><th>کد</th><th>فرضیه</th><th>مبنا</th><th>اطمینان</th></tr></thead><tbody><tr><td>I-01…I-05</td><td>پشته: WordPress + WooCommerce + Elementor + Filter Everything + YITH Request a Quote + DW Question&amp;Answer</td><td>ساختار مسیرها، کامنت robots.txt، شورت‌کد خام</td><td>بالا</td></tr><tr><td>I-06</td><td>افزونه سئو احتمالاً Yoast</td><td>ساختار <code>sitemap_index.xml</code> و تفکیک page/post/product</td><td>متوسط</td></tr><tr><td>I-07</td><td>قالب از خانواده قالب‌های <strong>مارکت‌پلیس/چندفروشندگی</strong></td><td>وجود <code>/emeryville-store/</code>، <code>/home-mega-electronics/</code>، <code>/outlet/</code>، <code>/stores/</code>، «فروشنده شوید»، «ایران کالای من»</td><td>متوسط–بالا</td></tr><tr><td>I-08</td><td><strong>سایت روی یک نصب بازیافت‌شده از پروژه‌ای قبلی ساخته شده</strong></td><td>هم‌زمانی سه لایه زمانی در یک sitemap: بقایای «ایران کالا» (۲۰۲۰) + دموهای قالب (۲۰۲۱–۲۰۲۲) + محتوای واقعی (۲۰۲۵–۲۰۲۶)</td><td>بالا</td></tr><tr><td>I-11</td><td>احتمالاً CDN اختصاصی برای رسانه وجود ندارد</td><td>نبود هیچ دامنه/سرآشد CDN ثالث در منابع مشاهده‌شده (در مقابل: داماتجهیز از <code>storage-asiatech-s3.damatajhiz.com</code> استفاده می‌کند)</td><td>پایین–متوسط</td></tr></tbody></table>
+<h3>۴.۳ آنچه <strong>نمی‌دانم</strong> و صریحاً ادعا نمی‌کنم</h3>
+<blockquote><p><strong>هیچ‌یک از موارد زیر در هیچ سندی که تحویل می‌دهم، با عدد یا نتیجه ذکر نشده است:</strong></p></blockquote>
+<ol>
+<li>Core Web Vitals واقعی — LCP / INP / CLS، چه میدانی چه آزمایشگاهی</li>
+<li>حجم صفحه، تعداد درخواست‌ها، اندازه DOM، TTFB، زمان پاسخ سرور</li>
+<li>نسخه PHP / MySQL / WordPress / WooCommerce / قالب / افزونه‌ها</li>
+<li>وضعیت به‌روز بودن و وجود آسیب‌پذیری شناخته‌شده</li>
+<li>نرخ خطای ۵xx/۴xx، خطاهای PHP، خطاهای کنسول JS</li>
+<li>کیفیت هاست، محدودیت منابع CPU/RAM/IO</li>
+<li>وضعیت کش، فشرده‌سازی، بکاپ و <strong>آزمایش بازیابی</strong></li>
+<li>امنیت wp-admin، نقش‌های کاربری، 2FA</li>
+<li><strong>وجود یا عدم وجود نماد اعتماد الکترونیکی (اینماد)</strong> — در HTML متنی دیده نشد، ولی ممکن است تصویر یا JS باشد → ⚠️ اگر نباشد یک ریسک حقوقی جدی است</li>
+<li>هر داده Search Console: پوشش ایندکس، کوئری‌ها، impressions، CTR، موقعیت</li>
+<li>هر داده Analytics: جلسات، منابع ترافیک، نرخ تبدیل، رهاشدن سبد، جست‌وجوی بدون نتیجه</li>
+<li>هر داده فروش: GMV، میانگین سبد، تکرار خرید، سهم کانال</li>
+<li>درگاه‌های پرداخت فعال و نرخ موفقیت تراکنش</li>
+<li>آیا «خرید اقساطی» واقعاً فعال است یا فقط یک برچسب فوتر</li>
+<li>ساختار سازمانی، تیم فعلی، پیمانکاران پیشین، سوابق تحویل</li>
+<li>بودجه بازاریابی و ابزارهای موجود</li>
+<li>سابقه جریمه یا اقدام دستی گوگل روی دامنه</li>
+</ol>
+<p><strong>فرضیه‌های کاری که بر این مبنا ساخته‌ام (و نه نتیجه‌گیری):</strong></p>
+<ul>
+<li>«احتمالاً» سایت مشکل عملکردی دارد، چون قالب مارکت‌پلیس + Elementor + چند افزونه تودرتو معمولاً سنگین‌اند → <strong>ولی این فقط یک فرضیه است و باید در فاز صفر اندازه‌گیری شود.</strong></li>
+<li>«احتمالاً» ترافیک ارگانیک پایین است، چون محتوای آموزشی صفر و sitemap مقالات خالی است → <strong>بدون Search Console تأیید نمی‌شود.</strong></li>
+<li>«احتمالاً» نرخ تبدیل پایین است، چون مسیر اعتماد شکسته است → <strong>بدون Analytics تأیید نمی‌شود.</strong></li>
+</ul>
+<hr/>
+<h2>۵. شکاف رقابتی — خلاصه مستند</h2>
+<table><thead><tr><th>بعد</th><th>انرژی تهویه</th><th>بهترین نمونه بازار</th><th>شدت شکاف</th></tr></thead><tbody><tr><td>اندازه کاتالوگ</td><td>۱۹۱ محصول</td><td>داماتجهیز: شناسه محصول ۱۰٬۰۰۰+</td><td>🔴 بسیار بزرگ</td></tr><tr><td>محتوای صفحه دسته</td><td><strong>صفر</strong></td><td>داماتجهیز: راهنمای ۹ نکته‌ای + جدول قیمت ۱۰ برند + جدول ظرفیت‌یابی BTU</td><td>🔴 بسیار بزرگ</td></tr><tr><td>ساختار فیلتر</td><td>برند (۳ مقدار) + قیمت</td><td><code>artatabrid.com</code>: برند + <strong>ظرفیت</strong> (۲۲۰۰۰…۴۲۰۰۰) + <strong>موقعیت نصب</strong></td><td>🔴 بزرگ</td></tr><tr><td>عمق مشخصات فنی</td><td>پنل ویژگی نادرست؛ جدول داخل متن</td><td>داماتجهیز: ~۲۰ ردیف ساختاریافته + تب مستقل + EER/COP</td><td>🔴 بزرگ</td></tr><tr><td>اثبات اجتماعی</td><td>~۰ نظر</td><td>داماتجهیز: ۴.۷ با ۳ نظر، نمایش امتیاز در کارت</td><td>🔴 بزرگ</td></tr><tr><td>محتوای آموزشی</td><td><strong>صفحه خالی</strong></td><td>داماتجهیز: راهنمای خرید + <code>/content/</code> + نرم‌افزار محاسبه ظرفیت</td><td>🔴 بحرانی</td></tr><tr><td>صفحه اقساط</td><td><strong>خالی</strong></td><td>داماتجهیز: <code>/content/70-فروش-اقساط</code> با فرایند ۱۰–۱۵ روزه</td><td>🔴 بحرانی</td></tr><tr><td>پیش‌فاکتور / B2B</td><td><strong>شورت‌کد شکسته</strong></td><td>داماتجهیز: صدور پیش‌فاکتور، فروش پروژه‌ای، ارسال به ۱۵ کشور</td><td>🔴 بحرانی</td></tr><tr><td>اعتمادسازی</td><td>Lorem Ipsum + سیاست نمونه انگلیسی</td><td>داماتجهیز: ضمانت طلایی، ضمانت اصالت، «از سال ۱۳۸۳»</td><td>🔴 بحرانی</td></tr><tr><td>چندزبانه</td><td>ندارد</td><td>داماتجهیز: FA / EN / AR</td><td>🟠 فرصت</td></tr><tr><td>CDN</td><td>مشاهده نشد</td><td>داماتجهیز: S3 آسیاتک</td><td>🟠 نیازمند بررسی</td></tr><tr><td><strong>شفافیت قیمت</strong></td><td><strong>تومان، شفاف</strong></td><td>ناب تهویه: بسیاری «۰ ریال»</td><td>🟢 <strong>مزیت ما</strong></td></tr><tr><td><strong>کیفیت متن محصول (جدید)</strong></td><td><strong>خوب</strong></td><td>—</td><td>🟢 <strong>مزیت ما، قابل مقیاس</strong></td></tr><tr><td><strong>تخصص مشاوره محلی</strong></td><td><strong>قوی (آفلاین)</strong></td><td>—</td><td>🟢 <strong>مزیت ما، دیجیتالی‌نشده</strong></td></tr></tbody></table>
+<p><strong>رقبای محلی شیراز (کانال کشف واقعی):</strong> کلینیک ساختمانی طاها تهویه (۲۰ سال سابقه)، فروشگاه تاسیساتی پیلوت، تهویه مطبوع شیراز، هادی تهویه، تاسیسات ترمو–سروی، نمایندگی نیرو تهویه البرز عبداللهی. «انرژی تهویه زاده محمد» در یکی از این فهرست‌های محلی <strong>رتبه ۲۰ از ۲۵</strong> را دارد — یعنی در کانال کشف محلی هم جایگاهش متناسب با توان واقعی‌اش نیست.</p>
+<hr/>
+<h2>۶. سه نتیجه‌گیری راهبردی</h2>
+<p><strong>۱. اولویت با «تعمیر» است، نه «بازطراحی».</strong> بازطراحی کامل سایت در این نقطه اشتباه پرهزینه‌ای است. قالب، ووکامرس، صفحه‌ساز و قابلیت‌های مقایسه/علاقه‌مندی/نمایش سریع همه حاضرند و کار می‌کنند. آنچه شکسته است <strong>محتوا، پیکربندی و یکپارچگی داده</strong> است — نه پوسته. بازطراحی کامل، ۶ تا ۹ ماه زمان و بودجه قابل‌توجه می‌برد و در پایان همان داده نادرست محصول را در پوسته‌ای زیباتر تحویل می‌دهد. مسیر درست: <strong>پاک‌سازی → اصلاح داده → لایه محتوای تجاری → سپس بهینه‌سازی رابط در نقاط پرترافیک.</strong></p>
+<p><strong>۲. بزرگ‌ترین اهرم رشد، دیجیتالی‌کردن دارایی‌ای است که هم‌اکنون آفلاین وجود دارد.</strong> این کسب‌وکار ۲۰ سال دانش ظرفیت‌سنجی و مشاوره مهندسی دارد که رسانه‌های محلی هم به آن اذعان کرده‌اند. این دانش <strong>هیچ‌جا در سایت نیست</strong>. تبدیل آن به ابزار ظرفیت‌یاب، راهنمای انتخاب، و محتوای ساختاریافته — همان کاری که داماتجهیز با «نرم‌افزار محاسبه ظرفیت» و جداول BTU کرده — بالاترین بازده را دارد، چون رقیب محلی توان کپی‌برداری سریع از آن را ندارد.</p>
+<p><strong>۳. هیچ برنامه اتوماسیون یا هوش مصنوعی پیش از تمیزشدن داده معنا ندارد.</strong> دستیار مکالمه‌ای که روی کاتالوگی با «قدرت حرارتی ۶۴۰۰ BTU» برای یک پکیج ۲۸۰۰۰ کیلوکالری و «وزن: به کیلوگرم» ساخته شود، با اطمینان پاسخ غلط می‌دهد و اعتبار نمایندگی را سریع‌تر از نبودِ دستیار تخریب می‌کند. <strong>ترتیب اجباری است: داده → ساختار → سپس هوش.</strong> هر پیشنهادی که این ترتیب را رعایت نکند، نمایشی است.</p>
+<hr/>
+<h2>۷. اقدام فوری — اگر فقط ۱۰ کار در ۳۰ روز نخست انجام شود</h2>
+<table><thead><tr><th>#</th><th>اقدام</th><th>کد یافته</th><th>برآورد زمان</th><th>اثر</th></tr></thead><tbody><tr><td>1</td><td>بازنویسی «درباره ما» با محتوای واقعی (تاریخچه، تیم، برندها، گارانتی، آدرس، نمادها) و حذف Lorem Ipsum + اصلاح یا حذف شمارنده‌های صفر</td><td>V-01…V-04</td><td>۲–۳ روز</td><td>🔴 اعتماد</td></tr><tr><td>2</td><td>بومی‌سازی و بازنویسی سیاست بازگشت کالا، رفع تضاد ۷ روز/۳۰ روز، و هم‌سان‌سازی در تمام صفحات</td><td>V-05، V-15</td><td>۱–۲ روز</td><td>🔴 حقوقی + تبدیل</td></tr><tr><td>3</td><td>پرکردن «شرایط وام» با شرایط واقعی، یا حذف موقت برچسب «خرید اقساطی» از فوتر تا زمان آماده‌شدن</td><td>V-07</td><td>۱–۲ روز</td><td>🔴 تبدیل</td></tr><tr><td>4</td><td>اصلاح یا غیرفعال‌کردن <code>/request-quote/</code> — یا رندر درست شورت‌کد، یا جایگزینی با فرم B2B ساده و کارآمد</td><td>V-10</td><td>۱–۳ روز</td><td>🔴 سرنخ B2B</td></tr><tr><td>5</td><td>حذف/ادغام سه بخش بی‌ربط دمو در صفحه اصلی و جایگزینی با بخش‌های واقعی (بر اساس فصل: گرمایش در مهر–اسفند)</td><td>V-06</td><td>۱ روز</td><td>🔴 تجربه + تمرکز</td></tr><tr><td>6</td><td>اصلاح مقصد سه بنر اسلایدر + کاشی «مشعل» + لینک‌دارکردن چهار کاشی بی‌پیوند</td><td>V-11…V-13</td><td>نصف روز</td><td>🔴 مسیریابی</td></tr><tr><td>7</td><td>اصلاح داده‌های پنل ویژگی برای محصولات پرفروش (حداقل ۲۰ محصول اول): ظرفیت واقعی، وزن عددی، واحد درست، حذف برچسب نادرست انتخابگر</td><td>V-18…V-22</td><td>۳–۵ روز</td><td>🔴 کاهش مرجوعی</td></tr><tr><td>8</td><td>حذف یا noindex صفحات دمو/بقایای «ایران کالا»/<code>/test/</code>/صفحات دوباره (<code>cart-2</code>, <code>checkout-2</code>, …) و پاک‌سازی sitemap</td><td>V-29…V-33</td><td>۲–۳ روز</td><td>🟠 سلامت فهرست</td></tr><tr><td>9</td><td>اصلاح الگوی عنوان صفحات (حذف خط تیره انتهایی + افزودن نام برند) و رفع عنوان انگلیسی <code>Request a Quote -</code></td><td>V-34</td><td>۱ روز</td><td>🟠 سئو</td></tr><tr><td>10</td><td>اندازه‌گیری و ثبت <strong>خط مبنا</strong>: Core Web Vitals، حجم صفحه، تعداد درخواست‌ها + دریافت دسترسی Search Console و Analytics</td><td>بخش ۴.۳</td><td>۲–۳ روز</td><td>🔴 پیش‌نیاز همه‌چیز</td></tr></tbody></table>
+<p><strong>جمع برآورد زمان:</strong> حدود ۱۵ تا ۲۲ روز کاری فردی → <strong>قابل فشرده‌سازی به ۳۰ روز تقویمی با اولویت‌بندی فوق.</strong></p>
+<blockquote><p>این فهرست عمداً کوچک نگه داشته شده است. ۱۰ اقدام با اثر قطعی، بهتر از ۴۰ اقدام با اثر احتمالی است.</p></blockquote>
+<hr/>
+<p><strong>پایان سند ۰۱ — نسخه ۱.۰</strong></p>
+</div>
+</body>
+</html>

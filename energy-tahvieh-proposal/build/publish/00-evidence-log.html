@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Evidence Log — انرژی تهویه</title>
+<style>
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('assets/fonts/Vazirmatn-ExtraBold.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap}
+
+@page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+@media print {
+  .no-print { display: none !important; }
+  h1, h2, h3 { break-after: avoid; }
+  table, pre, blockquote { break-inside: avoid; }
+  tr { break-inside: avoid; }
+  a { color: inherit !important; text-decoration: none !important; }
+}
+:root{
+  --accent:#0f5c8c; --h2:#143d59; --h3:#1f5c82; --muted:#5a5a5a;
+  --alert:#a82222; --line:#dbe4ec; --soft:#f6f9fb; --code:#f5f5f5;
+}
+*{box-sizing:border-box}
+html{ -webkit-text-size-adjust:100% }
+body{
+  font-family:'Vazirmatn','B Nazanin','IRANSans','Tahoma',sans-serif;
+  direction:rtl; text-align:right; line-height:1.85;
+  color:#1b1b1b; background:#eef1f4; margin:0; padding:0;
+  font-size:14px; font-feature-settings:"ss01";
+}
+.sheet{
+  background:#fff; max-width:210mm; margin:24px auto; padding:20mm 16mm;
+  box-shadow:0 2px 18px rgba(0,0,0,.14);
+}
+@media print{ body{background:#fff} .sheet{box-shadow:none;margin:0;padding:0;max-width:none} }
+
+.toolbar{
+  position:sticky; top:0; z-index:50; background:#0f5c8c; color:#fff;
+  padding:10px 18px; display:flex; gap:14px; align-items:center;
+  justify-content:center; flex-wrap:wrap; font-size:13px;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.toolbar button{
+  background:#fff; color:#0f5c8c; border:0; padding:8px 18px; border-radius:6px;
+  font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
+}
+.toolbar button:hover{ background:#dbe9f2 }
+
+h1,h2,h3,h4{ line-height:1.5; font-weight:800; }
+h1{
+  font-size:23px; color:var(--accent); margin:1.9em 0 .7em;
+  padding-bottom:.35em; border-bottom:3px solid var(--accent);
+  break-before:page;
+}
+h1:first-of-type{ break-before:auto; margin-top:.2em }
+h2{
+  font-size:18px; color:var(--h2); margin:1.7em 0 .6em;
+  padding-bottom:.3em; border-bottom:1px solid var(--line);
+}
+h3{ font-size:15.5px; color:var(--h3); margin:1.4em 0 .5em }
+h4{ font-size:14px; color:var(--h3); margin:1.2em 0 .4em }
+p{ margin:.75em 0; text-align:justify; }
+ul,ol{ margin:.7em 0; padding-right:1.5em; padding-left:0 }
+li{ margin:.32em 0 }
+li::marker{ color:var(--accent); font-weight:700 }
+strong{ font-weight:800; color:#0d3f5f }
+em{ font-style:italic; color:#33475b }
+code{
+  font-family:'Consolas','Courier New',monospace; direction:ltr; unicode-bidi:embed;
+  background:#fdf1f1; color:#a8222a; padding:.12em .4em; border-radius:4px;
+  font-size:.86em; display:inline-block;
+}
+pre{
+  background:var(--code); border:1px solid #e2e2e2; border-radius:8px;
+  padding:12px 14px; overflow-x:auto; direction:ltr; text-align:left;
+  font-size:11.5px; line-height:1.55; margin:1em 0;
+}
+pre code{ background:none; color:#2b2b2b; padding:0; display:block; direction:ltr }
+blockquote{
+  margin:1em 0; padding:.85em 1.1em; background:#f4f7fa;
+  border-right:5px solid var(--accent); border-radius:0 8px 8px 0;
+  color:#223a4a;
+}
+blockquote p{ margin:.35em 0 }
+hr{ border:0; border-top:1px solid #d8dee4; margin:2em 0 }
+a{ color:var(--accent); text-decoration:none; border-bottom:1px dotted rgba(15,92,140,.4) }
+a:hover{ border-bottom-style:solid }
+
+table{
+  width:100%; border-collapse:collapse; margin:1.1em 0; font-size:12.5px;
+  direction:rtl;
+}
+th{
+  background:var(--accent); color:#fff; font-weight:700; text-align:right;
+  padding:8px 10px; border:1px solid #0d4f78; vertical-align:top;
+}
+td{ padding:7px 10px; border:1px solid var(--line); vertical-align:top }
+tbody tr:nth-child(even) td{ background:var(--soft) }
+thead{ display:table-header-group }
+
+.cover{ text-align:center; padding:2.2em 0 1.4em; border-bottom:3px solid var(--accent); margin-bottom:1.6em }
+.cover .kicker{ font-size:13px; letter-spacing:.02em; color:var(--muted); font-weight:700 }
+.cover .title{ font-size:29px; font-weight:900; color:var(--accent); line-height:1.45; margin:.55em 0 .3em; white-space:pre-line }
+.cover .subtitle{ font-size:16px; font-weight:700; color:var(--h3); margin:.35em 0 }
+.cover .badge{
+  display:inline-block; margin-top:1.1em; padding:.5em 1.2em; border-radius:8px;
+  background:#fdecec; color:var(--alert); font-weight:800; font-size:14px;
+  border:1px solid #f2c4c4;
+}
+.cover table{ margin:1.8em auto 0; max-width:92%; font-size:13px; text-align:right }
+.cover table td:first-child{ background:#eaf1f6; font-weight:700; width:34% }
+
+ul.task{ list-style:none; padding-right:.4em }
+ul.task li{ padding-right:1.6em; position:relative }
+ul.task li::before{
+  content:"☐"; position:absolute; right:0; top:0; color:var(--accent);
+  font-weight:700; font-size:1.05em;
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <span>برای ساخت PDF: دکمه زیر یا <b>Ctrl/Cmd + P</b> → «Save as PDF» → حاشیه: Default → «Background graphics» فعال</span>
+  <button onclick="window.print()">🖨️ چاپ / ذخیره PDF</button>
+</div>
+
+<div class="sheet">
+<div class="cover">
+<div class="kicker">🔒 سند پشتیبان شواهد</div>
+<div class="title">Evidence Log — انرژی تهویه</div>
+<div class="subtitle">ثبت یافته‌های تأییدشده با شاهد مستقیم</div>
+<table><tbody>
+<tr><td>تهیه‌کننده</td><td>سجاد معصومی</td></tr>
+<tr><td>تاریخ بررسی</td><td>۲۳ مهر ۱۴۰۵ / ۱۵ اکتبر ۲۰۲۶</td></tr>
+<tr><td>نسخه</td><td>1.0</td></tr>
+<tr><td>روش</td><td>بازیابی مستقیم صفحات عمومی + sitemap/robots + منابع عمومی بازار</td></tr>
+</tbody></table>
+</div>
+<p><strong>تاریخ بررسی:</strong> ۲۰۲۶-۱۰-۱۵ (۱۵ اکتبر ۲۰۲۶ / ۲۳ مهر ۱۴۰۵) <strong>روش بررسی:</strong> بازیابی مستقیم صفحات عمومی سایت (server-rendered HTML) + بررسی فایل‌های sitemap و robots.txt + جست‌وجوی منابع عمومی بازار <strong>تهیه‌کننده:</strong> سجاد معصومی <strong>نسخه:</strong> 1.0</p>
+<hr/>
+<h2>۰. سطح دسترسی و محدودیت ذاتی بررسی</h2>
+<table><thead><tr><th>مورد</th><th>وضعیت</th></tr></thead><tbody><tr><td>صفحات عمومی سایت (HTML سمت سرور)</td><td>✅ در دسترس و بررسی شد</td></tr><tr><td>sitemap_index.xml، robots.txt</td><td>✅ در دسترس و بررسی شد</td></tr><tr><td>Google Search Console</td><td>❌ بدون دسترسی — نیازمند ارائه کارفرما</td></tr><tr><td>Google Analytics / GTM</td><td>❌ بدون دسترسی</td></tr><tr><td>پیشخوان وردپرس، فهرست افزونه‌ها، نسخه PHP</td><td>❌ بدون دسترسی</td></tr><tr><td>داده‌های فروش، نرخ تبدیل، سبد رهاشده</td><td>❌ بدون دسترسی</td></tr><tr><td>Core Web Vitals میدان‌واقعی (CrUX)</td><td>⚠️ نیازمند بررسی با ابزار</td></tr><tr><td>اجرای تست خرید واقعی (پرداخت)</td><td>❌ انجام نشد (اجتناب از ثبت سفارش تستی روی محیط تولید)</td></tr><tr><td>رندر JavaScript / بررسی موبایل بصری</td><td>⚠️ محدود — HTML خام بررسی شد، رندر بصری نه</td></tr></tbody></table>
+<blockquote><p><strong>اصل حاکم بر این سند:</strong> هیچ رتبه، ترافیک، درآمد، نرخ تبدیل یا نتیجه تستی در این سند اختراع نشده است. هر یافته یا «مستقیماً مشاهده شده» است یا صریحاً «نیازمند بررسی» علامت‌گذاری شده.</p></blockquote>
+<hr/>
+<h2>۱. شناسنامه کسب‌وکار (تأییدشده از منابع عمومی)</h2>
+<table><thead><tr><th>فیلد</th><th>مقدار</th><th>منبع</th></tr></thead><tbody><tr><td>نام تجاری سایت</td><td>انرژی تهویه</td><td>energytahvieh.com</td></tr><tr><td>نام ثبتی/حقوقی (گزارش‌شده در منابع ثالث)</td><td>«انرژی تهویه زاده محمد»</td><td>shirazbuilding.com، shirazknuaf.ir</td></tr><tr><td>شهر</td><td>شیراز</td><td>صفحه تماس با ما</td></tr><tr><td>آدرس</td><td>شیراز، خیابان استقلال، حدفاصل فلکه هنگ و چهارراه بنفشه، روبروی کوچه ۲۵</td><td><code>/contact-us/</code></td></tr><tr><td>تلفن ثابت</td><td>۰۷۱۳۲۳۴۱۷۸۹</td><td><code>/contact-us/</code></td></tr><tr><td>موبایل/واتساپ</td><td>۰۹۳۶۱۱۲۹۵۲</td><td><code>/contact-us/</code> و هدر سایت</td></tr><tr><td>شماره سوم (در منابع ثالث و صفحه محصول)</td><td>۰۹۳۵۶۲۷۹۱۱۸</td><td><code>/product/m28ff/</code>، shirazknuaf.ir</td></tr><tr><td>شماره چهارم (در منابع ثالث)</td><td>۰۹۱۷۴۹۲۹۵۲</td><td>shiraz.construction</td></tr><tr><td>سابقه فعالیت (ادعای خود سایت)</td><td>از سال ۱۳۹۰</td><td>متن توضیحات <code>/product/m28ff/</code> و فوتر</td></tr><tr><td>دامنه فعالیت ادعاشده</td><td>HVAC، گرمایش و موتورخانه، استخر/سونا/جکوزی، فن‌کویل، داکت اسپلیت، برج خنک‌کننده، مینی‌چیلر، چیلر، هواساز، ایرواشر، یونیت هیتر</td><td>فوتر صفحه اصلی</td></tr><tr><td>برندهای همکار اعلام‌شده در صفحه اصلی</td><td>بوتان، ایران رادیاتور، نیرو تهویه البرز، لورچ، انرژی، تراست، آریستون، گرماسان (۸ لوگو)</td><td>بخش «برندهای همکار» صفحه اصلی</td></tr></tbody></table>
+<p><strong>نکته تحلیلی مهم:</strong> دامنه فعالیت <em>ادعاشده</em> در فوتر (چیلر، برج خنک‌کننده، مینی‌چیلر، هواساز، ایرواشر، فن‌کویل، داکت اسپلیت، تجهیزات استخر و سونا) با دامنه <em>واقعی کاتالوگ</em> هم‌پوشانی ندارد. در بخش «دسته‌بندی محصولات پرفروش» صفحه اصلی فقط این موارد فهرست شده‌اند: پکیج دیواری و زمینی، هیتر و بخاری کارگاهی، کولر گازی و اسپلیت، کولر آبی و سلولزی، رادیاتور پنلی و برقی، حوله خشک‌کن، مشعل، رادیاتور آلومینیومی، کوره هوای گرم، پنکه، تصفیه آب، سخت‌گیر و رسوب‌زا.</p>
+<hr/>
+<h2>۲. یافته‌های تأییدشده (Verified) — مستقیماً مشاهده شده</h2>
+<h3>دسته ۲.۱ — محتوای قالب/دمو که هرگز替换 نشده (بحرانی‌ترین گروه)</h3>
+<table><thead><tr><th>#</th><th>یافته</th><th>شاهد (URL / متن دقیق)</th><th>برچسب</th></tr></thead><tbody><tr><td>V-01</td><td><strong>صفحه «درباره ما» تماماً متن ساختگی Lorem Ipsum فارسی است</strong></td><td><code>https://energytahvieh.com/about-us/</code> — متن عینی: «لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است…» (دو بار در صفحه تکرار شده)</td><td>🔴 تأییدشده</td></tr><tr><td>V-02</td><td>تمام شمارنده‌های اعتباری «درباره ما» روی <strong>صفر</strong> هستند</td><td><code>/about-us/</code> — «۰ سفارش موفق»، «۰ ارسال رایگان»، «۰ کیلومتر طی شده»، «۰ فروشنده فعال»</td><td>🔴 تأییدشده</td></tr><tr><td>V-03</td><td>«درباره ما» شامل بخش جذب فروشنده مارکت‌پلیس است که با مدل کسب‌وکار هم‌خوانی ندارد</td><td><code>/about-us/</code> — «چگونه می توانید با ما همکاری کنید / با فروشگاه ما به راحتی بفروشید»، «از همه جا بفروشید»، «حمل و نقل رایگان»</td><td>🔴 تأییدشده</td></tr><tr><td>V-04</td><td>لوگوهای «همکاران ما» در درباره ما فایل‌های بی‌نام با alt هَش هستند</td><td><code>/about-us/</code> — <code>76d0ad0e.png</code>, <code>b7bd862f.png</code>, <code>ea7f1514.png</code>, <code>d460e183.png</code>, <code>a0e67dd7.png</code>, <code>7069844a.png</code>, <code>2a7efb04.png</code> (آپلود ۲۰۲۱/۰۶)</td><td>🔴 تأییدشده</td></tr><tr><td>V-05</td><td><strong>صفحه سیاست بازگشت کالا، نمونه پیش‌فرض انگلیسی ووکامرس است</strong></td><td><code>https://energytahvieh.com/refund_returns/</code> — عنوان: «Refund and Returns Policy» / «<strong>This is a sample page.</strong>» / شامل «Gift cards», «Downloadable software products», «CD, DVD, VHS tape», «vinyl record» و جای‌نگهدارهای پر‌نشد‌ه <code>{email address}</code>، <code>{physical address}</code>، <code>{email}</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-06</td><td>صفحه اصلی دارای <strong>سه بخش با عنوان دسته‌بندی بی‌ربط</strong> است که هر سه یک مجموعه محصول یکسان را تکرار می‌کنند</td><td><code>https://energytahvieh.com/</code> — «#### اسباب بازی و سرگرمی»، «#### لباس و پوشاک»، «#### کتاب و مجلات». هر سه شامل همان ۶ محصول: بخاری هیزمی مشهد ظهور، بهارساز انرژی GM 0680، پکیج بوتان پارما ۲۲۰۰۰، پکیج M28FF، پکیج A24FF، پکیج L24FF</td><td>🔴 تأییدشده</td></tr><tr><td>V-07</td><td>صفحه «شرایط وام» <strong>کاملاً خالی</strong> است (فقط عنوان)</td><td><code>https://energytahvieh.com/شرایط-وام/</code> — محتوا تنها «# شرایط وام» + بلوک ثابت فوتر. lastmod = 2022-03-11</td><td>🔴 تأییدشده</td></tr><tr><td>V-08</td><td>صفحه «خرید عمده کالا» <strong>کاملاً خالی</strong> است</td><td><code>https://energytahvieh.com/خرید-عمده-کالا/</code> — محتوا تنها «# خرید عمده کالا» + بلوک ثابت فوتر. lastmod = 2021-11-15</td><td>🔴 تأییدشده</td></tr><tr><td>V-09</td><td>صفحه «وبلاگ» به‌صورت عمومی «چیزی یافت نشد» نمایش می‌دهد</td><td><code>https://energytahvieh.com/blog/</code> — «### چیزی یافت نشد / با عرض پوزش، اما نتیجه‌ای برای درخواست شما یافت نشد.»</td><td>🔴 تأییدشده</td></tr><tr><td>V-10</td><td><strong>شورت‌کد افزونه «درخواست پیش‌فاکتور» رندر نشده و به‌صورت متن خام نمایش داده می‌شود</strong></td><td><code>https://energytahvieh.com/request-quote/</code> — عنوان صفحه «Request a Quote -» (انگلیسی) و بدنه شامل رشته عینی <code>[yith_ywraq_request_quote]</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-11</td><td>بنر اسلایدر: <strong>هر سه بنر با موضوعات متفاوت به یک مقصد لینک شده‌اند</strong></td><td><code>/</code> — بنر «کولر آبی»، بنر «هیتر گازی انرژی»، بنر «خرید کولر گازی و اسپلیت» → هر سه به <code>https://energytahvieh.com/product-category/heaters/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-12</td><td>کاشی دسته‌بندی «مشعل» به دسته اشتباه لینک شده</td><td><code>/</code> — «مشعل» → <code>/product-category/installing-towel-warmer/</code> (حوله خشک‌کن)</td><td>🔴 تأییدشده</td></tr><tr><td>V-13</td><td><strong>چهار کاشی دسته‌بندی هیچ پیوندی ندارند</strong></td><td><code>/</code> — «کوره هوای گرم»، «پنکه»، «تصفیه آب»، «سخت گیر و رسوب زا» فقط تصویر + متن، بدون <code>&lt;a&gt;</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-14</td><td>نام فایل تصویر بنر صفحه اصلی، متن عنوان را لو می‌دهد</td><td><code>/</code> — <code>.../2025-12/۱۱۱۱۱۱.png</code>، <code>2222222.png</code>، <code>55555.png</code>، <code>34.png</code>، <code>5626.png</code>، <code>635.png</code>، <code>888888.png</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-15</td><td><strong>تضاد سیاست بازگشت کالا:</strong> صفحه محصول «بازگشت ۷ روزه» اعلام می‌کند، صفحه سیاست «۳۰ روز»</td><td><code>/product/m28ff/</code> → «#### بازگشت ۷ روزه» در برابر <code>/refund_returns/</code> → «Our refund and returns policy lasts 30 days»</td><td>🔴 تأییدشده</td></tr><tr><td>V-16</td><td>تمام پیوندهای اشتراک شبکه اجتماعی در صفحه محصول مرده (<code>#</code>)</td><td><code>/product/m28ff/</code> — فیس‌بوک، X، اینستاگرام، واتساپ (×۲)، تلگرام → همه <code>.../product/m28ff/#</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-17</td><td>ویجت «آخرین دیدگاه‌ها» محتوای دمو با پیوند خروجی به سایت ثالث نمایش می‌دهد</td><td><code>/shop/</code> و <code>/shop/page/2/</code> — «<a href="http://abzarwp.net/newwood">مدیر سایت</a> در Reviews – گرمایشی»</td><td>🔴 تأییدشده</td></tr></tbody></table>
+<h3>دسته ۲.۲ — یکپارچگی داده محصول</h3>
+<table><thead><tr><th>#</th><th>یافته</th><th>شاهد</th><th>برچسب</th></tr></thead><tbody><tr><td>V-18</td><td><strong>ویژگی‌های فنی صفحه محصول با خود محصول هم‌خوانی ندارد.</strong> پکیج دیواری ۲۸۰۰۰ کیلوکالری با «قدرت حرارتی ۶۴۰۰ BTU» نمایش داده شده</td><td><code>/product/m28ff/</code> — پنل ویژگی‌ها: «قدرت حرارتی: ۶۴۰۰ BTU»، «پوشش: ۱۶۵ متر مکعب»، «مصرف برق: ۲۷۷۲ وات»، «نوع سوخت: گاز طبیعی». حال آنکه همان صفحه در جدول توضیحات «۲۸ kW» و «تا ۱۶۰ متر مربع» و «۲۴۰۸۰ کیلوکالری بر ساعت» را ذکر می‌کند</td><td>🔴 تأییدشده</td></tr><tr><td>V-19</td><td><strong>مقدار «وزن» در پنل ویژگی‌ها خودِ واحد است، نه عدد</strong></td><td><code>/product/m28ff/</code> — «#### وزن / به کیلوگرم». در جدول توضیحات همان صفحه «وزن خالص: ۳۴.۵ کیلوگرم»</td><td>🔴 تأییدشده</td></tr><tr><td>V-20</td><td>برچسب انتخابگر تعداد/تنوع در صفحه پکیج، نام یک محصول کاملاً متفاوت است</td><td><code>/product/m28ff/</code> — «هیتر گازی انرژی مدل GH0845 عدد» در کنار «افزودن به سبد خرید»</td><td>🔴 تأییدشده</td></tr><tr><td>V-21</td><td><strong>توضیحات محصول به مدل دیگری ارجاع می‌دهد</strong> (کپی/جابه‌جایی محتوا)</td><td><code>/product/m28ff/</code> — «در ادامه مشخصات فنی کامل… درباره پکیج ایران رادیاتور <strong>L24FF</strong> را بررسی می‌کنیم» (صفحه درباره M28FF است). همچنین پیوند داخلی به <code>/product-category/iran-radiator-packages/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-22</td><td>واحد سنجش در ویژگی‌ها با ماهیت محصول ناسازگار است («پوشش: متر مکعب» برای پکیج گرمایشی)</td><td><code>/product/m28ff/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-23</td><td>محصول «فروخته شده» در بخش «ویژه امروز» صفحه اصلی نمایش داده می‌شود</td><td><code>/</code> — «فروخته شده / داغ» روی <code>پکیج دیواری آریستون ایتالیا مدل Clas X 24FF</code> (<code>/product/clas-x-24/</code>) با دکمه «اطلاعات بیشتر»</td><td>🔴 تأییدشده</td></tr><tr><td>V-24</td><td>چند محصول ناموجود در فهرست دسته‌بندی‌ها بدون قیمت درج شده‌اند</td><td><code>/product-category/air-conditioner/</code> — «کولر گازی هایسنس ۹۰۰۰ مدل مایا HRH-09TQ» و «اسپلیت تراست IAC-09CH/XA/A» با برچسب «فروخته شده» و بدون قیمت؛ نیز <code>/product-category/garmayeshi-packages/</code> — K24FF</td><td>🔴 تأییدشده</td></tr><tr><td>V-25</td><td>تعداد نظرات ثبت‌شده عملاً صفر است (یک استثنا)</td><td><code>/product/m28ff/</code> → «نظرات (۰)». تنها استثنا: <code>بخاری هیزمی مشهد ظهور</code> با «امتیاز ۵ از ۵ (۱)»</td><td>🔴 تأییدشده</td></tr><tr><td>V-26</td><td>صفحه محصول فقط دو تب دارد و جدول مشخصات داخل متن توضیحات است</td><td><code>/product/m28ff/</code> — تب‌ها: «توضیحات» و «نظرات (۰)». جدول مشخصات فنی به‌صورت Markdown/HTML داخل بدنه توضیحات</td><td>🔴 تأییدشده</td></tr></tbody></table>
+<h3>دسته ۲.۳ — ساختار سایت، سئو تکنیکال و فهرست‌پذیری</h3>
+<table><thead><tr><th>#</th><th>یافته</th><th>شاهد</th><th>برچسب</th></tr></thead><tbody><tr><td>V-27</td><td><strong>نمایه sitemap فقط سه sitemap دارد و هیچ sitemap برای مقالات وجود ندارد</strong></td><td><code>https://energytahvieh.com/sitemap_index.xml</code> → فقط <code>page-sitemap.xml</code> (2026-10-09)، <code>portfolio-sitemap.xml</code> (<strong>2017-06-22</strong>)، <code>product-sitemap.xml</code> (2026-10-13)</td><td>🔴 تأییدشده</td></tr><tr><td>V-28</td><td><code>post-sitemap.xml</code> تنها <strong>یک</strong> URL دارد — خودِ صفحه وبلاگ، با lastmod سال ۲۰۲۱</td><td><code>https://energytahvieh.com/post-sitemap.xml</code> → <code>https://energytahvieh.com/blog/</code> — <code>2021-05-28T10:20:52+00:00</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-29</td><td><strong>صفحات هسته‌ای ووکامرس دوبار وجود دارند</strong></td><td><code>page-sitemap.xml</code> → <code>/cart/</code> و <code>/cart-2/</code>؛ <code>/checkout/</code> و <code>/checkout-2/</code>؛ <code>/my-account/</code> و <code>/my-account-2/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-30</td><td>صفحات مقایسه/علاقه‌مندی چندباره با آدرس‌های متفاوت</td><td><code>/compare/</code>، <code>/compare-2/</code>، <code>/products-compare/</code>، <code>/مقایسه-محصولات/</code>، <code>/مقایسه-کالا/</code>؛ <code>/wishlist/</code>، <code>/wishlist-2/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-31</td><td>صفحات وبلاگ چندباره</td><td><code>/blog/</code>، <code>/blog-2/</code>، <code>/blog-3/</code>، <code>/posts/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-32</td><td><strong>بقایای یک کسب‌وکار/قالب قبلی با نام «ایران کالا» هنوز در sitemap است</strong></td><td><code>page-sitemap.xml</code> → <code>/تماس-با-ایران-کالا/</code>، <code>/فرصتهای-شغلی/</code>، <code>/فروش-در-ایران-کالا/</code>، <code>/اتاق-خبر-ایران-کالا/</code>، <code>/ایران-کالای-من/</code>، <code>/فروشنده-شوید/</code> (همه lastmod 2020-04-26)</td><td>🔴 تأییدشده</td></tr><tr><td>V-33</td><td>صفحات دمو/آزمون قالب هنوز زنده و در sitemap هستند</td><td><code>/test/</code> (2022-01-26)، <code>/emeryville-store/</code> (2026-08-14)، <code>/home-mega-electronics/</code> (2022-11-30)، <code>/outlet/</code>، <code>/stores/</code>، <code>/promotions/</code>، <code>/portfolio/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-34</td><td><strong>عنوان صفحات با خط تیره انتهایی و بدون نام برند بسته می‌شود</strong></td><td>عنوان‌های مشاهده‌شده: <code>انرژی تهویه -</code>، <code>فروشگاه -</code>، <code>پکیج دیواری و زمینی -</code>، <code>کولر گازی و اسپلیت -</code>، <code>سبد خرید -</code>، <code>تماس با انرژی تهویه -</code>، <code>درباره ما -</code>، <code>وبلاگ -</code>، <code>شرایط وام -</code>، <code>خرید عمده کالا -</code>، <code>Request a Quote -</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-35</td><td><strong>فیلتر برند در سطح فروشگاه فقط ۳ برند را نشان می‌دهد، درحالی‌که ۸ لوگوی برند همکار در صفحه اصلی است</strong></td><td><code>/shop/</code> → برندها: آذر تهویه (id 306)، انرژی (295)، ایران رادیاتور (296). در <code>/product-category/garmayeshi-packages/</code> → فقط ایران رادیاتور؛ در <code>/product-category/air-conditioner/</code> → فقط ایران رادیاتور (با وجود محصولات هایسنس و تراست در همان دسته)</td><td>🔴 تأییدشده</td></tr><tr><td>V-36</td><td>اندازه کاتالوگ: <strong>۱۹۱ محصول</strong> در کل فروشگاه</td><td><code>/shop/</code> → «نمایش ۱–۱۲ از <strong>۱۹۱</strong> نتیجه». تفکیک مشاهده‌شده: پکیج دیواری و زمینی ۱۸؛ کولر گازی و اسپلیت ۱۷</td><td>🔴 تأییدشده</td></tr><tr><td>V-37</td><td>صفحات دسته‌بندی <strong>هیچ متن توضیحی/راهنمای خرید ندارند</strong></td><td><code>/product-category/garmayeshi-packages/</code> و <code>/product-category/air-conditioner/</code> → فقط فیلتر + گرید محصول، بدون H1 توصیفی یا محتوای متنی</td><td>🔴 تأییدشده</td></tr><tr><td>V-38</td><td>slug محصولات فارسی در میانه رشته بریده شده‌اند</td><td><code>/product/کولر-گازی-اسپلیت-دیواری-12000-دور-ثابت-ایرا/</code> (بریده در «ایرا»)، <code>/product/کولر-گازی-اسپلیت-دیواری-30000-ایران-رادیات/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-39</td><td>محصولات تکراری با پسوند <code>-2</code></td><td><code>product-sitemap.xml</code> → <code>کولر-سلولزی-پلیمری-بالا-زن/</code> و <code>کولر-سلولزی-پلیمری-بالا-زن-2/</code>؛ نیز <code>...-روبروزن/</code> و <code>...-روبروزن-2/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-40</td><td>الگوی ناهمگون slug (فارسی URL-encoded در برابر لاتین)</td><td>فارسی: <code>/product/کولر-گازی-تراست36-مدل-tmsau36ht1b/</code>؛ لاتین: <code>/product/m28ff/</code>، <code>/product/parma-22000/</code>، <code>/product/alborzbcf65/</code>، <code>/product/window-air-cooler-4500-niroo-tahvie/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-41</td><td>صفحات سیاست‌ها از سال ۲۰۲۰/۲۰۲۱ به‌روزرسانی نشده‌اند</td><td><code>page-sitemap.xml</code> → <code>/terms/</code> 2021-07-03؛ <code>/refund_returns/</code> 2021-09-17؛ <code>/about-us/</code> 2021-07-04؛ <code>/حریم-خصوصی/</code> 2020-04-26؛ <code>/سیاست-حفظ-حریم-خصوصی/</code> 2020-04-24</td><td>🔴 تأییدشده</td></tr><tr><td>V-42</td><td>افزونه پرسش‌وپاسخ فعال/نصب شده ولی بدون محتوای قابل مشاهده</td><td><code>/dwqa-questions/</code>، <code>/dwqa-ask-question/</code>، <code>/dwqa-user-profile/</code> (lastmod 2026-10-02)</td><td>🔴 تأییدشده</td></tr><tr><td>V-43</td><td>نمونه‌های بصری دسته‌بندی با ابعاد بندانگشتنی سرو می‌شوند</td><td><code>/</code> → <code>cooler-150x150.jpg</code> و <code>panel-radiator-150x150.png</code> در کاشی‌های دسته‌بندی؛ <code>/blog/</code> → <code>images-150x150.png</code> به‌عنوان آیکون تماس</td><td>🔴 تأییدشده</td></tr><tr><td>V-44</td><td>وضعیت ناهمگون بهینه‌سازی تصویر</td><td>WebP در آپلودهای ۲۰۲۵–۲۰۲۶ (<code>01K1R2GNQRP0V4MJ1Q0EHBGD73.webp</code>) در برابر JPG/PNG در آپلودهای ۲۰۲۱–۲۰۲۲ (<code>cck32.jpg</code>, <code>Soft-water.jpg</code>, <code>rest.jpg</code>, <code>11-12.jpg</code>, <code>11-9.jpg</code>, <code>EC0700E-1.jpg</code>, <code>1-1.png</code>…<code>2-3.png</code>)</td><td>🔴 تأییدشده</td></tr><tr><td>V-45</td><td>صفحه «تماس با ما» فقط سه داده دارد؛ بدون فرم تماس، بدون ایمیل، بدون ساعت کاری، بدون نقشه</td><td><code>/contact-us/</code></td><td>🔴 تأییدشده</td></tr><tr><td>V-46</td><td>حداکثر بازه فیلتر قیمت عددی غیرواقعی/نامرتب است</td><td><code>/product-category/garmayeshi-packages/</code> → «۰ تومان — <strong>۷۱۳٬۴۰۷٬۰۰۰</strong> تومان»؛ <code>/product-category/air-conditioner/</code> → «۰ — ۳۳۲٬۹۰۰٬۰۰۰ تومان»</td><td>🔴 تأییدشده</td></tr></tbody></table>
+<h3>دسته ۲.۴ — موارد مثبت (نقاط قوت تأییدشده)</h3>
+<table><thead><tr><th>#</th><th>یافته</th><th>شاهد</th></tr></thead><tbody><tr><td>V-47</td><td><code>robots.txt</code> به‌درستی پارامترهای فیلتر و <code>add-to-cart</code> را از خزش مسدود کرده — نشانه‌ای از آگاهی از بودجه خزش</td><td><code>/robots.txt</code> — بلوک «Filter Everything: do not crawl filtering result pages» با Disallow برای <code>_category</code>، <code>_pcat</code>، <code>_product_brand</code>، <code>min_price</code>، <code>max_price</code>، <code>srch</code> و…</td></tr><tr><td>V-48</td><td>sitemap به‌درستی در robots.txt اعلام شده</td><td><code>/robots.txt</code> → <code>Sitemap: https://energytahvieh.com/sitemap_index.xml</code></td></tr><tr><td>V-49</td><td><strong>کیفیت توضیحات برخی محصولات جدید واقعاً خوب است</strong> — ساختار پرسش‌محور، جدول مشخصات، FAQ، پیوند داخلی، فراخوان مشاوره</td><td><code>/product/m28ff/</code> — بخش‌های «چرا پکیج M28FF انتخاب هوشمندانه‌ای است؟»، «برای چه متراژهایی مناسب است؟»، «ویژگی‌های فنی و سیستم‌های ایمنی»، «جدول مشخصات فنی»، «شرایط گارانتی و نکات نصب»، «سوالات متداول» (۴ پرسش)، CTA «مشاوره و خرید ۰۹۳۵۶۲۷۹۱۱۸»</td></tr><tr><td>V-50</td><td>عنوان صفحه محصول الگوی درستی دارد (کلمه «خرید» + مدل + برند + مزیت متراژ)</td><td><code>/product/m28ff/</code> → <code>خرید پکیج دیواری M28FF ایران رادیاتور (مناسب تا ۱۶۰ متر)</code></td></tr><tr><td>V-51</td><td>سایت فعال است و به‌روزرسانی می‌شود</td><td><code>product-sitemap.xml</code> lastmod = 2026-10-13؛ آپلودهای رسانه تا ۲۰۲۶/۱۰؛ صفحات DWQA در ۲۰۲۶-۱۰-۰۲</td></tr><tr><td>V-52</td><td>قیمت‌گذاری شفاف و ریالی/تومانی روی محصولات موجود</td><td>مشاهده قیمت‌های صریح در <code>/shop/</code> و صفحه اصلی (مثلاً ۱۰۱٬۸۰۰٬۰۰۰ تومان؛ ۲۶۸٬۰۹۸٬۶۰۰ تومان)</td></tr><tr><td>V-53</td><td>قابلیت‌های مقایسه و علاقه‌مندی در قالب وجود دارند (هرچند چندباره)</td><td>دکمه‌های «افزودن به مقایسه» و «افزودن به علاقه مندی» در تمام کارت‌های محصول</td></tr><tr><td>V-54</td><td>نمایش قیمت قبل/بعد تخفیف و درصد تخفیف فعال است</td><td><code>/</code> → «−۱۰٪»، «~~۲۲٬۰۰۰٬۰۰۰~~ ۱۹٬۸۰۰٬۰۰۰ تومان»</td></tr><tr><td>V-55</td><td>سیگنال‌های اعتماد در صفحه محصول حضور دارند (به‌عنوان برچسب)</td><td><code>/product/m28ff/</code> → «محصول اصل»، «بازگشت ۷ روزه»، «ارسال سریع»، «گارانتی معتبر»</td></tr></tbody></table>
+<hr/>
+<h2>۳. پشته فنی — استنتاج از شواهد عمومی</h2>
+<blockquote><p>این موارد <strong>استنتاج</strong> هستند، نه تأیید مستقیم. برای قطعی‌شدن نیاز به دسترسی مدیریتی دارند (→ «نیازمند بررسی»).</p></blockquote>
+<table><thead><tr><th>#</th><th>استنتاج</th><th>مبنای استنتاج</th><th>برچسب</th></tr></thead><tbody><tr><td>I-01</td><td>CMS: <strong>WordPress + WooCommerce</strong></td><td>ساختار <code>/wp-content/uploads/</code>، <code>/wp-admin/</code> در robots، الگوی <code>/product/</code> و <code>/product-category/</code>، صفحه <code>refund_returns</code> پیش‌فرض ووکامرس، وجود <code>/cart/</code>، <code>/checkout/</code>، <code>/my-account/</code></td><td>🟡 تأییدشده (سطح بالا)</td></tr><tr><td>I-02</td><td>صفحه‌ساز: <strong>Elementor</strong></td><td>مسیر <code>/wp-content/uploads/elementor/thumbs/…</code> در sitemap</td><td>🟡 تأییدشده</td></tr><tr><td>I-03</td><td>افزونه فیلتر: <strong>Filter Everything</strong></td><td>کامنت صریح در robots.txt</td><td>🟡 تأییدشده</td></tr><tr><td>I-04</td><td>افزونه پیش‌فاکتور: <strong>YITH WooCommerce Request a Quote</strong></td><td>شورت‌کد خام <code>[yith_ywraq_request_quote]</code></td><td>🟡 تأییدشده</td></tr><tr><td>I-05</td><td>افزونه پرسش‌وپاسخ: <strong>DW Question &amp; Answer</strong></td><td>آدرس‌های <code>/dwqa-questions/</code>، <code>/dwqa-ask-question/</code></td><td>🟡 تأییدشده</td></tr><tr><td>I-06</td><td>افزونه سئو: <strong>Yoast SEO</strong></td><td>ساختار <code>sitemap_index.xml</code> + تفکیک <code>page-sitemap</code>/<code>post-sitemap</code>/<code>product-sitemap</code> مشخصه Yoast است</td><td>🟠 نیازمند بررسی</td></tr><tr><td>I-07</td><td>قالب: یک قالب <strong>مارکت‌پلیس/چندفروشندگی</strong> (احتمالاً خانواده Emart)</td><td>وجود <code>/emeryville-store/</code>، <code>/home-mega-electronics/</code>، <code>/outlet/</code>، <code>/stores/</code>، <code>/promotions/</code>، «فروشنده شوید»، «ایران کالای من»، «اتاق خبر ایران کالا»</td><td>🟠 نیازمند بررسی</td></tr><tr><td>I-08</td><td>سایت روی یک دامنه/نصب <strong>بازیافت‌شده از یک پروژه قبلی</strong> ساخته شده</td><td>هم‌زمانی بقایای «ایران کالا» (۲۰۲۰) + دموهای قالب (۲۰۲۱–۲۰۲۲) + محتوای واقعی (۲۰۲۵–۲۰۲۶) در یک sitemap</td><td>🟡 استنتاج قوی</td></tr><tr><td>I-09</td><td><strong>نسخه وردپرس/ووکامرس/PHP، فهرست کامل افزونه‌ها، وضعیت به‌روز بودن، WAF، نرخ خطای ۵xx</strong></td><td>❌ از بیرون قابل تعیین نیست</td><td>🔴 نیازمند دسترسی</td></tr><tr><td>I-10</td><td><strong>Core Web Vitals واقعی (LCP/INP/CLS)، حجم صفحه، تعداد درخواست‌ها، TTFB</strong></td><td>❌ بدون ابزار/دسترسی اندازه‌گیری نشد</td><td>🔴 نیازمند بررسی</td></tr><tr><td>I-11</td><td>وجود CDN یا نبود آن</td><td>هیچ سرآشد/دامنه CDN ثالثی در منابع مشاهده نشد؛ در مقابل، رقیب (دماتجهیز) از <code>storage-asiatech-s3.damatajhiz.com</code> استفاده می‌کند</td><td>🟠 نیازمند بررسی</td></tr><tr><td>I-12</td><td><strong>نماد اعتماد الکترونیکی (اینماد)</strong></td><td>در HTML متنی استخراج‌شده دیده نشد؛ ممکن است تصویر/JS باشد</td><td>🔴 نیازمند بررسی — <strong>ریسک حقوقی اگر نباشد</strong></td></tr></tbody></table>
+<hr/>
+<h2>۴. تحلیل رقبا (یافته‌های تأییدشده)</h2>
+<h3>۴.۱ داماتجهیز — damatajhiz.com (رهبر مرجع بازار)</h3>
+<table><thead><tr><th>بعد</th><th>مشاهده عینی</th></tr></thead><tbody><tr><td>پشته</td><td>CMS اختصاصی («ultimate-cms-final» در مسیر منابع) — نه وردپرس</td></tr><tr><td>CDN</td><td><code>storage-asiatech-s3.damatajhiz.com</code> (S3 آسیاتک)</td></tr><tr><td>چندزبانه</td><td>FA / EN / AR (<code>/en/</code>، <code>/ar/</code>)</td></tr><tr><td>وسعت کاتالوگ</td><td>شناسه دسته‌بندی تا <strong>۱۶۰۰+</strong> (<code>/categories/1532/کولر-گازی-هومکس</code>)، شناسه محصول تا <strong>۱۰۰۱۷+</strong></td></tr><tr><td>معماری URL</td><td><code>/categories/{id}/{slug}</code>، <code>/products/{id}/{slug}</code>، <code>/brands/{slug}</code>، <code>/content/{id}-{slug}</code></td></tr><tr><td>عمق صفحه دسته</td><td>صفحه «کولر گازی و اسپلیت» شامل: راهنمای ۹ نکته‌ای خرید، <strong>جدول قیمت به‌روز به تفکیک ۱۰ برند</strong> با عنوان «بروزترین لیست قیمت کولر گازی در سال ۱۴۰۵»، آموزش محاسبه BTU با مثال عددی، <strong>جدول ظرفیت‌یابی</strong> (۹۰۰۰→تا ۱۲/۱۵ م² … ۹۰۰۰۰→تا ۱۳۰/۱۸۰ م²)، ارجاع به «نرم افزار محاسبه ظرفیت»</td></tr><tr><td>عمق صفحه محصول</td><td>بردکرامب ۳ سطحی؛ لوگو و صفحه برند؛ امتیاز ۴.۷ با <strong>۳ نظر</strong>؛ ۵ بولت ویژگی کلیدی؛ «۶۰ ماه گارانتی کمپرسور و ۲۴ ماه قطعات»؛ «با لوله مسی رایگان»؛ «ضمانت اصالت کالا»؛ <strong>بلوک خرید اقساطی با لینک به صفحه <code>/content/70-فروش-اقساط</code> و ذکر فرایند ۱۰–۱۵ روزه</strong>؛ سه تب «راهنمای انتخاب محصول / جدول مشخصات فنی / نظرات مشتریان»؛ <strong>جدول مقایسه درون‌مدلی</strong> (دورثابت ↔ معتدل ↔ گرمسیری با T1/T3)؛ جدول مشخصات ~۲۰ ردیفی (مدل، نوع، برچسب انرژی ++A، موقعیت نصب، شرایط کارکرد، کمپرسور روتاری GMCC، اینورتر، گاز R410a، ظرفیت سرمایش/گرمایش BTU، برق، جریان A، ابعاد یونیت داخلی/خ خارجی، EER، COP)؛ CTA «مشاوره و خرید ۰۲۱۸۸۸۲۲۵۵۰»</td></tr><tr><td>اعتبار</td><td>«از سال ۱۳۸۳»؛ ادعای «بیش از ۱۰٬۰۰۰ بازدیدکننده روزانه» و «اولین استارتاپ تخصصی تأسیسات» (منبع: LinkedIn/facilico — <strong>ادعای خود شرکت، تأیید نشده</strong>)</td></tr><tr><td>دامنه محصولی</td><td>تهویه مطبوع، گرمایشی و موتورخانه، استخر/سونا/جکوزی، تجهیزات کنترل و ابزار دقیق، اعلام و اطفاء حریق؛ ارسال به ۱۵ کشور</td></tr></tbody></table>
+<h3>۴.۲ ناب تهویه — nabtahvieh.com</h3>
+<table><thead><tr><th>بعد</th><th>مشاهده</th></tr></thead><tbody><tr><td>جایگاه‌سازی</td><td>«تنها فروشگاه تخصصی و بدون واسطه تهویه مطبوع و تاسیسات»</td></tr><tr><td>معماری</td><td><code>/52-پکیج-دیواری-و-زمینی</code>، <code>/141-پکیج-بوتان</code>، <code>/501-ایران-رادیاتور</code> (شناسه عددی + slug)</td></tr><tr><td>نقطه قوت</td><td>تنوع برند بسیار بالا (گرین، پاکشوما، هایسنس، بویمن، تک‌الکتریک، جی‌پلاس، ال‌جی، سامسونگ، دوو…)؛ صفحات برند محور</td></tr><tr><td><strong>نقطه ضعف تأییدشده</strong></td><td>تعداد زیادی محصول با قیمت <strong>«۰ ریال»</strong> فهرست شده‌اند (مثلاً «پکيج دیواری بوتان مدل CV424s — ۰ ریال»، «Perla Pro 24RSi — ۰ ریال»، «Roma 28 KIS — ۰ ریال») → الگوی «قیمت = تماس بگیرید» که تجربه خرید آنلاین را می‌شکند</td></tr><tr><td>واحد قیمت</td><td>ریال (در برابر تومان در انرژی تهویه) → اصطکاک مقایسه برای کاربر</td></tr><tr><td>ضعف محتوا</td><td>متن دسته‌بندی‌ها به‌شدت تکرارشونده و قالبی («فروشگاه اینترنتی ناب تهویه توانسته کیفیتی که شما انتظار دارید…» چندین بار در یک صفحه)</td></tr></tbody></table>
+<h3>۴.۳ سایر بازیگران قابل مقایسه</h3>
+<table><thead><tr><th>نام</th><th>مدل</th><th>نکته مقایسه‌ای</th></tr></thead><tbody><tr><td><code>iranradiator.co</code> (تهویه‌سازان ایرانیان آوا)</td><td>نمایندگی رسمی تک‌برند ایران رادیاتور</td><td>دسته‌بندی برند‌محور دقیق (آلترم/ایستاده/اینورتر/کازوکی/مشعل دوگانه‌سوز)؛ <strong>تأییدیه «نمایندگی رسمی» به‌عنوان مزیت رقابتی صریح</strong>؛ نکته عملیاتی: «جهت ورود، ثبت نام و خرید محصول فیلترشکن VPN خود را خاموش کنید»</td></tr><tr><td><code>artatabrid.com</code></td><td>ووکامرس، مقیاس کوچک (۲۱ محصول در پکیج دیواری)</td><td><strong>الگوی خوب فیلترهای ساختاریافته</strong>: برند (ایران رادیاتور ۱۰ / ایمرگاس ۳ / بوتان ۸)، <strong>ظرفیت پکیج</strong> (۲۲۰۰۰، ۲۴۰۰۰، ۲۶۰۰۰، ۲۸۰۰۰، ۳۲۰۰۰، ۳۶۰۰۰، ۴۲۰۰۰)، <strong>موقعیت نصب</strong> (دیواری ۲۰) → دقیقاً همان ساختاری که انرژی تهویه ندارد</td></tr><tr><td><code>kelvinradiator.com</code></td><td>ووکامرس</td><td>قیمت‌گذاری تخفیف‌دار شفاف، دسته‌بندی سلسله‌مراتبی گرمایش/موتورخانه</td></tr><tr><td><code>shirazbuilding.com</code>، <code>shirazknuaf.ir</code>، <code>shiraz.construction</code></td><td>رسانه/دایرکتوری محلی شیراز</td><td><strong>کانال کشف محلی رقبای انرژی تهویه</strong> — «انرژی تهویه زاده محمد» در رتبه ۲۰ از فهرست ۲۵ نمایندگی ایران رادیاتور شیراز؛ رقبای محلی: کلینیک ساختمانی طاها تهویه (۲۰ سال سابقه)، فروشگاه تاسیساتی پیلوت، تهویه مطبوع شیراز، هادی تهویه، تاسیسات ترمو–سروی، نمایندگی نیرو تهویه البرز عبداللهی</td></tr></tbody></table>
+<h3>۴.۴ خلاصه شکاف رقابتی (مستند به شاهد)</h3>
+<table><thead><tr><th>بعد</th><th>انرژی تهویه</th><th>بهترین نمونه بازار</th><th>شکاف</th></tr></thead><tbody><tr><td>اندازه کاتالوگ</td><td><strong>۱۹۱ محصول</strong> (V-36)</td><td>داماتجهیز: شناسه محصول ۱۰٬۰۰۰+</td><td>🔴 بسیار بزرگ</td></tr><tr><td>محتوای صفحه دسته</td><td><strong>صفر</strong> (V-37)</td><td>داماتجهیز: راهنمای ۹ نکته‌ای + جدول قیمت ۱۰ برند + جدول ظرفیت‌یابی</td><td>🔴 بسیار بزرگ</td></tr><tr><td>ساختار فیلتر</td><td>فقط برند (۳ مقدار) + قیمت (V-35)</td><td>artatabrid: برند + <strong>ظرفیت</strong> + <strong>موقعیت نصب</strong></td><td>🔴 بزرگ</td></tr><tr><td>عمق مشخصات فنی</td><td>پنل ویژگی نادرست/پر‌نشد‌ه (V-18…V-22)؛ جدول داخل متن (V-26)</td><td>داماتجهیز: ~۲۰ ردیف ساختاریافته + تب مستقل + EER/COP</td><td>🔴 بزرگ</td></tr><tr><td>اثبات اجتماعی</td><td>عملاً ۰ نظر (V-25)</td><td>داماتجهیز: ۴.۷ با ۳ نظر + نمایش امتیاز در کارت</td><td>🔴 بزرگ</td></tr><tr><td>محتوای آموزشی/بلاگ</td><td><strong>صفحه خالی</strong> (V-09، V-28)</td><td>داماتجهیز: راهنمای خرید، <code>/content/</code>، نرم‌افزار محاسبه ظرفیت</td><td>🔴 بحرانی</td></tr><tr><td>صفحه اقساط</td><td><strong>خالی</strong> (V-07)</td><td>داماتجهیز: <code>/content/70-فروش-اقساط</code> با شرح فرایند ۱۰–۱۵ روزه</td><td>🔴 بحرانی</td></tr><tr><td>پیش‌فاکتور/B2B</td><td><strong>شورت‌کد شکسته</strong> (V-10)</td><td>داماتجهیز: صدور پیش‌فاکتور، فروش پروژه‌ای، ارسال به ۱۵ کشور</td><td>🔴 بحرانی</td></tr><tr><td>اعتمادسازی</td><td>Lorem Ipsum + سیاست بازگشت انگلیسی نمونه (V-01، V-05)</td><td>داماتجهیز: ضمانت طلایی، ضمانت اصالت، از سال ۱۳۸۳</td><td>🔴 بحرانی</td></tr><tr><td>چندزبانه</td><td>ندارد</td><td>داماتجهیز: FA/EN/AR</td><td>🟠 فرصت</td></tr><tr><td>CDN</td><td>مشاهده نشد (I-11)</td><td>داماتجهیز: S3 آسیاتک</td><td>🟠 نیازمند بررسی</td></tr><tr><td>قیمت‌گذاری</td><td><strong>شفاف و تومان</strong> (V-52)</td><td>ناب تهویه: بسیاری «۰ ریال»</td><td>🟢 <strong>مزیت رقابتی انرژی تهویه</strong></td></tr><tr><td>کیفیت متن محصول (محصولات جدید)</td><td><strong>خوب</strong> (V-49)</td><td>—</td><td>🟢 <strong>مزیت نسبی؛ قابل مقیاس‌سازی</strong></td></tr></tbody></table>
+<blockquote><p><strong>نتیجه راهبردی:</strong> انرژی تهویه در دو مورد <em>هم‌اکنون</em> از بخشی از رقبا جلوتر است — قیمت‌گذاری شفاف و الگوی محتوای توصیفی محصولات جدید. مشکل اصلی «نبود توانایی» نیست؛ <strong>نبود یکپارچگی، ناقص‌ماندن استقرار و نبود لایه محتوای تجاری/آموزشی</strong> است. این دقیقاً همان چیزی است که یک نقش مالکیتی (نه اپراتوری) حل می‌کند.</p></blockquote>
+<hr/>
+<h2>۵. داده بازار کار (برای بخش جبران خدمات)</h2>
+<h3>۵.۱ گزارش حقوق و دستمزد ۱۴۰۵ ایران‌تلنت — «مدیر دیجیتال مارکتینگ»</h3>
+<p>منبع: <code>salary.irantalent.com/salary-report/digital-marketing-manager-salary/</code></p>
+<table><thead><tr><th>شاخص</th><th>تهران ۱۴۰۵</th><th>تهران ۱۴۰۴</th><th>سایر شهرها ۱۴۰۵</th><th>سایر شهرها ۱۴۰۴</th></tr></thead><tbody><tr><td>میانه حقوق درخواستی (خالص)</td><td><strong>۶۷ م.ت</strong></td><td>۴۵ م.ت</td><td><strong>۴۸ م.ت</strong></td><td>۳۵ م.ت</td></tr><tr><td>صدک ۱۰</td><td>۳۹ م.ت</td><td>۲۸ م.ت</td><td>—</td><td>—</td></tr><tr><td>صدک ۲۵ (شروع بازه معمول)</td><td>۵۱ م.ت</td><td>۳۷ م.ت</td><td>—</td><td>—</td></tr><tr><td>صدک ۷۵ (سقف بازه معمول)</td><td>۹۲ م.ت</td><td>۵۷ م.ت</td><td>—</td><td>—</td></tr><tr><td>صدک ۹۰</td><td>۱۰۸ م.ت</td><td>۷۵ م.ت</td><td>—</td><td>—</td></tr><tr><td>بیشترین</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>رشد میانه</td><td>۴۸٪</td><td>—</td><td>۳۸٪</td><td>—</td></tr><tr><td>بخش متغیر حقوق</td><td>۱۲٪</td><td>—</td><td>—</td><td>—</td></tr></tbody></table>
+<h3>۵.۲ گزارش حقوق ۱۴۰۵ ایران‌تلنت — «مدیر بازرگانی و تجارت»</h3>
+<p>منبع: <code>salary.irantalent.com/salary-report/commerce-trade-manager-salary/</code></p>
+<table><thead><tr><th>شاخص</th><th>تهران ۱۴۰۵</th><th>تهران ۱۴۰۴</th><th>شهرهای بزرگ ۱۴۰۵</th></tr></thead><tbody><tr><td>میانه درخواستی</td><td><strong>۸۹ م.ت</strong></td><td>۶۵ م.ت</td><td>۶۳ م.ت</td></tr><tr><td>صدک ۲۵</td><td>۶۹ م.ت</td><td>۵۱ م.ت</td><td>۵۰ م.ت</td></tr><tr><td>صدک ۷۵</td><td>۱۳۶ م.ت</td><td>۹۷ م.ت</td><td>۷۹ م.ت</td></tr><tr><td>صدک ۹۰</td><td>۲۱۹ م.ت</td><td>۱۴۳ م.ت</td><td>۱۰۷ م.ت</td></tr><tr><td>رشد میانه</td><td>۳۸٪</td><td>—</td><td>۴۳٪</td></tr><tr><td>بخش متغیر</td><td>۱۴٪</td><td>—</td><td>—</td></tr></tbody></table>
+<h3>۵.۳ آگهی‌های زنده (نمونه موردی قابل استناد)</h3>
+<p>منبع: <code>irantalent.com/jobs/digital-marketing-manager</code></p>
+<table><thead><tr><th>عنوان</th><th>شرکت</th><th>شهر</th><th>حقوق اعلامی</th></tr></thead><tbody><tr><td><strong>مدیر رشد و بازاریابی دیجیتال</strong> (صنعت طلا و جواهر)</td><td>هوم گلد</td><td>تهران</td><td><strong>۶۰ تا ۸۰ میلیون تومان</strong></td></tr><tr><td>مدیر بازاریابی دیجیتال</td><td>آکادمی مهر</td><td>کرمان</td><td>۳۵ تا ۴۵ میلیون تومان</td></tr><tr><td>مدیر بازاریابی دیجیتال</td><td>دی جی دنا</td><td>شیراز</td><td>اعلام نشده</td></tr><tr><td>مدیر بازاریابی دیجیتال</td><td>اکتوورکو</td><td>تهران</td><td>اعلام نشده</td></tr></tbody></table>
+<h3>۵.۴ منابع رد‌شده (به‌دلیل کیفیت پایین/تناقض داخلی)</h3>
+<ul>
+<li><code>aryatehran.com</code> — در یک صفحه هم «متخصص: ۶۰ م.ت به بالا» و هم «مدیر دیجیتال مارکتینگ: ۱۵ الی ۲۵ م.ت» آمده؛ تناقض داخلی → <strong>استناد نشد</strong>.</li>
+<li><code>jobvision.ir/blog/digital-marketing-income</code> — مبتنی بر گزارش <strong>۱۴۰۳</strong> (مدیر تهران ۳۲.۵ م.ت) → کهنه؛ فقط به‌عنوان روند تاریخی قابل اشاره، نه مبنای قیمت‌گذاری.</li>
+<li><code>yektanet.com</code> (۱۴۰۲) و <code>rayamarketing.com</code> (۱۴۰۲/۲۰۲۲) و <code>virgool.io</code> (۱۴۰۲) → کهنه.</li>
+</ul>
+<h3>۵.۵ موقعیت‌یابی عدد ۷۵ میلیون تومان نسبت به داده‌ها</h3>
+<table><thead><tr><th>مقایسه</th><th>نتیجه</th></tr></thead><tbody><tr><td>در برابر میانه تهران ۱۴۰۵ برای مدیر دیجیتال مارکتینگ (۶۷)</td><td><strong>+۱۲٪ بالاتر از میانه</strong></td></tr><tr><td>در برابر صدک ۷۵ تهران (۹۲)</td><td><strong>زیر صدک ۷۵</strong> → درون «بازه متعارف» بازار تهران</td></tr><tr><td>در برابر میانه «سایر شهرها» ۱۴۰۵ (۴۸)</td><td><strong>+۵۶٪ بالاتر</strong> → ⚠️ <strong>آسیب‌پذیرترین نقطه در مذاکره، چون کارفرما در شیراز است</strong></td></tr><tr><td>در برابر میانه تهران برای مدیر بازرگانی (۸۹)</td><td>پایین‌تر</td></tr><tr><td>در برابر آگهی زنده «مدیر رشد و بازاریابی دیجیتال» تهران (۶۰–۸۰)</td><td><strong>درون بازه</strong></td></tr><tr><td>در برابر صدک ۹۰ تهران ۱۴۰۴ (۷۵)</td><td>معادل سقف بازار یک سال قبل</td></tr></tbody></table>
+<blockquote><p><strong>نتیجه صادقانه برای مذاکره:</strong> ۷۵ م.ت برای نقش «مدیر رشد دیجیتال» در <strong>بازار تهران و با دامنه مسئولیت ترکیبی (زیرساخت + داده + محتوا + اتوماسیون)</strong> کاملاً درون بازه متعارف و قابل دفاع است. اما اگر کارفرما نقش را «کارشناس/سرپرست سایت در شیراز» بداند، همان عدد ۵۶٪ بالاتر از میانه محلی خواهد بود. <strong>بنابراین کل استراتژی مذاکره باید روی بازتعریف نقش (نه دفاع از عدد) متمرکز شود.</strong> جزئیات در سند ۰۴.</p></blockquote>
+<hr/>
+<h2>۶. مواردی که تا زمان دسترسی تأیید نشده‌اند (فهرست صریح)</h2>
+<ol>
+<li>Core Web Vitals واقعی (LCP/INP/CLS) در موبایل و دسکتاپ — میدانی و آزمایشگاهی</li>
+<li>حجم کل صفحه، تعداد درخواست‌ها، اندازه DOM، TTFB، زمان پاسخ سرور</li>
+<li>نسخه PHP / MySQL / وردپرس / ووکامرس / قالب / هر افزونه</li>
+<li>وضعیت به‌روز بودن هسته و افزونه‌ها؛ وجود آسیب‌پذیری شناخته‌شده</li>
+<li>نرخ خطای ۵xx/۴xx در لاگ سرور؛ خطاهای PHP و کنسول JS</li>
+<li>کیفیت و محدودیت منابع هاست (CPU/RAM/IO، نسخه Apache/LiteSpeed/Nginx)</li>
+<li>وضعیت کش سرور/صفحه/آبجکت و وجود CDN</li>
+<li>فرایند بکاپ‌گیری، دوره نگه‌داری، و <strong>آزمایش بازیابی</strong></li>
+<li>دسترسی‌ها و نقش‌های کاربری، احراز هویت دومرحله‌ای، امنیت wp-admin</li>
+<li>وجود/اعتبار <strong>نماد اعتماد الکترونیکی (اینماد)</strong> و ساماندهی</li>
+<li>داده‌های Search Console: پوشش ایندکس، کوئری‌ها، impressions، CTR، موقعیت‌ها</li>
+<li>داده‌های Analytics/GTM: جلسات، منابع ترافیک، نرخ تبدیل، رهاشدن سبد، جست‌وجوی بدون نتیجه</li>
+<li>داده‌های واقعی فروش: GMV، میانگین سبد، تکرار خرید، سهم کانال‌ها</li>
+<li>درگاه‌های پرداخت فعال و نرخ موفقیت تراکنش</li>
+<li>روش‌های ارسال و نرخ واقعی تحویل</li>
+<li>ساختار دیتابیس، اندازه جداول، وجود orphan meta و transients</li>
+<li>وضعیت واقعی «خرید اقساطی» (آیا فعال است یا فقط یک برچسب فوتر؟)</li>
+<li>ساختار سازمانی، تیم فعلی، پیمانکاران پیشین و سوابق تحویل</li>
+<li>بودجه بازاریابی و ابزارهای موجود</li>
+<li>آیا دامنه/سایت سابقه جریمه یا اقدام دستی گوگل دارد؟</li>
+</ol>
+<hr/>
+<p><strong>پایان سند شواهد — نسخه ۱.۰</strong></p>
+</div>
+</body>
+</html>
