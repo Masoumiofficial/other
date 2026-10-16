@@ -60,7 +60,7 @@ DATA = {
                  "خواندن مستقیم ۱۴ صفحه سایت، robots.txt و چهار فایل sitemap است، "
                  "بدون هیچ دسترسی داخلی."),
         "ctaPrimary": "دیدن یافته‌ها",
-        "ctaSecondary": "گام بعدی",
+        "ctaSecondary": "مسیر اجرا",
     },
 
     "stats": [
@@ -188,21 +188,24 @@ DATA = {
 
     "gap": {
         "num": "۰۳", "kicker": "بخش سوم",
-        "title": "شکاف مقیاس، با عدد",
-        "lead": "بدون اغراق و بدون وعده. این فاصله در ۱۲ ماه بسته نمی‌شود و من چنین ادعایی نمی‌کنم.",
+        "title": "شکاف مقیاس — و آنچه واقعاً بستنی است",
+        "lead": ("فاصله با رقیب مرجع بازار واقعی است و با وعده بسته نمی‌شود. "
+                 "ولی هر شش ردیف این جدول ارزش بستن ندارند — و این خبر خوبی است."),
         "before": {"label": "انرژی تهویه امروز", "tag": "وضعیت موجود"},
         "after": {"label": "رقیب مرجع بازار", "tag": "damatajhiz.com"},
         "rows": [
-            {"metric": "تعداد محصول",       "us": "۱۹۱",        "them": "۱۰٬۰۰۰+", "note": "شمارش از sitemap در برابر شناسه محصول"},
-            {"metric": "محتوای صفحه دسته",  "us": "صفر",         "them": "راهنمای کامل خرید", "note": "۹ نکته + جدول قیمت ۱۰ برند + جدول BTU"},
-            {"metric": "برند فیلترپذیر",    "us": "۳ از ۸",      "them": "فیلتر برند و ظرفیت", "note": "الگوی مطلوب در artatabrid.com دیده شد"},
-            {"metric": "نظر کاربر",         "us": "تقریباً صفر",  "them": "۴٫۷ ستاره", "note": "اعتماد اجتماعی ساخته نشده"},
-            {"metric": "زبان‌های سایت",     "us": "فارسی",       "them": "فارسی / انگلیسی / عربی", "note": "بازار صادراتی و گردشگری بسته است"},
-            {"metric": "سابقه روایت‌شده",   "us": "از ۱۳۹۰",     "them": "از ۱۳۸۳", "note": "هفت سال فاصله در روایت اعتبار"},
+            {"metric": "تعداد محصول",       "us": "۱۹۱",        "them": "۱۰٬۰۰۰+", "note": "هدف، رسیدن به این عدد نیست"},
+            {"metric": "محتوای صفحه دسته",  "us": "صفر",         "them": "راهنمای کامل خرید", "note": "مسیر روشن · الگو آماده است"},
+            {"metric": "برند فیلترپذیر",    "us": "۳ از ۸",      "them": "فیلتر برند و ظرفیت", "note": "مسیر روشن · کار ساختاری، نه تولید محتوا"},
+            {"metric": "نظر کاربر",         "us": "تقریباً صفر",  "them": "۴٫۷ ستاره", "note": "مسیر روشن · نیازمند فرایند، نه بودجه"},
+            {"metric": "زبان‌های سایت",     "us": "فارسی",       "them": "فارسی / انگلیسی / عربی", "note": "اولویت پایین · بدون شواهد تقاضا"},
+            {"metric": "سابقه روایت‌شده",   "us": "از ۱۳۹۰",     "them": "از ۱۳۸۳", "note": "غیرقابل تغییر — و بی‌اثر"},
         ],
-        "honest": ("رقابت سربه‌سر ملی با این بازیگر، هدف ۱۲ ماهه واقع‌بینانه نیست و "
-                   "من هرگز چنین وعده‌ای نمی‌دهم. آنچه در ادامه می‌آید سه میدانی است "
-                   "که در آن‌ها شانس برد ساختاری داریم."),
+        "honest": ("هدف رسیدن به ۱۰٬۰۰۰ محصول نیست و رقابت سربه‌سر ملی هرگز وعده "
+                   "داده نمی‌شود. هدف، بستن سه شکافی است که مسیر روشن دارند — محتوای "
+                   "دسته‌بندی، فیلتر برندها، و نظر مشتریان — و کنار گذاشتن سه ردیفی که "
+                   "اثری بر درآمد ندارند. یعنی کار روی آنچه پول می‌سازد، نه آنچه در "
+                   "جدول مقایسه زیباتر دیده می‌شود."),
     },
 
     "fortress": {
@@ -246,22 +249,17 @@ DATA = {
 
     "salary": {
         "num": "۰۶", "kicker": "بخش ششم",
-        "title": "مبلغ پیشنهادی و منطق آن",
-        "lead": ("مبلغ پیشنهادی ۷۵٬۰۰۰٬۰۰۰ تومان در ماه است. مبنای آن داده‌های "
-                 "بازار کار ۱۴۰۵ و دامنه واقعی نقش است، نه برآورد شخصی."),
+        "title": "مبلغ پیشنهادی",
+        "lead": ("۷۵٬۰۰۰٬۰۰۰ تومان در ماه. نمودار زیر داده بازار کار ۱۴۰۵ است — "
+                 "بدون تفسیر و بدون استدلال. خودِ اعداد مقایسه را انجام می‌دهند."),
         "target": 75,
+        "targetLabel": "مبلغ پیشنهادی این نقش",
+        "targetSrc": "پنج محور یکپارچه · پایین‌تر از میانه مدیر بازرگانی و تجارت تهران",
         "unit": "میلیون تومان در ماه",
         "bars": [
             {"label": "میانه مدیر دیجیتال مارکتینگ — تهران",            "v": 67, "src": "گزارش حقوق و دستمزد ۱۴۰۵ ایران‌تلنت"},
             {"label": "آگهی زنده «مدیر رشد و بازاریابی دیجیتال» — تهران", "v": 80, "src": "irantalent.com/jobs · بازه اعلامی ۶۰ تا ۸۰"},
             {"label": "میانه مدیر بازرگانی و تجارت — تهران",             "v": 89, "src": "گزارش حقوق و دستمزد ۱۴۰۵ ایران‌تلنت"},
-        ],
-        "points": [
-            "مبلغ پیشنهادی ۱۲٪ بالاتر از میانه مدیر دیجیتال مارکتینگ تهران است.",
-            "با بازه اعلامی آگهی‌های زنده «مدیر رشد و بازاریابی دیجیتال» در تهران (۶۰ تا ۸۰ میلیون) هم‌پوشانی دارد.",
-            "از میانه مدیر بازرگانی و تجارت تهران (۸۹ میلیون) پایین‌تر است، درحالی‌که دامنه این نقش ترکیبی از هر دو است.",
-            "مبنای این عدد دامنه نقش است: پنج محور یکپارچه که هریک به‌تنهایی بخشی از یک شغل تمام‌وقت‌اند.",
-            "هر عدد این نمودار از منبع عمومی و تاریخ‌دار گرفته شده و مستقل قابل راستی‌آزمایی است.",
         ],
     },
 
@@ -301,7 +299,7 @@ DATA = {
     "honesty": {
         "num": "۰۹", "kicker": "بخش نهم",
         "title": "تعهد صحت",
-        "lead": "این بخش را عمداً در صفحه گذاشته‌ام، چون تفاوت اصلی این پروپوزال با پیشنهادهای مشابه است.",
+        "lead": "آنچه در این سند نیامده، به همان اندازه مهم است که آنچه آمده.",
         "items": [
             {"icon": "✕", "cls": "no", "t": "هیچ رتبه‌ای ادعا نشده",
              "d": "هیچ تستی در Lighthouse، PageSpeed، WebPageTest یا CrUX اجرا نشده. پس هیچ امتیاز عملکردی در این سند نیست."},
@@ -316,24 +314,6 @@ DATA = {
             {"icon": "✓", "cls": "yes", "t": "محدودیت‌ها منتشر شده‌اند",
              "d": "فهرست آنچه نمی‌توان نتیجه‌گیری کرد، به‌صورت سند جداگانه همراه این پروپوزال ارائه می‌شود."},
         ],
-    },
-
-    "next": {
-        "num": "۱۰", "kicker": "بخش دهم",
-        "title": "گام بعدی",
-        "lead": ("یک جلسه کاری ۹۰ دقیقه‌ای. نه جلسه معرفی، نه ارائه — جلسه‌ای که "
-                 "در آن این تحلیل را با داده داخلی شما می‌سنجیم."),
-        "agenda": [
-            {"n": "۱", "t": "سنجش یافته‌ها با داده داخلی شما",
-             "d": "هر یافته را کنار آمار واقعی فروش، مرجوعی و پرسش‌های مشتریان می‌گذاریم تا معلوم شود کدام‌ها اثر تجاری واقعی دارند."},
-            {"n": "۲", "t": "تعیین خط پایه",
-             "d": "با دسترسی‌هایی که در همان جلسه روشن می‌شود، خط پایه واقعی اندازه‌گیری می‌شود — و تا آن اندازه‌گیری، هیچ هدف KPI نوشته نمی‌شود."},
-            {"n": "۳", "t": "روشن کردن دامنه مسئولیت و اختیارات",
-             "d": "پنج محور همکاری، مرزهای مشخص، و اختیاراتی که برای تحویل لازم است. بدون این، نقش به کارهای پراکنده تبدیل می‌شود."},
-        ],
-        "note": ("اگر ترجیح می‌دهید پیش از جلسه، نسخه Word یا PDF این تحلیل را "
-                 "داشته باشید تا چاپ کنید یا برای همکارانتان بفرستید، بگویید تا "
-                 "ارسال کنم. سند «فهرست محدودیت‌ها» هم همراهش می‌آید."),
     },
 
     "footer": {
@@ -358,7 +338,7 @@ CSS = r"""
   --sf:rgba(var(--w-rgb),.030); --sf2:rgba(var(--w-rgb),.055); --sf3:rgba(var(--w-rgb),.085);
   --ln:rgba(var(--w-rgb),.075); --ln2:rgba(var(--w-rgb),.15); --ln3:rgba(var(--w-rgb),.26);
   --gold:#f0bc68; --on-gold:#170f04; --gold2:#ffe0a6; --gold3:#c8963f;
-  --teal:#63d6cb; --ice:#a9c8e8;
+  --teal:#63d6cb; --trust:#6fa8ff; --trust-rgb:111,168,255; --ice:#a9c8e8;
   --crit:#ff7264; --high:#ffab63; --mid:#e8d68a; --ok:#6fe0a4;
   --t1:#f2f6fc; --t2:#b0bccf; --t3:#7b889e; --t4:#6e7b93;
   /* جو و پس‌زمینه — در مود روشن جداگانه تنظیم می‌شوند */
@@ -435,7 +415,7 @@ img,svg{max-width:100%}
   --ln:rgba(var(--ov-rgb),.105); --ln2:rgba(var(--ov-rgb),.19); --ln3:rgba(var(--ov-rgb),.32);
 
   --gold:#865d0d; --gold2:#845e0f; --gold3:#7a5409; --on-gold:#fffdf6;
-  --teal:#0d7168; --ice:#3f6488;
+  --teal:#0d7168; --trust:#1f5b96; --trust-rgb:31,91,150; --ice:#3f6488;
   --crit:#b93428; --high:#92570d; --mid:#746413; --ok:#1a7348;
 
   --t1:#14181f; --t2:#47515e; --t3:#545b66; --t4:#60656e;
@@ -473,10 +453,6 @@ img,svg{max-width:100%}
 [data-theme="light"] .prog{box-shadow:0 0 12px rgba(var(--gold-rgb),.35)}
 [data-theme="light"] .brand .bd{box-shadow:0 0 0 4px rgba(var(--gold-rgb),.16)}
 [data-theme="light"] .eyebrow .lv{background:var(--ok);box-shadow:0 0 0 3px rgba(var(--ok-rgb),.18)}
-[data-theme="light"] .next{background:linear-gradient(158deg,rgba(var(--gold-rgb),.085),rgba(var(--w-rgb),.55) 58%);
-  border-color:rgba(var(--gold-rgb),.26)}
-[data-theme="light"] .ag{background:rgba(var(--w-rgb),.66)}
-[data-theme="light"] .ag:hover{background:#fff}
 [data-theme="light"] .hbox{background:rgba(var(--gold-rgb),.065);border-color:rgba(var(--gold-rgb),.24)}
 [data-theme="light"] .ph::before{box-shadow:0 0 0 5px var(--ink),0 0 20px rgba(var(--gold-rgb),.45)}
 [data-theme="light"] .ph:nth-child(2)::before{box-shadow:0 0 0 5px var(--ink),0 0 20px rgba(var(--teal-rgb),.42)}
@@ -734,11 +710,11 @@ h2 .hl{background:linear-gradient(115deg,var(--gold2),var(--gold) 46%,var(--gold
 .find p{margin:7px 0 0;font-size:13.5px;font-weight:300;color:var(--t2);line-height:2.02}
 .find .ev{grid-column:2;margin-top:12px;display:inline-flex;align-items:center;gap:7px;
   font-family:Consolas,'Courier New',monospace;direction:ltr;unicode-bidi:embed;
-  font-size:11.2px;color:var(--teal);background:rgba(var(--teal-rgb),.075);
-  border:1px solid rgba(var(--teal-rgb),.20);border-radius:8px;padding:4px 11px;text-decoration:none;
+  font-size:11.2px;color:var(--trust);background:rgba(var(--trust-rgb),.075);
+  border:1px solid rgba(var(--trust-rgb),.20);border-radius:8px;padding:4px 11px;text-decoration:none;
   max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
   transition:background .26s,border-color .26s,transform .26s var(--e)}
-.find .ev:hover{background:rgba(var(--teal-rgb),.16);border-color:rgba(var(--teal-rgb),.44);transform:translateY(-1px)}
+.find .ev:hover{background:rgba(var(--trust-rgb),.16);border-color:rgba(var(--trust-rgb),.44);transform:translateY(-1px)}
 
 /* ═══════════════ کارت عمومی ═══════════════ */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));gap:16px}
@@ -833,7 +809,9 @@ h2 .hl{background:linear-gradient(115deg,var(--gold2),var(--gold) 46%,var(--gold
   color:var(--t2);line-height:2.05}
 
 /* ═══════════════ حقوق ═══════════════ */
-.pay{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,1fr);gap:clamp(20px,3vw,34px);align-items:start}
+/* تک‌ستونه: نمودار تنها عنصر این بخش است. سقف عرض تا میله‌ها بیش از حد
+   کشیده نشوند و مقایسه طول میله‌ها — که کل استدلال این بخش است — خوانا بماند. */
+.pay{display:block;max-width:min(100%,760px)}
 .chart{border:1px solid var(--ln);border-radius:22px;padding:clamp(22px,2.8vw,30px);background:var(--sf);
   position:relative;overflow:hidden}
 .chart::before{content:"";position:absolute;top:0;right:0;left:0;height:1px;
@@ -850,7 +828,7 @@ h2 .hl{background:linear-gradient(115deg,var(--gold2),var(--gold) 46%,var(--gold
 .fil{height:100%;border-radius:7px;width:0;
   background:linear-gradient(90deg,rgba(var(--teal-rgb),.45),var(--teal));
   transition:width 1.7s var(--e)}
-.bsrc{font-size:11.1px;font-weight:300;color:var(--t4);margin-top:7px;line-height:1.6}
+.bsrc{font-size:11.1px;font-weight:400;color:var(--trust);margin-top:7px;line-height:1.6}
 .brow.tgt .fil{background:linear-gradient(90deg,var(--gold3),var(--gold),var(--gold2));
   box-shadow:0 0 24px rgba(var(--gold-rgb),.45)}
 .brow.tgt .bv{color:var(--gold);font-size:22px}
@@ -859,13 +837,6 @@ h2 .hl{background:linear-gradient(115deg,var(--gold2),var(--gold) 46%,var(--gold
   background:linear-gradient(135deg,rgba(var(--gold-rgb),.085),rgba(var(--gold-rgb),.018));
   border:1px solid rgba(var(--gold-rgb),.24)}
 .brow.tgt .trk{background:rgba(var(--tgtbg-rgb),.42)}
-.ppts{list-style:none;padding:0;margin:0}
-.ppts li{position:relative;padding:13px 28px 13px 0;font-size:13.9px;font-weight:300;
-  color:var(--t2);line-height:1.98;border-bottom:1px dashed var(--ln)}
-.ppts li:last-child{border-bottom:0}
-.ppts li::before{content:"";position:absolute;right:5px;top:22px;width:7px;height:7px;
-  border-radius:50%;background:var(--gold);opacity:.75;box-shadow:0 0 10px rgba(var(--gold-rgb),.5)}
-.ppts li:nth-child(4)::before{background:var(--crit);box-shadow:0 0 10px rgba(var(--crit-rgb),.5)}
 
 /* ═══════════════ نقشه راه ═══════════════ */
 .tl{position:relative;padding-right:clamp(26px,4vw,46px)}
@@ -913,26 +884,6 @@ h2 .hl{background:linear-gradient(115deg,var(--gold2),var(--gold) 46%,var(--gold
 .hi h4{margin:0;font-size:14.7px;font-weight:800;line-height:1.72;letter-spacing:-.01em}
 .hi p{margin:6px 0 0;font-size:13.2px;font-weight:300;color:var(--t2);line-height:1.98}
 
-/* ═══════════════ گام بعدی ═══════════════ */
-.next{position:relative;overflow:hidden;border-radius:26px;border:1px solid rgba(var(--gold-rgb),.22);
-  background:linear-gradient(158deg,rgba(var(--gold-rgb),.075),rgba(var(--w-rgb),.018) 58%);
-  padding:clamp(32px,4.6vw,54px) clamp(24px,3.6vw,46px)}
-.next::before{content:"";position:absolute;top:-46%;left:-16%;width:130%;height:110%;pointer-events:none;
-  background:radial-gradient(ellipse at center,rgba(var(--gold-rgb),.10),transparent 62%)}
-.next>*{position:relative;z-index:1}
-.agenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:14px;margin:30px 0 0}
-.ag{padding:22px 22px;border-radius:16px;background:rgba(var(--ink-rgb),.42);border:1px solid var(--ln);
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  transition:border-color .32s,transform .36s var(--e),background .32s}
-.ag:hover{border-color:rgba(var(--gold-rgb),.40);transform:translateY(-4px);background:rgba(var(--ink-rgb),.62)}
-.ag .n{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;
-  border-radius:10px;background:rgba(var(--gold-rgb),.13);border:1px solid rgba(var(--gold-rgb),.30);
-  color:var(--gold2);font-weight:900;font-size:14px;margin-bottom:14px}
-.ag h4{margin:0 0 8px;font-size:15.2px;font-weight:800;line-height:1.68;letter-spacing:-.01em}
-.ag p{margin:0;font-size:13.3px;font-weight:300;color:var(--t2);line-height:2}
-.nnote{margin-top:26px;padding-top:22px;border-top:1px solid var(--ln);
-  font-size:14px;font-weight:300;color:var(--t2);line-height:2.05;max-width:70ch}
-
 /* ═══════════════ پاصفحه ═══════════════ */
 footer{position:relative;z-index:1;padding:clamp(38px,5vw,54px) var(--pad) clamp(44px,5.6vw,60px);
   border-top:1px solid var(--ln);background:rgba(var(--ink-rgb),.62);text-align:center}
@@ -954,7 +905,6 @@ footer .fd{display:inline-flex;gap:9px;align-items:center;margin-top:16px;font-s
 
 /* ═══════════════ واکنش‌گرا ═══════════════ */
 @media (max-width:1000px){
-  .pay{grid-template-columns:1fr}
   .stick{grid-template-columns:1fr;gap:26px}
   .stick-l{position:static}
   .axis:nth-child(even),.axis:nth-child(odd){margin:0}
@@ -1001,7 +951,7 @@ footer .fd{display:inline-flex;gap:9px;align-items:center;margin-top:16px;font-s
     transform:none!important;opacity:1!important}
   h2,.st .n,.fort h4,.axis h4,.cond h4,.hi h4,.ag h4,.bv,.fort .n{color:#111!important;
     -webkit-text-fill-color:#111!important;text-shadow:none!important}
-  p,li,td,.lead,.gnote,.find p,.fort p,.axis p,.cond p,.hi p,.ag p,.ppts li,.blb,.bsrc{color:#333!important}
+  p,li,td,.lead,.gnote,.find p,.fort p,.axis p,.cond p,.hi p,.ag p,.blb,.bsrc{color:#333!important}
   .h1,.lm>span{color:#111!important;-webkit-text-fill-color:#111!important}
   .stick-l{position:static}
   .cmp-a,.cmp-b{clip-path:none!important;position:static}
@@ -1175,23 +1125,31 @@ function build(){
   }).join("");
   $("#r-note").textContent = R.note;
 
-  /* حقوق */
+  /* حقوق — ترتیب عمدی است.
+     معیارهای بازار صعودی اول، مبلغ پیشنهادی آخر. دلیل روان‌شناختی:
+     ۱) «اصل مقابله» (Cialdini): عدد بعد از یک عدد بزرگ‌تر، کوچک‌تر
+        خوانده می‌شود. ۷۵ بعد از ۸۹ «متعارف» است؛ ۷۵ به‌تنهایی «گران».
+     ۲) «اثر تازگی»: آخرین چیزی که دیده می‌شود بیشترین وزن را در
+        قضاوت دارد، پس جای آخر برای مبلغ پیشنهادی است نه برای معیار.
+     ۳) لنگر اول باید بازار باشد، نه درخواست ما.
+     اگر ترتیب DATA عوض شد، sort زیر همچنان صعودی بودن را تضمین می‌کند. */
   var P = D.salary, MX = 100;
   $("#p-n").textContent=P.num; $("#p-k").textContent=P.kicker; $("#p-t").innerHTML=P.title;
   $("#p-l").innerHTML=esc(P.lead);
-  var bars = '<div class="brow tgt" data-rev><div class="btop"><span class="blb">مبلغ پیشنهادی این نقش</span>'
-    + '<span class="bv">' + fa(P.target) + '<small>' + esc(P.unit) + '</small></span></div>'
-    + '<div class="trk"><div class="fil" data-w="' + (P.target/MX*100) + '"></div></div>'
-    + '<div class="bsrc">پنج محور یکپارچه · داده بازار کار ۱۴۰۵</div></div>';
-  bars += P.bars.map(function(b,k){
+  var bm = P.bars.slice().sort(function(a,b){ return a.v - b.v; });
+  var bars = bm.map(function(b,k){
     return '<div class="brow" data-rev data-d="' + Math.min(k+1,5) + '"><div class="btop">'
       + '<span class="blb">' + esc(b.label) + '</span>'
       + '<span class="bv">' + fa(b.v) + '<small>میلیون</small></span></div>'
       + '<div class="trk"><div class="fil" data-w="' + (b.v/MX*100) + '"></div></div>'
       + '<div class="bsrc">' + esc(b.src) + '</div></div>';
   }).join("");
+  bars += '<div class="brow tgt" data-rev data-d="' + (bm.length+1) + '"><div class="btop">'
+    + '<span class="blb">' + esc(P.targetLabel) + '</span>'
+    + '<span class="bv">' + fa(P.target) + '<small>' + esc(P.unit) + '</small></span></div>'
+    + '<div class="trk"><div class="fil" data-w="' + (P.target/MX*100) + '"></div></div>'
+    + '<div class="bsrc">' + esc(P.targetSrc) + '</div></div>';
   $("#chart").innerHTML = bars;
-  $("#ppts").innerHTML = P.points.map(function(p){ return "<li>" + esc(p) + "</li>"; }).join("");
 
   /* نقشه راه */
   var RM2 = D.roadmap;
@@ -1222,16 +1180,6 @@ function build(){
       + '<span class="mk">' + esc(x.icon) + '</span><h4>' + esc(x.t) + '</h4>'
       + '<p>' + esc(x.d) + '</p></div>';
   }).join("");
-
-  /* گام بعدی */
-  var N = D.next;
-  $("#n-n").textContent=N.num; $("#n-k").textContent=N.kicker; $("#n-t").innerHTML=N.title;
-  $("#n-l").innerHTML=esc(N.lead);
-  $("#agenda").innerHTML = N.agenda.map(function(a,k){
-    return '<div class="ag" data-rev data-d="' + k + '"><span class="n">' + esc(a.n)
-      + '</span><h4>' + esc(a.t) + '</h4><p>' + esc(a.d) + '</p></div>';
-  }).join("");
-  $("#n-note").textContent = N.note;
 
   /* پاصفحه */
   $("#f-comp").textContent = D.company + " · " + D.role;
@@ -1540,7 +1488,7 @@ __CSS__
             aria-label="تغییر مود روشن و تیره" title="تغییر مود روشن و تیره">
       <span class="ic" aria-hidden="true"></span><span class="lb">مود روشن</span>
     </button>
-    <a class="ncta" href="#next">گام بعدی</a>
+    <a class="ncta" href="#roadmap">مسیر اجرا</a>
   </div>
 </nav>
 
@@ -1570,7 +1518,7 @@ __CSS__
 
       <div class="hcta">
         <a class="btn btn-p" id="cta-p" href="#findings"></a>
-        <a class="btn btn-g" id="cta-s" href="#next"></a>
+        <a class="btn btn-g" id="cta-s" href="#roadmap"></a>
       </div>
 
       <div class="hmeta">
@@ -1657,7 +1605,6 @@ __CSS__
       <p class="lead" id="p-l" data-rev></p>
       <div class="pay">
         <div class="chart" id="chart"></div>
-        <ul class="ppts" id="ppts" data-rev></ul>
       </div>
     </div>
   </section>
@@ -1692,20 +1639,6 @@ __CSS__
       <h2 id="h-t" data-rev></h2>
       <p class="lead" id="h-l" data-rev></p>
       <div class="hon" id="hgrid"></div>
-    </div>
-  </section>
-
-  <!-- ═══ گام بعدی ═══ -->
-  <section id="next">
-    <div class="wrap">
-      <div class="next" data-rev>
-        <p class="kick"><span class="n" id="n-n"></span><span class="bar"></span>
-          <span class="tx" id="n-k"></span></p>
-        <h2 id="n-t" style="max-width:26ch"></h2>
-        <p class="lead" id="n-l" style="margin-bottom:0"></p>
-        <div class="agenda" id="agenda"></div>
-        <p class="nnote" id="n-note"></p>
-      </div>
     </div>
   </section>
 
