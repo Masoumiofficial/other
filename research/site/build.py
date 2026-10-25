@@ -382,6 +382,21 @@ def main():
             print("!! یافت نشد: %s" % src, file=sys.stderr)
             continue
         body, toc = render(read(src))
+        if fn == "brand.html":
+            logo = os.path.join(DATA, "brand", "logo", "navidban-logo.png")
+            ban = os.path.join(DATA, "brand", "logo", "navidban-banner.png")
+            if os.path.isfile(logo) and os.path.isfile(ban):
+                shutil.copyfile(logo, os.path.join(SITE, "navidban-logo.png"))
+                shutil.copyfile(ban, os.path.join(SITE, "navidban-banner.png"))
+                body = body.replace("<h1>", """<div style="display:flex;flex-wrap:wrap;gap:22px;align-items:center;
+margin:8px 0 26px"><img src="navidban-logo.png" alt="نشان نویدبان"
+style="width:132px;height:132px;border-radius:26px;border:1px solid var(--line)">
+<div style="flex:1 1 320px;min-width:260px"><img src="navidban-banner.png"
+alt="زمینهٔ بنر نویدبان" style="width:100%;border-radius:14px;
+border:1px solid var(--line);display:block">
+<p style="color:var(--mut);font-size:12.5px;margin:8px 0 0">نشان خطی و زمینهٔ بنر
+(تولید ۱۴۰۵-۰۸-۰۳). بنر نهایی ۱۰۵۰×۵۲۰ با تایپوگرافی وزیرمتن از
+<code>research/brand/logo/banner-1050x520.html</code> صادر می‌شود.</p></div></div><h1>""", 1)
         head = re.search(r"^#\s+(.*)$", read(src), re.M)
         h1 = head.group(1).strip() if head else title
         body = "<h1>%s</h1>" % inline(h1) + re.sub(
