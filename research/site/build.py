@@ -356,13 +356,20 @@ def main():
     docs = [("report.html", "گزارش نهایی APEX Ω∞",
              os.path.join(DATA, "APEX-report.md")),
             ("evidence.html", "دفترچهٔ شواهد",
-             os.path.join(DATA, "data", "evidence-log.md"))]
+             os.path.join(DATA, "data", "evidence-log.md")),
+            ("brand.html", "بستهٔ برند نویدبان",
+             os.path.join(DATA, "brand", "BRAND.md")),
+            ("build-prompt.html", "پرامپت ساخت نویدبان",
+             os.path.join(DATA, "build-prompt.md"))]
 
     tools = ('<a href="index.html">🏠 خانه</a>'
              '<a href="report.html">📄 گزارش</a>'
              '<a href="evidence.html">🗂 شواهد</a>'
+             '<a href="brand.html">🎨 برند</a>'
+             '<a href="build-prompt.html">🛠 پرامپت ساخت</a>'
              '<a href="APEX-report.md" download>⬇ Markdown گزارش</a>'
-             '<a href="evidence-log.md" download>⬇ Markdown شواهد</a>'
+             '<a href="BRAND.md" download>⬇ Markdown برند</a>'
+             '<a href="build-prompt.md" download>⬇ Markdown پرامپت</a>'
              '<a href="#" onclick="window.print();return false">🖨 چاپ/PDF</a>')
 
     import shutil
@@ -395,6 +402,8 @@ def main():
         ("۶۰+", "محصول با سنجهٔ مستند از راست‌چین و ژاکت"),
         ("۸", "محدودیت دادهٔ ثبت‌شده (L1–L8)"),
         ("۶", "آزمون اعتبارسنجی پیش از کدنویسی"),
+        ("۷", "نام ممیزی‌شده؛ «نویدبان» پاک شد"),
+        ("۱۲", "مرحلهٔ پرامپت ساخت با دروازهٔ خروج"),
     ]
     cards = "".join(
         '<div class="doc" style="flex:1 1 260px;margin:0 0 18px">'
@@ -430,8 +439,12 @@ border-inline-start:3px solid var(--acc)}
 <div class="btns">
 <a class="p" href="report.html">📄 گزارش کامل (۱۶ بخش)</a>
 <a href="evidence.html">🗂 دفترچهٔ شواهد</a>
-<a href="APEX-report.md" download>⬇ دانلود Markdown گزارش</a>
-<a href="evidence-log.md" download>⬇ دانلود دفترچهٔ شواهد</a>
+<a class="p" href="brand.html">🎨 بستهٔ برند «نویدبان»</a>
+<a class="p" href="build-prompt.html">🛠 پرامپت ساخت</a>
+<a href="APEX-report.md" download>⬇ Markdown گزارش</a>
+<a href="BRAND.md" download>⬇ Markdown برند</a>
+<a href="build-prompt.md" download>⬇ Markdown پرامپت</a>
+<a href="evidence-log.md" download>⬇ Markdown شواهد</a>
 <a href="#" onclick="window.print();return false">🖨 چاپ / PDF</a>
 </div>
 </div>
@@ -439,12 +452,44 @@ border-inline-start:3px solid var(--acc)}
 <div class="doc ans">
 <h3 style="margin-top:0">پاسخ کوتاه</h3>
 <p>اگر امروز فقط یک افزونهٔ جدید برای بازار وردپرس فارسی ساخته شود:
-<strong>«موجودبان» — مرکز اعلان و لیست انتظار بومی، سبک و امن برای ووکامرس</strong>،
+<strong>«نویدبان» — مرکز اعلان و لیست انتظار بومی، سبک و امن برای ووکامرس</strong>،
 برای فروشگاه‌های با موجودی متناوب و کسب‌وکارهای نوبتی.
 امتیاز <strong>۷۷ از ۱۰۰</strong>، اطمینان <strong>متوسط</strong>،
 مشروط به عبور از ۶ آزمون اعتبارسنجی ۱۴ روزهٔ پیش از کدنویسی.</p>
+<p style="color:var(--mut);font-size:13.5px">نام نهایی در آزمون T5 پاک شد
+(«موجودبان» در ممیزی رد شد — یک محصول زنده با همین نام در راست‌چین وجود دارد).
+بستهٔ کامل برند و پرامپت ساخت خودبسنده در همین سایت منتشر شده‌اند.</p>
 <p style="color:var(--mut);font-size:13.5px;margin-bottom:0">
 جزئیات، استدلال، نقد خصمانه و برنامهٔ آزمون در بخش‌های ۱۰ تا ۱۴ گزارش.</p>
+</div>
+
+<div class="doc" style="margin-top:18px">
+<h3 style="margin-top:0">چهار سند تحویلی</h3>
+<div class="grid" style="margin-top:4px">
+<div style="flex:1 1 300px;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--panel2)">
+<h4 style="margin:0 0 6px"><a href="report.html">📄 گزارش نهایی APEX Ω∞</a></h4>
+<p style="color:var(--mut);font-size:13.5px;margin:0">۱۶ بخش + ۳ پیوست · کشف ۲۲ فرصت، غربال به ۵ کارت ۱۷فیلدی، امتیازدهی وزنی از ۱۰۰،
+نقد خصمانه، طراحی MVP و انتخاب نهایی. شامل «پیوست پ» با اصلاحات پس از ممیزی نام.</p>
+</div>
+<div style="flex:1 1 300px;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--panel2)">
+<h4 style="margin:0 0 6px"><a href="evidence.html">🗂 دفترچهٔ شواهد</a></h4>
+<p style="color:var(--mut);font-size:13.5px;margin:0">دادهٔ خام مشاهده‌شده با نشانی کامل، تاریخ دسترسی و نقل‌قول مستقیم.
+هر ادعای گزارش به یک ردیف در این دفترچه برمی‌گردد.</p>
+</div>
+<div style="flex:1 1 300px;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--panel2)">
+<h4 style="margin:0 0 6px"><a href="brand.html">🎨 بستهٔ برند «نویدبان»</a></h4>
+<p style="color:var(--mut);font-size:13.5px;margin:0">نام نهایی و ممیزی تداخل ۷ نام · جایگاه‌سازی · ۳ ستون تمایز · شعار · صدا و لحن ·
+هویت بصری با پالت رنگ و مشخصات نشان · <strong>متن آمادهٔ کپی‌پیست صفحهٔ محصول مارکت</strong> ·
+جدول نام‌های فنی · چک‌لیست پیش از لانچ.</p>
+</div>
+<div style="flex:1 1 300px;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--panel2)">
+<h4 style="margin:0 0 6px"><a href="build-prompt.html">🛠 پرامپت ساخت APEX Ω∞ BUILD 1.0</a></h4>
+<p style="color:var(--mut);font-size:13.5px;margin:0">پرامپت خودبسندهٔ ساخت، آمادهٔ دادن به یک عامل کدنویس.
+۱۰ نقش مهندسی · محدودیت‌های سخت · زمینهٔ بازار جاسازی‌شده ·
+<strong>مرحلهٔ ۰ = دروازهٔ اعتبارسنجی پیش از هر خط کد</strong> · ۱۲ مرحله با دروازهٔ خروج ·
+طرح کامل دیتابیس · ماتریس امنیت ۱۵ آیتمی · بودجهٔ عملکرد با الزام اثبات HAR · ۸ شرط توقف.</p>
+</div>
+</div>
 </div>
 
 <div class="grid">%s</div>
